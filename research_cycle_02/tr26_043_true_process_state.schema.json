@@ -1,0 +1,297 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/schemas/tr26-043-v0-true-process-state.schema.json",
+  "title": "TR26-043 v0 true-filtration process state",
+  "description": "Design-level machine-readable state/event contract for the two-block and intended multiscale reconstruction. It records every inspected color, including an unconsumed frontier. It is not the serialization schema for the Python enumerator's lowercase trace events. Semantic invariants are checked separately by the executable test suite. A multiscale state may be explicitly undefined where v0 supplies no transition convention.",
+  "$comment": "External invariants include: n is even; assigned_set equals set(assigned_order); H is the sum of assigned revealed colors; absolute_H=abs(H); and phase/undefined_reason combinations agree with the transition relation.",
+  "type": "object",
+  "required": [
+    "source",
+    "probability_space",
+    "global",
+    "filtration",
+    "phase",
+    "scales",
+    "excursion",
+    "events"
+  ],
+  "properties": {
+    "source": {
+      "type": "object",
+      "required": ["report", "version", "url", "sha256"],
+      "properties": {
+        "report": {"const": "ECCC TR26-043"},
+        "version": {"const": "v0 (2026-04-01)"},
+        "url": {"const": "https://eccc.weizmann.ac.il/report/2026/043/download"},
+        "sha256": {"const": "b72a0eedb80aea50dd3b9ed5c1e69cfd3a717fab7225ec69f46cfa6c15ecda0f"}
+      },
+      "additionalProperties": false
+    },
+    "probability_space": {
+      "type": "object",
+      "required": ["coloring", "ties", "weight"],
+      "properties": {
+        "coloring": {"const": "uniform over balanced +/-1 colorings of [n]"},
+        "ties": {"const": "independent fair L/R coins, sampled only when used"},
+        "weight": {"$ref": "#/$defs/rational"}
+      },
+      "additionalProperties": false
+    },
+    "global": {
+      "type": "object",
+      "required": ["n", "step", "assigned_order", "assigned_set", "H", "absolute_H"],
+      "properties": {
+        "n": {"type": "integer", "minimum": 2},
+        "step": {"type": "integer", "minimum": 0},
+        "assigned_order": {"type": "array", "items": {"type": "integer", "minimum": 1}, "uniqueItems": true},
+        "assigned_set": {"type": "array", "items": {"type": "integer", "minimum": 1}, "uniqueItems": true},
+        "H": {"type": "integer"},
+        "absolute_H": {"type": "integer", "minimum": 0},
+        "probe_order": {"type": "array", "items": {"type": "integer", "minimum": 1}, "uniqueItems": true},
+        "output_chain_order": {"type": "array", "items": {"type": "integer", "minimum": 1}, "uniqueItems": true}
+      },
+      "additionalProperties": false
+    },
+    "filtration": {
+      "type": "object",
+      "required": ["boundary_kind", "revealed_colors", "unrevealed_counts", "tie_outcomes"],
+      "properties": {
+        "boundary_kind": {
+          "enum": ["after_chain_step_before_new_frontier_reveal", "after_reveal_before_decision", "after_tie_before_consume"]
+        },
+        "revealed_colors": {
+          "type": "object",
+          "propertyNames": {"pattern": "^[1-9][0-9]*$"},
+          "additionalProperties": {"enum": [-1, 1]}
+        },
+        "unrevealed_counts": {
+          "type": "object",
+          "required": ["plus", "minus", "total"],
+          "properties": {
+            "plus": {"type": "integer", "minimum": 0},
+            "minus": {"type": "integer", "minimum": 0},
+            "total": {"type": "integer", "minimum": 0}
+          },
+          "additionalProperties": false
+        },
+        "tie_outcomes": {
+          "type": "array",
+          "items": {"enum": ["L", "R"]}
+        }
+      },
+      "additionalProperties": false
+    },
+    "phase": {
+      "enum": [
+        "SCALE_START",
+        "STEER",
+        "BLOCK_EXHAUSTED",
+        "DESCENT",
+        "GAP_FILL",
+        "BASE_FILL",
+        "DONE",
+        "UNDEFINED"
+      ]
+    },
+    "scales": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/scale"}
+    },
+    "excursion": {"$ref": "#/$defs/excursion"},
+    "gap": {"$ref": "#/$defs/gap"},
+    "undefined_reason": {
+      "enum": [
+        "odd_residual_has_no_v0_split_rule",
+        "initial_effective_size_below_M0_over_2_has_no_v0_entry_rule",
+        "gap_filler_order_not_selected",
+        "descent_success_bound_is_not_an_operational_stopping_rule",
+        "next_scale_size_relation_not_guaranteed"
+      ]
+    },
+    "events": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/event"}
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "rational": {
+      "type": "object",
+      "required": ["numerator", "denominator"],
+      "properties": {
+        "numerator": {"type": "integer", "minimum": 0},
+        "denominator": {"type": "integer", "minimum": 1}
+      },
+      "additionalProperties": false
+    },
+    "frontier": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "required": ["block", "element", "status"],
+          "properties": {
+            "block": {"enum": ["L", "R"]},
+            "element": {"type": "integer", "minimum": 1},
+            "status": {"const": "UNREVEALED"}
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["block", "element", "status", "value"],
+          "properties": {
+            "block": {"enum": ["L", "R"]},
+            "element": {"type": "integer", "minimum": 1},
+            "status": {"const": "REVEALED_UNCONSUMED"},
+            "value": {"enum": [-1, 1]}
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "scale": {
+      "type": "object",
+      "required": [
+        "j",
+        "segment",
+        "split_status",
+        "left_block",
+        "right_block",
+        "start_indices",
+        "indices",
+        "D",
+        "frontiers",
+        "last_balanced_visit"
+      ],
+      "properties": {
+        "j": {"type": "integer", "minimum": 0},
+        "segment": {
+          "type": "array",
+          "prefixItems": [{"type": "integer", "minimum": 1}, {"type": "integer", "minimum": 1}],
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "split_status": {"enum": ["EVEN_DEFINED", "ODD_UNDEFINED_IN_V0"]},
+        "left_block": {"type": "array", "items": {"type": "integer", "minimum": 1}},
+        "right_block": {"type": "array", "items": {"type": "integer", "minimum": 1}},
+        "start_indices": {"$ref": "#/$defs/indices"},
+        "indices": {"$ref": "#/$defs/indices"},
+        "D": {"type": "integer"},
+        "frontiers": {
+          "type": "object",
+          "required": ["L", "R"],
+          "properties": {
+            "L": {"$ref": "#/$defs/frontier"},
+            "R": {"$ref": "#/$defs/frontier"}
+          },
+          "additionalProperties": false
+        },
+        "last_balanced_visit": {
+          "type": "object",
+          "required": ["global_step", "indices", "H", "assigned_set"],
+          "properties": {
+            "global_step": {"type": "integer", "minimum": 0},
+            "indices": {"$ref": "#/$defs/indices"},
+            "H": {"type": "integer", "minimum": -1, "maximum": 1},
+            "assigned_set": {"type": "array", "items": {"type": "integer", "minimum": 1}, "uniqueItems": true}
+          },
+          "additionalProperties": false
+        },
+        "block_exhaustion_step": {"type": ["integer", "null"], "minimum": 0},
+        "residual_segment": {
+          "oneOf": [
+            {"type": "null"},
+            {
+              "type": "array",
+              "prefixItems": [{"type": "integer", "minimum": 1}, {"type": "integer", "minimum": 1}],
+              "minItems": 2,
+              "maxItems": 2
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "indices": {
+      "type": "object",
+      "required": ["a", "b"],
+      "properties": {
+        "a": {"type": "integer", "minimum": 0},
+        "b": {"type": "integer", "minimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "excursion": {
+      "type": "object",
+      "required": ["convention", "active_id", "next_id", "last_band_visit"],
+      "properties": {
+        "convention": {"const": "above |H|<=1 band; starts on 1->2 and ends on return to <=1"},
+        "active_id": {"type": ["integer", "null"], "minimum": 1},
+        "next_id": {"type": "integer", "minimum": 1},
+        "start_step": {"type": ["integer", "null"], "minimum": 0},
+        "last_band_visit": {"type": "integer", "minimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "gap": {
+      "type": "object",
+      "required": ["start_set", "end_set", "elements", "filler_policy"],
+      "properties": {
+        "start_set": {"type": "array", "items": {"type": "integer", "minimum": 1}, "uniqueItems": true},
+        "end_set": {"type": "array", "items": {"type": "integer", "minimum": 1}, "uniqueItems": true},
+        "elements": {"type": "array", "items": {"type": "integer", "minimum": 1}, "uniqueItems": true},
+        "filler_policy": {"enum": ["UNSPECIFIED_EXISTENTIAL", "ENUMERATE_ALL_VALID", "EXPLICIT_COMPLETION"]}
+      },
+      "additionalProperties": false
+    },
+    "event": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["kind", "element", "block", "value", "conditional_probability"],
+          "properties": {
+            "kind": {"const": "REVEAL"},
+            "element": {"type": "integer", "minimum": 1},
+            "block": {"enum": ["L", "R"]},
+            "value": {"enum": [-1, 1]},
+            "conditional_probability": {"$ref": "#/$defs/rational"}
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["kind", "choice", "conditional_probability"],
+          "properties": {
+            "kind": {"const": "TIE_COIN"},
+            "choice": {"enum": ["L", "R"]},
+            "conditional_probability": {"$ref": "#/$defs/rational"}
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["kind", "element", "block", "value"],
+          "properties": {
+            "kind": {"const": "CONSUME"},
+            "element": {"type": "integer", "minimum": 1},
+            "block": {"enum": ["L", "R"]},
+            "value": {"enum": [-1, 1]}
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["kind", "from_phase", "to_phase", "scale"],
+          "properties": {
+            "kind": {"const": "PHASE_CHANGE"},
+            "from_phase": {"type": "string"},
+            "to_phase": {"type": "string"},
+            "scale": {"type": "integer", "minimum": 0}
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  }
+}

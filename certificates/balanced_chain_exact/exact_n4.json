@@ -1,0 +1,192 @@
+{
+  "schema": "balanced-chain-exact-v1",
+  "epistemic_status": "COMPUTATIONALLY VERIFIED; ADVERSARIALLY REVIEWED; UNFORMALIZED; NOVELTY STATUS RECORDED SEPARATELY",
+  "n": 4,
+  "claimed_optimum": 6,
+  "family_masks": [
+    0,
+    1,
+    3,
+    5,
+    7,
+    15
+  ],
+  "family_elements": [
+    [],
+    [
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      1,
+      2
+    ],
+    [
+      0,
+      1,
+      2,
+      3
+    ]
+  ],
+  "level_counts": [
+    1,
+    1,
+    2,
+    1,
+    1
+  ],
+  "all_balanced_coloring_witnesses": [
+    {
+      "plus_mask": 3,
+      "plus_elements": [
+        0,
+        1
+      ],
+      "permutation": [
+        0,
+        2,
+        1,
+        3
+      ],
+      "chain_masks": [
+        0,
+        1,
+        5,
+        7,
+        15
+      ]
+    },
+    {
+      "plus_mask": 5,
+      "plus_elements": [
+        0,
+        2
+      ],
+      "permutation": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "chain_masks": [
+        0,
+        1,
+        3,
+        7,
+        15
+      ]
+    },
+    {
+      "plus_mask": 9,
+      "plus_elements": [
+        0,
+        3
+      ],
+      "permutation": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "chain_masks": [
+        0,
+        1,
+        3,
+        7,
+        15
+      ]
+    },
+    {
+      "plus_mask": 6,
+      "plus_elements": [
+        1,
+        2
+      ],
+      "permutation": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "chain_masks": [
+        0,
+        1,
+        3,
+        7,
+        15
+      ]
+    },
+    {
+      "plus_mask": 10,
+      "plus_elements": [
+        1,
+        3
+      ],
+      "permutation": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "chain_masks": [
+        0,
+        1,
+        3,
+        7,
+        15
+      ]
+    },
+    {
+      "plus_mask": 12,
+      "plus_elements": [
+        2,
+        3
+      ],
+      "permutation": [
+        0,
+        2,
+        1,
+        3
+      ],
+      "chain_masks": [
+        0,
+        1,
+        5,
+        7,
+        15
+      ]
+    }
+  ],
+  "optimizer": {
+    "method": "SciPy milp / HiGHS multicommodity Boolean-lattice flow",
+    "scipy_version": "1.18.0",
+    "python_version": "3.13.12",
+    "colorings_modulo_global_sign": 3,
+    "flow_edges": 72,
+    "variables": 88,
+    "constraints": 196,
+    "canonical_chain_symmetry_breaking": true,
+    "level_lower_bound_constraints": [
+      1,
+      1,
+      2,
+      1,
+      1
+    ],
+    "status_code": 0,
+    "status_message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "objective": 6,
+    "dual_bound": 6,
+    "relative_gap": 0.0,
+    "branch_and_bound_nodes": 1,
+    "elapsed_seconds": 0.00464329999522306
+  }
+}

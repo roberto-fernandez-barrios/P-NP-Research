@@ -1,0 +1,24 @@
+{
+  "schema": "balanced-chain-n8-no-size19-v1",
+  "claim": "No 1-balanced-chain set system on [8] has 19 subsets.",
+  "prerequisite_level_counts": [1, 1, 4, 2, 3, 2, 4, 1, 1],
+  "prerequisite_explanation": "The independently checked level-cover minima sum to 19, so a hypothetical size-19 family has these counts exactly. A selected level-2, level-3, or level-4 vertex that is unreachable from the unique singleton leaves fewer reachable vertices than that level's cover minimum. It is therefore complete to enumerate reachable choices of sizes 4, 2, and 3.",
+  "enumeration": "All 70 balanced colorings are used, not complement representatives. All 8 singleton choices and every reachable continuation are enumerated. No permutation symmetry reduction is used.",
+  "branch_counts": {
+    "level2_choices": 280,
+    "level2_live": 280,
+    "level3_choices": 42840,
+    "level3_dead": 42000,
+    "level3_live": 840,
+    "level4_choices": 100800
+  },
+  "level4_coverage_histogram": {
+    "60": 25200,
+    "62": 25200,
+    "64": 50400
+  },
+  "maximum_level4_colorings_covered": 64,
+  "enumeration_sha256": "4f376e42ae6e4f9ec7243a6421d32c15945cd8a4876cdb5b8427dc77c7d0d5b0",
+  "hash_encoding": "For each level-4 branch in deterministic integer-mask combination order: one byte for singleton; four for level-2 masks; two for level-3 masks; three for level-4 masks; one for the number of covered colorings.",
+  "conclusion": "Every branch misses at least 6 of the 70 balanced colorings already at level 4, so no branch can extend to a full witnessing chain for every coloring."
+}

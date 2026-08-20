@@ -260,3 +260,10 @@ limitation, not an mABP separation or P versus NP.
 The full unresolved-status audit, comparison, falsification plan, proof
 program, and Lean/computational plan are in
 [`../audits/first_target_selection.md`](../audits/first_target_selection.md).
+
+**Cycle-2 disposition (2026-08-21).** The bounded diagnostic is complete. It
+reached Stop A only for the greedy, uniformly bounded-`d`, single-consumption
+cached-frontier process and its posted `1-O(1/M)` logarithmic direct-gap
+contract. O01 remains OPEN, and no broader fixed-`d`, `N(n)`, or mABP
+obstruction is claimed. See
+[`research_cycle_02.md`](../results/research_cycle_02.md).

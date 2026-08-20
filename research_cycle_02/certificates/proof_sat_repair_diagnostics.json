@@ -1,0 +1,46 @@
+{
+  "status": "COMPUTATIONALLY_TESTED_FINITE_DIAGNOSTICS_ONLY",
+  "scope_warning": "This certificate neither proves nor refutes O01.",
+  "two_block_actual_filtration": {
+    "ambient_n": 20,
+    "positive_count_M": 10,
+    "condition": "the first two frontiers have one common sign; one is consumed and the other remains cached",
+    "continuation_half_length_k": 4,
+    "active_room_check": "2*k+1 < M",
+    "conditional_primitive_dyck_probability": "175/7293",
+    "initial_same_sign_probability": "9/19",
+    "unconditional_first_gap_lower_bound": "525/46189",
+    "certified_gap_statement": "after the initial |H|=1 balanced visit, the next |H|<=1 visit occurs exactly eight steps later on this event"
+  },
+  "withdrawn_n10_history": {
+    "pool_size_R": 8,
+    "absolute_imbalance_h": 2,
+    "cached_bad_frontiers": 1,
+    "posterior_up_probability": "2/7",
+    "conditional_expected_increment_A_minus_B": "5/7"
+  },
+  "fresh_pair_reachable_history": {
+    "ambient_n": 10,
+    "exposed_batch_signs": ["+-", "--", "+-"],
+    "consumed_signs": "+-+",
+    "deferred_signs": "---",
+    "unseen_signs": "+++-",
+    "current_imbalance": 1,
+    "next_fresh_pair_all_bad_probability": "1/2",
+    "claimed_naive_bound": "1/4"
+  },
+  "three_block_actual_filtration": {
+    "ambient_n": 120,
+    "positive_count_M": 60,
+    "d": 3,
+    "continuation_half_length_k": 4,
+    "conditional_primitive_dyck_probability": "50445/2500238"
+  },
+  "fresh_choice_defer": {
+    "d": 3,
+    "rounds_T": 8,
+    "deferred_residual": 16,
+    "possible_chosen_subsets": 6561
+  },
+  "checker": "research_cycle_02/experiments/check_proof_sat_repairs.py"
+}

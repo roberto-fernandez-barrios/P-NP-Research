@@ -29,6 +29,26 @@ by exact enumeration.  No novelty claim is made; the paper was already
 officially withdrawn for the principal conditioning issue.  The result
 remains `UNFORMALIZED` and is not an external publication claim.
 
+## Cycle-2 refinement: exact minima and reveal semantics
+
+Research Cycle 2 reconstructed the process on the full reveal filtration and
+found that the earlier `n=10` history is robust but not always minimal.
+
+* Under literal eager comparison at `H=0`, Lemma 4.1 first fails at `n=8`,
+  with conditional upward probability `1/3`; there are no failures at
+  `n=2,4,6`.
+* If an implementation tosses the certain tie at `H=0` before revealing only
+  the selected frontier, Lemma 4.1 first fails at `n=10`.
+* The claimed block-load martingale first fails literally at `n=2` after
+  exhaustion. With both blocks active it first fails at `n=4` under eager
+  comparison and at `n=6` under query-minimal comparison.
+
+All minima were exhaustively checked with exact rational arithmetic. The
+source does not specify the `H=0` reveal optimization, so both readings are
+retained rather than silently choosing one. See
+[`tr26_043_true_filtration_audit.md`](../../../research_cycle_02/tr26_043_true_filtration_audit.md)
+and its [certificate](../../../certificates/tr26_043_true_filtration_counterexamples.json).
+
 ## Exact positive-probability history
 
 Take `n=10`, with ordered blocks

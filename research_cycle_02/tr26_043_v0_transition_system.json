@@ -1,0 +1,192 @@
+{
+  "source": {
+    "report": "ECCC TR26-043",
+    "version": "v0 (2026-04-01)",
+    "url": "https://eccc.weizmann.ac.il/report/2026/043/download",
+    "sha256": "b72a0eedb80aea50dd3b9ed5c1e69cfd3a717fab7225ec69f46cfa6c15ecda0f"
+  },
+  "artifact_contract": "Design-level transition relation. It is not the serialization format for the Python enumerator's trace events; executable semantic invariants are checked in experiments/test_tr26_043_true_filtration.py.",
+  "semantics": {
+    "coloring": "Uniform balanced f:[n]->{-1,+1}; deferred decisions expose a uniformly random remaining sign at each genuinely new reveal.",
+    "tie_coins": "Independent fair L/R bits, drawn only after equality of the two candidate absolute heights is known.",
+    "true_filtration_boundary": "After a consume and before any newly exposed frontier is inspected. All prior inspections and used tie bits remain measurable, including an inspected but unconsumed frontier.",
+    "reveal_policy_parameter": {
+      "eager": "Inspect both active candidate colors before comparison, including at H=0.",
+      "minimal": "At H=0, where both candidate absolute heights are one independently of their colors, toss the tie coin first and inspect only the selected candidate. At nonzero H inspect both as required."
+    },
+    "two_orders": {
+      "probe": "The steered path used to find balanced endpoints, block exhaustion, and descent endpoints.",
+      "output": "The chain order after existential greedy gap filling; it need not equal the probe order inside a gap."
+    }
+  },
+  "two_block_transitions": [
+    {
+      "id": "TB-1",
+      "from": "CHAIN_STEP_BOUNDARY",
+      "guard": "both blocks active, H=0, and reveal_policy=minimal",
+      "to": "CONSUME_READY",
+      "operation": [
+        "Recognize the candidate absolute heights are both one without inspecting either color.",
+        "Reveal a fair L/R tie coin.",
+        "Reveal only the selected frontier and prepare to consume it."
+      ]
+    },
+    {
+      "id": "TB0",
+      "from": "CHAIN_STEP_BOUNDARY",
+      "guard": "at least one local block is active and TB-1 does not apply",
+      "to": "FRONTIERS_READY",
+      "operation": [
+        "For each active block, identify its current frontier from (segment,a,b).",
+        "Retain any frontier already in revealed_colors.",
+        "Reveal each unknown active frontier; branch by the exact remaining plus/minus counts.",
+        "Do not erase the unchosen frontier from revealed_colors."
+      ]
+    },
+    {
+      "id": "TB1",
+      "from": "FRONTIERS_READY",
+      "guard": "both blocks active and the two candidate absolute heights differ",
+      "to": "CONSUME_READY",
+      "operation": [
+        "Choose the block whose frontier minimizes |H+f(frontier)|."
+      ]
+    },
+    {
+      "id": "TB2",
+      "from": "FRONTIERS_READY",
+      "guard": "both blocks active and the two candidate absolute heights are equal",
+      "to": "CONSUME_READY",
+      "operation": [
+        "Reveal one fresh fair tie coin.",
+        "Choose L or R according to that coin and append it to tie_outcomes."
+      ]
+    },
+    {
+      "id": "TB3",
+      "from": "FRONTIERS_READY",
+      "guard": "exactly one block active",
+      "to": "CONSUME_READY",
+      "operation": [
+        "Choose the unique active block; no tie coin is sampled."
+      ]
+    },
+    {
+      "id": "TB4",
+      "from": "CONSUME_READY",
+      "guard": "a chosen frontier exists",
+      "to": "CHAIN_STEP_BOUNDARY",
+      "operation": [
+        "Append the chosen element to probe_order and assigned_set.",
+        "Increment a or b; update H and D=a-b.",
+        "Preserve every revealed value, especially the unchosen frontier.",
+        "If |H| crossed 1->2, start an above-band excursion; if it returned to <=1, close the excursion and update the last balanced visit."
+      ]
+    }
+  ],
+  "multiscale_transitions": [
+    {
+      "id": "MS0",
+      "from": "SCALE_START",
+      "guard": "the current segment has an even-size split and the effective unassigned size meets the v0 invariant",
+      "to": "STEER",
+      "operation": [
+        "Continue the local two-block process from the recorded start indices (a0,b0).",
+        "Record every visit to |H|<=1 and every intervening probe gap."
+      ]
+    },
+    {
+      "id": "MS1",
+      "from": "STEER",
+      "guard": "two consecutive recorded visits to |H|<=1 exist",
+      "to": "GAP_FILL",
+      "operation": [
+        "Let the gap be the set difference between the two probe endpoints.",
+        "Replace the probe order inside that gap by some 1-balanced order supplied existentially by Lemma 6.1.",
+        "The v0 paper does not select a unique order when more than one is valid."
+      ]
+    },
+    {
+      "id": "MS2",
+      "from": "STEER",
+      "guard": "the consume just exhausted one local block",
+      "to": "BLOCK_EXHAUSTED",
+      "operation": [
+        "Set the residual to the unconsumed suffix of the other half.",
+        "Save the last |H|<=1 probe endpoint and the tail from that endpoint to exhaustion."
+      ]
+    },
+    {
+      "id": "MS3",
+      "from": "BLOCK_EXHAUSTED",
+      "guard": "residual size is at least M0 and the residual has an even-size split",
+      "to": "DESCENT",
+      "operation": [
+        "Start a fresh local grid on the residual at (0,0).",
+        "Run the same true-filtration two-block transitions until the first visit to |H|<=1.",
+        "Retain any unconsumed revealed frontier in the next scale state."
+      ]
+    },
+    {
+      "id": "MS4",
+      "from": "DESCENT",
+      "guard": "the first |H|<=1 endpoint was reached",
+      "to": "GAP_FILL",
+      "operation": [
+        "Gap-fill the union of the prior-scale tail and the descent probe elements.",
+        "Create the next scale frame on the residual with start indices equal to the descent endpoint."
+      ]
+    },
+    {
+      "id": "MS5",
+      "from": "BLOCK_EXHAUSTED",
+      "guard": "residual size is below M0",
+      "to": "BASE_FILL",
+      "operation": [
+        "Gap-fill the prior-scale tail together with every residual element, ending at [n]."
+      ]
+    },
+    {
+      "id": "MS6",
+      "from": "GAP_FILL or BASE_FILL",
+      "guard": "a filler order has been selected",
+      "to": "SCALE_START or DONE",
+      "operation": [
+        "Append the chosen filler order to output_chain_order.",
+        "The probe observations remain in the true filtration even if output order differs."
+      ]
+    }
+  ],
+  "partiality_of_v0": [
+    {
+      "id": "U1",
+      "condition": "a recursive residual has odd cardinality",
+      "effect": "UNDEFINED",
+      "reason": "Definition 3.1 is supplied only for an even segment split into equal halves; residual parity is unrestricted."
+    },
+    {
+      "id": "U2",
+      "condition": "a gap has more than one valid 1-balanced ordering",
+      "effect": "NONDETERMINISTIC",
+      "reason": "Lemma 6.1 proves existence and its h=0 branch says any element; no canonical filler is fixed."
+    },
+    {
+      "id": "U3",
+      "condition": "the initial effective size is below M0/2",
+      "effect": "UNDEFINED_AS_AN_OPERATIONAL_ENTRY_CASE",
+      "reason": "Theorem 8.1 initializes invariant (iii) with m'_0=n but states m'_j>=M0/2; a finite-n completion is not specified."
+    },
+    {
+      "id": "U4",
+      "condition": "Case A needs ln(m'_j) <= (3/2)ln(m_{j+1})+1",
+      "effect": "UNJUSTIFIED_GUARD",
+      "reason": "The displayed block-deviation event gives an upper bound on m_{j+1}, not the lower bound cited for this logarithmic comparison. Even if the missing lower bound m_{j+1}>=(m'_j)^(2/3)/2 were assumed, the divisor two requires additive constant (3/2)ln 2, approximately 1.03972, rather than the printed +1."
+    }
+  ],
+  "reachable_set_conventions": {
+    "two_block_probe": "Exactly enumerated by experiments/tr26_043_true_filtration.py. Every set is a union of a left prefix and right prefix.",
+    "multiscale_probe": "A union of completed contributions outside nested residuals plus a current local prefix pair; only defined while all required splits are defined.",
+    "multiscale_output": "Not a unique set without either enumerating every Lemma 6.1-valid filler or adding a filler policy.",
+    "definition_7_4_set_system": "An explicit over-approximation by all valid multiscale decompositions/local patterns; it is not the same object as the exact set of states reached by one unspecified builder execution."
+  }
+}

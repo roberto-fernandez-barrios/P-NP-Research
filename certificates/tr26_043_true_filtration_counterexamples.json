@@ -1,0 +1,283 @@
+{
+  "status": "EXACT COMPUTATIONAL CERTIFICATE PLUS ELEMENTARY PARAMETRIC DERIVATION; INTERNALLY ADVERSARIALLY REVIEWED; UNFORMALIZED",
+  "scope": "Conditional claims in the v0 proof only. This does not decide the block-deviation tail inequality, the unrestricted balanced-chain target, or O01.",
+  "source": {
+    "report": "ECCC TR26-043",
+    "version": "v0, published 2026-04-01",
+    "url": "https://eccc.weizmann.ac.il/report/2026/043/download",
+    "sha256": "b72a0eedb80aea50dd3b9ed5c1e69cfd3a717fab7225ec69f46cfa6c15ecda0f",
+    "current_status": {
+      "version": "Revision 1 Retraction Note, 2026-05-11",
+      "url": "https://eccc.weizmann.ac.il/report/2026/043/revision/1/download",
+      "sha256": "a3a6251ce8b4f859046656bba1e09582ed7bcb12409c63c9fb126758f1e89363",
+      "scope": "The note acknowledges the conditional-filtration gap in Lemma 4.1 and states that all paper results rely on it; it does not supply the exact finite minima certified here."
+    },
+    "relevant_locations": [
+      "Definition 3.1 and Lemma 3.3, pp. 11-12",
+      "Lemma 4.1 and Remark 4.2, pp. 12-13",
+      "Definition 5.1, p. 13"
+    ]
+  },
+  "filtration_semantics": {
+    "boundary": "Immediately after t assigned elements and before revealing a newly exposed frontier for step t+1.",
+    "reveal_policies": {
+      "eager": "Inspect both colors before every active-block comparison, including H=0.",
+      "minimal": "At H=0 toss the algebraically certain tie first and inspect only the selected color; at nonzero H inspect both colors."
+    },
+    "measurable": [
+      "all assigned element identities and colors",
+      "all candidate colors inspected in earlier decisions",
+      "the inspected but unconsumed current frontier",
+      "all tie-coin outcomes used so far",
+      "all derived indices, H, D, excursion state, and scale state"
+    ]
+  },
+  "exhaustive_scan_eager": [
+    {
+      "n": 2,
+      "filtration_atoms_by_step": [1, 4, 4],
+      "forced_eligible_atoms": 0,
+      "forced_violating_atoms": 0,
+      "maximum_forced_probability": "0/1",
+      "literal_nonzero_D_drift_atoms": 4,
+      "active_nonzero_D_drift_atoms": 0,
+      "strict_interior_nonzero_D_drift_atoms": 0,
+      "reachable_probe_subsets_by_level": [1, 2, 1]
+    },
+    {
+      "n": 4,
+      "filtration_atoms_by_step": [1, 8, 16, 24, 24],
+      "forced_eligible_atoms": 8,
+      "forced_violating_atoms": 0,
+      "maximum_forced_probability": "0/1",
+      "literal_nonzero_D_drift_atoms": 40,
+      "active_nonzero_D_drift_atoms": 8,
+      "strict_interior_nonzero_D_drift_atoms": 0,
+      "reachable_probe_subsets_by_level": [1, 2, 3, 2, 1]
+    },
+    {
+      "n": 6,
+      "filtration_atoms_by_step": [1, 8, 24, 72, 120, 176, 176],
+      "forced_eligible_atoms": 68,
+      "forced_violating_atoms": 0,
+      "maximum_forced_probability": "1/4",
+      "literal_nonzero_D_drift_atoms": 336,
+      "active_nonzero_D_drift_atoms": 68,
+      "strict_interior_nonzero_D_drift_atoms": 20,
+      "reachable_probe_subsets_by_level": [1, 2, 3, 4, 3, 2, 1]
+    },
+    {
+      "n": 8,
+      "filtration_atoms_by_step": [1, 8, 24, 88, 232, 580, 928, 1356, 1356],
+      "forced_eligible_atoms": 556,
+      "forced_violating_atoms": 4,
+      "maximum_forced_probability": "1/3",
+      "literal_nonzero_D_drift_atoms": 2744,
+      "active_nonzero_D_drift_atoms": 556,
+      "strict_interior_nonzero_D_drift_atoms": 204,
+      "reachable_probe_subsets_by_level": [1, 2, 3, 4, 5, 4, 3, 2, 1]
+    },
+    {
+      "n": 10,
+      "filtration_atoms_by_step": [1, 8, 24, 88, 264, 864, 2032, 4716, 7436, 10832, 10832],
+      "forced_eligible_atoms": 4536,
+      "forced_violating_atoms": 52,
+      "maximum_forced_probability": "3/8",
+      "literal_nonzero_D_drift_atoms": 22664,
+      "active_nonzero_D_drift_atoms": 4536,
+      "strict_interior_nonzero_D_drift_atoms": 1804,
+      "reachable_probe_subsets_by_level": [1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1]
+    }
+  ],
+  "smallest_n_eager": {
+    "lemma_4_1_forced_probability": 8,
+    "lemma_3_3_literal_full_path_martingale": 2,
+    "lemma_3_3_active_two_block_martingale": 4,
+    "lemma_3_3_strict_interior_martingale": 6
+  },
+  "smallest_n_query_minimal": {
+    "lemma_4_1_forced_probability": 10,
+    "lemma_3_3_literal_full_path_martingale": 2,
+    "lemma_3_3_active_two_block_martingale": 6,
+    "lemma_3_3_strict_interior_martingale": 6
+  },
+  "query_minimal_forced_scan": [
+    {"n": 2, "violating_atoms": 0, "maximum": "0/1"},
+    {"n": 4, "violating_atoms": 0, "maximum": "0/1"},
+    {"n": 6, "violating_atoms": 0, "maximum": "1/10"},
+    {"n": 8, "violating_atoms": 0, "maximum": "1/4"},
+    {"n": 10, "violating_atoms": 32, "maximum": "1/3"}
+  ],
+  "lemma_4_1_query_minimal_certificate": {
+    "n": 10,
+    "history": [
+      {"event": "certain_tie_coin_before_colors", "choice": "L", "conditional_probability": "1/2"},
+      {"event": "reveal_and_consume", "element": 1, "value": 1, "conditional_probability": "1/2"},
+      {"event": "reveal", "element": 2, "value": 1, "conditional_probability": "4/9"},
+      {"event": "reveal", "element": 6, "value": 1, "conditional_probability": "3/8"},
+      {"event": "tie_coin", "choice": "L", "conditional_probability": "1/2"},
+      {"event": "consume", "element": 2, "value": 1}
+    ],
+    "history_probability": "1/48",
+    "boundary_state": {
+      "t": 2,
+      "a": 2,
+      "b": 0,
+      "H": 2,
+      "D": 2,
+      "persistent_revealed_frontier": {"block": "R", "element": 6, "value": 1},
+      "new_unrevealed_frontier": {"block": "L", "element": 3},
+      "unrevealed_color_counts": {"plus": 2, "minus": 5}
+    },
+    "conditional_upward_probability": "2/7",
+    "claimed_upper_bound": "1/4",
+    "minimality": "The query-minimal exact scan finds no violation for n=2,4,6,8; its maximum at n=8 is exactly 1/4."
+  },
+  "lemma_4_1_eager_minimal_certificate": {
+    "reveal_policy": "eager",
+    "n": 8,
+    "blocks": {"L": [1, 2, 3, 4], "R": [5, 6, 7, 8]},
+    "history": [
+      {"event": "reveal", "element": 1, "value": 1, "conditional_probability": "1/2"},
+      {"event": "reveal", "element": 5, "value": 1, "conditional_probability": "3/7"},
+      {"event": "tie_coin", "choice": "L", "conditional_probability": "1/2"},
+      {"event": "consume", "element": 1, "value": 1}
+    ],
+    "history_probability": "3/28",
+    "boundary_state": {
+      "t": 1,
+      "a": 1,
+      "b": 0,
+      "H": 1,
+      "absolute_H": 1,
+      "D": 1,
+      "assigned_set": [1],
+      "persistent_revealed_frontier": {"block": "R", "element": 5, "value": 1},
+      "new_unrevealed_frontier": {"block": "L", "element": 2},
+      "unrevealed_color_counts": {"plus": 2, "minus": 4}
+    },
+    "next_step": {
+      "upward_event": "f(2)=+1; then both frontiers are +1, so |H| rises from 1 to 2 regardless of the next tie coin",
+      "conditional_probability": "2/6 = 1/3",
+      "claimed_upper_bound": "1/4",
+      "joint_probability_of_history_and_upward_event": "1/28",
+      "one_concrete_balanced_completion": {"plus_elements": [1, 2, 3, 5], "minus_elements": [4, 6, 7, 8]}
+    },
+    "minimality": "The exact enumerator finds no violation for n=2,4,6; the respective maxima over eligible true-filtration atoms are 0 (no eligible atom), 0, and 1/4."
+  },
+  "lemma_3_3_eager_active_minimal_certificate": {
+    "reveal_policy": "eager",
+    "n": 4,
+    "blocks": {"L": [1, 2], "R": [3, 4]},
+    "balanced_coloring": {"plus_elements": [1, 3], "minus_elements": [2, 4]},
+    "history": [
+      {"event": "reveal", "element": 1, "value": 1, "conditional_probability": "1/2"},
+      {"event": "reveal", "element": 3, "value": 1, "conditional_probability": "1/3"},
+      {"event": "tie_coin", "choice": "L", "conditional_probability": "1/2"},
+      {"event": "consume", "element": 1, "value": 1}
+    ],
+    "history_probability": "1/12",
+    "boundary_state": {
+      "t": 1,
+      "a": 1,
+      "b": 0,
+      "H": 1,
+      "D": 1,
+      "persistent_revealed_frontier": {"block": "R", "element": 3, "value": 1},
+      "new_unrevealed_frontier": {"block": "L", "element": 2}
+    },
+    "next_step": {
+      "deduction": "Balance forces f(2)=f(4)=-1. The builder therefore consumes element 2 from L.",
+      "D_increment": 1,
+      "conditional_expectation_of_D_increment": "1/1",
+      "claimed_conditional_expectation": "0/1"
+    },
+    "minimality": "For n=2 there is no noninitial boundary with both blocks active. At n=4 the displayed active-boundary atom has positive probability."
+  },
+  "lemma_3_3_literal_full_path_certificate": {
+    "n": 2,
+    "balanced_coloring": {"plus_elements": [1], "minus_elements": [2]},
+    "first_tie_choice": "L",
+    "history_probability": "1/4",
+    "boundary_state": {"t": 1, "a": 1, "b": 0, "H": 1, "D": 1},
+    "next_step": "L is exhausted, so R is forced and Delta D=-1 with conditional probability 1.",
+    "interpretation": "This refutes the literal all-t<=m martingale sentence. The active-block counterexample above isolates the frontier-information error used before exhaustion."
+  },
+  "strict_interior_certificate": {
+    "n": 6,
+    "history": "Reveal f(1)=f(4)=+1 and let the first tie choose L.",
+    "history_probability": "1/10",
+    "boundary_state": {"t": 1, "a": 1, "b": 0, "H": 1, "D": 1},
+    "conditional_distribution": {
+      "f(2)=-1": "3/4; choose L; Delta D=+1",
+      "f(2)=+1": "1/4; fair tie; conditional mean Delta D=0"
+    },
+    "conditional_D_drift": "3/4",
+    "why_strict": "Both blocks remain active after every possible second-step choice."
+  },
+  "n_10_reproduction": {
+    "n": 10,
+    "blocks": {"L": [1, 2, 3, 4, 5], "R": [6, 7, 8, 9, 10]},
+    "history": "Reveal f(1)=f(6)=+1, let the first tie choose L, and consume element 1.",
+    "history_probability": "1/9",
+    "boundary_state": {
+      "t": 1,
+      "a": 1,
+      "b": 0,
+      "H": 1,
+      "D": 1,
+      "persistent_revealed_frontier": {"block": "R", "element": 6, "value": 1},
+      "unrevealed_color_counts": {"plus": 3, "minus": 5}
+    },
+    "conditional_upward_probability": "3/8",
+    "conditional_D_drift": "5/8",
+    "joint_probability_of_history_and_upward_event": "1/24",
+    "one_concrete_balanced_completion": {"plus_elements": [1, 2, 3, 4, 6], "minus_elements": [5, 7, 8, 9, 10]}
+  },
+  "parametric_family": {
+    "parameter": "n=2k with k>=2",
+    "history": "Reveal f(L1)=f(R1)=+1 and let the first tie choose L.",
+    "history_probability": "(k-1)/(4(2k-1)) = (n-2)/(8(n-1))",
+    "true_boundary_state": "H=1, D=1, R1 is a known unconsumed + frontier, and L2 is newly unrevealed.",
+    "conditional_upward_probability": "(k-2)/(2k-2) = (n-4)/(2(n-2))",
+    "forced_probability_violation_range": "strictly greater than 1/4 exactly when k>=4, i.e. n>=8",
+    "conditional_D_drift": "k/(2k-2) = n/(2(n-2)), nonzero for every k>=2",
+    "joint_probability_of_history_and_upward_event": "(k-2)/(8(2k-1)) = (n-4)/(16(n-1))"
+  },
+  "n_10_first_block_exhaustion": {
+    "purpose": "Exact first-scale probe stopping law; this is the point where the v0 multiscale prose forms a residual.",
+    "reveal_policy": "eager",
+    "terminal_probability_mass": "1/1",
+    "terminal_filtration_atoms": 9664,
+    "query_minimal_comparison": {
+      "reveal_policy": "minimal",
+      "terminal_probability_mass": "1/1",
+      "terminal_filtration_atoms": 9488,
+      "residual_distribution_and_reachable_probe_subsets": "identical to the eager fields below"
+    },
+    "residual_size_distribution": {
+      "1": "3679/16128",
+      "2": "443/1792",
+      "3": "1867/8064",
+      "4": "11/56",
+      "5": "65/672"
+    },
+    "odd_residual_probability": "997/1792",
+    "distinct_probe_subsets_before_or_at_exhaustion": 35,
+    "note": "For n=10 every residual is below M0, so odd parity does not trigger recursion. The positive odd mass demonstrates that residual parity is not invariant; at recursive sizes v0 supplies no odd-segment split convention."
+  },
+  "verification": {
+    "enumerator": "experiments/tr26_043_true_filtration.py",
+    "tests": "experiments/test_tr26_043_true_filtration.py",
+    "commands": [
+      "python experiments/tr26_043_true_filtration.py --scan-even-through 10",
+      "python experiments/tr26_043_true_filtration.py --scan-even-through 10 --reveal-policy minimal",
+      "python experiments/test_tr26_043_true_filtration.py -v",
+      "python experiments/tr26_043_true_filtration.py --n 10 --include-reachable-subsets",
+      "python experiments/tr26_043_true_filtration.py --n 10 --first-exhaustion",
+      "python experiments/tr26_043_true_filtration.py --n 10 --first-exhaustion --reveal-policy minimal"
+    ],
+    "arithmetic": "All transition weights, conditional probabilities, drifts, and probability-mass checks use fractions.Fraction; no floating point is used.",
+    "independent_crosscheck": "The test suite separately enumerates complete balanced colorings, simulates all tie branches, and groups them into true-filtration atoms. Through n=8 it reproduces the deferred-decisions maxima and violation counts."
+  }
+}

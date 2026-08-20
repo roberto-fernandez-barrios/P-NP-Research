@@ -139,8 +139,8 @@ are in `open_problems.md`.
 | C01 | CONJECTURED | ETH: 3-SAT has positive exponential-time exponent. |
 | C02 | CONJECTURED | SETH: optimal `k`-SAT exponent tends to one. |
 | F01 | FALSE | Alekseev--Gaevoy Conjecture 1.4/4.2 is refuted as written for every fixed `q>1,r>0` by an internal parametric proof with blinded re-derivation and finite checks; `UNFORMALIZED`, not externally peer reviewed or novelty-audited. |
-| F02 | FALSE | Withdrawn TR26-043 Lemma 4.1's conditional `p_t<=1/4`; an internally adversarially reviewed `n=10` positive-probability history has `p_t=2/7`; `UNFORMALIZED`. |
-| F03 | FALSE | Withdrawn TR26-043 Lemma 3.3's block-deviation martingale claim; the same internally checked history gives increment probabilities `6/7` and `1/7`; `UNFORMALIZED`. |
+| F02 | FALSE | Withdrawn TR26-043 Lemma 4.1's conditional `p_t<=1/4`; exact Cycle-2 minima are eager `n=8` and query-minimal `n=10`; internally adversarially reviewed and `UNFORMALIZED`. |
+| F03 | FALSE | Withdrawn TR26-043 Lemma 3.3's load martingale claim; the literal minimum is `n=2`, the eager active minimum `n=4`, and the query-minimal active minimum `n=6`; internally adversarially reviewed and `UNFORMALIZED`. |
 | U01 | UNKNOWN-STATUS | Whether CTW TR26-039 can be fully uniformized to size `n^{2.5}/log^C n` for some sufficiently large fixed `C`. |
 | U02 | UNKNOWN-STATUS | A canonical balanced distribution giving the strongest OWF/Gap-MCSP equivalence; post-2022 variants need a dedicated audit. |
 | U03 | UNKNOWN-STATUS | The repaired status of the full conditional Res(`oplus`) application after the false conjecture and printed codimension/error bookkeeping gaps. |
