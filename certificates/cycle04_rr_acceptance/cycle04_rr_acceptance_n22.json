@@ -1,0 +1,39 @@
+{
+  "schema": "cycle04-rr-acceptance-v1",
+  "epistemic_status": "EXHAUSTIVE_NECKLACE_ENUMERATION",
+  "n": 22,
+  "q": 21,
+  "normalized_finite_weight": 11,
+  "normalized_balanced_words": 352716,
+  "accepted_normalized_words": 352695,
+  "rejected_normalized_words": 21,
+  "acceptance_fraction_exact": "352695/352716",
+  "rejection_fraction_exact": "21/352716",
+  "acceptance_fraction_decimal": 0.99994046201476539,
+  "rejection_fraction_decimal": 5.953798523457966e-05,
+  "rotation_orbits_total": 16796,
+  "accepted_rotation_orbits": 16795,
+  "rejected_rotation_orbits": 1,
+  "rotation_orbit_size": 21,
+  "reflection_symmetric_rejected_rotation_orbits": 1,
+  "rejected_dihedral_orbits": 1,
+  "failure_representatives_file": "certificates/cycle04_rr_acceptance/cycle04_rr_failures_n22.txt",
+  "failure_representative_xor_uint64": 2089184,
+  "failure_representative_sum_mod_2_64": 2089184,
+  "cyclic_run_count_rejected_rotation_orbits": {
+    "4": 1
+  },
+  "maximum_cyclic_run_rejected_rotation_orbits": {
+    "8": 1
+  },
+  "maximum_zero_run_rejected_rotation_orbits": {
+    "5": 1
+  },
+  "maximum_one_run_rejected_rotation_orbits": {
+    "8": 1
+  },
+  "joint_run_profile_rejected_rotation_orbits": {
+    "4|5|8": 1
+  },
+  "runtime_seconds_informational": 0.0012805
+}

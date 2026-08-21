@@ -1,0 +1,19 @@
+# q=23 weight=12 failing_necklaces=18
+7e3f00
+7fc1c0
+707fc0
+7f83a0
+707fa0
+7f8360
+707f60
+7ee0e0
+77e0e0
+6fe0e0
+5fe0e0
+7f90e0
+7f88e0
+7f84e0
+7f82e0
+721fe0
+711fe0
+709fe0

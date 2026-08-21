@@ -1,0 +1,27 @@
+{
+  "schema": "cycle04-multi-rr-v1",
+  "epistemic_status": "EXHAUSTIVE_FINITE_COMPUTATION",
+  "n": 22,
+  "q": 21,
+  "normalized_balanced_colorings": 352716,
+  "fixed_weight_necklaces": 16796,
+  "one_copy_normalized_rejections": 21,
+  "one_copy_failing_necklaces": 1,
+  "one_copy_failure_masks_fnv1a64_le": "eeb9a07a14cebb62",
+  "failure_necklace_file": "cycle04_multi_rr_failure_necklaces_n22.txt",
+  "copy_count": 2,
+  "minimum_t_exact": 2,
+  "search_seed": 11008053066901720603,
+  "successful_candidate_number": 1,
+  "permutation_kinds": ["identity","finite_multiplier_2"],
+  "permutations_old_to_new": [
+    [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21],
+    [0,2,4,6,8,10,12,14,16,18,20,1,3,5,7,9,11,13,15,17,19,21]
+  ],
+  "common_individual_rejections": 0,
+  "hybrid_only_acceptances": 0,
+  "full_literal_union_rejections": 0,
+  "literal_distinct_subset_count": 821,
+  "literal_rank_profile": [1,21,21,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,21,1],
+  "proof_scope": "All sign-orbits: exact necklace exhaustion for individual failures, followed by full induced literal-subset-DAG search on their exact intersection."
+}

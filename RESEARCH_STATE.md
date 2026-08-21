@@ -2,11 +2,11 @@
 
 ## Current phase
 
-RESEARCH CYCLE 3 COMPLETE — structural-DAG attack stopped under S3-D
+RESEARCH CYCLE 4 COMPLETE — RR relabeling route stopped under S4-D
 
 ## Current objective
 
-Preserve the completed Cycle-3 disposition.  Do not begin Research Cycle 4
+Preserve the completed Cycle-4 disposition.  Do not begin Research Cycle 5
 without explicit authorization.
 
 ## Primary target and status
@@ -23,6 +23,69 @@ O01 remains **OPEN**.  The audited public range is
 No Cycle-3 result proves a polynomial construction, an unrestricted lower
 bound, an mABP separation, an algebraic or Boolean complexity separation, or
 P versus NP.
+
+No Cycle-4 result changes that status.  In particular, the asymptotic result
+below is an obstruction to one restricted construction route, not a lower
+bound on `N(n)`.
+
+## Cycle-4 stopping result
+
+The proposed symmetrization implication is valid.  For a fixed family
+`F`, balanced coloring `f`, and uniform permutation `pi`,
+
+`Pr[pi(F) accepts f]`
+
+equals the acceptance fraction of `F`.  For `t` independent copies, the
+fixed-color rejection probability is `(1-A)^t`.  If
+`M=binom(n,n/2)` and `0<A<1`, the exact least integer certified by the
+all-color union bound is
+
+`floor(ln(M)/(-ln(1-A)))+1`.
+
+For the corrected `RR_n`, the literal union of `t` relabelings has at most
+
+`2+t(n-1)^2`
+
+distinct subsets.  Hence `A_n>=n^(-O(1))` would indeed imply O01.  This is a
+direct specialization of the published FLSY worst-case-to-average-case
+lemma, not a new theorem.
+
+The premise is false.  Normalize infinity negative and fix a positive finite
+rank-one root `r`.  Complementing and reversing the nested cyclic intervals
+of an RR witness is an exact bijection with a 1-balanced maximal chain in the
+ordinary one-interval family on the other `n-2` points.  If `p_N` is that
+family's success probability, then
+
+`A_n <= (n/2)p_(n-2)`.
+
+FLSY Theorem 4.4 (Theorem 1.7) gives an absolute `c>0` with
+
+`p_N <= 2^(-c N^(1/5))`
+
+for all sufficiently large even `N`.  Therefore
+
+`A_n <= (n/2)2^(-c(n-2)^(1/5)) = exp(-Omega(n^(1/5)))`.
+
+Status: `RIGOROUS COROLLARY; INDEPENDENTLY RECONSTRUCTED AND FINITE-CHECKED;
+ADVERSARIALLY REVIEWED`.  Formal coverage is recorded separately.  This
+reaches S4-D for individual-copy acceptance and random symmetrization.  It
+does not rule out hybrid chains in literal unions of multiple copies.
+
+Exact finite necklace computation, independently recounted through `n=30`
+and certificate-checked through `n=34`, gives normalized rejection counts
+
+`21, 414, 4700, 40392, 292407, 1885203, 11191257`
+
+for `n=22,24,...,34`.  These data have no asserted asymptotic implication.
+
+Separately, full literal-union certificates prove
+
+`t_RR(n)=2` for `n=22,24,26,28,30`.
+
+The second copies fix infinity and use finite modular multipliers
+`2,2,2,4,5`.  Their individual rejection sets are disjoint.  The resulting
+distinct-subset counts are `821,991,1177,1379,1597`.  This is exact finite
+evidence only; no all-`n` two-copy claim is made.
 
 ## Cycle-3 stopping result
 
@@ -172,11 +235,27 @@ order-theoretic extensional maximal-chain equivalence, `tau`/`sigma`, exact
 unformalized.  An independent trust-level-zero elaboration and axiom audit
 found no `sorryAx`.
 
+Cycle 4 additionally formalizes the reusable relabeling/equivariance layer.
+`acceptsColoring_relabel_iff` checks exact full-family acceptance
+equivariance; `isOneBalancedChain_relabel_iff` checks worst-case invariance;
+and `iUnion_isOneBalancedChain_of_pointwise_accepts` together with
+`union_relabelings_isOneBalancedChain` checks the deterministic literal-union
+step.  Phase 4A is therefore `PARTIALLY FORMALIZED`: uniform permutation
+fibers, independence, the union bound, exact `t`, and subset cardinality are
+not formalized.  The literal RR/deque/rooted equivalence, imported FLSY
+interval theorem, exhaustive finite counts, and O01 also remain outside the
+Lean development.  The exact boundary is in
+`research_cycle_04/lean_formalization.md` and `formal/coverage.md`.
+
 ## Literature status through 2026-08-21
 
 Fabris--Limaye--Srinivasan--Yehudayoff is published at CCC 2026, LIPIcs 383,
 Article 22, DOI `10.4230/LIPIcs.CCC.2026.22`; ECCC TR26-001 is the full
 version.  Its pair-open read-once program is the closest exact known model.
+Cycle 4 uses its worst-case-to-average-case Lemma 2.3 (Lemma 1.5) and its
+ordinary one-interval Theorem 4.4 (Theorem 1.7).  The exact attribution and
+conference numbering are audited in
+`research_cycle_04/literature_novelty_audit.md`.
 
 The polynomial claim in arXiv:2604.00746 / ECCC TR26-043 remains withdrawn;
 the revision notice says the conditional-filtration gap affects all results.
@@ -198,18 +277,38 @@ promoted by Cycle 3.
 
 ## Next action
 
-Stop.  Do not begin Research Cycle 4 automatically.  A later cycle requires
-fresh authorization and must not retry the unchanged greedy
-single-consumption cached-frontier construction.  The most precise open
-structural obligation is a polynomial-state, support-consistent routing
-principle that handles all defect patterns without materializing the
-`2^(n-1)` literal residual frontier.  Naming this obligation does not prove
-it and is not a completed recursion lemma.
+Stop.  Do not begin Research Cycle 5 automatically.  A later cycle requires
+fresh authorization.  It must not retry the inverse-polynomial single-copy
+`RR_n` acceptance premise, which is now rigorously false, nor the unchanged
+greedy single-consumption cached-frontier construction.  The multi-RR hybrid
+route remains open: finite two-copy successes do not supply an all-`n`
+theorem, while the S4-D obstruction does not apply to chains that splice
+states from different copies.
 
 ## Critical rule
 
 Do not directly attempt P versus NP.  No Boolean or algebraic complexity
 separation follows from this cycle.
+
+## Canonical Cycle-4 artifacts
+
+* `results/research_cycle_04.md`
+* `research_cycle_04/README.md`
+* `research_cycle_04/symmetrization_independent.md`
+* `research_cycle_04/rooted_interval_obstruction.md`
+* `research_cycle_04/rr_probability_attack.md`
+* `research_cycle_04/literature_novelty_audit.md`
+* `research_cycle_04/cycle04_rr_exact_count.md`
+* `research_cycle_04/cycle04_multi_rr.md`
+* `research_cycle_04/lean_formalization.md`
+* `audits/cycle04_rr_obstruction_adversarial.md`
+* `audits/barriers/cycle04_rr_interval_obstruction.md`
+* `audits/cycle04_final_integration_adversarial.md`
+* `certificates/cycle04_rr_acceptance/`
+* `certificates/cycle04_multi_rr/`
+* `formal/BalancedChain.lean`
+* `formal/coverage.md`
+* `failure_knowledge.jsonl`
 
 ## Canonical Cycle-3 artifacts
 

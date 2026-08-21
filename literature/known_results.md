@@ -231,6 +231,24 @@ A claimed polynomial upper bound in TR26-043 was withdrawn after a fatal
 conditional-probability gap; it is not a known theorem
 ([official notice](https://eccc.weizmann.ac.il/report/2026/043/)).
 
+**KNOWN — interval-family average-case upper bound.**  FLSY Definition 2.1
+lets `I_(N,1)` contain the empty set and every ordinary interval of `[N]`.
+Their Theorem 4.4 (Theorem 1.7) gives a universal `c>0` such that, for all
+sufficiently large even `N`, its probability of containing a 1-balanced
+maximal chain for a uniformly random balanced coloring is at most
+`2^(-cN^(1/5))`.  The same paper's Lemma 2.3 (Lemma 1.5) is the
+worst-case-to-average-case random-relabeling lemma.  Cycle 4 derives, via an
+independently checked rooted complement/reversal bijection, the restricted
+corollary
+
+`A_n(RR_n) <= (n/2)2^(-c(n-2)^(1/5))`.
+
+The FLSY interval estimate and symmetrization are known; the RR corollary is
+an internal derived connection with no novelty claim.  It obstructs only
+individual-copy RR acceptance and does not control hybrid chains in literal
+unions of several copies.  See
+[`research_cycle_04/literature_novelty_audit.md`](../research_cycle_04/literature_novelty_audit.md).
+
 ## 5. Proof complexity
 
 **KNOWN — Cook--Reckhow baseline.** A propositional proof system is a

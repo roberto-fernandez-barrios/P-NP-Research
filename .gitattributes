@@ -1,0 +1,7 @@
+# Cycle-4 certificates and the two source files with recorded SHA-256 values
+# are byte-stable research evidence.  Keep LF even when core.autocrlf=true.
+/.gitattributes text eol=lf
+/certificates/cycle04_rr_acceptance/** text eol=lf
+/certificates/cycle04_multi_rr/** text eol=lf
+/experiments/cycle04_multi_rr_search.cpp text eol=lf
+/experiments/cycle04_multi_rr_verify.py text eol=lf

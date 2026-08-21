@@ -1,0 +1,2 @@
+# q=21 weight=11 failing_necklaces=1
+1fe0e0

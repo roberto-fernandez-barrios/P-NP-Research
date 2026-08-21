@@ -54,6 +54,233 @@ def IsOneBalancedChain (X : Set (Finset α)) : Prop :=
   ∀ P : Coloring α, IsBalanced P →
     ∃ C : MaximalChain α, ChainContained X C ∧ ChainGood P C
 
+/-!
+## Relabeling and literal unions
+
+The definitions in this section formalize the deterministic core used by
+average-to-worst-case symmetrization.  A permutation acts on literal subsets,
+colorings, maximal chains, and subset families.  The central equivalence is
+for acceptance by the complete family, rather than for any selected list of
+generating paths.
+-/
+
+/-- The literal image of a subset under a permutation. -/
+def relabelSubset (pi : Equiv.Perm α) (S : Finset α) : Finset α :=
+  S.map pi.toEmbedding
+
+@[simp] theorem mem_relabelSubset_iff (pi : Equiv.Perm α)
+    (S : Finset α) (x : α) :
+    x ∈ relabelSubset pi S ↔ pi.symm x ∈ S := by
+  simp [relabelSubset]
+
+@[simp] theorem card_relabelSubset (pi : Equiv.Perm α) (S : Finset α) :
+    (relabelSubset pi S).card = S.card := by
+  simp [relabelSubset]
+
+@[simp] theorem relabelSubset_symm_relabelSubset
+    (pi : Equiv.Perm α) (S : Finset α) :
+    relabelSubset pi.symm (relabelSubset pi S) = S := by
+  ext x
+  simp
+
+@[simp] theorem relabelSubset_relabelSubset_symm
+    (pi : Equiv.Perm α) (S : Finset α) :
+    relabelSubset pi (relabelSubset pi.symm S) = S := by
+  simpa using relabelSubset_symm_relabelSubset pi.symm S
+
+/-- The literal image of a subset family under a permutation.  The preimage
+presentation makes membership extensional and is equivalent to taking the
+set image because `pi` is bijective. -/
+def relabelFamily (pi : Equiv.Perm α) (X : Set (Finset α)) :
+    Set (Finset α) :=
+  {T | relabelSubset pi.symm T ∈ X}
+
+@[simp] theorem relabelSubset_mem_relabelFamily_iff
+    (pi : Equiv.Perm α) (X : Set (Finset α)) (S : Finset α) :
+    relabelSubset pi S ∈ relabelFamily pi X ↔ S ∈ X := by
+  simp [relabelFamily]
+
+@[simp] theorem relabelFamily_symm_relabelFamily
+    (pi : Equiv.Perm α) (X : Set (Finset α)) :
+    relabelFamily pi.symm (relabelFamily pi X) = X := by
+  ext S
+  simp [relabelFamily]
+
+theorem relabelFamily_eq_image (pi : Equiv.Perm α)
+    (X : Set (Finset α)) :
+    relabelFamily pi X = (fun S => relabelSubset pi S) '' X := by
+  ext T
+  constructor
+  · intro hT
+    refine ⟨relabelSubset pi.symm T, hT, ?_⟩
+    simp
+  · rintro ⟨S, hS, rfl⟩
+    simpa using hS
+
+/-- Pull a coloring on the relabeled ground set back along `pi`. -/
+def pullbackColoring (pi : Equiv.Perm α) (P : Coloring α) : Coloring α :=
+  relabelSubset pi.symm P
+
+@[simp] theorem mem_pullbackColoring_iff (pi : Equiv.Perm α)
+    (P : Coloring α) (x : α) :
+    x ∈ pullbackColoring pi P ↔ pi x ∈ P := by
+  simp [pullbackColoring]
+
+@[simp] theorem card_pullbackColoring (pi : Equiv.Perm α)
+    (P : Coloring α) :
+    (pullbackColoring pi P).card = P.card := by
+  simp [pullbackColoring]
+
+@[simp] theorem pullbackColoring_symm_pullbackColoring
+    (pi : Equiv.Perm α) (P : Coloring α) :
+    pullbackColoring pi.symm (pullbackColoring pi P) = P := by
+  ext x
+  simp
+
+@[simp] theorem pullbackColoring_pullbackColoring_symm
+    (pi : Equiv.Perm α) (P : Coloring α) :
+    pullbackColoring pi (pullbackColoring pi.symm P) = P := by
+  simpa using pullbackColoring_symm_pullbackColoring pi.symm P
+
+@[simp] theorem isBalanced_pullbackColoring_iff
+    (pi : Equiv.Perm α) (P : Coloring α) :
+    IsBalanced (pullbackColoring pi P) ↔ IsBalanced P := by
+  simp [IsBalanced]
+
+@[simp] theorem colorSign_pullbackColoring (pi : Equiv.Perm α)
+    (P : Coloring α) (x : α) :
+    colorSign (pullbackColoring pi P) x = colorSign P (pi x) := by
+  simp [colorSign]
+
+theorem imbalance_relabelSubset (pi : Equiv.Perm α)
+    (P : Coloring α) (S : Finset α) :
+    imbalance P (relabelSubset pi S) =
+      imbalance (pullbackColoring pi P) S := by
+  simp [imbalance, relabelSubset]
+
+@[simp] theorem compatible_relabelSubset_iff (pi : Equiv.Perm α)
+    (P : Coloring α) (S : Finset α) :
+    Compatible P (relabelSubset pi S) ↔
+      Compatible (pullbackColoring pi P) S := by
+  simp only [Compatible, imbalance_relabelSubset]
+
+/-- Relabel every insertion in a maximal chain. -/
+def MaximalChain.relabel (C : MaximalChain α) (pi : Equiv.Perm α) :
+    MaximalChain α where
+  order := C.order.trans pi
+
+@[simp] theorem MaximalChain.prefix_relabel (C : MaximalChain α)
+    (pi : Equiv.Perm α) (k : ℕ) :
+    (C.relabel pi).prefix k = relabelSubset pi (C.prefix k) := by
+  ext x
+  have hpos :
+      (C.relabel pi).order.symm x = C.order.symm (pi.symm x) := by
+    apply (C.relabel pi).order.injective
+    simp [MaximalChain.relabel]
+  simp only [MaximalChain.prefix, Finset.mem_filter, Finset.mem_univ,
+    true_and, mem_relabelSubset_iff]
+  rw [hpos]
+
+theorem chainContained_relabel_iff (pi : Equiv.Perm α)
+    (X : Set (Finset α)) (C : MaximalChain α) :
+    ChainContained (relabelFamily pi X) (C.relabel pi) ↔
+      ChainContained X C := by
+  constructor
+  · intro h k hk
+    have hmem := h k hk
+    simpa using hmem
+  · intro h k hk
+    have hmem := h k hk
+    simpa using hmem
+
+theorem chainGood_relabel_iff (pi : Equiv.Perm α)
+    (P : Coloring α) (C : MaximalChain α) :
+    ChainGood P (C.relabel pi) ↔
+      ChainGood (pullbackColoring pi P) C := by
+  constructor
+  · intro h k hk
+    have hcompat := h k hk
+    simpa using hcompat
+  · intro h k hk
+    have hcompat := h k hk
+    simpa using hcompat
+
+/-- Acceptance of one coloring by the full induced subset family. -/
+def AcceptsColoring (X : Set (Finset α)) (P : Coloring α) : Prop :=
+  ∃ C : MaximalChain α, ChainContained X C ∧ ChainGood P C
+
+/-- Exact equivariance of full-family acceptance under a relabeling. -/
+theorem acceptsColoring_relabel_iff (pi : Equiv.Perm α)
+    (X : Set (Finset α)) (P : Coloring α) :
+    AcceptsColoring (relabelFamily pi X) P ↔
+      AcceptsColoring X (pullbackColoring pi P) := by
+  constructor
+  · rintro ⟨C, hcontained, hgood⟩
+    refine ⟨C.relabel pi.symm, ?_, ?_⟩
+    · have hcontained' :=
+        (chainContained_relabel_iff pi.symm (relabelFamily pi X) C).2 hcontained
+      simpa using hcontained'
+    · have hgood' :=
+        (chainGood_relabel_iff pi.symm (pullbackColoring pi P) C).2 (by
+          simpa using hgood)
+      exact hgood'
+  · rintro ⟨C, hcontained, hgood⟩
+    exact ⟨C.relabel pi,
+      (chainContained_relabel_iff pi X C).2 hcontained,
+      (chainGood_relabel_iff pi P C).2 hgood⟩
+
+/-- Relabeling a fixed family preserves the worst-case family property. -/
+theorem isOneBalancedChain_relabel_iff (pi : Equiv.Perm α)
+    (X : Set (Finset α)) :
+    IsOneBalancedChain (relabelFamily pi X) ↔ IsOneBalancedChain X := by
+  constructor
+  · intro hX P hbalanced
+    have hpushBalanced :
+        IsBalanced (pullbackColoring pi.symm P) :=
+      (isBalanced_pullbackColoring_iff pi.symm P).2 hbalanced
+    have haccepted :
+        AcceptsColoring (relabelFamily pi X)
+          (pullbackColoring pi.symm P) := by
+      simpa [AcceptsColoring] using
+        hX (pullbackColoring pi.symm P) hpushBalanced
+    have hpulled :=
+      (acceptsColoring_relabel_iff pi X (pullbackColoring pi.symm P)).1
+        haccepted
+    simpa [AcceptsColoring] using hpulled
+  · intro hX P hbalanced
+    have hpullBalanced : IsBalanced (pullbackColoring pi P) :=
+      (isBalanced_pullbackColoring_iff pi P).2 hbalanced
+    have hpulled : AcceptsColoring X (pullbackColoring pi P) := by
+      simpa [AcceptsColoring] using hX (pullbackColoring pi P) hpullBalanced
+    have haccepted := (acceptsColoring_relabel_iff pi X P).2 hpulled
+    simpa [AcceptsColoring] using haccepted
+
+/-- If some member of an indexed collection accepts each balanced coloring,
+then the literal union of the collection is a 1-balanced-chain family. -/
+theorem iUnion_isOneBalancedChain_of_pointwise_accepts
+    {iota : Sort*} (F : iota → Set (Finset α))
+    (haccepts : ∀ P : Coloring α, IsBalanced P →
+      ∃ i, AcceptsColoring (F i) P) :
+    IsOneBalancedChain (⋃ i, F i) := by
+  intro P hbalanced
+  obtain ⟨i, C, hcontained, hgood⟩ := haccepts P hbalanced
+  refine ⟨C, ?_, hgood⟩
+  intro k hk
+  exact Set.mem_iUnion.mpr ⟨i, hcontained k hk⟩
+
+/-- Deterministic union-of-relabelings lemma in pulled-back-coloring form.
+Its premise concerns acceptance inside an individual full family; additional hybrid
+chains in the literal union can only add witnesses. -/
+theorem union_relabelings_isOneBalancedChain
+    {iota : Sort*} (X : Set (Finset α)) (pi : iota → Equiv.Perm α)
+    (haccepts : ∀ P : Coloring α, IsBalanced P →
+      ∃ i, AcceptsColoring X (pullbackColoring (pi i) P)) :
+    IsOneBalancedChain (⋃ i, relabelFamily (pi i) X) := by
+  apply iUnion_isOneBalancedChain_of_pointwise_accepts
+  intro P hbalanced
+  obtain ⟨i, hi⟩ := haccepts P hbalanced
+  exact ⟨i, (acceptsColoring_relabel_iff (pi i) X P).2 hi⟩
+
 /-- The two elements inserted at positions `2j` and `2j+1` have opposite
 colors. -/
 def PairCrosses (P : Coloring α) (C : MaximalChain α) (j : ℕ)

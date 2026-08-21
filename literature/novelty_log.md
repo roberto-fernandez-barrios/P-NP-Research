@@ -6,8 +6,10 @@
 but recency, terminology, or index coverage prevents a stronger conclusion.
 
 The current primary-source, equivalent-object, and terminology searches are
-in the Cycle-3
-[`literature_novelty_audit.md`](../research_cycle_03/literature_novelty_audit.md).
+in the Cycle-4
+[`literature_novelty_audit.md`](../research_cycle_04/literature_novelty_audit.md).
+The Cycle-3 audit remains at
+[`research_cycle_03/literature_novelty_audit.md`](../research_cycle_03/literature_novelty_audit.md).
 The separate Cycle-2 process audit remains in
 [`research_cycle_02/literature_novelty_audit.md`](../research_cycle_02/literature_novelty_audit.md).
 
@@ -17,6 +19,9 @@ The separate Cycle-2 process audit remains in
 | Exact finite values `N(6)=12`, `N(8)=20`, and `N(10)=35` under the FLSY set-system convention | **UNCLEAR** | Exact-notation, equivalent-DAG, numerical-sequence, paper, thesis, public-code, and post-computation `N(10)=35` searches found no prior computation. The problem is recent and equivalent-model size conventions vary; `PRIOR-ART-NOT-FOUND` is not a novelty claim. |
 | Canonical-support quotient and literal matching-prefix-union formulations | **UNCLEAR** | FLSY already gives the pair-labelled open-path read-once program.  The support-normalized statement and exact distinct-prefix metric were not located separately, but they may be implicit in branching-program folklore; no novelty claim is made. |
 | Quadratic cyclic-interval family `RR_n`, finite validity through `n=20`, and its `n=22` obstruction | **UNCLEAR** | Searches across universal routing, alternating chains, crossing matchings, switching networks, and Boolean-lattice terminology found no matching statement.  The result is internally checked only, the terminology space is broad, and no novelty claim is made. |
+| Rooted `RR_n` complement/reversal equivalence with FLSY's ordinary one-interval family | **UNCLEAR; NO NOVELTY CLAIM** | FLSY already proves the decisive interval probability bound and uses closely related cyclic-interval geometry.  Deque-language, noncrossing-pairing, interval-chain, sequence, and exact-phrase searches did not locate the precise rooted statement, but it is elementary enough to be implicit or folklore. |
+| `A_n(RR_n) <= (n/2)2^{-c(n-2)^{1/5}}` | **KNOWN-THEOREM COROLLARY** | The asymptotic input is exactly FLSY Theorem 4.4/1.7; Cycle 4 supplies the elementary rooted reduction and makes no new-asymptotic-theorem claim. |
+| Exact RR acceptance/orbit counts through `n=34` and exact two-copy values through `n=30` | **UNCLEAR** | Bounded sequence/code/terminology searches found no prior table under the same literal-subset/full-induced-DAG convention.  These are finite internal computations, and `PRIOR-ART-NOT-FOUND` is not a novelty claim. |
 | Exact smallest-even-`n` counterhistories for the withdrawn two-block conditional claims, with eager/query-minimal reveal semantics separated | **UNCLEAR** | The official withdrawal already records the filtration gap. Searches found no public source giving these exact minima, but they are a diagnosis of a withdrawn proof and may exist in private referee/author work. |
 | CF-LOGGAP: the primitive-Dyck lower-tail obstruction for the precisely defined greedy, uniformly bounded-`d`, single-consumption cached-frontier family and high-confidence logarithmic-gap contract | **UNCLEAR** | Standard random-walk first-passage tails are known, but no application to this actual adaptive stale-frontier process was found. The exact process-specific theorem was not located; recent-paper and terminology coverage remain substantial caveats. |
 | Variable absorb/recurse threshold (Proposition 5.1) | **LIKELY KNOWN** | Elementary conditional bookkeeping; recorded to close a concrete argument gap, not offered as an original theorem. |

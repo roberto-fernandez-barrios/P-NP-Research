@@ -271,5 +271,20 @@ obstruction is claimed. See
 finite computational value `N(10)=35`, falsifying the observed size-30
 pattern, and rejected four exact shared-state classes for recorded reasons.
 It produced no general polynomial construction or unrestricted lower bound.
-O01 remains OPEN, Cycle 3 stops under S3-D, and Cycle 4 has not begun. See
+O01 remained OPEN and Cycle 3 stopped under S3-D.  Cycle 4 was later begun
+under separate authorization. See
 [`research_cycle_03.md`](../results/research_cycle_03.md).
+
+**Cycle-4 disposition (2026-08-21).** The RR relabeling cycle proved the
+proposed symmetrization implication but rigorously falsified its
+inverse-polynomial acceptance premise for the corrected one-cycle family:
+for some absolute `c>0` and all sufficiently large even `n`,
+
+`A_n <= (n/2)2^(-c(n-2)^(1/5))`.
+
+This is an exact rooted reduction to FLSY's known ordinary one-interval
+theorem.  It reaches S4-D only for individual-copy acceptance and does not
+obstruct hybrid chains in literal unions of several relabelings.  Exact
+finite two-copy covers through `n=30` have no all-`n` implication.  O01
+remains OPEN, Cycle 4 stops under S4-D, and Cycle 5 has not begun. See
+[`research_cycle_04.md`](../results/research_cycle_04.md).
