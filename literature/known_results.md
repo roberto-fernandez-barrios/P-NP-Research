@@ -220,7 +220,11 @@ min-partition-rank method.  More exactly, their Theorem 5.6 says that an
 most `|X|*binom(n,<=l)`.  Thus a size-`n^C` 1-balanced system would give size
 `O(n^{C+1})`; this is a limitation of full min-partition rank, not an mABP
 separation.  The correspondence is tight in the set-multilinear setting and
-has a balance-parameter asymmetry for general mABPs.  Source:
+has a balance-parameter asymmetry for general mABPs.  The official
+proceedings source is Fabris--Limaye--Srinivasan--Yehudayoff, CCC 2026,
+LIPIcs 383, Article 22,
+[DOI 10.4230/LIPIcs.CCC.2026.22](https://doi.org/10.4230/LIPIcs.CCC.2026.22).
+The fuller source is
 [ECCC TR26-001](https://eccc.weizmann.ac.il/report/2026/001/), especially
 Theorems 1.3 and 5.4--5.6.
 A claimed polynomial upper bound in TR26-043 was withdrawn after a fatal

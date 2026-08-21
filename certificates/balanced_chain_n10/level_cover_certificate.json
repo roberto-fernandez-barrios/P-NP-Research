@@ -1,0 +1,168 @@
+{
+  "schema": "balanced-chain-n10-level-cover-certificate-v1",
+  "epistemic_status": "EXHAUSTIVELY CHECKED FINITE LOWER BOUND; UNFORMALIZED",
+  "n": 10,
+  "signed_balanced_coloring_count": 252,
+  "exact_level_minima": [
+    1,
+    1,
+    5,
+    3,
+    5,
+    3,
+    5,
+    3,
+    5,
+    1,
+    1
+  ],
+  "level_sum_lower_bound_for_N10": 33,
+  "lower_half_witnesses": {
+    "0": [
+      0
+    ],
+    "1": [
+      512
+    ],
+    "2": [
+      80,
+      528,
+      96,
+      160,
+      768
+    ],
+    "3": [
+      21,
+      261,
+      530
+    ],
+    "4": [
+      643,
+      101,
+      396,
+      564,
+      420
+    ],
+    "5": [
+      230,
+      186,
+      220
+    ]
+  },
+  "upper_half_complement_witnesses": {
+    "6": [
+      380,
+      922,
+      627,
+      459,
+      603
+    ],
+    "7": [
+      1002,
+      762,
+      493
+    ],
+    "8": [
+      943,
+      495,
+      927,
+      863,
+      255
+    ],
+    "9": [
+      511
+    ],
+    "10": [
+      1023
+    ]
+  },
+  "lower_bound_enumerations": {
+    "0": {
+      "canonical_first_mask": null,
+      "tested_family_size": 0,
+      "branch_count": 1,
+      "maximum_signed_colorings_covered": 0,
+      "coverage_histogram": {
+        "0": 1
+      },
+      "enumeration_sha256": "5b9814ed605608bc2ced605c40adb755bca96d613bce2ea70412a34cab35b144"
+    },
+    "1": {
+      "canonical_first_mask": null,
+      "tested_family_size": 0,
+      "branch_count": 1,
+      "maximum_signed_colorings_covered": 0,
+      "coverage_histogram": {
+        "0": 1
+      },
+      "enumeration_sha256": "5b9814ed605608bc2ced605c40adb755bca96d613bce2ea70412a34cab35b144"
+    },
+    "2": {
+      "canonical_first_mask": 3,
+      "tested_family_size": 4,
+      "branch_count": 13244,
+      "maximum_signed_colorings_covered": 250,
+      "coverage_histogram": {
+        "230": 224,
+        "240": 2380,
+        "242": 3360,
+        "244": 4480,
+        "250": 2800
+      },
+      "enumeration_sha256": "77bec1e0e0d43e7d50c29df900e035392383b82d29b9df2c84d0d9a1a9bb8488"
+    },
+    "3": {
+      "canonical_first_mask": 7,
+      "tested_family_size": 2,
+      "branch_count": 119,
+      "maximum_signed_colorings_covered": 250,
+      "coverage_histogram": {
+        "240": 56,
+        "250": 63
+      },
+      "enumeration_sha256": "76d8b2874d18418201920f793de6308f2b960c518a481f5f7cac3e6c0de021a0"
+    },
+    "4": {
+      "canonical_first_mask": 15,
+      "tested_family_size": 4,
+      "branch_count": 1499784,
+      "maximum_signed_colorings_covered": 248,
+      "coverage_histogram": {
+        "198": 240,
+        "200": 264,
+        "210": 80,
+        "216": 3280,
+        "218": 4320,
+        "220": 16470,
+        "222": 19680,
+        "224": 25860,
+        "226": 25920,
+        "228": 84120,
+        "230": 207360,
+        "232": 225360,
+        "234": 256800,
+        "236": 322560,
+        "238": 224640,
+        "240": 61110,
+        "242": 5760,
+        "244": 4320,
+        "246": 6240,
+        "248": 5400
+      },
+      "enumeration_sha256": "76811700f4a10dbcc195be976d8abcf8ce92e8d1bcd6dcdeba82ea4dd1ebb641"
+    },
+    "5": {
+      "canonical_first_mask": 31,
+      "tested_family_size": 2,
+      "branch_count": 251,
+      "maximum_signed_colorings_covered": 244,
+      "coverage_histogram": {
+        "200": 1,
+        "232": 50,
+        "244": 200
+      },
+      "enumeration_sha256": "a8e9abfc49cf71a7776f21502ac75f02580449490c051de5281ea5d5438729ff"
+    }
+  },
+  "proof_scope": "Exact tau(10,k) only. Their sum lower-bounds N(10); it does not determine N(10)."
+}

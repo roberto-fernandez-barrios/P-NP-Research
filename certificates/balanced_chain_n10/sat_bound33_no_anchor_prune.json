@@ -1,0 +1,38 @@
+{
+  "schema": "balanced-chain-n10-direct-sat-v1",
+  "epistemic_status": "UNSAT IS SOLVER EVIDENCE ONLY; NO CHECKED PROOF",
+  "n": 10,
+  "bound": 33,
+  "extra_level": null,
+  "exact_level_counts": [
+    1,
+    1,
+    5,
+    3,
+    5,
+    3,
+    5,
+    3,
+    5,
+    1,
+    1
+  ],
+  "anchor_prune_mode": "none",
+  "solver": "cadical195",
+  "python_version": "3.13.12",
+  "python_sat_version": "1.9.dev15",
+  "variables": 93512,
+  "clauses": 186393,
+  "dimacs_clause_stream_sha256": "e051eb429b8a3f1954be129613704f1d9eb0db0d346a689e9132eb165bbfb556",
+  "result": "UNSAT",
+  "elapsed_seconds": 3.519792699953541,
+  "solver_stats": {
+    "restarts": 1789,
+    "conflicts": 34602,
+    "decisions": 79373,
+    "propagations": 67656961
+  },
+  "family_masks": null,
+  "all_signed_coloring_chain_witnesses": [],
+  "proof_file": null
+}

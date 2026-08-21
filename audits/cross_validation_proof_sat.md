@@ -185,15 +185,17 @@ repairing the height potential alone would still leave a separate proof obligati
 The following checks did not prove the target known, but eliminate several tempting
 shortcuts.
 
-1. **A fixed chain covers only two colorings.** A maximal chain is a permutation
-   ordering of `[n]`. Requiring every prefix sum to have absolute value at most one
-   forces the signs along that ordering to alternate. There are exactly two balanced
-   colorings compatible with the chain, one beginning with each sign. Hence any
-   method that explicitly lists universal chains needs at least
-   `binom(n,n/2)/2` chains. A small set system can encode exponentially many chains
-   through shared subsets, so this observation does not lower-bound `N(n)` beyond
-   what is already known; it rules out the naive polynomial-list-of-permutations
-   interpretation.
+1. **A fixed chain covers `2^(n/2)` colorings.** A maximal chain is a
+   permutation ordering of `[n]`. Requiring every prefix sum to have absolute
+   value at most one forces opposite signs within the consecutive pairs
+   `(1,2),(3,4),...`, but does not constrain the sign across a pair boundary.
+   The orientation of every pair is independent, so exactly `2^(n/2)` signed
+   balanced colorings are compatible with the chain. Hence any method that
+   explicitly lists universal chains needs at least
+   `binom(n,n/2)/2^(n/2)` chains, which is still exponential. A small set
+   system can encode exponentially many chains through shared subsets, so
+   this observation does not lower-bound `N(n)` beyond what is already known;
+   it rules out the naive polynomial-list-of-permutations interpretation.
 
 2. **Steinitz/rearrangement does not swap the quantifiers.** For each individual
    balanced `f`, one can order plus and minus elements alternately. The union of the

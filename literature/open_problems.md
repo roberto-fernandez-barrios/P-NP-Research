@@ -251,11 +251,10 @@ inside `X` with `|sum_{x in C_i}f(x)|<=1` for every `i`.  The target is:
 > There is an absolute constant `C` such that `N(n)<=n^C` for every even
 > `n`.
 
-This is the general existence statement, not “repair TR26-043.”  The next
-cycle must begin with a strictly bounded repair-or-obstruction diagnostic for
-the withdrawn construction.  A failure of that construction does not refute
-O01; a positive O01 result would establish the associated min-partition-rank
-limitation, not an mABP separation or P versus NP.
+This is the general existence statement, not “repair TR26-043.”  A failure of
+that construction does not refute O01; a positive O01 result would establish
+the associated min-partition-rank limitation, not an mABP separation or P
+versus NP.
 
 The full unresolved-status audit, comparison, falsification plan, proof
 program, and Lean/computational plan are in
@@ -267,3 +266,10 @@ cached-frontier process and its posted `1-O(1/M)` logarithmic direct-gap
 contract. O01 remains OPEN, and no broader fixed-`d`, `N(n)`, or mABP
 obstruction is claimed. See
 [`research_cycle_02.md`](../results/research_cycle_02.md).
+
+**Cycle-3 disposition (2026-08-21).** The structural-DAG cycle certified the
+finite computational value `N(10)=35`, falsifying the observed size-30
+pattern, and rejected four exact shared-state classes for recorded reasons.
+It produced no general polynomial construction or unrestricted lower bound.
+O01 remains OPEN, Cycle 3 stops under S3-D, and Cycle 4 has not begun. See
+[`research_cycle_03.md`](../results/research_cycle_03.md).

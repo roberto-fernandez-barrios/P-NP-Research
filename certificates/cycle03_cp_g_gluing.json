@@ -1,0 +1,337 @@
+{
+  "schema": "cycle03-cp-g-gluing-certificate-v1",
+  "epistemic_status": "EXHAUSTIVE FINITE COMPUTATION; UNFORMALIZED",
+  "adjacent_interface_rule": {
+    "n2": {
+      "n": 2,
+      "families_with_endpoints_exhausted": 4,
+      "families_passing_all_adjacent_interfaces": 3,
+      "bad_family_count_by_size": {},
+      "minimum_bad_size": null,
+      "lexicographically_first_minimum_bad_family_masks": null,
+      "missing_positive_masks": []
+    },
+    "n4": {
+      "n": 4,
+      "families_with_endpoints_exhausted": 16384,
+      "families_passing_all_adjacent_interfaces": 8874,
+      "bad_family_count_by_size": {
+        "7": 24,
+        "8": 180,
+        "9": 264,
+        "10": 88
+      },
+      "minimum_bad_size": 7,
+      "lexicographically_first_minimum_bad_family_masks": [
+        0,
+        1,
+        3,
+        5,
+        10,
+        11,
+        15
+      ],
+      "missing_positive_masks": [
+        3,
+        12
+      ]
+    }
+  },
+  "level_cover_checks": {
+    "n8": {
+      "lower_half": {
+        "0": {
+          "tau": 1,
+          "one_smaller_size": 0,
+          "normalized_branch_count": 1,
+          "maximum_signed_colors_covered": 0
+        },
+        "1": {
+          "tau": 1,
+          "one_smaller_size": 0,
+          "normalized_branch_count": 1,
+          "maximum_signed_colors_covered": 0
+        },
+        "2": {
+          "tau": 4,
+          "one_smaller_size": 3,
+          "normalized_branch_count": 351,
+          "maximum_signed_colors_covered": 68
+        },
+        "3": {
+          "tau": 2,
+          "one_smaller_size": 1,
+          "normalized_branch_count": 1,
+          "maximum_signed_colors_covered": 60
+        },
+        "4": {
+          "tau": 3,
+          "one_smaller_size": 2,
+          "normalized_branch_count": 69,
+          "maximum_signed_colors_covered": 54
+        }
+      },
+      "full_tau_by_complementation": [
+        1,
+        1,
+        4,
+        2,
+        3,
+        2,
+        4,
+        1,
+        1
+      ],
+      "level_sum": 19
+    },
+    "n10": {
+      "lower_half": {
+        "0": {
+          "tau": 1,
+          "one_smaller_size": 0,
+          "normalized_branch_count": 1,
+          "maximum_signed_colors_covered": 0
+        },
+        "1": {
+          "tau": 1,
+          "one_smaller_size": 0,
+          "normalized_branch_count": 1,
+          "maximum_signed_colors_covered": 0
+        },
+        "2": {
+          "tau": 5,
+          "one_smaller_size": 4,
+          "normalized_branch_count": 13244,
+          "maximum_signed_colors_covered": 250
+        },
+        "3": {
+          "tau": 3,
+          "one_smaller_size": 2,
+          "normalized_branch_count": 119,
+          "maximum_signed_colors_covered": 250
+        },
+        "4": {
+          "tau": 5,
+          "one_smaller_size": 4,
+          "normalized_branch_count": 1499784,
+          "maximum_signed_colors_covered": 248
+        },
+        "5": {
+          "tau": 3,
+          "one_smaller_size": 2,
+          "normalized_branch_count": 251,
+          "maximum_signed_colors_covered": 244
+        }
+      },
+      "full_tau_by_complementation": [
+        1,
+        1,
+        5,
+        3,
+        5,
+        3,
+        5,
+        3,
+        5,
+        1,
+        1
+      ],
+      "level_sum": 33
+    }
+  },
+  "minimum_prefix_obstructions": {
+    "n8": {
+      "n": 8,
+      "normalized_singleton_mask": 1,
+      "normalized_pair_masks": [
+        3,
+        5,
+        9,
+        17
+      ],
+      "reachable_triple_candidate_count": 18,
+      "triple_choice_count": 153,
+      "triple_live_choice_count": 3,
+      "triple_coverage_histogram": {
+        "40": 12,
+        "60": 90,
+        "68": 48,
+        "70": 3
+      },
+      "rank4_candidate_count_histogram": {
+        "10": 3
+      },
+      "rank4_choice_count": 360,
+      "rank4_full_choice_count": 0,
+      "rank4_maximum_signed_colors_reached": 64,
+      "first_maximum_missing_positive_masks": [
+        15,
+        23,
+        43,
+        212,
+        232,
+        240
+      ],
+      "rank4_coverage_histogram": {
+        "60": 90,
+        "62": 90,
+        "64": 180
+      }
+    },
+    "n10": {
+      "n": 10,
+      "normalized_singleton_mask": 1,
+      "normalized_pair_masks": [
+        3,
+        5,
+        9,
+        17,
+        33
+      ],
+      "reachable_triple_candidate_count": 30,
+      "triple_choice_count": 4060,
+      "triple_live_choice_count": 90,
+      "triple_coverage_histogram": {
+        "140": 20,
+        "210": 760,
+        "240": 2150,
+        "250": 1040,
+        "252": 90
+      },
+      "rank4_candidate_count_histogram": {
+        "20": 30,
+        "21": 60
+      },
+      "rank4_choice_count": 1686060,
+      "rank4_full_choice_count": 0,
+      "rank4_maximum_signed_colors_reached": 250,
+      "first_maximum_missing_positive_masks": [
+        59,
+        964
+      ],
+      "rank4_coverage_histogram": {
+        "140": 1260,
+        "180": 4200,
+        "200": 25200,
+        "208": 420,
+        "210": 4410,
+        "212": 1920,
+        "214": 3360,
+        "216": 8580,
+        "218": 8640,
+        "220": 21600,
+        "222": 21240,
+        "224": 20040,
+        "226": 69960,
+        "228": 69120,
+        "230": 81240,
+        "232": 77280,
+        "234": 134190,
+        "236": 169740,
+        "238": 176520,
+        "240": 260640,
+        "242": 229800,
+        "244": 172200,
+        "246": 90480,
+        "248": 18900,
+        "250": 15120
+      }
+    }
+  },
+  "positive_full_families": {
+    "n8": {
+      "n": 8,
+      "distinct_subset_count": 20,
+      "level_counts": [
+        1,
+        1,
+        4,
+        2,
+        4,
+        2,
+        4,
+        1,
+        1
+      ],
+      "tau_profile": [
+        1,
+        1,
+        4,
+        2,
+        3,
+        2,
+        4,
+        1,
+        1
+      ],
+      "level_sum": 19,
+      "excess_by_level": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "minimum_cover_subfamilies_within_surplus_levels": {
+        "4": 0
+      },
+      "signed_colors_with_source_to_sink_path": 70,
+      "signed_balanced_color_count": 70
+    },
+    "n10": {
+      "n": 10,
+      "distinct_subset_count": 35,
+      "level_counts": [
+        1,
+        1,
+        5,
+        3,
+        6,
+        3,
+        6,
+        3,
+        5,
+        1,
+        1
+      ],
+      "tau_profile": [
+        1,
+        1,
+        5,
+        3,
+        5,
+        3,
+        5,
+        3,
+        5,
+        1,
+        1
+      ],
+      "level_sum": 33,
+      "excess_by_level": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "minimum_cover_subfamilies_within_surplus_levels": {
+        "4": 0,
+        "6": 0
+      },
+      "signed_colors_with_source_to_sink_path": 252,
+      "signed_balanced_color_count": 252
+    }
+  },
+  "scope": "Finite n=2,4,8,10 checks only; no asymptotic inference."
+}

@@ -91,10 +91,13 @@ residual-size/Azuma analysis unsupported.  Full independent derivation:
 
 The audits checked and rejected the following shortcuts:
 
-1. A fixed maximal chain works for only the two alternating colorings along
-   its permutation.  A polynomial list of chains is therefore impossible,
-   but a small set system can share subsets among exponentially many chains;
-   the observation neither proves nor refutes O01.
+1. A fixed maximal chain works for exactly `2^(n/2)` signed balanced
+   colorings: signs must be opposite within consecutive pairs of its
+   permutation, while the orientation of each pair is independent.  Since
+   `binom(n,n/2)/2^(n/2)` is still exponential, a polynomial explicit list of
+   chains is impossible.  A small set system can share subsets among
+   exponentially many chains, so the observation neither proves nor refutes
+   O01.
 2. Steinitz/rearrangement orders can depend on `f`; taking every possible
    prefix set can be exponential.  O01 requires one fixed small set system
    before `f` is known.

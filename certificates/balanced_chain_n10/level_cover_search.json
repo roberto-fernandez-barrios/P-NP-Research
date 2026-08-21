@@ -1,0 +1,112 @@
+{
+  "schema": "balanced-chain-level-cover-search-v1",
+  "epistemic_status": "FINITE SOLVER COMPUTATION; CHECK WITNESSES INDEPENDENTLY",
+  "n": 10,
+  "python_version": "3.13.12",
+  "scipy_version": "1.18.0",
+  "global_sign_quotient_in_search": true,
+  "cases": [
+    {
+      "level": 0,
+      "candidate_count": 1,
+      "color_count_modulo_sign": 126,
+      "status_code": 0,
+      "status_message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "incumbent": 1,
+      "dual_bound": 1,
+      "relative_gap": 0.0,
+      "branch_and_bound_nodes": 0,
+      "elapsed_seconds": 0.002312400029040873,
+      "cover_witness_masks": [
+        0
+      ]
+    },
+    {
+      "level": 1,
+      "candidate_count": 10,
+      "color_count_modulo_sign": 126,
+      "status_code": 0,
+      "status_message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "incumbent": 1,
+      "dual_bound": 1,
+      "relative_gap": 0.0,
+      "branch_and_bound_nodes": 0,
+      "elapsed_seconds": 0.0011998999398201704,
+      "cover_witness_masks": [
+        512
+      ]
+    },
+    {
+      "level": 2,
+      "candidate_count": 45,
+      "color_count_modulo_sign": 126,
+      "status_code": 0,
+      "status_message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "incumbent": 5,
+      "dual_bound": 5,
+      "relative_gap": 0.0,
+      "branch_and_bound_nodes": 10,
+      "elapsed_seconds": 0.28064169990830123,
+      "cover_witness_masks": [
+        80,
+        528,
+        96,
+        160,
+        768
+      ]
+    },
+    {
+      "level": 3,
+      "candidate_count": 120,
+      "color_count_modulo_sign": 126,
+      "status_code": 0,
+      "status_message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "incumbent": 3,
+      "dual_bound": 3,
+      "relative_gap": 0.0,
+      "branch_and_bound_nodes": 2,
+      "elapsed_seconds": 0.3108733999542892,
+      "cover_witness_masks": [
+        21,
+        261,
+        530
+      ]
+    },
+    {
+      "level": 4,
+      "candidate_count": 210,
+      "color_count_modulo_sign": 126,
+      "status_code": 0,
+      "status_message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "incumbent": 5,
+      "dual_bound": 5,
+      "relative_gap": 0.0,
+      "branch_and_bound_nodes": 23,
+      "elapsed_seconds": 2.590083200018853,
+      "cover_witness_masks": [
+        643,
+        101,
+        396,
+        564,
+        420
+      ]
+    },
+    {
+      "level": 5,
+      "candidate_count": 252,
+      "color_count_modulo_sign": 126,
+      "status_code": 0,
+      "status_message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "incumbent": 3,
+      "dual_bound": 3,
+      "relative_gap": 0.0,
+      "branch_and_bound_nodes": 2,
+      "elapsed_seconds": 0.8232572000706568,
+      "cover_witness_masks": [
+        230,
+        186,
+        220
+      ]
+    }
+  ]
+}

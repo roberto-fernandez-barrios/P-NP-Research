@@ -1,0 +1,258 @@
+{
+  "schema": "balanced-chain-n10-no-minimum-prefix-v1",
+  "epistemic_status": "EXHAUSTIVE FINITE CERTIFICATE; UNFORMALIZED",
+  "n": 10,
+  "signed_balanced_coloring_count": 252,
+  "normalized_singleton_mask": 1,
+  "normalized_level2_pair_masks": [
+    3,
+    5,
+    9,
+    17,
+    33
+  ],
+  "prerequisite_level_counts_0_through_4": [
+    1,
+    1,
+    5,
+    3,
+    5
+  ],
+  "reachable_level3_candidate_count": 30,
+  "level3_choice_count": 4060,
+  "level3_live_choice_count": 90,
+  "level3_coverage_histogram": {
+    "140": 20,
+    "210": 760,
+    "240": 2150,
+    "250": 1040,
+    "252": 90
+  },
+  "level4_reachable_candidate_count_histogram_over_live_level3_choices": {
+    "20": 30,
+    "21": 60
+  },
+  "level4_choice_count": 1686060,
+  "level4_maximum_signed_colorings_reached": 250,
+  "level4_coverage_histogram": {
+    "140": 1260,
+    "180": 4200,
+    "200": 25200,
+    "208": 420,
+    "210": 4410,
+    "212": 1920,
+    "214": 3360,
+    "216": 8580,
+    "218": 8640,
+    "220": 21600,
+    "222": 21240,
+    "224": 20040,
+    "226": 69960,
+    "228": 69120,
+    "230": 81240,
+    "232": 77280,
+    "234": 134190,
+    "236": 169740,
+    "238": 176520,
+    "240": 260640,
+    "242": 229800,
+    "244": 172200,
+    "246": 90480,
+    "248": 18900,
+    "250": 15120
+  },
+  "enumeration_sha256": "e39cb91a40104e40aa6f08b17d207c82b274baf08acd467ba5f49cf82446c849",
+  "first_best_branches": [
+    {
+      "triple_masks": [
+        7,
+        11,
+        49
+      ],
+      "four_masks": [
+        15,
+        23,
+        53,
+        75,
+        177
+      ],
+      "covered_signed_colorings": 250,
+      "missing_plus_masks": [
+        59,
+        964
+      ]
+    },
+    {
+      "triple_masks": [
+        7,
+        11,
+        49
+      ],
+      "four_masks": [
+        15,
+        23,
+        53,
+        75,
+        305
+      ],
+      "covered_signed_colorings": 250,
+      "missing_plus_masks": [
+        59,
+        964
+      ]
+    },
+    {
+      "triple_masks": [
+        7,
+        11,
+        49
+      ],
+      "four_masks": [
+        15,
+        23,
+        53,
+        75,
+        561
+      ],
+      "covered_signed_colorings": 250,
+      "missing_plus_masks": [
+        59,
+        964
+      ]
+    },
+    {
+      "triple_masks": [
+        7,
+        11,
+        49
+      ],
+      "four_masks": [
+        15,
+        23,
+        53,
+        113,
+        139
+      ],
+      "covered_signed_colorings": 250,
+      "missing_plus_masks": [
+        59,
+        964
+      ]
+    },
+    {
+      "triple_masks": [
+        7,
+        11,
+        49
+      ],
+      "four_masks": [
+        15,
+        23,
+        53,
+        113,
+        267
+      ],
+      "covered_signed_colorings": 250,
+      "missing_plus_masks": [
+        59,
+        964
+      ]
+    },
+    {
+      "triple_masks": [
+        7,
+        11,
+        49
+      ],
+      "four_masks": [
+        15,
+        23,
+        53,
+        113,
+        523
+      ],
+      "covered_signed_colorings": 250,
+      "missing_plus_masks": [
+        59,
+        964
+      ]
+    },
+    {
+      "triple_masks": [
+        7,
+        11,
+        49
+      ],
+      "four_masks": [
+        15,
+        23,
+        53,
+        139,
+        305
+      ],
+      "covered_signed_colorings": 250,
+      "missing_plus_masks": [
+        59,
+        964
+      ]
+    },
+    {
+      "triple_masks": [
+        7,
+        11,
+        49
+      ],
+      "four_masks": [
+        15,
+        23,
+        53,
+        139,
+        561
+      ],
+      "covered_signed_colorings": 250,
+      "missing_plus_masks": [
+        59,
+        964
+      ]
+    },
+    {
+      "triple_masks": [
+        7,
+        11,
+        49
+      ],
+      "four_masks": [
+        15,
+        23,
+        53,
+        177,
+        267
+      ],
+      "covered_signed_colorings": 250,
+      "missing_plus_masks": [
+        59,
+        964
+      ]
+    },
+    {
+      "triple_masks": [
+        7,
+        11,
+        49
+      ],
+      "four_masks": [
+        15,
+        23,
+        53,
+        177,
+        523
+      ],
+      "covered_signed_colorings": 250,
+      "missing_plus_masks": [
+        59,
+        964
+      ]
+    }
+  ],
+  "conclusion": "No selected prefix with level counts 1,1,5,3,5 can provide color-specific reachability through level four for all balanced colorings."
+}
