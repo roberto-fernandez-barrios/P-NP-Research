@@ -1,0 +1,101 @@
+{
+ "W1.law_dp_vs_formula_maxabs": "1.73e-18",
+ "W1.reflection_identity_maxabs": "4.31e-14",
+ "W1.ratio_min_max_int_z": [
+  0.75,
+  0.8385
+ ],
+ "W1.constants_ok_int": true,
+ "W1.ratio_min_real_z": 0.6988,
+ "W1.constants_ok_real": true,
+ "W2.P[D>256*4^3]_vs_2^-4": "9.881e-323 <= 6.250e-02: True",
+ "W2.P[D>256*6^3]_vs_2^-6": "3.854e-322 <= 1.562e-02: True",
+ "S2.min_3sqrtN_times_prob": 1.5,
+ "S2.ok": true,
+ "DP.selftest_checks": 24000,
+ "DP.selftest_mismatches": 0,
+ "S1.linear_N10_checks": 87696,
+ "S1.linear_N10_mismatches": 0,
+ "S1.cyclic_N12_sigma0": "checks=11088 mismatches=0 translation_exact=True",
+ "S1.cyclic_N13_sigma1": "checks=20592 mismatches=0 translation_exact=True",
+ "S1.cyclic_N14_sigma0": "checks=41184 mismatches=0 translation_exact=True",
+ "S1.fullB_checks": 8316,
+ "S1.fullB_mismatches": 0,
+ "S1.cutpoint_checks": 1848,
+ "S1.cutpoint_mismatches": 0,
+ "UNCOND.cond_prob": "0.22378 (384/1716)",
+ "UNCOND.unif_prob": "0.12500 (128/1024)",
+ "UNCOND.ratio_vs_3sqrtN": "1.790 <= 10.817: True",
+ "RATE.k1_offset0_balanced": [
+  [
+   16,
+   "1.330e-01",
+   "26600/200000"
+  ],
+  [
+   32,
+   "5.060e-02",
+   "10120/200000"
+  ],
+  [
+   64,
+   "1.074e-02",
+   "2148/200000"
+  ],
+  [
+   128,
+   "7.500e-04",
+   "75/100000"
+  ],
+  [
+   256,
+   "1.667e-05",
+   "1/60000"
+  ]
+ ],
+ "RATE.k1_monotone_decay": true,
+ "RATE.k2_offset0_balanced": [
+  [
+   32,
+   "2.561e-01",
+   "51230/200000"
+  ],
+  [
+   64,
+   "1.148e-01",
+   "22952/200000"
+  ],
+  [
+   128,
+   "3.269e-02",
+   "3269/100000"
+  ],
+  [
+   256,
+   "4.167e-03",
+   "250/60000"
+  ]
+ ],
+ "RATE.k2_monotone_decay": true,
+ "OFFSET.k2_L64": {
+  "0": "1.156e-01",
+  "1": "8.296e-02",
+  "2": "7.827e-02",
+  "ratio_off2/off0": 0.677
+ },
+ "OFFSET.k2_L256": {
+  "0": "3.967e-03",
+  "1": "3.017e-03",
+  "2": "2.900e-03",
+  "ratio_off2/off0": 0.731
+ },
+ "PARITY.k1_L32_off1/off0": 1.301,
+ "PARITY.k1_L128_off1/off0": 1.424,
+ "SPLIT.k1_L128": {
+  "64": "4.800e-04",
+  "32": "1.000e-05",
+  "16": "0.000e+00",
+  "0": "0.000e+00"
+ },
+ "SPLIT.balanced_is_max": true
+}
