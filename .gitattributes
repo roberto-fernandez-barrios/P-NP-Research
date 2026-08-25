@@ -6,3 +6,7 @@
 /experiments/cycle04_multi_rr_search.cpp text eol=lf
 /experiments/cycle04_multi_rr_verify.py text eol=lf
 /certificates/cycle05_hybrid/** text eol=lf
+# Cycle-7 frozen third-party evidence (Jiang-Cai arXiv + GitHub artifacts,
+# Scheder/SS/Hertli/HKZZ PDFs): SHA-256 values are recorded in manifests.
+# -text disables all eol conversion so bytes are preserved exactly.
+/research_cycle_07/frozen_sources/** -text

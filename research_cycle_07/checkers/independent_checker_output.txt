@@ -1,0 +1,328 @@
+============================================================================
+INDEPENDENT EXACT-RATIONAL CERTIFICATE CHECKER (arms-length replication)
+paper : Jiang-Cai, 'A Better Analysis For PPSZ For 3-SAT' (arXiv:2607.10697v1)
+inputs: frozen tex source + ppsz_certificate.json ONLY
+policy: fractions.Fraction everywhere; proved series tails; outward 2^-256 rounding
+depths: LN_TERMS=120, EXP_TERMS=100 (own choice; authors used 90/90)
+============================================================================
+
+Plumbing self-tests passed (ln2, e, ln10, sqrt2, h2(1/2)=1, exact identities; all widths < 1e-70).
+
+----------------------------------------------------------------------------
+SECTION 0: provenance and data integrity
+----------------------------------------------------------------------------
+JSON version string : '2026-07-12-rational-v5'
+Paper Appendix B    : 'The certificate version is \texttt{2026-07-12-rational-v6}.' (tex line 720)
+[FLAG]      VERSION MISMATCH: JSON says '2026-07-12-rational-v5' but the paper's Appendix B says '2026-07-12-rational-v6'.
+[FLAG]      Documented as a provenance discrepancy in the report; it is not an arithmetic failure.
+[FLAG]      Audit brief refers to the parameter display as 'eq. (13)'; in the frozen v1 source \label{eq:parameter-values} is the 20th numbered display (eq. (13) is \label{eq:Rlinear}).  Checked against \label{eq:parameter-values} regardless.
+[FLAG]      JSON-only thresholds (not printed in the tex): old_unique_base_upper=1.306972376566, relative_improvement_lower=0.0503, unique_relative_improvement_lower=0.04668.
+JSON series depths: log_terms=90 exp_terms=90 (paper Appendix B: 'uses N=90 for both series' -- consistent).
+
+----------------------------------------------------------------------------
+CHECK 1: fixed parameters epsilon_R, epsilon_I (exact rationals)
+----------------------------------------------------------------------------
+[PASS] 01a  epsilon_R: JSON == paper eq:parameter-values
+            value = 0.1024756190168075228998451658 = 512378095084037614499225829/5000000000000000000000000000
+[PASS] 01b  epsilon_I: JSON == paper eq:parameter-values
+            value = 0.07307238160252154687451293138 = 3653619080126077343725646569/50000000000000000000000000000
+[PASS] 01c  source-side admissibility ranges: eps_R <= 0.13 and eps_I <= 1/5 (tex lines 243, 265)
+[PASS] 01d  gamma_new: JSON lifting == JSON unique.gamma_reported == paper 0.0000687793
+[PASS] 01e  JSON <-> paper literal concordance (26 shared constants compared as exact rationals)
+            all equal
+
+----------------------------------------------------------------------------
+CHECK 2: regular-side coefficients c_L, c_T, A, Thr, P_reg, S
+----------------------------------------------------------------------------
+[PASS] 02a  c_L = 0.001687 eR - 0.006404 eR^2 (exact)
+            c_L   = 1.05626348316964324389091217050e-04  [exact rational (width 0)]
+[PASS] 02b  c_T = 0.009307 - 0.055 eR - 0.1503 f_KL(eR)
+            f_KL(eR) [5.43977635782183029992456276980e-03, 5.43977635782183029992456276981e-03]  width <= 2.60e-77  (relative width < 1e-74 (endpoints agree to >= 74 sig. digits))
+            c_T   [2.85324256749496514642985409669e-03, 2.85324256749496514642985409670e-03]  width <= 8.64e-78  (relative width < 1e-74 (endpoints agree to >= 74 sig. digits))
+[PASS] 02c  A = (17/18) c_L ; Thr = 2A/0.9 ; P_reg = 1.1 eR Thr (exact)
+            A     = 9.97582178549107508119194827694e-05  [exact rational (width 0)]
+            Thr   = 2.21684928566468335137598850599e-04  [exact rational (width 0)]
+            P_reg = 2.49890303097001597806119835647e-05  [exact rational (width 0)]
+[PASS] 02d  S = c_T - 5A
+            S     [2.35445147822041139237025668285e-03, 2.35445147822041139237025668286e-03]  width <= 1.73e-77  (relative width < 1e-74 (endpoints agree to >= 74 sig. digits))
+
+----------------------------------------------------------------------------
+CHECK 3: irregular-side coefficients b1, b0, bT
+----------------------------------------------------------------------------
+[PASS] 03a  b1 = 0.030966 eI - 0.0028 eI^2 - 0.4027 f_KL(eI)
+            f_KL(eI)  [2.73730113850526060235130546507e-03, 2.73730113850526060235130546508e-03]  width <= 2.60e-77  (relative width < 1e-74 (endpoints agree to >= 74 sig. digits))
+            b1    [1.14549739595903309354283342045e-03, 1.14549739595903309354283342046e-03]  width <= 2.60e-77  (relative width < 1e-73 (endpoints agree to >= 73 sig. digits))
+[PASS] 03b  b0 = 0.06259 eI - 0.344 f_KL(eI)
+            b0    [3.63196877285601397166691529508e-03, 3.63196877285601397166691529509e-03]  width <= 1.73e-77  (relative width < 1e-74 (endpoints agree to >= 74 sig. digits))
+[PASS] 03c  bT = 0.009307 - 0.2405 eI - 0.03125 eI^2 - 0.06183 f_KL(5 eI)
+            f_KL(5eI) [7.67917286817512653445723752306e-02, 7.67917286817512653445723752307e-02]  width <= 2.60e-77  (relative width < 1e-75 (endpoints agree to >= 75 sig. digits))
+            bT    [-1.31818020145823793042902621659e-02, -1.31818020145823793042902621658e-02]  width <= 8.64e-78  (relative width < 1e-75 (endpoints agree to >= 75 sig. digits))
+
+----------------------------------------------------------------------------
+CHECK 4: sign pattern A>0, P_reg>0, A>P_reg, S>0, b0>0, b1>0, bT<0
+----------------------------------------------------------------------------
+[PASS] 04a  A > 0
+[PASS] 04b  P_reg > 0
+[PASS] 04c  A > P_reg (exact rational comparison)
+            A - P_reg = 7.47691875452105910313074992047e-05  [exact rational (width 0)]
+[PASS] 04d  S > 0
+            margin S.lo = 2.35445147822041139237e-03
+[PASS] 04e  b0 > 0
+            margin b0.lo = 3.63196877285601397166e-03
+[PASS] 04f  b1 > 0
+            margin b1.lo = 1.14549739595903309354e-03
+[PASS] 04g  bT < 0
+            margin bT.hi = -1.31818020145823793042e-02
+[PASS] 04h  paper cross-ref A - P_reg ~ 0.00007476918754521059
+            ours: = 7.47691875452105910313074992047e-05  [exact rational (width 0)]
+
+----------------------------------------------------------------------------
+CHECK 5: dual margins b0 - 2 b1 > 0 and A bT + b1 S > 0
+----------------------------------------------------------------------------
+[PASS] 05a  b0 - 2 b1 > 0
+            b0 - 2 b1 [1.34097398093794778458124845418e-03, 1.34097398093794778458124845419e-03]  width <= 6.91e-77  (relative width < 1e-73 (endpoints agree to >= 73 sig. digits))
+[PASS] 05b  paper cross-ref b0 - 2 b1 ~ 0.00134097398093794778
+            ours: [1.34097398093794778458124845418e-03, 1.34097398093794778458124845419e-03]  width <= 6.91e-77  (relative width < 1e-73 (endpoints agree to >= 73 sig. digits))
+[PASS] 05c  A bT + b1 S > 0 (product form, no division)
+            A bT + b1 S [1.38202496012236695418827842265e-06, 1.38202496012236695418827842266e-06]  width <= 8.64e-78  (relative width < 1e-71 (endpoints agree to >= 71 sig. digits))
+[PASS] 05d  equivalent division form bT + (b1/A) S > 0 (A > 0)
+            bT + (b1/A) S [1.38537454842306473932610144658e-02, 1.38537454842306473932610144659e-02]  width <= 8.30e-76  (relative width < 1e-73 (endpoints agree to >= 73 sig. digits))
+            lambda = b1/A [1.14827371678296700112195904305e+01, 1.14827371678296700112195904306e+01]  width <= 2.60e-73  (relative width < 1e-73 (endpoints agree to >= 73 sig. digits))
+[PASS] 05e  paper cross-ref bT + lambda S ~ 0.01385374548423064739
+            ours: [1.38537454842306473932610144658e-02, 1.38537454842306473932610144659e-02]  width <= 8.30e-76  (relative width < 1e-73 (endpoints agree to >= 73 sig. digits))
+[PASS] 05f  paper cross-ref lambda ~ 11.4827371678
+            ours: [1.14827371678296700112195904305e+01, 1.14827371678296700112195904306e+01]  width <= 2.60e-73  (relative width < 1e-73 (endpoints agree to >= 73 sig. digits))
+
+----------------------------------------------------------------------------
+CHECK 6: gamma_star = b1 (A - P_reg)/(A + b1) exceeds gamma_new
+----------------------------------------------------------------------------
+[PASS] 06a  gamma_star > gamma_new = 0.0000687793
+            gamma_star [6.87793804588365655035494349242e-05, 6.87793804588365655035494349243e-05]  width <= 8.64e-78  (relative width < 1e-72 (endpoints agree to >= 72 sig. digits))
+            gamma_star - gamma_new [8.04588365655035494349242655463e-11, 8.04588365655035494349242655464e-11]  width <= 1.73e-77  (relative width < 1e-66 (endpoints agree to >= 66 sig. digits))
+[PASS] 06b  paper cross-ref gamma_star ~ 0.000068779380458836
+            ours: [6.87793804588365655035494349242e-05, 6.87793804588365655035494349243e-05]  width <= 8.64e-78  (relative width < 1e-72 (endpoints agree to >= 72 sig. digits))
+[PASS] 06c  paper cross-ref gamma_star - gamma_new ~ 8.045883656550355e-11
+            ours: [8.04588365655035494349242655463e-11, 8.04588365655035494349242655464e-11]  width <= 1.73e-77  (relative width < 1e-66 (endpoints agree to >= 66 sig. digits))
+
+----------------------------------------------------------------------------
+CHECK 7: corner i1 = (A-P_reg)/(A+b1), i0 = tau = 0
+----------------------------------------------------------------------------
+[PASS] 07a  0 < i1 < 1 (strict; also gives i0+i1+tau = i1 < 1)
+            i1 [6.00432447087783266273952479719e-02, 6.00432447087783266273952479720e-02]  width <= 1.26e-75  (relative width < 1e-73 (endpoints agree to >= 73 sig. digits))
+[PASS] 07b  paper cross-ref i1 ~ 0.060043244708778326
+            ours: [6.00432447087783266273952479719e-02, 6.00432447087783266273952479720e-02]  width <= 1.26e-75  (relative width < 1e-73 (endpoints agree to >= 73 sig. digits))
+[PASS] 07c  L_reg = A(1-i1) - P_reg equals gamma_star (0 in enclosure of difference, width < 1e-40)
+            L_reg [6.87793804588365655035494349242e-05, 6.87793804588365655035494349243e-05]  width <= 8.64e-78  (relative width < 1e-72 (endpoints agree to >= 72 sig. digits))
+            L_reg - gamma_star [-8.63616855509444462538635186281e-78, 8.63616855509444462538635186281e-78]  width <= 1.73e-77  (contains 0; |value| <= 8.64e-78)
+[PASS] 07d  L_irr = b1 i1 equals gamma_star (0 in enclosure of difference, width < 1e-40)
+            L_irr [6.87793804588365655035494349242e-05, 6.87793804588365655035494349243e-05]  width <= 8.64e-78  (relative width < 1e-72 (endpoints agree to >= 72 sig. digits))
+            L_irr - gamma_star [-8.63616855509444462538635186281e-78, 8.63616855509444462538635186281e-78]  width <= 1.73e-77  (contains 0; |value| <= 8.64e-78)
+
+----------------------------------------------------------------------------
+CHECK 8: unique base 2^(p0 - gamma_new) < 1.306969598 (STRICT)
+----------------------------------------------------------------------------
+[PASS] 08a  2^(p0 - 0.0000687793) < 1.306969598
+            2^(p0-gamma_new) [1.30696959751624698244591485362e+00, 1.30696959751624698244591485363e+00]  width <= 3.46e-77  (relative width < 1e-76 (endpoints agree to >= 76 sig. digits))
+            margin to threshold = 4.83753017554e-10
+[PASS] 08b  paper cross-ref unique base ~ 1.306969597516246
+            ours: [1.30696959751624698244591485362e+00, 1.30696959751624698244591485363e+00]  width <= 3.46e-77  (relative width < 1e-76 (endpoints agree to >= 76 sig. digits))
+[PASS] 08c  paper cross-ref 2^p0 (classical PPSZ base) ~ 1.3070319
+            ours: [1.30703190770259900010482155565e+00, 1.30703190770259900010482155566e+00]  width <= 3.46e-77  (relative width < 1e-76 (endpoints agree to >= 76 sig. digits))
+
+----------------------------------------------------------------------------
+CHECK 9: old endgame min_{irr in [0,1]} max{(1-irr)/10118 - 1/41391, irr/1380} (all exact)
+----------------------------------------------------------------------------
+[PASS] 09a  crossing point x* in (0,1) and f(x*) == g(x*) exactly
+            x* = 7192790/79318953
+               = 9.06818575883118376512105498922e-02
+[PASS] 09b  monotonicity: f strictly decreasing, g strictly increasing (exact slopes -1/10118, +1/1380) => minimax = crossing value
+[PASS] 09c  exact minimax value v = x*/1380
+            v  = 31273/475913718
+               = 6.57114910060230707617467752842e-05
+            1/v = 1.52180384996642471141240047325e+04
+[FAIL] 09d  paper eq. (2) final step: minimax >= 1/15218 (exact)
+            v - 1/15218 = -43/258659105733
+                        = -1.66241972723692189353e-10
+            1/v = 15218 + 1204/31273 = 15218.0384996... > 15218, hence v < 1/15218:
+            the displayed pair supports only the smaller constant v; the terminal
+            '>= 1/15218' of eq. (2) is REFUTED by exact rational arithmetic (FINDING F1).
+[PASS] 09e  JSON gamma_old parses to exactly 1/15218
+[PASS] 09f  paper decimal 0.000065711657247995... matches 1/15218
+            1/15218 = 6.57116572479957944539361282692e-05
+[PASS] 09g  corrected clean endgame bound derivable from eq. (1): v >= 1/15219 (exact)
+            v - 1/15219 = 3341/804770097138
+                        = 4.15149619982350502820e-09
+[PASS] 09h  impact guard: 2^(p0 - v) < 1.306972377 (Scheder's rounded published base, tex line 45) survives the correction
+            2^(p0 - 31273/475913718) [1.30697237671575588853946903961e+00, 1.30697237671575588853946903962e+00]  width <= 4.32e-77  (relative width < 1e-76 (endpoints agree to >= 76 sig. digits))
+            margin to 1.306972377 = 2.84244111460e-10
+
+----------------------------------------------------------------------------
+CHECK 10: old unique base 2^(p0 - 1/15218) < 1.306972376566 (STRICT)
+----------------------------------------------------------------------------
+[PASS] 10a  2^(p0 - 1/15218) < 1.306972376566 (JSON threshold)
+            2^(p0-1/15218) [1.30697237656515325941127755593e+00, 1.30697237656515325941127755594e+00]  width <= 4.32e-77  (relative width < 1e-76 (endpoints agree to >= 76 sig. digits))
+            margin to threshold = 8.46740588722e-13
+[PASS] 10b  paper cross-ref old unique base (paper unrounded 1.306972376565153...) ~ 1.306972376565153
+            ours: [1.30697237656515325941127755593e+00, 1.30697237656515325941127755594e+00]  width <= 4.32e-77  (relative width < 1e-76 (endpoints agree to >= 76 sig. digits))
+
+----------------------------------------------------------------------------
+CHECK 11: p* = 1 - 1/(2 ln 2) and q0 = p0 - p*
+----------------------------------------------------------------------------
+[PASS] 11a  p* enclosure (target ~ 0.27865247955551829632)
+            p*  [2.78652479555518296320037659499e-01, 2.78652479555518296320037659500e-01]  width <= 1.73e-77  (relative width < 1e-76 (endpoints agree to >= 76 sig. digits))
+[PASS] 11b  q0 enclosure (target ~ 0.10764188156437232251)
+            q0  [1.07641881564372322514426583417e-01, 1.07641881564372322514426583418e-01]  width <= 3.46e-77  (relative width < 1e-75 (endpoints agree to >= 75 sig. digits))
+[PASS] 11c  q0 > 0 and p* < 1 (needed later: g' > 0 and eta = q0 delta)
+[PASS] 11d  plumbing identity: q0 == 2 ln2 - 2 + 1/(2 ln2) (enclosures intersect)
+[PASS] 11e  paper cross-ref q0 (paper prefix) ~ 0.107641881564372
+            ours: [1.07641881564372322514426583417e-01, 1.07641881564372322514426583418e-01]  width <= 3.46e-77  (relative width < 1e-75 (endpoints agree to >= 75 sig. digits))
+
+----------------------------------------------------------------------------
+CHECK 12: root brackets for g_gamma(d) = h2(d) + (1 - p* + gamma) d - gamma
+----------------------------------------------------------------------------
+[PASS] 12a  g_{gamma_old}(0.00000321978491531273261) < 0
+            g [-9.56449210099682534234585591229e-23, -9.56449210099682534234585591228e-23]  width <= 5.19e-77  (relative width < 1e-54 (endpoints agree to >= 54 sig. digits))
+[PASS] 12b  g_{gamma_old}(0.00000321978491531273262) > 0
+            g [9.40152073709276112611923364444e-23, 9.40152073709276112611923364445e-23]  width <= 5.19e-77  (relative width < 1e-54 (endpoints agree to >= 54 sig. digits))
+[PASS] 12c  g_{gamma_new}(0.00000338183369577144614) < 0
+            g [-1.17763232880479996663327197749e-22, -1.17763232880479996663327197748e-22]  width <= 5.19e-77  (relative width < 1e-54 (endpoints agree to >= 54 sig. digits))
+[PASS] 12d  g_{gamma_new}(0.00000338183369577144615) > 0
+            g [7.11885098618473261031044974768e-23, 7.11885098618473261031044974769e-23]  width <= 5.19e-77  (relative width < 1e-54 (endpoints agree to >= 54 sig. digits))
+[PASS] 12e  brackets lie in (0, 1/2) where g is strictly increasing (uniqueness argument in report)
+
+----------------------------------------------------------------------------
+CHECK 13: eta_old/new = q0 * [delta bracket]; containment; strict improvement
+----------------------------------------------------------------------------
+[PASS] 13a  eta_old inside [0.0000003465837065, 0.0000003465837066]
+            eta_old [3.46583706516845732042402622593e-07, 3.46583706516845733118821438238e-07]  width <= 1.08e-24  (relative width < 1e-17 (endpoints agree to >= 17 sig. digits))
+[PASS] 13b  eta_new inside [0.0000003640269421, 0.0000003640269422]
+            eta_new [3.64026942150633545839867133130e-07, 3.64026942150633546916285948775e-07]  width <= 1.08e-24  (relative width < 1e-17 (endpoints agree to >= 17 sig. digits))
+[PASS] 13c  eta_new > eta_old (strict, certified)
+            gap eta_new - eta_old [1.74432356337878127210456948935e-08, 1.74432356337878148738833261810e-08]  width <= 2.16e-24  (relative width < 1e-15 (endpoints agree to >= 15 sig. digits))
+[PASS] 13d  paper cross-ref eta gap ~ 0.0000000174432356
+            ours: [1.74432356337878127210456948935e-08, 1.74432356337878148738833261810e-08]  width <= 2.16e-24  (relative width < 1e-15 (endpoints agree to >= 15 sig. digits))
+[PASS] 13e  eta_new/eta_old - 1 > 0.0503 (JSON relative_improvement_lower)
+            ratio - 1 [5.03290700220495871445006055140e-02, 5.03290700220495935124075432447e-02]  width <= 6.37e-18  (relative width < 1e-15 (endpoints agree to >= 15 sig. digits))
+            margin = 2.90700220495e-05
+
+----------------------------------------------------------------------------
+CHECK 14: branch margins at delta_0 = 338183369/10^14, eta_safe = 0.000000364
+----------------------------------------------------------------------------
+[PASS] 14a  delta_0 equals JSON delta_safe and paper's 0.00000338183369
+[PASS] 14b  eta_safe equals paper's 0.000000364
+[PASS] 14c  q0 delta_0 - eta_safe > 2.69e-11
+            q0 delta_0 - eta_safe [2.69415293842239828333308322177e-11, 2.69415293842239828333308322178e-11]  width <= 8.64e-78  (relative width < 1e-66 (endpoints agree to >= 66 sig. digits))
+            margin over 2.69e-11 = 4.15293842239e-14
+[PASS] 14d  paper cross-ref high-branch margin ~ 2.6941529384e-11
+            ours: [2.69415293842239828333308322177e-11, 2.69415293842239828333308322178e-11]  width <= 8.64e-78  (relative width < 1e-66 (endpoints agree to >= 66 sig. digits))
+[PASS] 14e  u_{gamma_new}(delta_0) - eta_safe > 2.70e-11
+            u_{gamma_new}(delta_0) [3.64027050581864978498853650232e-07, 3.64027050581864978498853650233e-07]  width <= 5.19e-77  (relative width < 1e-69 (endpoints agree to >= 69 sig. digits))
+            u - eta_safe [2.70505818649784988536502328993e-11, 2.70505818649784988536502328994e-11]  width <= 6.05e-77  (relative width < 1e-65 (endpoints agree to >= 65 sig. digits))
+            margin over 2.70e-11 = 5.05818649784e-14
+[PASS] 14f  paper cross-ref unique-residual margin ~ 2.7050581864e-11
+            ours: [2.70505818649784988536502328993e-11, 2.70505818649784988536502328994e-11]  width <= 6.05e-77  (relative width < 1e-65 (endpoints agree to >= 65 sig. digits))
+
+----------------------------------------------------------------------------
+CHECK 15: safe general base 2^(p0 - eta_safe) < 1.307031578 (STRICT)
+----------------------------------------------------------------------------
+[PASS] 15a  2^(p0 - 0.000000364) < 1.307031578
+            2^(p0-eta_safe) [1.30703157793120525344360860676e+00, 1.30703157793120525344360860677e+00]  width <= 4.32e-77  (relative width < 1e-76 (endpoints agree to >= 76 sig. digits))
+            margin to threshold = 6.87947465563e-11
+[PASS] 15b  paper cross-ref safe base ~ 1.307031577931205
+            ours: [1.30703157793120525344360860676e+00, 1.30703157793120525344360860677e+00]  width <= 4.32e-77  (relative width < 1e-76 (endpoints agree to >= 76 sig. digits))
+
+----------------------------------------------------------------------------
+CHECK 16: conservative limiting bases (lower eta endpoints)
+----------------------------------------------------------------------------
+[PASS] 16a  2^(p0 - 0.0000003465837065) < 1.307031593710
+            base [1.30703159370976209827300656342e+00, 1.30703159370976209827300656343e+00]  width <= 4.32e-77  (relative width < 1e-76 (endpoints agree to >= 76 sig. digits))
+            margin = 2.37901726993e-13
+[PASS] 16b  paper cross-ref old limiting general base ~ 1.307031593709762
+            ours: [1.30703159370976209827300656342e+00, 1.30703159370976209827300656343e+00]  width <= 4.32e-77  (relative width < 1e-76 (endpoints agree to >= 76 sig. digits))
+[PASS] 16c  2^(p0 - 0.0000003640269421) < 1.307031577907
+            base [1.30703157790679664699705621718e+00, 1.30703157790679664699705621719e+00]  width <= 4.32e-77  (relative width < 1e-76 (endpoints agree to >= 76 sig. digits))
+            margin = 2.03353002943e-13
+[PASS] 16d  paper cross-ref new limiting general base ~ 1.307031577906796
+            ours: [1.30703157790679664699705621718e+00, 1.30703157790679664699705621719e+00]  width <= 4.32e-77  (relative width < 1e-76 (endpoints agree to >= 76 sig. digits))
+[PASS] 16e  ordering of certified bases: new limiting < safe theorem base < old limiting
+
+----------------------------------------------------------------------------
+CHECK 17: gamma_new - gamma_old > 0 (exact rationals)
+----------------------------------------------------------------------------
+[PASS] 17a  gamma_new - gamma_old > 0
+            gamma_new - gamma_old = 233416937/76090000000000
+                                  = 3.06764275200420554606387173085e-06  [exact rational (width 0)]
+[PASS] 17b  paper cross-ref gamma_new - gamma_old ~ 0.0000030676427520042
+            ours: = 3.06764275200420554606387173085e-06  [exact rational (width 0)]
+[PASS] 17c  gamma_new/gamma_old - 1 > 0.04668 (JSON unique_relative_improvement_lower; exact)
+            exact value = 233416937/5000000000 = 4.66833874000000000000e-02
+
+----------------------------------------------------------------------------
+CHECK 18: JSON reported_intervals vs independent enclosures
+----------------------------------------------------------------------------
+JSON version string: '2026-07-12-rational-v5'
+[PASS] 18a  A: intersection with JSON [0.0000997582178549, 0.0000997582178550]
+            ours  = 9.97582178549107508119194827694e-05  [exact rational (width 0)]
+            relation: ours inside theirs
+[PASS] 18b  P_reg: intersection with JSON [0.0000249890303097, 0.0000249890303098]
+            ours  = 2.49890303097001597806119835647e-05  [exact rational (width 0)]
+            relation: ours inside theirs
+[PASS] 18c  S: intersection with JSON [0.00235445147822, 0.00235445147823]
+            ours  [2.35445147822041139237025668285e-03, 2.35445147822041139237025668286e-03]  width <= 1.73e-77  (relative width < 1e-74 (endpoints agree to >= 74 sig. digits))
+            relation: ours inside theirs
+[PASS] 18d  b1: intersection with JSON [0.00114549739595, 0.00114549739597]
+            ours  [1.14549739595903309354283342045e-03, 1.14549739595903309354283342046e-03]  width <= 2.60e-77  (relative width < 1e-73 (endpoints agree to >= 73 sig. digits))
+            relation: ours inside theirs
+[PASS] 18e  b0: intersection with JSON [0.00363196877285, 0.00363196877287]
+            ours  [3.63196877285601397166691529508e-03, 3.63196877285601397166691529509e-03]  width <= 1.73e-77  (relative width < 1e-74 (endpoints agree to >= 74 sig. digits))
+            relation: ours inside theirs
+[PASS] 18f  bT: intersection with JSON [-0.01318180201459, -0.01318180201458]
+            ours  [-1.31818020145823793042902621659e-02, -1.31818020145823793042902621658e-02]  width <= 8.64e-78  (relative width < 1e-75 (endpoints agree to >= 75 sig. digits))
+            relation: ours inside theirs
+[PASS] 18g  lambda: intersection with JSON [11.4827371678, 11.4827371679]
+            ours  [1.14827371678296700112195904305e+01, 1.14827371678296700112195904306e+01]  width <= 2.60e-73  (relative width < 1e-73 (endpoints agree to >= 73 sig. digits))
+            relation: ours inside theirs
+[PASS] 18h  gamma_star: intersection with JSON [0.000068779380458836, 0.000068779380458837]
+            ours  [6.87793804588365655035494349242e-05, 6.87793804588365655035494349243e-05]  width <= 8.64e-78  (relative width < 1e-72 (endpoints agree to >= 72 sig. digits))
+            relation: ours inside theirs
+[PASS] 18i  tight_i1: intersection with JSON [0.060043244708778326, 0.060043244708778327]
+            ours  [6.00432447087783266273952479719e-02, 6.00432447087783266273952479720e-02]  width <= 1.26e-75  (relative width < 1e-73 (endpoints agree to >= 73 sig. digits))
+            relation: ours inside theirs
+[PASS] 18j  safe_branch_margin_lower 0.0000000000269: both branch margins at delta_0 certified >= it
+            min branch margin lower bound = 2.69415293842239828333e-11
+
+----------------------------------------------------------------------------
+CHECK 19 (bonus): same affine program at Scheder's parameters (eps_R, eps_I) = (0.1, 0.029)
+----------------------------------------------------------------------------
+[PASS] 19a  certificate conditions hold at (0.1, 0.029): A>P_reg, b0-2b1>0, A bT + b1 S > 0
+            b0-2b1 [2.19713491588759168594853901273e-04, 2.19713491588759168594853901274e-04]  width <= 5.19e-77  (relative width < 1e-72 (endpoints agree to >= 72 sig. digits))
+            A bT + b1 S [1.99729873356047947312175462817e-06, 1.99729873356047947312175462818e-06]  width <= 8.64e-78  (relative width < 1e-71 (endpoints agree to >= 71 sig. digits))
+[PASS] 19b  paper cross-ref gamma_star(0.1, 0.029) ~ 0.000065719084
+            ours: [6.57190847632252457647240742109e-05, 6.57190847632252457647240742110e-05]  width <= 8.64e-78  (relative width < 1e-72 (endpoints agree to >= 72 sig. digits))
+[PASS] 19c  fixed parameters beat Scheder's parameters: gamma_star(eR,eI) > gamma_star(0.1,0.029)
+            gamma_star(0.1,0.029) [6.57190847632252457647240742109e-05, 6.57190847632252457647240742110e-05]  width <= 8.64e-78  (relative width < 1e-72 (endpoints agree to >= 72 sig. digits))
+
+============================================================================
+SUMMARY: 90 sub-checks, 89 PASS, 1 FAIL
+  FAILED 09d: paper eq. (2) final step: minimax >= 1/15218 (exact)
+
+FINDING F1 (the only FAIL; a genuine refutation, not a checker
+  malfunction): the terminal inequality of paper eq. (2)
+  [tex lines 70-78],   max{(1-irr)/10118 - 1/41391, irr/1380}
+  >= 1/15218,   is FALSE near the crossing irr* = 7192790/79318953.
+  The exact minimax of the displayed pair is
+      v = 31273/475913718 = 1/(15218 + 1204/31273)
+        = 0.0000657114910060230707617... < 1/15218,
+  a shortfall of exactly 43/258659105733 ~= 1.6624e-10.  The
+  clean bound actually derivable from eq. (1) is >= 1/15219
+  (certified in 09g).  Impact: gamma_old = 1/15218 enters this
+  paper only as the quoted historical constant; Theorem 1.2
+  (gamma_new), its dual certificate, and Corollary 1.3 do not
+  depend on eq. (2) and are fully certified above.  Check 09h
+  certifies that Scheder's rounded published base 1.306972377
+  survives the correction.
+
+OVERALL: FAIL -- one refuted paper display (FINDING F1); every
+  arithmetic claim underlying the paper's NEW results PASSes.
+(Version-string mismatch v5/v6 and eq-numbering note are provenance FLAGs, documented in the report; they are not arithmetic failures.)
+============================================================================

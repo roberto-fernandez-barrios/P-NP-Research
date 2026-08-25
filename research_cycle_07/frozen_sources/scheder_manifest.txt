@@ -1,0 +1,39 @@
+Scheder source manifest — frozen for research_cycle_07 hostile import validation
+Fetched by: Claude (agent), on behalf of roberto.fernandez.barrios@gmail.com
+All timestamps UTC.
+
+FILE 1: scheder_tr21069_rev1.pdf
+  URL:        https://eccc.weizmann.ac.il/report/2021/069/revision/1/download/
+  Fetched:    2026-08-25T12:12:33Z (download completed shortly before hash timestamp)
+  HTTP:       200, 1582177 bytes, no redirect (final URL identical)
+  SHA-256:    e4d634c4ea46f58041fd35bfd4978b7bb95e77ad26530735aa0577822dc4e506
+  Identity:   ECCC TR21-069 Revision 1, "PPSZ is better than you think", Dominik Scheder.
+              PDF version 1.5, 81 pages.
+  Role:       JC's normative source "SchederFull" (section/equation numbers refer to this).
+
+FILE 2: scheder_theoretics_24_5.pdf
+  URL:        https://theoretics.episciences.org/13222/pdf
+  Discovery:  https://doi.org/10.46298/theoretics.24.5 resolved (HTTP 200) to
+              https://theoretics.episciences.org/13222 ; PDF at /13222/pdf.
+  Fetched:    2026-08-25T12:13:05Z (hash timestamp; download ~30 s earlier)
+  HTTP:       200, 727905 bytes
+  SHA-256:    fbcb127dc6e6f30277297ae3400fccbe39bb852a1fa65a318f6b8c3219e0ae94
+  Identity:   TheoretiCS, Volume 3 (2024), Article 5, "PPSZ is better than you think".
+              pdfLaTeX with theoretics.cls v0.9, CreationDate 2024-03-13, 37 pages.
+  Role:       JC's "SchederJournal".
+
+FILE 3: scheder_arxiv_2207.pdf
+  URL:        https://arxiv.org/pdf/2207.11071
+  Fetched:    2026-08-25T12:13:05Z (hash timestamp)
+  HTTP:       200, 727905 bytes
+  SHA-256:    fbcb127dc6e6f30277297ae3400fccbe39bb852a1fa65a318f6b8c3219e0ae94
+  Version:    arXiv:2207.11071 v2 (per https://arxiv.org/abs/2207.11071: submitted
+              22 Jul 2022, last revised 12 Mar 2024, "this version, v2").
+  Identity:   BYTE-IDENTICAL to FILE 2 (same SHA-256). TheoretiCS is an arXiv overlay
+              journal; the journal PDF and arXiv v2 are the same file.
+
+Failures/notes:
+  - No fetch failures. ECCC served curl directly (no block encountered).
+  - JC paper frozen source read from:
+    C:\Users\masteria.DOMINE\rf\P-NP-Research\research_cycle_07\frozen_sources\arxiv_src\a_better_analysis_for_ppsz_3_.tex
+    (946 lines, read in full 2026-08-25).

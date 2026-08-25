@@ -1,0 +1,162 @@
+[
+  {
+    "sha": "3e732e06fee90d10e31c157fb433699e7f766fdc",
+    "node_id": "C_kwDOTV-QN9oAKDNlNzMyZTA2ZmVlOTBkMTBlMzFjMTU3ZmI0MzM2OTllN2Y3NjZmZGM",
+    "commit": {
+      "author": {
+        "name": "Jiang Tao",
+        "email": "52605076+jiangxioabai@users.noreply.github.com",
+        "date": "2026-07-12T08:27:55Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2026-07-12T08:27:55Z"
+      },
+      "message": "Update README.md",
+      "tree": {
+        "sha": "00ceebedd63234377458e29ce51bb67f3812a9ff",
+        "url": "https://api.github.com/repos/jiangxioabai/A-Better-Analysis-For-PPSZ/git/trees/00ceebedd63234377458e29ce51bb67f3812a9ff"
+      },
+      "url": "https://api.github.com/repos/jiangxioabai/A-Better-Analysis-For-PPSZ/git/commits/3e732e06fee90d10e31c157fb433699e7f766fdc",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqU1ALCRC1aQ7uu5UhlAAAf4sQAA2WsxmD3hBBLD0e6JXj23Uq\ncRPF7GOwO3SbfIMUqATQP/Ttq7sXBUpwc52MJ+QaOk76Ih2WYiBCtXo4GEkSZGYD\nIFnvn0K/m2N5Cy4csk9+lSKES9/zoupu5ex6hR0z3uqBvFBTY3sTFx2XzZKB7R1N\n0UWJADZw2r/1ZhXbX6vCMNE9Fy4qYGEwxV8N300lm1fBnsf2oY/ndmlBkhImqjye\nXv50niRPlO8EkfEk+1L7brS6byyo/I2BqIJN+xDebU+sfeqOftRkzYji01PHu3ON\n72x+e/8G/tHRJ0MD1KN3SQV6IZjsLhF2tfowiEG5ylK2P4Pn+dq5oY9JOypSSYHL\ngNpygxYerr/y4MYViTLrpnGRQKDAqeCiUiyH3+Lq2xlVi183i5wYyUoEcIfWw89o\n6tXj6Tod7aBJeLwz1Be8jHyx865mJtCm7sqeXX7t2VZ8B43tdLKdMy27hE0Y1qxA\nDpzoaiQL/n1C7dCM68ZZFDjp6qnFqMD1YobeQr3RrGNPjWO+y9PAv7T819eHaxAZ\nh4CHnrg1C1QBvncjdW8HDCTVmMKPhCDv9kr4fynkvarXorKYgt7wXLj15SZOPSxQ\nxcZ5ceztaQyqOklYznXwAiHUUof5mqsBHKAwovyVdtVQ9sCCpskUGGA6j1skkfrp\n/reIpZO9VEMnU1/7UX6M\n=hWh9\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 00ceebedd63234377458e29ce51bb67f3812a9ff\nparent 324e8f1ebd9863ac2698e3ef50e8956bf4048141\nauthor Jiang Tao <52605076+jiangxioabai@users.noreply.github.com> 1783844875 +0800\ncommitter GitHub <noreply@github.com> 1783844875 +0800\n\nUpdate README.md",
+        "verified_at": "2026-07-12T08:27:56Z"
+      }
+    },
+    "url": "https://api.github.com/repos/jiangxioabai/A-Better-Analysis-For-PPSZ/commits/3e732e06fee90d10e31c157fb433699e7f766fdc",
+    "html_url": "https://github.com/jiangxioabai/A-Better-Analysis-For-PPSZ/commit/3e732e06fee90d10e31c157fb433699e7f766fdc",
+    "comments_url": "https://api.github.com/repos/jiangxioabai/A-Better-Analysis-For-PPSZ/commits/3e732e06fee90d10e31c157fb433699e7f766fdc/comments",
+    "author": {
+      "login": "jiangxioabai",
+      "id": 52605076,
+      "node_id": "MDQ6VXNlcjUyNjA1MDc2",
+      "avatar_url": "https://avatars.githubusercontent.com/u/52605076?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/jiangxioabai",
+      "html_url": "https://github.com/jiangxioabai",
+      "followers_url": "https://api.github.com/users/jiangxioabai/followers",
+      "following_url": "https://api.github.com/users/jiangxioabai/following{/other_user}",
+      "gists_url": "https://api.github.com/users/jiangxioabai/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/jiangxioabai/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/jiangxioabai/subscriptions",
+      "organizations_url": "https://api.github.com/users/jiangxioabai/orgs",
+      "repos_url": "https://api.github.com/users/jiangxioabai/repos",
+      "events_url": "https://api.github.com/users/jiangxioabai/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/jiangxioabai/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "324e8f1ebd9863ac2698e3ef50e8956bf4048141",
+        "url": "https://api.github.com/repos/jiangxioabai/A-Better-Analysis-For-PPSZ/commits/324e8f1ebd9863ac2698e3ef50e8956bf4048141",
+        "html_url": "https://github.com/jiangxioabai/A-Better-Analysis-For-PPSZ/commit/324e8f1ebd9863ac2698e3ef50e8956bf4048141"
+      }
+    ]
+  },
+  {
+    "sha": "324e8f1ebd9863ac2698e3ef50e8956bf4048141",
+    "node_id": "C_kwDOTV-QN9oAKDMyNGU4ZjFlYmQ5ODYzYWMyNjk4ZTNlZjUwZTg5NTZiZjQwNDgxNDE",
+    "commit": {
+      "author": {
+        "name": "Jiang Tao",
+        "email": "52605076+jiangxioabai@users.noreply.github.com",
+        "date": "2026-07-12T08:26:42Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2026-07-12T08:26:42Z"
+      },
+      "message": "Add files via upload",
+      "tree": {
+        "sha": "2b9e58cbb99cba2dffab696b81ae3f88e28a5784",
+        "url": "https://api.github.com/repos/jiangxioabai/A-Better-Analysis-For-PPSZ/git/trees/2b9e58cbb99cba2dffab696b81ae3f88e28a5784"
+      },
+      "url": "https://api.github.com/repos/jiangxioabai/A-Better-Analysis-For-PPSZ/git/commits/324e8f1ebd9863ac2698e3ef50e8956bf4048141",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqU0/CCRC1aQ7uu5UhlAAAhrQQAItkuDkJX51JDBIeblfiW6+A\nd/MKGvi+ZmKq8y8qtKeLjXiUCfDe5vY+H66DVtsaGTeP6uQW7tP7GXEtdjljY+6N\nWyWYC0VBh3AWHUaETNOcHFrnI8QBuoouC1Ext+pbLG1ezPrftJJoi4jBMlsUL1Qx\n3FX0DWqHih3q1GthlBmPZ4f3iYdTxnCm0dxFT7EiyQwZx6H1WdS56od6GM2V7QVM\nQnL0YVki8alxMJi3OZzNQCEWJH57zKUODr2iOrwO0mqaZnmDu7cavjtNDTAZ3WH9\niapcp24smzyr7mIwcwzsVlfMjWwlduNKnHStY5ouC0wxVQppmGoG2AZTTfnzTqy3\nboDbh6W4Em71Pn1k4mm+/w91olwHcFvJFDuzhEjCK8QPnVmH5vgL6hmL9BLWc3V9\nTg4UrXlhrCydt0tRDLINFiPY06kbbrbhMMK55eYJu0nFe+GO9UvLfs8sZRCeHXrW\n0XR2NNrxb5pgNjQWNrmEMlN1aMvU/7WHCCIWxruuG9wi0Y/FOKCKbi2OWNDLeWiT\nj+mHfM+HL8VbdDjR9xn0Ww8Gn4ROuhQjQCsGDNs//f/wP7BzqRJpJw9L2uNQhgto\nUtALo9h4/sAJA3lz5M5OMDostJ+LMjYZa0DVAJuvk0AbMi5CenVwGoTzFDqe6KYJ\n8fKEeYjdv5qzv9D3yMRf\n=l8ep\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 2b9e58cbb99cba2dffab696b81ae3f88e28a5784\nauthor Jiang Tao <52605076+jiangxioabai@users.noreply.github.com> 1783844802 +0800\ncommitter GitHub <noreply@github.com> 1783844802 +0800\n\nAdd files via upload",
+        "verified_at": "2026-07-12T08:26:43Z"
+      }
+    },
+    "url": "https://api.github.com/repos/jiangxioabai/A-Better-Analysis-For-PPSZ/commits/324e8f1ebd9863ac2698e3ef50e8956bf4048141",
+    "html_url": "https://github.com/jiangxioabai/A-Better-Analysis-For-PPSZ/commit/324e8f1ebd9863ac2698e3ef50e8956bf4048141",
+    "comments_url": "https://api.github.com/repos/jiangxioabai/A-Better-Analysis-For-PPSZ/commits/324e8f1ebd9863ac2698e3ef50e8956bf4048141/comments",
+    "author": {
+      "login": "jiangxioabai",
+      "id": 52605076,
+      "node_id": "MDQ6VXNlcjUyNjA1MDc2",
+      "avatar_url": "https://avatars.githubusercontent.com/u/52605076?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/jiangxioabai",
+      "html_url": "https://github.com/jiangxioabai",
+      "followers_url": "https://api.github.com/users/jiangxioabai/followers",
+      "following_url": "https://api.github.com/users/jiangxioabai/following{/other_user}",
+      "gists_url": "https://api.github.com/users/jiangxioabai/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/jiangxioabai/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/jiangxioabai/subscriptions",
+      "organizations_url": "https://api.github.com/users/jiangxioabai/orgs",
+      "repos_url": "https://api.github.com/users/jiangxioabai/repos",
+      "events_url": "https://api.github.com/users/jiangxioabai/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/jiangxioabai/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+
+    ]
+  }
+]

@@ -1,0 +1,945 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1.02in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{microtype}
+\usepackage[hidelinks,pdfusetitle]{hyperref}
+\usepackage{array,booktabs}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{inputlemma}[theorem]{Imported estimate}
+\newtheorem{importedtheorem}[theorem]{Imported theorem}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\PPSZ}{\textnormal{\textsc{PPSZ}}}
+\newcommand{\Pw}{\mathcal P^{(w)}}
+\newcommand{\TwoCC}{\mathrm{TwoCC}}
+\newcommand{\ID}{\mathrm{ID}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\gain}{\mathrm{gain}}
+\newcommand{\Thr}{\mathrm{Thr}}
+\newcommand{\Lreg}{L_{\mathrm{reg}}}
+\newcommand{\Lirr}{L_{\mathrm{irr}}}
+\newcommand{\Preg}{P_{\mathrm{reg}}}
+\newcommand{\hbin}{h_2}
+\newcommand{\sat}{\mathrm{sat}}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Prb}{\mathbb P}
+
+\title{A Better Analysis For PPSZ For 3-SAT}
+\author{Tao Jiang \and Shaowei Cai}
+\date{July 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We revisit Scheder's analysis of the original PPSZ algorithm.  Keeping his regular and irregular estimates unchanged, we express them in common structural coordinates and replace only their final recombination by an explicit linear-programming dual certificate.  The old and new running-time bounds are
+\[
+\begin{array}{c|cc}
+ & \text{Unique-$3$-SAT} & \text{general $3$-SAT} \\
+\hline
+\text{Scheder's analysis} & O^*(1.306972377^n) & O^*(1.307031594^n) \\
+\text{this work} & O^*(1.306969598^n) & O^*(1.307031578^n).
+\end{array}
+\]
+In both rows, the general-case bound is obtained by applying the same existing Scheder--Steinberger unique-to-general lifting theorem to the corresponding Unique-$3$-SAT analysis.  To the best of our knowledge, $O^*(1.307031578^n)$ is the best currently known worst-case randomized running-time bound for general $3$-SAT.  Neither PPSZ nor the lifting theorem is modified.  The numerical inequalities are certified by exact rational interval computation.
+\end{abstract}
+
+\section{Introduction}\label{sec:intro}
+
+The PPSZ algorithm of Paturi, Pudl\'ak, Saks, and Zane~\cite{PPSZ} processes the variables of a satisfiable CNF formula in a uniformly random order.  At each variable it applies a bounded implication rule; if the value is not inferred, it guesses an unbiased bit.  For Unique-$3$-SAT, the classical exponent is
+\[
+ \Prb[\PPSZ(F)=\alpha]
+ \ge 2^{-p_0n-o(n)},
+ \qquad
+ p_0=2\ln 2-1,
+\]
+so the corresponding running-time base is $2^{p_0}=1.3070319\ldots$.
+
+Scheder~\cite{SchederFOCS,SchederFull,SchederJournal} obtained a stronger bound for the same algorithm.  His full $k=3$ argument derives two lower bounds, called the regular and irregular estimates.  In the notation reconciled in Section~\ref{sec:inputs}, the final simplification in Section~6 of the full version is
+\begin{equation}\label{eq:old-endgame-inputs}
+ \gain_R\ge \frac{|H|}{10118}-\frac{n}{41391},
+ \qquad
+ \gain_I\ge \frac{|J_1|+2|J_0|}{1380}.
+\end{equation}
+Writing $\mathrm{irr}=(|J_1|+2|J_0|)/n$ and using $|H|/n\ge 1-\mathrm{irr}$ gives
+\begin{equation}\label{eq:old-endgame}
+ \frac1n\max\{\gain_R,\gain_I\}
+ \ge
+ \max\left\{
+   \frac{1-\mathrm{irr}}{10118}-\frac1{41391},
+   \frac{\mathrm{irr}}{1380}
+ \right\}
+ \ge \frac1{15218}.
+\end{equation}
+Thus Scheder's published unique-case bonus is
+\[
+ \gamma_{\mathrm{old}}=\frac1{15218}
+ =0.000065711657247995\ldots,
+\]
+with unrounded base $1.306972376565153\ldots$.
+
+Our argument starts from these two estimates.  We retain a positive regular coefficient that is discarded in the simplification leading to~\eqref{eq:old-endgame}, express both estimates in the common coordinates
+\[
+ i_0=\frac{|\ID_0|}{n},
+ \qquad
+ i_1=\frac{|\ID_1|}{n},
+ \qquad
+ \tau=\frac{|\TwoCC|}{n},
+\]
+and combine them by a feasible dual solution of a three-variable linear program.  For fixed numerical parameters, the two bounds have the form
+\[
+ \Lreg=A-\Preg-2Ai_0-Ai_1+S\tau,
+ \qquad
+ \Lirr=b_0i_0+b_1i_1+b_T\tau.
+\]
+For the parameters fixed below, $S>0$ and $b_T<0$.  Taking $\lambda=b_1/A$ gives
+\[
+ b_0-2\lambda A>0,
+ \qquad
+ b_1-\lambda A=0,
+ \qquad
+ b_T+\lambda S>0,
+\]
+so the weighted average $(\lambda\Lreg+\Lirr)/(1+\lambda)$ has no negative structural coefficient.
+
+\begin{theorem}[Unique-$3$-SAT]\label{thm:main}
+Let
+\[
+ \gamma_{\mathrm{new}}=0.0000687793.
+\]
+There exist a finite implication strength $w_0$ and an integer $n_0$ such that, for every $w\ge w_0$, every $n\ge n_0$, and every 3-CNF formula $F$ on $n$ variables with unique satisfying assignment $\alpha$,
+\[
+ \Prb[\PPSZ_w(F)=\alpha]
+ \ge 2^{-p_0n+\gamma_{\mathrm{new}}n}
+ =2^{-n+s_3n+\gamma_{\mathrm{new}}n}.
+\]
+Consequently, independent repetition gives a randomized algorithm with running time
+\[
+ O^*(1.306969598^n).
+\]
+\end{theorem}
+
+Here $\PPSZ_w$ denotes standard uniform-order, unbiased-guessing PPSZ with implication strength $w$; Section~\ref{sec:finite-strength} explains the equivalent bounded-width implementation.  The fixed-parameter certificate gives
+\[
+ \gamma_*=0.000068779380458836\ldots,
+\]
+and the theorem uses the strictly smaller decimal $\gamma_{\mathrm{new}}$.  In particular,
+\[
+ 0.0000687793
+ >0.000065711657247995\ldots,
+\]
+so Theorem~\ref{thm:main} strictly improves Scheder's unique-case exponent.
+
+Applying the existing unique-to-general theorem of Scheder and Steinberger~\cite{SchederSteinberger} to the new unique-case bonus gives the following corollary.  The lifting theorem is used without modification; only its numerical instantiation changes.
+
+\begin{corollary}[General $3$-SAT via Scheder--Steinberger]\label{cor:general}
+There exist a finite implication strength $w_1$ and an integer $n_1$ such that, for every $w\ge w_1$, every $n\ge n_1$, and every satisfiable 3-CNF formula $F$ on $n$ variables,
+\[
+ \Prb[\PPSZ_w(F)\text{ succeeds}]
+ \ge 2^{-p_0n+\eta n},
+ \qquad
+ \eta=0.000000364.
+\]
+Consequently, general $3$-SAT can be solved by repeated runs of the original PPSZ algorithm in randomized time
+\[
+ O^*(1.307031578^n).
+\]
+\end{corollary}
+
+Applying the same lifting calculation to the old and new unique-case bonuses gives the following limiting values.
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}ccc@{}}
+\toprule
+unique-case bonus & lifted general-case bonus & general-$3$-SAT base\\
+\midrule
+$0.000065711657247995\ldots$
+ & $0.0000003465837065\ldots$
+ & $1.307031593709762\ldots$\\
+$0.0000687793$
+ & $0.0000003640269421\ldots$
+ & $1.307031577906796\ldots$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The second row has a strictly larger lifted bonus and a strictly smaller running-time base:
+\begin{align*}
+ 0.0000003640269421\ldots
+ &>0.0000003465837065\ldots,\\
+ 1.307031577906796\ldots
+ &<1.307031593709762\ldots.
+\end{align*}
+Both rows use the original PPSZ algorithm and the same Scheder--Steinberger lifting theorem; they differ only in the unique-case exponent supplied to that theorem.  Scheder and Steinberger identify PPSZ as the fastest known algorithm for $k$-SAT, and a recent account likewise treats Scheder's PPSZ analysis as the state of the art for worst-case $3$-SAT~\cite{SchederSteinberger,AttiasGaoReyzin}.  Since Corollary~\ref{cor:general} strictly lowers that general-$3$-SAT base, it gives the best currently known worst-case randomized running-time bound for general $3$-SAT.
+
+Scheder's regular and irregular estimates, the structural graph inequalities, the change-of-measure argument, and the lifting theorem are used as published.  The new step is the common-coordinate recombination and its dual certificate; the general-case number is the resulting numerical corollary.  Appendix~\ref{app:arithmetic} gives the exact interval checks.
+
+\section{Imported estimates and finite-strength conventions}\label{sec:inputs}
+
+\subsection{Algorithmic convention and order of limits}\label{sec:finite-strength}
+
+Let $\Pw$ be the weak implication heuristic that infers $x=b$ when some set of at most $w$ residual clauses implies $x=b$.  We write $\PPSZ_w$ for the corresponding random decoder.  The heuristic is sound and monotone under restrictions.  For fixed $w$, one run takes $n^{O(w)}$ time and polynomial space.
+
+A set of at most $w$ clauses of a 3-CNF contains at most $3w$ variables.  Resolution completeness on those variables gives a derivation of width at most $3w$ for every implication certified by $\Pw$.  Hence the standard bounded-width implementation of original PPSZ at width $3w$ forces every variable forced by $\Pw$ and has at least the same success probability.
+
+We keep the finite-strength dependence separate from the limit $n\to\infty$.  Paturi et al.'s error bound, in the notation of Scheder and Steinberger, is
+\begin{equation}\label{eq:pw-error}
+ p_w=p_0+\eps_w,
+ \qquad
+ \eps_w\ge0,
+ \qquad
+ \eps_w\longrightarrow0
+ \quad(w\to\infty).
+\end{equation}
+For the regular and irregular estimates below, there are nonnegative functions $\xi_R(w),\xi_I(w)\to0$ and nonnegative remainders $r_{R,w}(n),r_{I,w}(n)=o(n)$ for each fixed $w$.  Their contributions to the exponent are
+\[
+ \xi_X(w)n+r_{X,w}(n),
+ \qquad X\in\{R,I\}.
+\]
+For fixed $w$, the term $\xi_X(w)n$ is linear and is not part of $o(n)$.  Accordingly, the target exponent is fixed before $w$ is chosen, and the limit $n\to\infty$ is taken only after fixing $w$.
+
+By complementing variables, we normalize the unique satisfying assignment to the all-one assignment.  Choose one canonical critical clause $(x\vee\bar y\vee\bar z)$ for each variable $x$ and put arcs $x\to y$ and $x\to z$ in the critical-clause graph.  Let $J_i$ be the indegree-$i$ class, and let $\TwoCC$ be the set of variables having at least two critical clauses.
+
+\subsection{Change of measure and notation}
+
+All logarithms in the coefficient functions are natural.  For $0\le t\le1$, define
+\[
+ f_{\rm KL}(t)=(1-t)\ln(1-t)+t,
+\]
+with $0\ln0=0$.  Let $U$ be uniform on variable placements and let $D\ll U$ be one of Scheder's auxiliary distributions.  If $\mathrm{Forced}(\pi)$ is the number of variables inferred when the run follows the unique satisfying assignment, then
+\begin{equation}\label{eq:change}
+ \E_{\pi\sim U}\!\left[2^{-n+\mathrm{Forced}(\pi)}\right]
+ \ge
+ 2^{-n+\E_{\pi\sim D}[\mathrm{Forced}(\pi)]
+      -\mathrm{KL}_2(D\|U)}.
+\end{equation}
+This is Equation~(2) of the full version~\cite{SchederFull} and Equation~(3) of the journal version~\cite{SchederJournal}.
+
+The following table reconciles the two notation conventions used in Scheder's full proof.
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.16\linewidth}>{\raggedright\arraybackslash}p{0.54\linewidth}>{\raggedright\arraybackslash}p{0.21\linewidth}@{}}
+\toprule
+symbol & meaning & source convention\\
+\midrule
+$H$ & selected sibling-graph subgraph of maximum degree at most two & Section~6\\
+$H_{\rm low},H_{\rm high}$ & selected low- and high-label-density edges of $H$ & Section~7\\
+$\TwoCC$ & variables having at least two critical clauses & Sections~6--8\\
+$J_i$ & all indegree-$i$ variables in the critical-clause graph & called $\ID_i$ in Section~6\\
+$\ID_i=J_i\setminus\TwoCC$ & indegree-$i$ variables outside $\TwoCC$ & Section~8; used here\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Regular and irregular estimates}
+
+\begin{inputlemma}[Regular lower bound from Scheder]\label{lem:regular}
+For every fixed $0\le\eps_R\le0.13$, every fixed $\Thr>0$, and every admissible finite strength $w$,
+\[
+ \Prb[\PPSZ_w(F)=\alpha]
+ \ge
+ 2^{-p_0n+\gain_R-\xi_R(w)n-r_{R,w}(n)},
+\]
+where
+\begin{align}
+ \gain_R
+ &\ge
+ (0.001687\eps_R-0.006404\eps_R^2)|H_{\rm low}|
+ +0.9\Thr|H_{\rm high}| \notag\\
+ &\quad
+ +(0.009307-0.055\eps_R-0.1503f_{\rm KL}(\eps_R))|\TwoCC|
+ -1.1\eps_R\Thr n.
+ \label{eq:regular}
+\end{align}
+\end{inputlemma}
+
+Equation~\eqref{eq:regular} is the final coefficient inequality in Section~7.8 of~\cite{SchederFull}.  Scheder substitutes $\eps_R=0.1$ in his final simplification; we use the inequality before that substitution.
+
+\begin{inputlemma}[Irregular lower bound from Scheder]\label{lem:irregular}
+For every fixed $0\le\eps_I\le1/5$ and every admissible finite strength $w$,
+\[
+ \Prb[\PPSZ_w(F)=\alpha]
+ \ge
+ 2^{-p_0n+\gain_I-\xi_I(w)n-r_{I,w}(n)},
+\]
+where
+\begin{equation}\label{eq:irregular}
+ \gain_I
+ \ge
+ b_1(\eps_I)|\ID_1|+b_0(\eps_I)|\ID_0|+b_T(\eps_I)|\TwoCC|
+\end{equation}
+and
+\begin{align}
+ b_1(\eps)&=0.030966\eps-0.0028\eps^2-0.4027f_{\rm KL}(\eps),
+ \label{eq:b1}\\
+ b_0(\eps)&=0.06259\eps-0.344f_{\rm KL}(\eps),
+ \label{eq:b0}\\
+ b_T(\eps)&=0.009307-0.2405\eps-0.03125\eps^2
+             -0.06183f_{\rm KL}(5\eps).
+ \label{eq:bT}
+\end{align}
+\end{inputlemma}
+
+Equation~\eqref{eq:irregular} is the final lower bound in Section~8.4 of~\cite{SchederFull}, before the substitution $\eps_I=0.029$.  Appendix~\ref{app:provenance} verifies that the larger value used here satisfies the source-side admissibility conditions.
+
+\subsection{Structural inequalities}
+
+Scheder's sibling-graph construction gives
+\begin{equation}\label{eq:structure-H}
+ \frac{18}{17}|H_{\rm low}|+2|H_{\rm high}|+3|\TwoCC|
+ \ge |H|.
+\end{equation}
+His Lemma~34 gives
+\[
+ |H|\ge n-|J_1|-2|J_0|.
+\]
+Since $J_i=\ID_i\mathbin{\dot\cup}(J_i\cap\TwoCC)$ for $i\in\{0,1\}$ and
+\[
+ |J_1\cap\TwoCC|+2|J_0\cap\TwoCC|
+ \le2|\TwoCC|,
+\]
+we obtain
+\begin{equation}\label{eq:H-lower}
+ |H|\ge n-|\ID_1|-2|\ID_0|-2|\TwoCC|.
+\end{equation}
+Both inequalities are imported from Scheder's analysis.
+
+\section{Common-coordinate recombination}\label{sec:combination}
+
+\subsection{The two affine bounds}
+
+Normalize
+\[
+ i_0=\frac{|\ID_0|}{n},
+ \qquad
+ i_1=\frac{|\ID_1|}{n},
+ \qquad
+ \tau=\frac{|\TwoCC|}{n}.
+\]
+For a fixed regular parameter $\eps_R$, put
+\[
+ c_L=0.001687\eps_R-0.006404\eps_R^2,
+ \qquad
+ c_T=0.009307-0.055\eps_R-0.1503f_{\rm KL}(\eps_R),
+\]
+and define
+\begin{equation}\label{eq:AThr}
+ A=\frac{17}{18}c_L,
+ \qquad
+ \Thr=\frac{2A}{0.9}.
+\end{equation}
+Then the coefficients of $|H_{\rm low}|$ and $|H_{\rm high}|$ in~\eqref{eq:regular} are $(18/17)A$ and $2A$.  Equations~\eqref{eq:structure-H} and~\eqref{eq:H-lower} therefore give
+\begin{equation}\label{eq:Rlinear}
+ \frac{\gain_R}{n}
+ \ge
+ \Lreg(i_0,i_1,\tau)
+ :=A(1-i_1-2i_0)-\Preg+S\tau,
+\end{equation}
+where
+\begin{equation}\label{eq:pS}
+ \Preg=1.1\eps_R\Thr,
+ \qquad
+ S=c_T-5A.
+\end{equation}
+The term $5A$ consists of $3A$ from~\eqref{eq:structure-H} and a further $2A$ from~\eqref{eq:H-lower}.
+
+For a fixed irregular parameter $\eps_I$, Equations~\eqref{eq:irregular}--\eqref{eq:bT} already give
+\begin{equation}\label{eq:Ilinear}
+ \frac{\gain_I}{n}
+ \ge
+ \Lirr(i_0,i_1,\tau)
+ :=b_0i_0+b_1i_1+b_T\tau.
+\end{equation}
+
+\subsection{Dual certificate}
+
+For fixed coefficients, consider
+\begin{equation}\label{eq:minimax}
+ \Gamma=
+ \inf_{i_0,i_1,\tau\ge0}
+ \max\{\Lreg(i_0,i_1,\tau),\Lirr(i_0,i_1,\tau)\}.
+\end{equation}
+The associated epigraph linear program has dual
+\begin{equation}\label{eq:dual-lp}
+\begin{aligned}
+ \text{maximize}\quad &y_R(A-\Preg)\\
+ \text{subject to}\quad
+ &y_R+y_I=1,
+ \qquad y_R,y_I\ge0,\\
+ &-2Ay_R+b_0y_I\ge0,\\
+ &-Ay_R+b_1y_I\ge0,\\
+ &Sy_R+b_Ty_I\ge0.
+\end{aligned}
+\end{equation}
+Setting $y_R=\lambda/(1+\lambda)$ and $y_I=1/(1+\lambda)$ yields the following explicit certificate.
+
+\begin{proposition}[Affine minimax certificate]\label{prop:certificate}
+Suppose $A>\Preg$, $\lambda\ge0$, and
+\begin{equation}\label{eq:symbolic-conditions}
+ b_0\ge2\lambda A,
+ \qquad
+ b_1\ge\lambda A,
+ \qquad
+ b_T+\lambda S\ge0.
+\end{equation}
+Then, for every $i_0,i_1,\tau\ge0$,
+\begin{equation}\label{eq:symbolic-gamma}
+ \max\{\Lreg,\Lirr\}
+ \ge
+ \frac{\lambda(A-\Preg)}{1+\lambda}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Since $\lambda\ge0$,
+\begin{align*}
+ \max\{\Lreg,\Lirr\}
+ &\ge \frac{\lambda\Lreg+\Lirr}{1+\lambda}\\
+ &=\frac{1}{1+\lambda}
+ \bigl(
+   \lambda(A-\Preg)
+   +(b_0-2\lambda A)i_0
+   +(b_1-\lambda A)i_1
+   +(b_T+\lambda S)\tau
+ \bigr).
+\end{align*}
+Every variable coefficient is nonnegative by~\eqref{eq:symbolic-conditions}.
+\end{proof}
+
+\subsection{Fixed parameters and certified value}
+
+We use the exact rational decimals
+\begin{align}
+ \eps_R&=0.1024756190168075228998451658,
+ \notag\\
+ \eps_I&=0.07307238160252154687451293138.
+ \label{eq:parameter-values}
+\end{align}
+An exploratory numerical search produced these parameters; the proof uses only the fixed decimals in~\eqref{eq:parameter-values}.  Exact rational interval evaluation at these fixed inputs gives
+\begin{align}
+ A&\in[9.97582178549,9.97582178550]\cdot10^{-5},
+ &\Preg&\in[2.49890303097,2.49890303098]\cdot10^{-5},
+ \notag\\
+ S&\in[0.00235445147822,0.00235445147823],
+ &b_1&\in[0.00114549739595,0.00114549739597],
+ \notag\\
+ b_0&\in[0.00363196877285,0.00363196877287],
+ &b_T&\in[-0.01318180201459,-0.01318180201458].
+ \label{eq:coefficient-intervals}
+\end{align}
+In particular, $A>\Preg>0$, $S>0$, $b_0,b_1>0$, and $b_T<0$.
+
+Take
+\begin{equation}\label{eq:lambdadef}
+ \lambda=\frac{b_1}{A}=11.4827371678\ldots.
+\end{equation}
+The $i_1$ constraint is tight, and the remaining dual margins are
+\begin{align}
+ b_0-2\lambda A
+ &=b_0-2b_1
+ =0.001340973980937947\ldots>0,
+ \label{eq:cert1}\\
+ b_T+\lambda S
+ &=0.013853745484230647\ldots>0.
+ \label{eq:cert2}
+\end{align}
+Proposition~\ref{prop:certificate} gives
+\begin{equation}\label{eq:gamma-star}
+ \Gamma\ge
+ \gamma_*
+ :=\frac{\lambda(A-\Preg)}{1+\lambda}
+ =\frac{b_1(A-\Preg)}{A+b_1}
+ =0.000068779380458836\ldots.
+\end{equation}
+The certificate is tight for the relaxation~\eqref{eq:minimax}: setting $i_0=\tau=0$ and
+\begin{equation}\label{eq:tight-point}
+ i_1=\frac{A-\Preg}{A+b_1}
+ =0.060043244708778326\ldots
+\end{equation}
+gives $\Lreg=\Lirr=\gamma_*$.  This point also satisfies $i_0+i_1+\tau<1$.  We do not assert that this point is realized by a formula or that the displayed parameters are globally optimal once all structural constraints are imposed.
+
+\subsection{Proof of Theorem~\ref{thm:main}}
+
+Let
+\[
+ \Delta=\gamma_*-\gamma_{\mathrm{new}}>0.
+\]
+Choose a finite strength $w_0$ such that
+\[
+ \max\{\xi_R(w_0),\xi_I(w_0)\}<\frac{\Delta}{4}.
+\]
+For this fixed $w_0$, choose $n_0$ so that, for $n\ge n_0$,
+\[
+ \max\{r_{R,w_0}(n),r_{I,w_0}(n)\}<\frac{\Delta n}{4}.
+\]
+The two imported estimates bound the same success probability.  Hence
+\begin{align*}
+ \log_2\Prb[\PPSZ_{w_0}(F)=\alpha]
+ &\ge
+ -p_0n+
+ \max\{\gain_R,\gain_I\}
+ -\max_{X\in\{R,I\}}\bigl(\xi_X(w_0)n+r_{X,w_0}(n)\bigr)\\
+ &\ge
+ -p_0n+\gamma_*n-\frac{\Delta n}{2}\\
+ &\ge
+ -p_0n+\gamma_{\mathrm{new}}n.
+\end{align*}
+If $w\ge w_0$, the heuristic $\mathcal P^{(w)}$ can only force additional variables, so the same lower bound holds for $\PPSZ_w$.  One run has polynomial cost for fixed $w$, and repetition requires
+\[
+ O^*\!\left(2^{(p_0-\gamma_{\mathrm{new}})n}\right)
+\]
+time.  Exact interval arithmetic gives the strict inequality
+\[
+ 2^{p_0-0.0000687793}
+ <1.306969598.
+\]
+
+\section{Quantitative lifting to general 3-SAT}\label{sec:lifting}
+
+We now specialize the lifting theorem of Scheder and Steinberger~\cite{SchederSteinberger}, keeping the finite-strength error explicit in both branches.
+
+Let
+\begin{equation}\label{eq:pstar-q0}
+ p_*=\frac{2-\log_2 e}{2}
+ =1-\frac{1}{2\ln2},
+ \qquad
+ q_0=p_0-p_*
+ =0.107641881564372\ldots.
+\end{equation}
+For $0\le\delta\le1$, let
+\[
+ \hbin(\delta)
+ =-\delta\log_2\delta-(1-\delta)\log_2(1-\delta),
+\]
+with the continuous endpoint convention $0\log_2 0=0$.
+
+\begin{importedtheorem}[Scheder--Steinberger]\label{thm:SS-imported}
+Let $\mathcal P$ be a monotone proof heuristic of error at most $p\ge p_*$ on a formula class closed under restrictions.  Let $Q$ be the distribution induced by the complete proof heuristic and let $I$ be the number of variables that are liquid when processed, in the notation of~\cite{SchederSteinberger}.  For every satisfiable formula $F$ on $n$ variables,
+\begin{equation}\label{eq:SS-main}
+ \Prb[\operatorname{RandomDecode}(F,\mathcal P)\text{ succeeds}]
+ \ge
+ 2^{-pn+(p-p_*)\E_Q[I]}.
+\end{equation}
+Moreover, if $\E_Q[I]\le\delta n$, there is a restriction of at most $\delta n$ variables, consistent with a satisfying assignment, whose residual formula is uniquely satisfiable.
+\end{importedtheorem}
+
+Equation~\eqref{eq:SS-main} is Main Theorem~1.17 of~\cite{SchederSteinberger}, and the corresponding unique-to-general statement is their Lifting Theorem~1.18.  Appendix~\ref{app:lifting-proof} gives the finite-strength specialization and the conditioning argument for realizing the favorable restriction as a PPSZ prefix.
+
+For a unique-case bonus $\gamma>0$, define
+\begin{equation}\label{eq:u-gamma}
+ u_\gamma(\delta)
+ =\gamma(1-\delta)-(1-p_0)\delta-\hbin(\delta)
+\end{equation}
+and
+\begin{equation}\label{eq:eta-infty-def}
+ \eta_\infty(\gamma)
+ =\max_{0\le\delta\le1/2}
+ \min\{q_0\delta,u_\gamma(\delta)\}.
+\end{equation}
+The first branch is the gain from~\eqref{eq:SS-main} when $\E_Q[I]\ge\delta n$.  The second is the exact exponent obtained by placing a restriction of $\delta n$ variables first, guessing its unforced values correctly, and applying the unique-case bound on the remaining $(1-\delta)n$ variables.
+
+\begin{proposition}[Quantitative specialization of the lifting theorem]\label{prop:quant-lift}
+Suppose that, for some $\gamma>0$, original PPSZ has the following fixed-strength unique-case bound: there are $w_U,m_U$ such that for every $w\ge w_U$ and every uniquely satisfiable 3-CNF formula $G$ on $m\ge m_U$ variables,
+\[
+ \Prb[\PPSZ_w(G)\text{ finds its unique solution}]
+ \ge 2^{-p_0m+\gamma m}.
+\]
+Then for every $\eta<\eta_\infty(\gamma)$ there are finite $w_G,n_G$ such that, for every $w\ge w_G$, every $n\ge n_G$, and every satisfiable 3-CNF formula $F$ on $n$ variables,
+\[
+ \Prb[\PPSZ_w(F)\text{ succeeds}]
+ \ge 2^{-p_0n+\eta n}.
+\]
+\end{proposition}
+
+The proof appears in Appendix~\ref{app:lifting-proof}.  It first fixes $\eta$ and $\delta$, then chooses a sufficiently large finite $w$, and only afterwards lets $n\to\infty$.  Thus the linear discrepancy $\eps_wn$ in~\eqref{eq:pw-error} is controlled explicitly rather than absorbed into $o(n)$.
+
+For $0<\delta<1/2$, the function $q_0\delta$ is strictly increasing and $u_\gamma(\delta)$ is strictly decreasing.  Hence the maximum in~\eqref{eq:eta-infty-def} occurs at the unique solution $\delta_\gamma\in(0,1/2)$ of
+\begin{equation}\label{eq:intersection}
+ q_0\delta_\gamma=u_\gamma(\delta_\gamma),
+\end{equation}
+or equivalently
+\begin{equation}\label{eq:root-equation}
+ \hbin(\delta_\gamma)
+ +(1-p_*+\gamma)\delta_\gamma
+ =\gamma.
+\end{equation}
+Thus
+\begin{equation}\label{eq:eta-root}
+ \eta_\infty(\gamma)=q_0\delta_\gamma.
+\end{equation}
+The root is strictly increasing in $\gamma$: implicit differentiation of~\eqref{eq:root-equation} gives
+\[
+ \frac{d\delta_\gamma}{d\gamma}
+ =\frac{1-\delta_\gamma}
+ {\log_2((1-\delta_\gamma)/\delta_\gamma)+1-p_*+\gamma}>0.
+\]
+Consequently, the lifted bonus is strictly increasing in the unique-case bonus.
+
+Exact interval arithmetic certifies the root brackets
+\begin{align*}
+ \delta_{\gamma_{\mathrm{old}}}
+ &\in
+ [0.00000321978491531273261,
+  0.00000321978491531273262],\\
+ \delta_{\gamma_{\mathrm{new}}}
+ &\in
+ [0.00000338183369577144614,
+  0.00000338183369577144615].
+\end{align*}
+They imply
+\begin{align}
+ \eta_\infty(\gamma_{\mathrm{old}})
+ &\in
+ [0.0000003465837065,
+  0.0000003465837066],
+ \label{eq:eta-old-interval}\\
+ \eta_\infty(\gamma_{\mathrm{new}})
+ &\in
+ [0.0000003640269421,
+  0.0000003640269422].
+ \label{eq:eta-new-interval}
+\end{align}
+The corresponding limiting bases satisfy
+\begin{align*}
+ 2^{p_0-\eta_\infty(\gamma_{\mathrm{old}})}
+ &<1.307031593710,\\
+ 2^{p_0-\eta_\infty(\gamma_{\mathrm{new}})}
+ &<1.307031577907.
+\end{align*}
+
+\begin{proof}[Proof of Corollary~\ref{cor:general}]
+Apply Proposition~\ref{prop:quant-lift} to Theorem~\ref{thm:main} with $\gamma=\gamma_{\mathrm{new}}$.  By~\eqref{eq:eta-new-interval},
+\[
+ \eta=0.000000364
+ <\eta_\infty(\gamma_{\mathrm{new}}).
+\]
+At the fixed rational separator
+\[
+ \delta_0=0.00000338183369,
+\]
+exact interval arithmetic shows that both limiting branches exceed $\eta$ by more than $2.69\cdot10^{-11}$.  Proposition~\ref{prop:quant-lift} therefore supplies a sufficiently large finite implication strength and the asserted success exponent.  Finally,
+\[
+ 2^{p_0-0.000000364}
+ =1.307031577931205\ldots
+ <1.307031578.
+\]
+\end{proof}
+
+\appendix
+
+\section{Imported inputs and parameter admissibility}\label{app:provenance}
+
+The following table lists the source of each analytic input used in the proof.
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.25\linewidth}>{\raggedright\arraybackslash}p{0.37\linewidth}>{\raggedright\arraybackslash}p{0.29\linewidth}@{}}
+\toprule
+input & source location & use here\\
+\midrule
+change of measure & Scheder full version Eq.~(2); journal Eq.~(3) & Equation~\eqref{eq:change}\\
+regular coefficients & full version Section~7.8, final gain display & Imported estimate~\ref{lem:regular}\\
+irregular coefficients & full version Section~8.4, final display before $\eps=0.029$ & Imported estimate~\ref{lem:irregular}\\
+sibling-graph inequality & full version Eq.~(11) & Equation~\eqref{eq:structure-H}\\
+degree-two subgraph bound & full version Lemma~34 and Lemma~A.3 & Equation~\eqref{eq:H-lower}\\
+published $1/15218$ endgame & full version Theorems~35--36 and end of Section~6 & Equations~\eqref{eq:old-endgame-inputs}--\eqref{eq:old-endgame}\\
+finite-strength error $p_w$ & Paturi et al.; Scheder--Steinberger Theorem~1.10 & Equation~\eqref{eq:pw-error}\\
+general-case inequality and lifting & Scheder--Steinberger Main Theorem~1.17 and Lifting Theorem~1.18 & Theorem~\ref{thm:SS-imported} and Proposition~\ref{prop:quant-lift}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The coefficient inequalities in Imported estimates~\ref{lem:regular} and~\ref{lem:irregular} are taken from the cited source.  The interval certificate interprets their printed decimals with the source-specified rounding directions.  It verifies the recombination and lifting arithmetic, not the integrals or auxiliary numerical bounds underlying those estimates.
+
+For the regular construction, the source requires $\eps_R\le0.13$, and the value in~\eqref{eq:parameter-values} lies strictly inside that range.  The irregular value is covered by the following elementary admissibility check.
+
+\begin{lemma}[Admissibility of the irregular parameter]\label{lem:epsI-valid}
+For $0\le\eps_I\le1/5$, every density in Scheder's irregular construction is nonnegative.  This range also implies the restrictions $\eps_I\le4/5$, $\eps_I\le256/600$, and $5\eps_I\le1$ used elsewhere in the source.  In particular, the value in~\eqref{eq:parameter-values} is admissible.
+\end{lemma}
+
+\begin{proof}
+Definition~67 of~\cite{SchederFull} gives, for $0\le r\le1/2$,
+\[
+ \gamma_{\ID}(r)=10r^2(1-2r)^2,
+ \quad
+ \gamma_{p\ID}(r)=\frac{61}{6}r^3(1-2r)^2,
+ \quad
+ \gamma_{\TwoCC}(r)=20r^3(1-2r),
+\]
+extended by zero past $1/2$.  Write their derivatives as $\phi_{\ID}$, $\phi_{p\ID}$, and $\phi_{\TwoCC}$.  With $x=2r\in[0,1]$,
+\begin{align*}
+ |\phi_{\ID}(r)|
+ &=10x(1-x)|1-2x|\le\frac52,\\
+ |\phi_{p\ID}(r)|
+ &=\frac{61}{24}x^2(1-x)|3-5x|
+ \le\frac{61}{54},\\
+ \phi_{\TwoCC}(r)
+ &=20r^2(3-8r)\ge-5.
+\end{align*}
+For a variable outside $\TwoCC$, every derivative occurring in Definition~67 has the form
+\[
+ -a\phi_{\ID}+m\phi_{p\ID},
+ \qquad
+ a\in\{0,1\},\quad m\in\{0,1,2\},
+\]
+and is bounded below by
+\[
+ -\frac52-2\cdot\frac{61}{54}
+ =-\frac{257}{54}>-5.
+\]
+For a variable in $\TwoCC$, the derivative is at least $-5$.  Hence every density $1+\eps_I\gamma_v'$ is nonnegative when $\eps_I\le1/5$.  The remaining source restrictions are weaker, and
+\[
+ 0.07307238160252154687451293138<\frac15.
+\]
+\end{proof}
+
+Only the fixed parameters in~\eqref{eq:parameter-values} enter the proof; the search that produced them is exploratory.  At Scheder's final parameters $(0.1,0.029)$, the same affine program gives $0.000065719084\ldots$; the fixed parameters above give $0.000068779380\ldots$.  No optimality claim is made for the search.
+
+\section{Exact arithmetic and reproducibility}\label{app:arithmetic}
+
+The verification programs and certificate are available in the project repository.\footnote{\url{https://github.com/jiangxioabai/A-Better-Analysis-For-PPSZ}}
+The source archive contains the following numerical artifacts:
+\begin{center}
+\small
+\begin{tabular}{@{}ll@{}}
+\toprule
+file & role\\
+\midrule
+\texttt{ppsz\_certificate.json} & fixed rational parameters, root brackets, and rounded targets\\
+\texttt{verify\_ppsz\_constants.py} & exact-rational interval checker; performs no search\\
+\texttt{verification\_output.txt} & expected successful transcript\\
+\bottomrule
+\end{tabular}
+\end{center}
+The certificate version is \texttt{2026-07-12-rational-v6}.
+
+Every decimal in the certificate is parsed as a rational number.  For $1\le y\le2$, with $z=(y-1)/(y+1)$, logarithms are enclosed by
+\[
+ \ln y
+ =2\sum_{j=0}^{N-1}\frac{z^{2j+1}}{2j+1}+R_N,
+ \qquad
+ 0\le R_N\le
+ \frac{2z^{2N+1}}{(2N+1)(1-z^2)}.
+\]
+Exact powers of two reduce every positive rational argument to $[1,2]$.  Exponentials are enclosed by their positive Taylor series and a geometric bound on the tail.  The supplied certificate uses $N=90$ for both series.  All intermediate endpoints are \texttt{fractions.Fraction} objects; decimal conversion occurs only when printing the transcript.
+
+For each lifting root, the certificate supplies a fixed rational bracket.  The checker proves opposite signs for
+\[
+ \hbin(\delta)+(1-p_*+\gamma)\delta-\gamma
+\]
+at the two endpoints.  Monotonicity, proved in Section~\ref{sec:lifting}, then certifies the unique root and the corresponding interval for $\eta_\infty(\gamma)$.
+
+The main certified margins are as follows.
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.13}
+\begin{tabular}{@{}ll@{}}
+\toprule
+claim & certified value or enclosure\\
+\midrule
+$A-\Preg$ & $0.00007476918754521059\ldots>0$\\
+$b_0-2b_1$ & $0.00134097398093794778\ldots>0$\\
+$b_T+\lambda S$ & $0.01385374548423064739\ldots>0$\\
+$\gamma_*-\gamma_{\mathrm{new}}$ & $8.045883656550355\cdot10^{-11}>0$\\
+$\eta_\infty(\gamma_{\mathrm{old}})$ & $[0.0000003465837065,0.0000003465837066]$\\
+$\eta_\infty(\gamma_{\mathrm{new}})$ & $[0.0000003640269421,0.0000003640269422]$\\
+$\gamma_{\mathrm{new}}-\gamma_{\mathrm{old}}$ & $0.0000030676427520042\ldots>0$\\
+$\eta_\infty(\gamma_{\mathrm{new}})-\eta_\infty(\gamma_{\mathrm{old}})$ & $0.0000000174432356\ldots>0$\\
+high-branch margin at $\delta_0$ & $2.6941529384\cdot10^{-11}>0$\\
+unique-residual margin at $\delta_0$ & $2.7050581864\cdot10^{-11}>0$\\
+unique-case base & $1.306969597516246\ldots<1.306969598$\\
+old limiting general base & $1.307031593709762\ldots<1.307031593710$\\
+new limiting general base & $1.307031577906796\ldots<1.307031577907$\\
+safe theorem base & $1.307031577931205\ldots<1.307031578$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The checker verifies the dual inequalities, the old and new unique-case gains, both lifted gains, the strict old-versus-new inequalities and additive gaps, the rounded running-time bases, every finite-decimal theorem constant, and the margins used to choose a finite implication strength.  It performs no parameter search; all checks use fixed rational data.
+
+\section{Finite-strength quantitative lifting proof}\label{app:lifting-proof}
+
+We prove Proposition~\ref{prop:quant-lift}, including the conditioning required in the favorable-prefix branch.
+
+\subsection{The two imported lifting ingredients}
+
+Fix a finite strength $w$.  By~\eqref{eq:pw-error}, the heuristic $\Pw$ has error at most
+\[
+ p_w=p_0+\eps_w,
+ \qquad
+ q_w=p_w-p_*=q_0+\eps_w.
+\]
+Applying Theorem~\ref{thm:SS-imported} gives, for every satisfiable 3-CNF formula $F$ on $n$ variables,
+\begin{equation}\label{eq:finite-high-I}
+ \Prb[\PPSZ_w(F)\text{ succeeds}]
+ \ge
+ 2^{-p_wn+q_w\E_Q[I]}.
+\end{equation}
+The term $\eps_wn$ is retained explicitly.
+
+When $\E_Q[I]$ is small, we use the following restriction lemma.
+
+\begin{lemma}[A small liquid set yields a unique residual formula]\label{lem:liquid-restriction}
+Suppose $I(\pi,\alpha)\le r$ for a permutation $\pi$ and a satisfying assignment $\alpha$ of $F$.  Let $L$ be the set of variables that are liquid at the moment they are processed along $(\pi,\alpha)$, and let $\rho=\alpha|_L$.  Then $|L|=I(\pi,\alpha)\le r$ and $F|_\rho$ has the unique satisfying assignment $\alpha|_{V\setminus L}$.
+\end{lemma}
+
+\begin{proof}
+Assume that $\beta$ is a satisfying assignment of $F$ extending $\rho$, and let $x$ be the first variable in the order $\pi$ on which $\beta$ and $\alpha$ differ.  Immediately before $x$ is processed, the two assignments agree on all previously assigned variables.  Both values of $x$ therefore extend to satisfying assignments of the current residual formula, so $x$ is liquid at that moment.  Hence $x\in L$, but $\beta$ extends $\rho=\alpha|_L$, a contradiction.
+\end{proof}
+
+If $\E_Q[I]\le\delta n$, some pair $(\pi,\alpha)$ in the support of $Q$ satisfies $I(\pi,\alpha)\le\delta n$.  Since $I$ is integral, Lemma~\ref{lem:liquid-restriction} gives a restriction of at most $\lfloor\delta n\rfloor$ variables with a unique residual formula.
+
+\subsection{Realizing the restriction as a PPSZ prefix}
+
+\begin{lemma}[Prefix realization]\label{lem:prefix-realization}
+Let $F$ be a satisfiable CNF formula on variable set $V$, let $\alpha\in\sat(F)$, and let $R\subseteq V$ have size $r$.  Assume that
+$F|_{\alpha|_R}$ has the unique satisfying assignment $\alpha|_{V\setminus R}$.  Then, for every finite implication strength $w$,
+\begin{equation}\label{eq:prefix-product}
+ \Prb[\PPSZ_w(F)=\alpha]
+ \ge
+ \binom nr^{-1}2^{-r}
+ \Prb[\PPSZ_w(F|_{\alpha|_R})=\alpha|_{V\setminus R}].
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Let $A_R$ be the event that the first $r$ positions of the uniformly random variable permutation are precisely the variables of $R$, in an arbitrary order.  Every $r$-subset is equally likely, so
+\[
+ \Prb[A_R]=\binom nr^{-1}.
+\]
+Condition on $A_R$ and on a particular prefix order $\sigma$ of $R$.  Run PPSZ along the assignment $\alpha$.  Soundness implies that every value inferred during the prefix equals the corresponding value of $\alpha$.  Let $g_\sigma\le r$ be the number of prefix variables that are not inferred and therefore require guesses.  The guesses are independent unbiased bits, so the probability that all required prefix guesses are correct is
+\[
+ 2^{-g_\sigma}\ge2^{-r}.
+\]
+Thus forcing can only increase the probability relative to the crude lower bound $2^{-r}$.
+
+After a successful prefix, the residual formula is exactly $F|_{\alpha|_R}$.  Conditioned on $A_R$ and the fixed prefix order $\sigma$, the relative order of the variables in $V\setminus R$ is uniform over all $(n-r)!$ possibilities.  For the fixed prefix order, every forcing decision in the prefix is determined before the suffix order is consulted.  Hence the event that the prefix guesses are correct is measurable with respect to the prefix order and the random bits consumed in the prefix, and is independent of the relative order on $V\setminus R$.  The unused random bits remain independent and unbiased.  Therefore, conditioned on $A_R$, on $\sigma$, and on successful realization of the prefix, the suffix is distributed exactly as a fresh run of $\PPSZ_w$ on $F|_{\alpha|_R}$: it uses the same proof heuristic $\Pw$, a uniform order on the residual variables, and independent unbiased guesses.
+
+The conditional suffix probability is consequently the final factor in~\eqref{eq:prefix-product}.  The lower bound is independent of $\sigma$, so averaging over all prefix orders proves the claim.
+\end{proof}
+
+If a restriction $\rho$ from Lemma~\ref{lem:liquid-restriction} fixes fewer than $r$ variables, extend its domain to an arbitrary $r$-set by assigning additional variables according to the unique satisfying assignment of $F|_\rho$.  The further restricted formula remains uniquely satisfiable.  Hence Lemma~\ref{lem:prefix-realization} may be applied with exactly $r=\lfloor\delta n\rfloor$ variables.
+
+The same finite strength $w$ is used in~\eqref{eq:finite-high-I}, in the prefix, and in the suffix.  Since 3-CNF formulas are closed under restrictions and $\Pw$ is unchanged on the residual formula, the suffix satisfies the hypotheses of the unique-case bound at the same strength.
+
+\subsection{Proof of Proposition~\ref{prop:quant-lift}}
+
+Fix $\eta<\eta_\infty(\gamma)$.  By the definition of $\eta_\infty$, choose a fixed $\delta\in(0,1/2)$ such that
+\begin{equation}\label{eq:strict-lift-slack}
+ q_0\delta>\eta,
+ \qquad
+ u_\gamma(\delta)>\eta.
+\end{equation}
+Let
+\[
+ \sigma=
+ \min\{q_0\delta-\eta,\,u_\gamma(\delta)-\eta\}>0.
+\]
+First choose a finite implication strength $w\ge w_U$ so large that
+\begin{equation}\label{eq:choose-w-lift}
+ \eps_w(1-\delta)<\frac{\sigma}{3}.
+\end{equation}
+This is possible because $\eps_w\to0$.  Only after fixing this $w$ do we choose $n$.
+
+Let $F$ be a satisfiable 3-CNF formula on $n$ variables.  There are two cases.
+
+\paragraph{Large-$I$ branch.}
+If $\E_Q[I]\ge\delta n$, then~\eqref{eq:finite-high-I} gives
+\begin{align*}
+ \log_2\Prb[\PPSZ_w(F)\text{ succeeds}]
+ &\ge -p_wn+q_w\delta n\\
+ &=-p_0n+
+ \bigl(q_0\delta-\eps_w(1-\delta)\bigr)n\\
+ &\ge -p_0n+(\eta+2\sigma/3)n,
+\end{align*}
+where the last inequality follows from~\eqref{eq:strict-lift-slack} and~\eqref{eq:choose-w-lift}.  In particular, the linear finite-strength term is bounded by the fixed slack.
+
+\paragraph{Unique-residual branch.}
+Assume $\E_Q[I]<\delta n$.  Lemma~\ref{lem:liquid-restriction} gives a restriction of at most $r=\lfloor\delta n\rfloor$ variables with a unique residual formula; extend it, if necessary, to exactly $r$ variables along its unique satisfying assignment.  Put
+\[
+ \delta_n=\frac rn,
+ \qquad
+ m=n-r.
+\]
+For all sufficiently large $n$, we have $m\ge m_U$.  Lemma~\ref{lem:prefix-realization} and the unique-case hypothesis give
+\begin{align*}
+ \Prb[\PPSZ_w(F)\text{ succeeds}]
+ &\ge
+ \binom nr^{-1}2^{-r}
+ 2^{-p_0m+\gamma m}\\
+ &\ge
+ 2^{-n\hbin(\delta_n)-r-p_0(n-r)+\gamma(n-r)}\\
+ &=
+ 2^{-p_0n+u_\gamma(\delta_n)n}.
+\end{align*}
+Here $\binom nr\le2^{n\hbin(\delta_n)}$.  Since $\delta_n\to\delta$ and $u_\gamma$ is continuous, for all sufficiently large $n$,
+\[
+ u_\gamma(\delta_n)
+ \ge u_\gamma(\delta)-\frac{\sigma}{3}
+ \ge\eta+\frac{2\sigma}{3}.
+\]
+
+Both branches give probability at least $2^{-p_0n+\eta n}$ for all sufficiently large $n$ at the chosen strength $w$.  Set $w_G=w$.  For every $w'\ge w_G$, monotonicity permits a coupling in which $\PPSZ_{w'}$ makes no more guesses than $\PPSZ_{w_G}$ along any fixed satisfying assignment.  Hence the same lower bound holds for all $w'\ge w_G$.  The quantifier order is
+\[
+ \gamma
+ \longrightarrow
+ \eta<\eta_\infty(\gamma)
+ \longrightarrow
+ \delta
+ \longrightarrow
+ w
+ \longrightarrow
+ n,
+\]
+and no fixed-$w$ linear discrepancy is placed inside an $o(n)$ term.
+
+\section*{Acknowledgments}
+We thank Shiteng Chen for helpful discussions.
+
+\begin{thebibliography}{10}
+\small
+
+\bibitem{AttiasGaoReyzin}
+I.~Attias, X.~Gao, and L.~Reyzin.
+\newblock Learning-augmented algorithms for Boolean satisfiability.
+\newblock \emph{CoRR}, abs/2505.06146, 2025.
+\newblock \href{https://arxiv.org/abs/2505.06146}{arXiv:2505.06146}.
+
+\bibitem{PPSZ}
+R.~Paturi, P.~Pudl\'ak, M.~E. Saks, and F.~Zane.
+\newblock An improved exponential-time algorithm for $k$-{SAT}.
+\newblock \emph{Journal of the ACM}, 52(3):337--364, 2005.
+
+\bibitem{SchederFOCS}
+D.~Scheder.
+\newblock {PPSZ} is better than you think.
+\newblock In \emph{62nd IEEE Annual Symposium on Foundations of Computer Science (FOCS)}, pages 205--216, 2021.
+\newblock \href{https://doi.org/10.1109/FOCS52979.2021.00028}{doi:10.1109/FOCS52979.2021.00028}.
+
+\bibitem{SchederFull}
+D.~Scheder.
+\newblock {PPSZ} is better than you think.
+\newblock \emph{Electronic Colloquium on Computational Complexity}, Report TR21-069, Revision~1, 2021.
+\newblock \href{https://eccc.weizmann.ac.il/report/2021/069/revision/1/download/}{stable Revision~1 PDF}.
+
+\bibitem{SchederJournal}
+D.~Scheder.
+\newblock {PPSZ} is better than you think.
+\newblock \emph{TheoretiCS}, Volume~3, Article~5, pages 1--37, 2024.
+\newblock \href{https://doi.org/10.46298/theoretics.24.5}{doi:10.46298/theoretics.24.5}.
+
+\bibitem{SchederSteinberger}
+D.~Scheder and J.~P. Steinberger.
+\newblock {PPSZ} for general $k$-{SAT} and {CSP}---making {Hertli}'s analysis simpler and 3-{SAT} faster.
+\newblock \emph{Computational Complexity}, 33, Article~13, pages 1--48, 2024.
+\newblock \href{https://doi.org/10.1007/s00037-024-00259-y}{doi:10.1007/s00037-024-00259-y}.
+
+\end{thebibliography}
+
+\end{document}

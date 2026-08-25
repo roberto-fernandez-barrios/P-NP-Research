@@ -1,0 +1,107 @@
+==============================================================================
+Cycle-7 Stage-V repair certifications  (exact rational arithmetic)
+eps_R = 512378095084037614499225829/5000000000000000000000000000  (~0.1024756190)   NOTE eps_R > 1/10: True
+eps_I = 3653619080126077343725646569/50000000000000000000000000000  (~0.0730723816)
+ln2 enclosure width: 4.931e-64
+==============================================================================
+
+--- PART A: Proposition C.12 claims at eps_R (repair of the eps<=0.1 hypothesis) ---
+kink bracket t0 in [0.731562545848, 0.731562545849] (width 2^-40)
+[PASS] A1A-epsR-p1: K >= 0  nodes=1
+[PASS] A1B-epsR-p1: s >= 0 [/(1-t)^1]  nodes=1
+[PASS] A2-epsR-p1: 2 delta_max(1-r) <= 0.05 r(1-2r)  nodes=19
+[PASS] A3-epsR-p1: f(r) >= 0.98 f(s) [/t^2] [/(1-t)^1]  nodes=19
+[PASS] A3a-epsR-p1: 1-s > 0 (num)  nodes=1
+[PASS] A3b-epsR-p1: 1-2s >= 0 (num) [/t^2]  nodes=1
+[PASS] A4-epsR-p1: s'(r) <= 1.05 [/t^1]  nodes=39
+[PASS] A5-epsR-p1: g(r) >= 0.945 g(s) [/t^4]  nodes=13
+[PASS] A1A-epsR-p2: K >= 0 [/t^2] [/(1-t)^1]  nodes=1
+[PASS] A1B-epsR-p2: s >= 0 [/(1-t)^1]  nodes=1
+[PASS] A2-epsR-p2: 2 delta_max(1-r) <= 0.05 r(1-2r)  nodes=9
+[PASS] A3-epsR-p2: f(r) >= 0.98 f(s) [/t^2] [/(1-t)^1]  nodes=1
+[PASS] A3a-epsR-p2: 1-s > 0 (num)  nodes=1
+[PASS] A3b-epsR-p2: 1-2s >= 0 (num) [/t^2]  nodes=1
+[PASS] A4-epsR-p2: s'(r) <= 1.05 [/t^1]  nodes=3
+[PASS] A5-epsR-p2: g(r) >= 0.945 g(s) [/t^4]  nodes=1
+[PASS] A1A-0.1-p1: K >= 0  nodes=1
+[PASS] A1B-0.1-p1: s >= 0 [/(1-t)^1]  nodes=1
+[PASS] A2-0.1-p1: 2 delta_max(1-r) <= 0.05 r(1-2r)  nodes=19
+[PASS] A3-0.1-p1: f(r) >= 0.98 f(s) [/t^2] [/(1-t)^1]  nodes=19
+[PASS] A3a-0.1-p1: 1-s > 0 (num)  nodes=1
+[PASS] A3b-0.1-p1: 1-2s >= 0 (num) [/t^2]  nodes=1
+[PASS] A4-0.1-p1: s'(r) <= 1.05 [/t^1]  nodes=27
+[PASS] A5-0.1-p1: g(r) >= 0.945 g(s) [/t^4]  nodes=9
+[PASS] A1A-0.1-p2: K >= 0 [/t^2] [/(1-t)^1]  nodes=1
+[PASS] A1B-0.1-p2: s >= 0 [/(1-t)^1]  nodes=1
+[PASS] A2-0.1-p2: 2 delta_max(1-r) <= 0.05 r(1-2r)  nodes=7
+[PASS] A3-0.1-p2: f(r) >= 0.98 f(s) [/t^2] [/(1-t)^1]  nodes=1
+[PASS] A3a-0.1-p2: 1-s > 0 (num)  nodes=1
+[PASS] A3b-0.1-p2: 1-2s >= 0 (num) [/t^2]  nodes=1
+[PASS] A4-0.1-p2: s'(r) <= 1.05 [/t^1]  nodes=1
+[PASS] A5-0.1-p2: g(r) >= 0.945 g(s) [/t^4]  nodes=1
+[PASS] A-CONST: 0.95*0.98/1.05 >= 0.88  = 133/150 = 0.88666667
+[PASS] A-CONST: 0.945/1.05 == 0.9
+[PASS] A-REFUTE: source's "s'<=1.05 provided eps<=0.13" is FALSE at eps=0.13  exact witness t=1126106135847/2748779069440 (r=0.416083): s' = 1.05 + 1.135199e-02
+
+--- PART B: Proposition C.13 (hidden Thr constraint and the d-sweep) ---
+[PASS] B2: OCB*(0) >= 1/1150  value in [0.069908556678,0.069908556678] vs 0.000869565217 
+[PASS] B2: MLB*(0) >= 1/1150  value in [0.245329850016,0.245329850016] vs 0.000869565217 
+[PASS] B2: OCB*(1) >= 1/1150  value in [0.019878075571,0.019878075571] vs 0.000869565217 
+[PASS] B2: MLB*(1) >= 1/1150  value in [0.040659700032,0.040659700032] vs 0.000869565217 
+[PASS] B2: OCB*(2) >= 1/1150  value in [0.006514261130,0.006514261130] vs 0.000869565217 
+[PASS] B2: MLB*(2) >= 1/1150  value in [0.009822012551,0.009822012551] vs 0.000869565217 
+[PASS] B2: OCB*(3) >= 1/1150  value in [0.002317113357,0.002317113357] vs 0.000869565217 
+[PASS] B2: MLB*(3) >= 1/1150  value in [0.002816787575,0.002816787575] vs 0.000869565217 
+[PASS] B2: OCB*(4) >= 1/1150  value in [0.000869965583,0.000869965583] vs 0.000869565217 
+[PASS] B2: MLB*(4) >= 1/1150  value in [0.000894025103,0.000894025103] vs 0.000869565217 
+[PASS] B2: Thr_JC <= 1/1150  Thr_JC = 2.216849286e-04
+[PASS] B2: Thr_Scheder <= 1/1150  Thr_S = 2.196305814e-04
+[PASS] B1: OCB*(d) >= MLB*(d) for all 5<=d<=161  worst margin at d=161: 1.045712e-53
+[PASS] B1: g <= f/2 on [0.45,1/2] (endpoints of concave-up -(r^2-5r+2))  values 19/400, 1/4; quadratic with positive r^2-coeff in r^2-5r+2 -> min of -(...) at endpoints
+[PASS] B1: 1 - r - r^2 >= 0 on [0,1/2] (g <= 1)  nodes=1
+[PASS] B1: ((d-1)/(d+1))^d >= 1/10 for all d >= 2  d in 2..20 exact; d>=21 via exp(-2.1) >= 0.122456 >= 0.1
+[PASS] B1: r_min >= theta for d >= 19 (exact algebra)  10(d-1) >= 9(d+1) <=> d >= 19
+[PASS] B1: E(162) = (9/10)^162 (9/16) 165^3 <= 1/10  E(162) = 0.097692
+[PASS] B1: E(d+1)/E(d) <= (9/10)(166/165)^3 < 1  ratio = 0.916463010
+
+--- PART C: Section-8 closed-form coefficient chain and Lemma 55 constant ---
+[PASS] C: BFS closed form == 380 ln2 - 790/3  got (Fraction(-790, 3), Fraction(380, 1))
+[PASS] C: BFS >= 0.06259  value in [0.062595279446,0.062595279446] vs 0.062590000000 
+[PASS] C: DFC closed form == 915/4 - 330 ln2  got (Fraction(915, 4), Fraction(-330, 1))
+[PASS] C: DFS closed form == (1586/3) ln2 - 52765/144  got (Fraction(-52765, 144), Fraction(1586, 3))
+[PASS] C: BFS - DFB >= 0.030966 (b1 leading constant; hairline)  value in [0.030966519315,0.030966519315] vs 0.030966000000 
+[PASS] C: JUNK1 closed form == 46800 ln2 - 227075/7  got (Fraction(-227075, 7), Fraction(46800, 1))
+[PASS] C: JUNK2 closed form == 8767591/192 - 65880 ln2  got (Fraction(8767591, 192), Fraction(-65880, 1))
+[PASS] C: source's printed "JUNK2 <= 0.000184" is FALSE (certified)  JUNK2 in [2.030441363e-04,2.030441363e-04] > 1.84e-4
+[PASS] C: JUNK1 + 2 JUNK2 <= 0.0028 (b1 quadratic constant)  value in [0.002742007999,0.002742007999] vs 0.002800000000 
+[PASS] C: int phi_ID^2 == 5/21  got (Fraction(5, 21), Fraction(0, 1))
+[PASS] C: int phi_pID^2 == 3721/181440 and 2*int == printed 3721/90720  got (Fraction(3721, 181440), Fraction(0, 1))
+[PASS] C: int phi_TwoCC^2 == 15/14  got (Fraction(15, 14), Fraction(0, 1))
+[PASS] C: (5/21 + 3721/90720)/ln2 <= 0.4027  <= 0.402672852
+[PASS] C: (5/21)/ln2 <= 0.344  <= 0.343498819
+[PASS] C: (15/14)/(25 ln2) <= 0.06183  <= 0.061829787
+[PASS] C: Bonus2CC = 104/3 - 50 ln2 >= 0.009307  value in [0.009307638669,0.009307638669] vs 0.009307000000 
+[PASS] C: DFS2CC + DFD2CC = 15347/3 - 7380 ln2 <= 0.2405  value in [0.240474134270,0.240474134270] vs 0.240500000000 
+[PASS] C: JUNK2CC = 17923400/7 - 3694000 ln2 <= 0.03125  value in [0.029297276313,0.029297276313] vs 0.031250000000 
+[PASS] C: Lemma-55 integral >= 0.001687 (A-chain leading constant; hairline)  value in [0.001687361857,0.001687361857] vs 0.001687000000 
+      Lemma-55 exact value: -707/6 + (170) ln2 in [0.001687361857,0.001687361857]
+
+--- PART D: irregular-parameter admissibility at eps_I (corrected constraint) ---
+[PASS] D: 1/8 - r(1-2r) == 2(r-1/4)^2 (exact identity => max gamma_ID = 10/64)
+[PASS] D: corrected Lemma-75-Case-4 constraint eps <= 64/600; eps_I complies  eps_I = 0.073072 <= 0.106667
+[PASS] D: 5 eps_I <= 1
+[PASS] D: eps_I <= 4/5
+[PASS] D: eps_I < 1/5 (JC Lemma A.1 nonnegativity range)
+[PASS] D: |phi_ID| <= 5/2 on [0,1/2]  nodes=115
+[PASS] D: |phi_pID| <= 61/54 on [0,1/2]  nodes=171
+[PASS] D: phi_TwoCC + 5 == (1/2 - r)(160r^2 + 20r + 10) >= 0 on [0,1/2] (exact)
+[PASS] D: phi_TwoCC <= 5 on [0,1/2] (C2: upper side of |phi_TwoCC| <= 5)  nodes=3
+[PASS] D: Psi_{1,2} <= Psi_{1,1} <= Psi_{1,0} (C4, exact)  0.078064374 <= 0.137571649 <= 0.238095238
+
+--- PART E: c_T robustness envelope (Section-7.7 recon discrepancy cover) ---
+[PASS] E: dual certificate needs c_T > c_T_min = A(5 + |bT|/b1)  c_T >= 0.002853243, c_T_min <= 0.001646758, margin >= 0.001206485
+[PASS] E: margin covers the 7.7 recon-suggested degradation 3.6e-5  cover factor >= 33.5x
+
+==============================================================================
+RESULT: ALL REPAIR CERTIFICATIONS PASSED
+(elapsed 4.0s)

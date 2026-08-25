@@ -1,0 +1,39 @@
+{
+  "sha": "3e732e06fee90d10e31c157fb433699e7f766fdc",
+  "url": "https://api.github.com/repos/jiangxioabai/A-Better-Analysis-For-PPSZ/git/trees/3e732e06fee90d10e31c157fb433699e7f766fdc",
+  "tree": [
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1cbee1babc5ac84f6425350caf26c71454dd8a1d",
+      "size": 1777,
+      "url": "https://api.github.com/repos/jiangxioabai/A-Better-Analysis-For-PPSZ/git/blobs/1cbee1babc5ac84f6425350caf26c71454dd8a1d"
+    },
+    {
+      "path": "ppsz_certificate.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ae5a1a831f5e49a2902d293a25d41b15c8146943",
+      "size": 1723,
+      "url": "https://api.github.com/repos/jiangxioabai/A-Better-Analysis-For-PPSZ/git/blobs/ae5a1a831f5e49a2902d293a25d41b15c8146943"
+    },
+    {
+      "path": "verification_output.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "94a651e022c9ef37165abb0bd6aedf92e13c9868",
+      "size": 2336,
+      "url": "https://api.github.com/repos/jiangxioabai/A-Better-Analysis-For-PPSZ/git/blobs/94a651e022c9ef37165abb0bd6aedf92e13c9868"
+    },
+    {
+      "path": "verify_ppsz_constants(1) (1).py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f3f2d281bc5d84435418dcd001de3a28ecd634a5",
+      "size": 14859,
+      "url": "https://api.github.com/repos/jiangxioabai/A-Better-Analysis-For-PPSZ/git/blobs/f3f2d281bc5d84435418dcd001de3a28ecd634a5"
+    }
+  ],
+  "truncated": false
+}

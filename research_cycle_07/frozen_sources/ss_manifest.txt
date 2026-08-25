@@ -1,0 +1,6 @@
+# ss_manifest.txt — LIFTING-layer source fetches (hostile validation, cycle 07)
+# fetched 2026-08-25T12:15:09Z by lifting-import auditor
+ss_springer_00037-024-00259-y.pdf  https://link.springer.com/content/pdf/10.1007/s00037-024-00259-y.pdf  2026-08-25T12:15:09Z  sha256=20eae9e7a05a8384c271212b0cb157653d018eee869ad49f61e8b4162d79d88a
+ss_ccc2017_LIPIcs.CCC.2017.9.pdf  https://drops.dagstuhl.de/storage/00lipics/lipics-vol079-ccc2017/LIPIcs.CCC.2017.9/LIPIcs.CCC.2017.9.pdf  2026-08-25T12:15:09Z  sha256=43ff64c4b249cb91c4788439e8ebf3666a82b8f4a8cc097f314adb1285914a30
+hertli_1103.2165.pdf  https://arxiv.org/pdf/1103.2165  2026-08-25T12:15:09Z  sha256=3c77755779e4be0e82d6f0a799f70668f5e1ad49b9d09653bef13ffbe4f0e1ad
+hkzz_fasterksat_mit.pdf  https://people.csail.mit.edu/virgi/6.s078/papers/fasterksat.pdf  2026-08-25T12:15:09Z  sha256=bc5b703ab58b04354fd9e2c84c3e063dc3d6e0b8c6e81227d47e8e248b5059e6
