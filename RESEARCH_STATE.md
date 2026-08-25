@@ -1,14 +1,75 @@
 # Research State
 
+**BRANCH NOTE (cycle06-fable only).**  Everything in the Cycle-6 section
+below is **PROVISIONAL**: it was produced while the Cycle-5 theorems
+await independent cross-model validation, it depends on none of them,
+and it must not be merged or treated as canonical until reviewed
+together with that validation.
+
 ## Current phase
 
-RESEARCH CYCLE 5 COMPLETE — hybrid multi-order RR routing resolved under
-S5-D (with an S5-F candidate); RR retired as the primary O01 route
+RESEARCH CYCLE 6 (PROVISIONAL) COMPLETE — frontier reassessment after
+the RR route; five candidates compared; next target selected: **O18
+(certified PPSZ improvement)**.  Cycle 6 was explicitly authorized on
+2026-08-25 as a provisional reassessment cycle on a new branch; it is a
+reassessment, not a proof cycle.  Cycle 5 remains complete and its
+theorems remain quarantined pending independent cross-model validation.
 
 ## Current objective
 
-Preserve the completed Cycle-5 disposition.  Do not begin Research Cycle 6
-without explicit authorization.
+Preserve the Cycle-6 provisional reassessment.  Do not begin the O18
+attack cycle (Research Cycle 7) without explicit authorization.  Do not
+promote any Cycle-6 statement beyond PROVISIONAL until independently
+reviewed.
+
+## Cycle-6 reassessment result (PROVISIONAL, 2026-08-25)
+
+Mandate: compare, independently, the Cycle-3 all-defect-router
+obligation, O03, O02, O18, and O05; select exactly one next target.
+Full dossiers: `results/research_cycle_06_reassessment.md`; selection
+audit: `audits/cycle06_target_selection.md`.
+
+**Ranking:** 1. O18 (selected); 2. router obligation (reserve);
+3. O05; 4. O03; 5. O02.
+
+**Selected target (recommendation only; attack not begun).**  O18, two
+stages: (V) independently validate the Jiang–Cai exact-rational PPSZ
+certificate (arXiv:2607.10697, v1 2026-07-12; artifact repository
+confirmed public); (I) add at least one new proved valid
+inequality/statistic to the recombination LP and certify a randomized
+general 3-SAT base strictly below `1.307031578` (or below Scheder's
+`1.307031594` if validation fails).  Smallest plausible missing lemma:
+one valid linear constraint on the normalized statistics
+`(i_0, i_1, tau)` violated at the certified LP optimum
+`(0, (A-P_reg)/(A+b_1), 0)`.  Stop rules S-A–S-D frozen in the audit.
+
+**Router obligation clarified (all PROVISIONAL, single-implementation,
+machine-checked, unformalized).**  With `R(n)` the minimum size of a
+Cycle-3 one-sided 2-defect router: `R(2)=3`, `R(4)=7`, `R(6)=15`
+(exact), `R(8) in [24,26]`, `R(10) in [41,50]`; exact per-level vectors
+`rho` recorded.  Lemma R-SYM (the `-2` side is implied by the `+2`
+side), Lemma R-PARITY (band walk characterization), Lemma R-DUAL
+(complementation symmetry, `rho(n,k)=rho(n,n-k)`), Lemma W4-RESTRICT
+(`R_{[-1,3]}(n) <= N(n+2)`), and Observation DR2O01 (granting Cycle-3
+DEFECT-LIFT: DR-POLY implies O01, `N(n) = O(n^{c+1})` from
+`R(n) <= n^c`).  Consequently the router obligation is a strengthening
+of O01 — the entire gap is band narrowing from width 4 to width 2 — and
+`R(n) > N(n)` at every computed size.  It is retained as the canonical
+structural route to O01, to be reassessed after the Cycle-5 validation.
+
+**O05 status update (derived observation, PROVISIONAL).**  Published
+supercritical size–depth trade-offs (bracket formulas,
+arXiv:2411.14268; truly supercritical trade-offs, arXiv:2411.14267;
+both STOC 2025) block the canonical flatten-then-translate route to
+Buss–Yolcu Question 3.2 (`BY-ROUTE-BLOCK`): strict effective simulation
+must handle formulas whose small resolution refutations are necessarily
+superpolynomially deep.
+
+**Literature freshness (2026-08-25).**  TR26-043 remains flawed with no
+successor; FLSY range for O01 unchanged; no independent validation or
+improvement of Jiang–Cai found; no CP_2-space or quadratic-disperser
+progress found; O03's operative gap is dispersion at entropy `o(n)`
+versus the known `(1-c)n` (ITCS 2024).
 
 ## Primary target and status
 
@@ -224,21 +285,35 @@ Cycle-1 barrier/dependency/counterexample records remain retained.
 
 ## Next action
 
-Stop.  Do not begin Research Cycle 6 automatically.  A later cycle
-requires fresh authorization and should NOT: retry inverse-polynomial
-single-copy RR acceptance (rigorously false); retry affine multi-RR
-hybridity (`G = 0`, Theorem A); retry common-reference-dense multi-RR
-lists of any size (Theorem E); or re-measure two-copy or low-switch-depth
-families expecting different asymptotics (Theorem F/C, conditional).  The
-recommended reassessment order for a next cycle: the all-defect-router
-obligation from Cycle 3; O03; O02; O18; O05.  The isolated statements
+Stop.  Do not begin Research Cycle 7 automatically.  The Cycle-6
+recommendation, contingent on fresh authorization, is the O18 attack
+(Stage V validation first, then Stage I improvement) under stop rules
+S-A–S-D in `audits/cycle06_target_selection.md`.  Independent
+cross-model validation of Cycle 5 remains outstanding and should be
+completed before any O01-adjacent work resumes.  The Cycle-5 do-not-retry
+list remains in force: do not retry inverse-polynomial single-copy RR
+acceptance (rigorously false); do not retry affine multi-RR hybridity,
+common-reference-dense lists, or two-copy/low-switch-depth asymptotics
+(Cycle-5 obstructions, pending validation).  The isolated statements
 whose resolution would change the RR picture: Lemma SEG (either way) and
-Lemma M.
+Lemma M.  If O01 work resumes, begin with the width-2 quasi-polynomial
+router question (`results/research_cycle_06_reassessment.md`
+Section 2.10).
 
 ## Critical rule
 
 Do not directly attempt P versus NP.  No Boolean or algebraic complexity
 separation follows from any cycle so far.
+
+## Canonical Cycle-6 artifacts (PROVISIONAL, this branch)
+
+* `results/research_cycle_06_reassessment.md`
+* `audits/cycle06_target_selection.md`
+* `experiments/cycle06_defect_router_exact.py`
+* `experiments/cycle06_router_ub_deep.py`
+* `experiments/cycle06_band4_restrict_check.py`
+* `certificates/cycle06_router/` (README plus two value certificates)
+* `failure_knowledge.jsonl` entries RC6-DR-01 and RC6-O05-01
 
 ## Canonical Cycle-5 artifacts
 
