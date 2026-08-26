@@ -1,8 +1,14 @@
 # Theorem CR: the Jiang–Cai LP corner is realizable
 
 **Date:** 2026-08-26.  **Branch:** `cycle07-o18-fable`.
-**Status:** PROOF CANDIDATE with full machine verification of every
-finite claim; hostile independent review pending (this cycle).
+**Status:** PROOF CANDIDATE, **hostilely reviewed — verdict SOUND WITH
+REPAIRS** (`audits/cycle07_corner_theorem_review.md`); all repairs
+R-A–R-E are applied in this revision (the reviewer independently
+replicated all 21 instances, re-derived the case analyses, and
+supplied the corrected asymptotic arguments adopted below).  Full
+machine verification of every finite claim by two independent
+implementations (`experiments/cycle07_corner_family.py` and the
+reviewer's `research_cycle_07/checkers/cr_review_independent.py`).
 **Context:** Stage I of Cycle 7, executed falsification-first per the
 mandate: before hunting for a "missing inequality" excluding the LP
 corner `(i_0, i_1, tau) = (0, i_1^*, 0)`,
@@ -35,7 +41,17 @@ so the recombination statistics are exactly
     (i_0, i_1, tau) = (0, m_1/n, 0).
 
 Two variants exist: clauses of width ≤ 3 ("pairs" variant) and clauses
-of width exactly 3 throughout ("triples" variant).
+of width exactly 3 throughout ("triples" variant).  **The triples
+variant is the primary carrier of the no-go corollary** (repair R-E):
+its closure is trivial — `F̃ = F` with ZERO width-≤3 resolvents, so
+`TwoCC = ∅` under every reading of Definition 31, including an
+iterated-resolution closure.  The pairs variant satisfies `TwoCC = ∅`
+under Definition 31's textual one-round reading (both parent-width
+conventions, machine-verified), but under a hypothetical iterated
+closure its TwoCC becomes all of `V` (reviewer's fixpoint computation);
+it is retained because Scheder's own convention is one-round and his
+"k-CNF" means clauses of width ≤ k (frozen PDF p. 2, reviewer-pinned),
+so width-2 clauses are inside the Theorem-6 instance class.
 
 **Corollary CR-1 (density).**  The closure of the set of realizable
 statistics vectors contains the segment `{(0, t, 0) : 0 ≤ t ≤ 1/10}`;
@@ -75,14 +91,23 @@ Fix `n` and `m_1`.  All indices are mod `n`.  Let
     p_i  = ⌊i·n/m_1⌋            (i = 0,…,m_1−1;  the W-set),
     s_i  = p_i − base           (the special sources),
     δ    = the least d ∈ {2,…,min(⌊n/m_1⌋−2, jmax−base)} such that the
-           sets {p_i}, {s_i}, {q_i := p_i + d} are pairwise disjoint and
-           no q_i is adjacent (±1) to any s_j,
+           set {q_i := p_i + d} is disjoint from {p_j} and from {s_j},
+           and no q_i is adjacent (±1) to any s_j,
     g(x) = x + base  for x ∉ {s_i},     g(s_i) = q_i.
 
-(A valid `δ` exists for `m_1 ≤ n/10` and large `n` by counting: the
-forbidden values lie in at most three residue bands of width ≤ 3 around
-`p_j − p_i − base` per wrap, ≤ 9 values, against a candidate range of
-length `⌊n/m_1⌋ − 3 ≥ 7`; the machine picks it constructively.)
+(Repair R-A: the earlier draft also demanded `{p_i} ∩ {s_i} = ∅`,
+which is δ-independent, unnecessary — the reviewer's §3.1 re-derivation
+shows the degree count never uses it — and actually false at several
+verified sizes, e.g. `n = 50, m_1 = 3`; only the `q`-exclusions above
+matter, and they are what the engine enforces.  Repair R-B: existence
+of a valid `δ`: each of the three exclusion families forbids, per
+wrap of the circle, at most a constant number of residues near
+`p_j − p_i − d ≡ base (± 1)`-type coincidences; the reviewer's
+corrected counting, machine-scanned over all `26 ≤ n ≤ 1200` and
+`1 ≤ m_1 ≤ n/10`, shows a valid `δ` exists for every such pair except
+`(n, m_1) = (27, 2)` — so `n_0 = 28` suffices on the scanned range,
+with the corrected counting argument covering all larger `n`, and the
+engine picks `δ` constructively in every verified case.)
 
 **Critical clauses** (one per variable, width exactly 3):
 
@@ -110,30 +135,38 @@ which is not special since `q_i − base = s_j` is excluded, plus `s_i`);
 `W' = {q_i}`, `2` elsewhere; no indegree 0.  Widths: `x+1 ≠ g(x)`
 (jumps ≥ base ≥ 2), `x ∉ {x+1, g(x)}`.  ∎
 
-### 3.2 No short directed cycles
+### 3.2 No 2-cycles or triangles; linearly growing girth (repaired, R-C)
 
 Arc steps are `+1`, `+base`, `+(base+δ)`.  A directed cycle's steps sum
-to `kn`, `k ≥ 1`.  With `j` long steps (of either kind) and `a` unit
-steps, cycle length `L = a + j` and
+to `kn`, `k ≥ 1`; with `j` long steps and `a` unit steps its length is
+`L = a + j`.
 
-    kn = a + j·base + (#special steps)·δ,   0 ≤ #special ≤ j.
+*No 2-cycles or triangles (`n ≥ 26`).*  For `L ≤ 3`: `j = 0` forces
+`L = n`; `j ∈ {1, 2}`: the step sum is at most `2·jmax + 1 ≤ n − 2 < n`
+and at least `base > 0`, so it is never `≡ 0 (mod n)`… precisely, for
+`j = 1`: `a + jump ≤ 2 + jmax < n`; for `j = 2`: two long steps sum to
+a value in `[2·base, 2·jmax] ⊆ [2n/3, n−3]`, plus `a ≤ 1` stays `< n`;
+for `j = 3` (the case the earlier draft omitted): three long steps sum
+to a value in `[3·base, 3·jmax] = [n+3, (3n−9)/2]`, strictly between
+`n` and `2n`, so no triangle of three long steps exists either.  ∎
 
-Since `base = ⌊n/3⌋+1` and `δ ≤ ⌊n/m_1⌋ ≤ n/ m_1` with `m_1 ≤ n/10`
-(so `δ ≤ spacing`, a constant when `m_1 = Θ(n)` and at most `n/m_1`
-in general): `j·base ≤ kn` gives `j ≤ 3k`, and
-`a = kn − j·base − (#sp)δ ≥ kn − 3k(n/3 + 1) − j·δ ≥ −3k − 3k·δ`
-combined with `a ≥ 0` and the exact enumeration of the finitely many
-`(k, j)` patterns yields `L ≥ n/3 − 3δ − 3` (the worst pattern is
-`k = 1, j = 2`: `a = n − 2base − (#sp)δ ≥ n/3 − 2 − 2δ`).  Moreover
-**two long steps can never be consecutive-special-chained into a short
-cycle**: a special step lands on `q_i`, which is not a special source
-(choice of `δ`), so after each special step the walk continues with
-default steps.  In particular, for large `n` the directed girth exceeds
-any fixed threshold; there are no 2-cycles or triangles for any
-`n ≥ 26` (two long steps sum to at most `2·jmax ≤ n−3 < n−1`, so
-`j ∈ {1,2}` cannot close a cycle of length ≤ 3, and `j = 0` needs
-`L = n`).  Machine-measured girths on the verified instances:
-6–30, growing with `n` (see §5).  ∎
+*Girth.*  The earlier draft claimed `girth ≥ n/3 − 3δ − 3`; the
+reviewer REFUTED that bound (first violation `n = 78`; clean
+counterexample `n = 200, m_1 = 11, δ = 2`: girth `52 < 57.67`, realized
+by an 11-segment chain alternating special jumps with default-step
+runs — the paper's own `n = 80` instance has girth `20`, a 5-special
+chain, not the draft's predicted 24).  What is true and is used below:
+
+* girth still grows linearly — reviewer-measured `≈ 0.2n–0.3n` on a
+  scan to `n = 800`;
+* certified replacement bound (reviewer's lemma, adopted):
+  **`girth > 17` whenever `n > 96 + 51δ`** — which is what the triples
+  variant's independent-triple argument needs (§3.3), with `δ ≤ n/m_1`
+  bounded (constant for `m_1 = Θ(n)`);
+* the pairs variant's uniqueness proof no longer uses girth at all
+  (repair R-D, §3.3).
+
+Machine-measured girths on the verified instances: 5–30.  ∎
 
 ### 3.3 Unique satisfiability (claim 1)
 
@@ -146,16 +179,28 @@ satisfy `F` and let `S = {x : β(x) = 0} ≠ ∅`.
 * If `|S| ≥ 2`: every `x ∈ S` must satisfy `C_x` through `¬(x+1)` or
   `¬g(x)`, i.e. has an out-neighbor in `S` ("S is closed").  Following
   out-neighbors inside the finite set `S` yields a directed cycle
-  contained in `S`, so `|S| ≥ girth`.
-  - pairs variant: if `S` contains any non-adjacent pair `{a,b}`, the
-    clause `(a ∨ b)` is falsified.  So `S` must be a clique of the
-    adjacency graph, whose maximum degree is ≤ 5 (2 out + ≤3 in), hence
-    `|S| ≤ 6 < girth` for the verified/large `n`.  Contradiction.
+  contained in `S`.
+  - pairs variant (repaired, R-D — girth-free and covering all
+    `n ≥ 26`): if `S` contains any non-adjacent pair `{a,b}`, the
+    clause `(a ∨ b)` is falsified, so `S` must be a clique of the
+    adjacency graph `Adj` (edges `{x, x+1}` and `{x, g(x)}`).  **`Adj`
+    is triangle-free for this construction** (reviewer's case analysis,
+    machine-confirmed: a triangle would need one of `g(x) = x ± 2`, a
+    two-jump sum `≡ ±1 (mod n)` — impossible since two long steps sum
+    into `[2·base, 2·jmax] ⊆ [2n/3, n−3]` and `δ ≥ 2` — or
+    `g(x) = g(x±1)`, excluded by construction).  Hence the clique `S`
+    has `|S| ≤ 2`, so the directed cycle inside `S` is a 2-cycle —
+    impossible by §3.2.  Contradiction.
   - triples variant: if `S` contains a pairwise-non-adjacent triple,
     its clause is falsified.  Any `|S| ≥ 3(Δ+1) = 18` vertices of a
     max-degree-5 graph contain an independent triple (greedy: pick,
-    delete ≤ 6, repeat).  Since `girth ≥ 18` for the verified/large
-    `n`, `|S| ≥ 18`.  Contradiction.  ∎
+    delete ≤ 6, repeat; the reviewer notes 13 is the sharp threshold —
+    18 is used as the safe bound).  Since a closed `S` contains a
+    directed cycle, `|S| ≥ girth > 17` for `n > 96 + 51δ` (§3.2).
+    Contradiction.  For the two search-mode triples instances with
+    girth 8–9 the asymptotic argument does not apply and uniqueness
+    rests on the direct machine check below (as it does, redundantly,
+    for every verified instance).  ∎
 
 (For each concrete instance the machine additionally verifies
 uniqueness *directly* — a complete DPLL shows `F ∧ (x = 0)` is UNSAT
@@ -192,25 +237,28 @@ has exactly one positive literal.  Cases:
   overlap*), or a tautology.  Overlap requires, for an arc `u → x`,
   that the other out-neighbor of `u` be an out-neighbor of `x`.  With
   `out(x) = {x+1, g(x)}`:
-  - `u = x−1` (arc via `f`): other neighbor `g(x−1)`; need
-    `g(x−1) ∈ {x+1, g(x)}`: `g(x−1) = x+1` forces a jump of `2 < base`;
-    `g(x−1) = g(x)` forces `base = base` shifts to coincide, i.e.
-    `x−1, x` both special with `q_i = q_j` (excluded, `q`'s distinct)
-    or one special: `q_i = x + base ⟺ q_i − base = x`, i.e. the
-    default source of `q_i` is `x = s_i + 1` — excluded by the
-    `q_i ∉ {s_j ± 1}`… precisely: `g(x−1) = g(x)` with `x−1 = s_i`
-    special and `x` default means `q_i = x + base`, i.e.
-    `q_i − base = x = s_i + 1`; the choice of `δ` forbids
-    `q_i − base ∈ {s_j, s_j ± 1}`… the machine checks the exact
-    condition `g(x) ≠ g(x±1)` directly (V6/`ovl = 0` on every
-    instance).
-  - `u` with `g(u) = x` (arc via `g`): other neighbor `u+1`; need
-    `u+1 ∈ {x+1, g(x)}`: `u+1 = x+1 ⟺ u = x` (no self-arc);
-    `u+1 = g(x)` is again a machine-checked exclusion (`ovl = 0`).
+  - `u = x−1` (arc via `f`): other neighbor `g(x−1)`; overlap needs
+    `g(x−1) ∈ {x+1, g(x)}` — excluded analytically below.
+  - `u` with `g(u) = x` (arc via `g`): other neighbor `u+1`; overlap
+    needs `u+1 ∈ {x+1, g(x)}`; `u+1 = x+1 ⟺ u = x` (no self-arc);
+    `u+1 = g(x)` — excluded analytically below.
   Tautology cases (`v` complementary to a literal) produce no clause.
   **No critical resolvent** (machine-verified exhaustively: V4 computes
   every width-≤3 resolvent of every clause pair and finds, for every
   variable, exactly one critical clause in `F̃`, under both readings).
+
+  The two overlap exclusions deferred to the machine in the earlier
+  draft are discharged analytically (reviewer's derivation, adopted —
+  repairing the garbled prose):
+  - `g(x−1) = x+1` needs a jump of 2 `< base` — impossible;
+    `g(x−1) = g(x)` needs, if both defaults, jumps differing by 1
+    (impossible); if exactly one of `x−1, x` is special, it forces
+    `δ = 1` or `δ = −1` (impossible, `δ ≥ 2`); if both special,
+    `q_i = q_j` (impossible, the `q`'s are distinct);
+  - `g(u) = x` and `u+1 = g(x)` need two long jumps summing to
+    `1 (mod n)`, but two long jumps sum into
+    `[2·base, 2·jmax] ⊆ [2n/3, n−3]`, never `≡ ±1 (mod n)`.
+  (V6's `ovl = 0` on every instance corroborates.)
 
 Hence every variable has exactly one `F̃`-critical clause: `TwoCC = ∅`,
 and there is no canonical-selection freedom.  ∎
@@ -236,6 +284,12 @@ any set whose closure contains the corner is ≤ its value at the corner,
 This is stop rule **S7-C** (corner realizable → realizability map,
 stop the inequality route), with the sharpening that the map is not
 merely "no obstruction found" but a constructive exact realization.
+The reviewer additionally verified (B6) that constraints jointly using
+`n` are equally blocked — the family exists at every `n ≥ n_0` with
+statistics converging to the corner — and re-confirmed the LP-side
+inputs (objective continuity, corner uniqueness by subdifferential
+algebra, and the value argument, which in fact needs only attainment,
+not uniqueness).
 
 What survives for future work (recorded, not pursued):
 
@@ -267,11 +321,19 @@ What survives for future work (recorded, not pursued):
 ## 5. Machine verification (falsification-first record)
 
 Engine: `experiments/cycle07_corner_family.py`
-(SHA-256 `fa51e86e372d4a47b1fffce7b23cfb475072500a60beaeba22e2dd4516ee96e9`).
+(SHA-256 `c00ae7235399ce43d61a54eaaf23cd5ffa0c86778b24701aa0f45c9e6f4f8c55`).
 Transcript: `research_cycle_07/corner_family_verification_output.txt`
-(SHA-256 `782fc107…bf26f`).  Dataset:
-`certificates/cycle07_corner/instances.json`
-(SHA-256 `1af8aff1…28cd`).  **21/21 instances PASS**:
+(SHA-256 `eac85d35581b697f625c6454aec7eb397b56732011b1ab02c62f82d19c93017b`).
+Dataset: `certificates/cycle07_corner/instances.json`
+(SHA-256 `1af8aff15117d948285bf32e82a87a8574195ea5c3266aeb4c1ccb42acac28cd`
+— byte-identical to the dataset the hostile review replicated).
+Post-review delta disclosure: after the review, the engine received
+only the review's own minor doc fixes (docstring accuracy for V1/V6, an
+added V5 indegree-range assertion) and was re-run — the reviewed
+mathematics is unchanged, all 21 verdicts re-passed, and the dataset
+hash is unchanged; the engine/transcript hashes above supersede the
+pre-fix values recorded in the review file (which is preserved as a
+historical record and not edited).  **21/21 instances PASS**:
 
 * search-assisted construction: pairs at
   `n = 26, 30, 40, 50, 60, 80, 100` with `m_1 = round(i_1^* n)`;
@@ -294,6 +356,32 @@ created 2-cycles; a `δ`-resonance (`q_i = s_{i+2}`) chained long jumps
 into a directed 5-cycle at `n = 80`.  Each was caught by the verifier,
 not by inspection.
 
+Errors found by the HOSTILE REVIEW in the asymptotic proof text (all
+repaired in this revision; none affected the instances, the engine's
+verdicts, or the corollaries): R-A vacuous δ-condition
+(`{p_i} ∩ {s_i} = ∅` demanded but false at verified sizes and
+unnecessary); R-B incoherent δ-existence counting (corrected;
+`n_0 = 28`, sole failure `(27,2)` in `26 ≤ n ≤ 1200`); R-C false girth
+bound `≥ n/3 − 3δ − 3` (refuted at `n = 78` onward by special-jump
+chains; replaced by the reviewer's certified `girth > 17` for
+`n > 96 + 51δ`, with measured linear growth to `n = 800`); R-D the
+pairs-uniqueness clique-vs-girth step needed `girth ≥ 7`, false at six
+instances (replaced by the sharp triangle-free argument, girth-free,
+all `n ≥ 26`); R-E Definition-31 reading sensitivity of the pairs
+variant (triples variant promoted to primary carrier).
+
+Independent replication (reviewer): all 21 instances reproduced from
+the stored `g`-maps — clause counts, profiles, closure/TwoCC under both
+readings, forced selection, girths, and uniqueness by a different
+enumerator, including an exhaustive `|S| ≤ 8` sweep (8.66M subsets) at
+`n = 30` and a complete closed-clique/cycle analysis; differential
+tests of the engine's DPLL and resolvent computation against brute
+force (1,350 + 800 cases, zero mismatches); no violated valid
+constraint found (B9).  Reviewer artifacts:
+`audits/cycle07_corner_theorem_review.md`,
+`research_cycle_07/checkers/cr_review_independent.py` (+ outputs),
+`cr_review_girth_scan.py`, `cr_review_engine_diff.py`.
+
 ## 6. Epistemic status and dependencies
 
 * Theorem CR's proof is self-contained elementary combinatorics plus
@@ -304,17 +392,23 @@ not by inspection.
   `lp_reconstruction.md` §5) and the exact value `i_1^*` (two
   independent exact-rational checkers).
 * Status labels: construction and finite claims
-  `MACHINE-VERIFIED (21 instances, two construction modes, two aux
-  variants)`; asymptotic girth/δ-existence arguments
-  `PROOF CANDIDATE (elementary; hostile review pending)`;
-  CR-2 `PROOF CANDIDATE conditional on Stage-V validated semantics`.
+  `MACHINE-VERIFIED BY TWO INDEPENDENT IMPLEMENTATIONS (21 instances,
+  two construction modes, two aux variants, both Definition-31
+  readings)`; asymptotic arguments `ADVERSARIALLY REVIEWED — SOUND
+  WITH REPAIRS; repairs applied (R-A–R-E)`; CR-2 `ADVERSARIALLY
+  REVIEWED (B6 airtight given Stage-V inputs); primary carrier: the
+  triples variant`.  UNFORMALIZED (no Lean layer for this cycle's
+  combinatorics; candidate for future formalization alongside the
+  rational-certificate core).
 * Novelty: [JC26] explicitly wrote "We do not assert that this point is
   realized by a formula"; the novelty audit (V-d) found no prior work
   on realizability of PPSZ-recombination statistics.  Final pre-promotion
   search (2026-08-26): the structural CLASS of the family is known —
   Hertli's "1C-Unique (≤3)-CNF" (arXiv:1311.2513), the recognized hard
-  regime for PPSZ ("researchers do not know any tight instances for
-  PPSZ" per Scheder) — but no prior explicit construction with
+  regime for PPSZ (tight instances for the full PPSZ analysis are not
+  known; Scheder, TR21-069 §1.2: "we do not even fully understand the
+  true success probability of PPSZ") — but no prior explicit
+  construction with
   prescribed CCG indegree profiles and closure-TwoCC-emptiness, and no
   prior statement of recombination-statistics realizability/optimality,
   was found.  What is claimed as potentially new: the constructions

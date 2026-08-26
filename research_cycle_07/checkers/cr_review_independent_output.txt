@@ -1,0 +1,598 @@
+loaded 21 instances from C:\Users\masteria.DOMINE\rf\P-NP-Research\certificates\cycle07_corner\instances.json
+
+=== R7 explicit-construction fidelity (doc sec 2 formulas vs stored g) ===
+  n=30 m1=2: doc-literal condition: constructible
+      [ok] R7 n=30,m1=2: my re-derivation (engine-style, delta=2) reproduces stored g exactly
+      [ok] R7 n=30,m1=2: doc-literal construction matches stored g
+  n=50 m1=3: doc-literal condition: NO VALID delta (doc condition vacuous)  [P-cap-S nonempty: [16, 33]]
+      [ok] R7 n=50,m1=3: my re-derivation (engine-style, delta=2) reproduces stored g exactly
+  n=80 m1=5: doc-literal condition: constructible
+      [ok] R7 n=80,m1=5: my re-derivation (engine-style, delta=2) reproduces stored g exactly
+      [ok] R7 n=80,m1=5: doc-literal construction matches stored g
+  n=100 m1=6: doc-literal condition: NO VALID delta (doc condition vacuous)  [P-cap-S nonempty: [16, 66]]
+      [ok] R7 n=100,m1=6: my re-derivation (engine-style, delta=2) reproduces stored g exactly
+  n=120 m1=7: doc-literal condition: constructible
+      [ok] R7 n=120,m1=7: my re-derivation (engine-style, delta=2) reproduces stored g exactly
+      [ok] R7 n=120,m1=7: doc-literal construction matches stored g
+  n=80 m1=5: doc-literal condition: constructible
+      [ok] R7 n=80,m1=5: my re-derivation (engine-style, delta=2) reproduces stored g exactly
+      [ok] R7 n=80,m1=5: doc-literal construction matches stored g
+  n=100 m1=6: doc-literal condition: NO VALID delta (doc condition vacuous)  [P-cap-S nonempty: [16, 66]]
+      [ok] R7 n=100,m1=6: my re-derivation (engine-style, delta=2) reproduces stored g exactly
+
+=== instance n=26 m1=2 pairs ===
+      [ok] R1 clause count m=299 matches transcript 299
+      [ok] R1 no repeated variable inside any clause
+      [ok] R1 aux clauses all-positive
+      [ok] R1 all critical clauses width exactly 3
+      [ok] R2 no indegree-0 vertex
+      [ok] R2 |J_1| = 2 equals m1 = 2
+      [ok] R2 profile support in {1,2,3}: {1: 2, 2: 22, 3: 2}
+      [ok] R2 sum of indegrees = 2n
+      [ok] R6 degree identity 2*n0+n1 = sum_(k>=3)(k-2)n_k
+      [ok] R6 simplex: i0+i1+tau in [0,1]
+      [ok] R3[strict(w=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[strict(w=3 parents)] TwoCC empty (|resolvents|=0)
+      [ok] R3[strict(w=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R3[loose(w<=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[loose(w<=3 parents)] TwoCC empty (|resolvents|=1012)
+      [ok] R3[loose(w<=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [info] ITERATED closure: 19201 clauses; |TwoCC_iter| = 26 (tau_iter = 1.000) — one-round reading is load-bearing for pairs iff this is nonzero
+      [ok] R5 girth (own BFS) = 6 matches transcript 6
+      [ok] R5 no 2-cycles
+      [ok] R5 grandparent-overlap-free (own definition)
+      [ok] R5 Delta(Adj) = 5 <= 5
+      [info] max clique size = 2, girth = 6 (closed-set route needs maxclique < girth for pairs: HOLDS)
+      [ok] R4b closed-set characterization == direct clause evaluation (4000 random + all |S|<=3)
+      [ok] R4c NO closed clique among all 78 cliques of Adj => no second solution (complete for pairs variant)
+      [ok] R4a own DPLL enumerator: model count = 1; unique model is all-ones (nodes=12)
+      time 28.9s
+
+=== instance n=30 m1=2 pairs ===
+      [ok] R1 clause count m=405 matches transcript 405
+      [ok] R1 no repeated variable inside any clause
+      [ok] R1 aux clauses all-positive
+      [ok] R1 all critical clauses width exactly 3
+      [ok] R2 no indegree-0 vertex
+      [ok] R2 |J_1| = 2 equals m1 = 2
+      [ok] R2 profile support in {1,2,3}: {1: 2, 2: 26, 3: 2}
+      [ok] R2 sum of indegrees = 2n
+      [ok] R6 degree identity 2*n0+n1 = sum_(k>=3)(k-2)n_k
+      [ok] R6 simplex: i0+i1+tau in [0,1]
+      [ok] R3[strict(w=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[strict(w=3 parents)] TwoCC empty (|resolvents|=0)
+      [ok] R3[strict(w=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R3[loose(w<=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[loose(w<=3 parents)] TwoCC empty (|resolvents|=1408)
+      [ok] R3[loose(w<=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R5 girth (own BFS) = 6 matches transcript 6
+      [ok] R5 no 2-cycles
+      [ok] R5 grandparent-overlap-free (own definition)
+      [ok] R5 Delta(Adj) = 5 <= 5
+      [info] max clique size = 2, girth = 6 (closed-set route needs maxclique < girth for pairs: HOLDS)
+      [ok] R4b closed-set characterization == direct clause evaluation (4000 random + all |S|<=3)
+      [ok] R4c NO closed clique among all 90 cliques of Adj => no second solution (complete for pairs variant)
+      [ok] R4a own DPLL enumerator: model count = 1; unique model is all-ones (nodes=14)
+      time 0.0s
+
+=== instance n=40 m1=2 pairs ===
+      [ok] R1 clause count m=740 matches transcript 740
+      [ok] R1 no repeated variable inside any clause
+      [ok] R1 aux clauses all-positive
+      [ok] R1 all critical clauses width exactly 3
+      [ok] R2 no indegree-0 vertex
+      [ok] R2 |J_1| = 2 equals m1 = 2
+      [ok] R2 profile support in {1,2,3}: {1: 2, 2: 36, 3: 2}
+      [ok] R2 sum of indegrees = 2n
+      [ok] R6 degree identity 2*n0+n1 = sum_(k>=3)(k-2)n_k
+      [ok] R6 simplex: i0+i1+tau in [0,1]
+      [ok] R3[strict(w=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[strict(w=3 parents)] TwoCC empty (|resolvents|=0)
+      [ok] R3[strict(w=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R3[loose(w<=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[loose(w<=3 parents)] TwoCC empty (|resolvents|=2674)
+      [ok] R3[loose(w<=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R5 girth (own BFS) = 6 matches transcript 6
+      [ok] R5 no 2-cycles
+      [ok] R5 grandparent-overlap-free (own definition)
+      [ok] R5 Delta(Adj) = 5 <= 5
+      [info] max clique size = 2, girth = 6 (closed-set route needs maxclique < girth for pairs: HOLDS)
+      [ok] R4b closed-set characterization == direct clause evaluation (4000 random + all |S|<=3)
+      [ok] R4c NO closed clique among all 120 cliques of Adj => no second solution (complete for pairs variant)
+      [ok] R4a own DPLL enumerator: model count = 1; unique model is all-ones (nodes=19)
+      time 0.1s
+
+=== instance n=50 m1=3 pairs ===
+      [ok] R1 clause count m=1175 matches transcript 1175
+      [ok] R1 no repeated variable inside any clause
+      [ok] R1 aux clauses all-positive
+      [ok] R1 all critical clauses width exactly 3
+      [ok] R2 no indegree-0 vertex
+      [ok] R2 |J_1| = 3 equals m1 = 3
+      [ok] R2 profile support in {1,2,3}: {1: 3, 2: 44, 3: 3}
+      [ok] R2 sum of indegrees = 2n
+      [ok] R6 degree identity 2*n0+n1 = sum_(k>=3)(k-2)n_k
+      [ok] R6 simplex: i0+i1+tau in [0,1]
+      [ok] R3[strict(w=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[strict(w=3 parents)] TwoCC empty (|resolvents|=0)
+      [ok] R3[strict(w=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R3[loose(w<=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[loose(w<=3 parents)] TwoCC empty (|resolvents|=4346)
+      [ok] R3[loose(w<=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R5 girth (own BFS) = 5 matches transcript 5
+      [ok] R5 no 2-cycles
+      [ok] R5 grandparent-overlap-free (own definition)
+      [ok] R5 Delta(Adj) = 5 <= 5
+      [info] max clique size = 2, girth = 5 (closed-set route needs maxclique < girth for pairs: HOLDS)
+      [ok] R4b closed-set characterization == direct clause evaluation (4000 random + all |S|<=3)
+      [ok] R4c NO closed clique among all 150 cliques of Adj => no second solution (complete for pairs variant)
+      [ok] R4a own DPLL enumerator: model count = 1; unique model is all-ones (nodes=20)
+      time 0.1s
+
+=== instance n=60 m1=4 pairs ===
+      [ok] R1 clause count m=1710 matches transcript 1710
+      [ok] R1 no repeated variable inside any clause
+      [ok] R1 aux clauses all-positive
+      [ok] R1 all critical clauses width exactly 3
+      [ok] R2 no indegree-0 vertex
+      [ok] R2 |J_1| = 4 equals m1 = 4
+      [ok] R2 profile support in {1,2,3}: {1: 4, 2: 52, 3: 4}
+      [ok] R2 sum of indegrees = 2n
+      [ok] R6 degree identity 2*n0+n1 = sum_(k>=3)(k-2)n_k
+      [ok] R6 simplex: i0+i1+tau in [0,1]
+      [ok] R3[strict(w=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[strict(w=3 parents)] TwoCC empty (|resolvents|=0)
+      [ok] R3[strict(w=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R3[loose(w<=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[loose(w<=3 parents)] TwoCC empty (|resolvents|=6413)
+      [ok] R3[loose(w<=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R5 girth (own BFS) = 9 matches transcript 9
+      [ok] R5 no 2-cycles
+      [ok] R5 grandparent-overlap-free (own definition)
+      [ok] R5 Delta(Adj) = 5 <= 5
+      [info] max clique size = 2, girth = 9 (closed-set route needs maxclique < girth for pairs: HOLDS)
+      [ok] R4b closed-set characterization == direct clause evaluation (4000 random + all |S|<=3)
+      [ok] R4c NO closed clique among all 180 cliques of Adj => no second solution (complete for pairs variant)
+      [ok] R4a own DPLL enumerator: model count = 1; unique model is all-ones (nodes=24)
+      time 0.1s
+
+=== instance n=80 m1=5 pairs ===
+      [ok] R1 clause count m=3080 matches transcript 3080
+      [ok] R1 no repeated variable inside any clause
+      [ok] R1 aux clauses all-positive
+      [ok] R1 all critical clauses width exactly 3
+      [ok] R2 no indegree-0 vertex
+      [ok] R2 |J_1| = 5 equals m1 = 5
+      [ok] R2 profile support in {1,2,3}: {1: 5, 2: 70, 3: 5}
+      [ok] R2 sum of indegrees = 2n
+      [ok] R6 degree identity 2*n0+n1 = sum_(k>=3)(k-2)n_k
+      [ok] R6 simplex: i0+i1+tau in [0,1]
+      [ok] R3[strict(w=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[strict(w=3 parents)] TwoCC empty (|resolvents|=0)
+      [ok] R3[strict(w=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R3[loose(w<=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[loose(w<=3 parents)] TwoCC empty (|resolvents|=11754)
+      [ok] R3[loose(w<=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R5 girth (own BFS) = 8 matches transcript 8
+      [ok] R5 no 2-cycles
+      [ok] R5 grandparent-overlap-free (own definition)
+      [ok] R5 Delta(Adj) = 5 <= 5
+      [info] max clique size = 2, girth = 8 (closed-set route needs maxclique < girth for pairs: HOLDS)
+      [ok] R4b closed-set characterization == direct clause evaluation (4000 random + all |S|<=3)
+      [ok] R4c NO closed clique among all 240 cliques of Adj => no second solution (complete for pairs variant)
+      [ok] R4a own DPLL enumerator: model count = 1; unique model is all-ones (nodes=36)
+      time 0.3s
+
+=== instance n=100 m1=6 pairs ===
+      [ok] R1 clause count m=4850 matches transcript 4850
+      [ok] R1 no repeated variable inside any clause
+      [ok] R1 aux clauses all-positive
+      [ok] R1 all critical clauses width exactly 3
+      [ok] R2 no indegree-0 vertex
+      [ok] R2 |J_1| = 6 equals m1 = 6
+      [ok] R2 profile support in {1,2,3}: {1: 6, 2: 88, 3: 6}
+      [ok] R2 sum of indegrees = 2n
+      [ok] R6 degree identity 2*n0+n1 = sum_(k>=3)(k-2)n_k
+      [ok] R6 simplex: i0+i1+tau in [0,1]
+      [ok] R3[strict(w=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[strict(w=3 parents)] TwoCC empty (|resolvents|=0)
+      [ok] R3[strict(w=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R3[loose(w<=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[loose(w<=3 parents)] TwoCC empty (|resolvents|=18691)
+      [ok] R3[loose(w<=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R5 girth (own BFS) = 11 matches transcript 11
+      [ok] R5 no 2-cycles
+      [ok] R5 grandparent-overlap-free (own definition)
+      [ok] R5 Delta(Adj) = 5 <= 5
+      [info] max clique size = 2, girth = 11 (closed-set route needs maxclique < girth for pairs: HOLDS)
+      [ok] R4b closed-set characterization == direct clause evaluation (4000 random + all |S|<=3)
+      [ok] R4c NO closed clique among all 300 cliques of Adj => no second solution (complete for pairs variant)
+      [ok] R4a own DPLL enumerator: model count = 1; unique model is all-ones (nodes=43)
+      time 0.6s
+
+=== instance n=60 m1=4 triples ===
+      [ok] R1 clause count m=27684 matches transcript 27684
+      [ok] R1 no repeated variable inside any clause
+      [ok] R1 aux clauses all-positive
+      [ok] R1 all critical clauses width exactly 3
+      [ok] R2 no indegree-0 vertex
+      [ok] R2 |J_1| = 4 equals m1 = 4
+      [ok] R2 profile support in {1,2,3}: {1: 4, 2: 52, 3: 4}
+      [ok] R2 sum of indegrees = 2n
+      [ok] R6 degree identity 2*n0+n1 = sum_(k>=3)(k-2)n_k
+      [ok] R6 simplex: i0+i1+tau in [0,1]
+      [ok] R3[strict(w=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[strict(w=3 parents)] TwoCC empty (|resolvents|=0)
+      [ok] R3[strict(w=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R3[loose(w<=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[loose(w<=3 parents)] TwoCC empty (|resolvents|=0)
+      [ok] R3[loose(w<=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R5 girth (own BFS) = 9 matches transcript 9
+      [ok] R5 no 2-cycles
+      [ok] R5 grandparent-overlap-free (own definition)
+      [ok] R5 Delta(Adj) = 5 <= 5
+      [info] max clique size = 2, girth = 9 (closed-set route needs maxclique < girth for pairs: HOLDS)
+      [ok] R4b closed-set characterization == direct clause evaluation (4000 random + all |S|<=3)
+      [warn] R4d girth 9 < 13 (or short cycles exist): the closed-set/girth uniqueness argument does NOT cover this instance; uniqueness rests on R4a/engine-V3 search
+      [ok] R4a own DPLL enumerator: model count = 1; unique model is all-ones (nodes=281)
+      time 2.1s
+
+=== instance n=80 m1=5 triples ===
+      [ok] R1 clause count m=70245 matches transcript 70245
+      [ok] R1 no repeated variable inside any clause
+      [ok] R1 aux clauses all-positive
+      [ok] R1 all critical clauses width exactly 3
+      [ok] R2 no indegree-0 vertex
+      [ok] R2 |J_1| = 5 equals m1 = 5
+      [ok] R2 profile support in {1,2,3}: {1: 5, 2: 70, 3: 5}
+      [ok] R2 sum of indegrees = 2n
+      [ok] R6 degree identity 2*n0+n1 = sum_(k>=3)(k-2)n_k
+      [ok] R6 simplex: i0+i1+tau in [0,1]
+      [ok] R3[strict(w=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[strict(w=3 parents)] TwoCC empty (|resolvents|=0)
+      [ok] R3[strict(w=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R3[loose(w<=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[loose(w<=3 parents)] TwoCC empty (|resolvents|=0)
+      [ok] R3[loose(w<=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R5 girth (own BFS) = 8 matches transcript 8
+      [ok] R5 no 2-cycles
+      [ok] R5 grandparent-overlap-free (own definition)
+      [ok] R5 Delta(Adj) = 5 <= 5
+      [info] max clique size = 2, girth = 8 (closed-set route needs maxclique < girth for pairs: HOLDS)
+      [ok] R4b closed-set characterization == direct clause evaluation (4000 random + all |S|<=3)
+      [warn] R4d girth 8 < 13 (or short cycles exist): the closed-set/girth uniqueness argument does NOT cover this instance; uniqueness rests on R4a/engine-V3 search
+      [ok] R4a own DPLL enumerator: model count = 1; unique model is all-ones (nodes=367)
+      time 7.1s
+
+=== instance n=30 m1=2 pairs-explicit ===
+      [ok] R1 clause count m=405 matches transcript 405
+      [ok] R1 no repeated variable inside any clause
+      [ok] R1 aux clauses all-positive
+      [ok] R1 all critical clauses width exactly 3
+      [ok] R2 no indegree-0 vertex
+      [ok] R2 |J_1| = 2 equals m1 = 2
+      [ok] R2 profile support in {1,2,3}: {1: 2, 2: 26, 3: 2}
+      [ok] R2 sum of indegrees = 2n
+      [ok] R6 degree identity 2*n0+n1 = sum_(k>=3)(k-2)n_k
+      [ok] R6 simplex: i0+i1+tau in [0,1]
+      [ok] R3[strict(w=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[strict(w=3 parents)] TwoCC empty (|resolvents|=0)
+      [ok] R3[strict(w=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R3[loose(w<=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[loose(w<=3 parents)] TwoCC empty (|resolvents|=1408)
+      [ok] R3[loose(w<=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [info] ITERATED closure: 29755 clauses; |TwoCC_iter| = 30 (tau_iter = 1.000) — one-round reading is load-bearing for pairs iff this is nonzero
+      [ok] R5 girth (own BFS) = 6 matches transcript 6
+      [ok] R5 no 2-cycles
+      [ok] R5 grandparent-overlap-free (own definition)
+      [ok] R5 Delta(Adj) = 5 <= 5
+      [info] max clique size = 2, girth = 6 (closed-set route needs maxclique < girth for pairs: HOLDS)
+      [ok] R4b closed-set characterization == direct clause evaluation (4000 random + all |S|<=3)
+      [ok] R4c NO closed clique among all 90 cliques of Adj => no second solution (complete for pairs variant)
+      [ok] R4e no satisfying zero-set with 1 <= |S| <= 8 (8656936 subsets swept)
+      [ok] R4a own DPLL enumerator: model count = 1; unique model is all-ones (nodes=12)
+      time 68.2s
+
+=== instance n=50 m1=3 pairs-explicit ===
+      [ok] R1 clause count m=1175 matches transcript 1175
+      [ok] R1 no repeated variable inside any clause
+      [ok] R1 aux clauses all-positive
+      [ok] R1 all critical clauses width exactly 3
+      [ok] R2 no indegree-0 vertex
+      [ok] R2 |J_1| = 3 equals m1 = 3
+      [ok] R2 profile support in {1,2,3}: {1: 3, 2: 44, 3: 3}
+      [ok] R2 sum of indegrees = 2n
+      [ok] R6 degree identity 2*n0+n1 = sum_(k>=3)(k-2)n_k
+      [ok] R6 simplex: i0+i1+tau in [0,1]
+      [ok] R3[strict(w=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[strict(w=3 parents)] TwoCC empty (|resolvents|=0)
+      [ok] R3[strict(w=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R3[loose(w<=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[loose(w<=3 parents)] TwoCC empty (|resolvents|=4392)
+      [ok] R3[loose(w<=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R5 girth (own BFS) = 16 matches transcript 16
+      [ok] R5 no 2-cycles
+      [ok] R5 grandparent-overlap-free (own definition)
+      [ok] R5 Delta(Adj) = 5 <= 5
+      [info] max clique size = 2, girth = 16 (closed-set route needs maxclique < girth for pairs: HOLDS)
+      [ok] R4b closed-set characterization == direct clause evaluation (4000 random + all |S|<=3)
+      [ok] R4c NO closed clique among all 150 cliques of Adj => no second solution (complete for pairs variant)
+      [ok] R4e no satisfying zero-set with 1 <= |S| <= 5 (2369935 subsets swept)
+      [ok] R4a own DPLL enumerator: model count = 1; unique model is all-ones (nodes=20)
+      time 1.5s
+
+=== instance n=80 m1=5 pairs-explicit ===
+      [ok] R1 clause count m=3080 matches transcript 3080
+      [ok] R1 no repeated variable inside any clause
+      [ok] R1 aux clauses all-positive
+      [ok] R1 all critical clauses width exactly 3
+      [ok] R2 no indegree-0 vertex
+      [ok] R2 |J_1| = 5 equals m1 = 5
+      [ok] R2 profile support in {1,2,3}: {1: 5, 2: 70, 3: 5}
+      [ok] R2 sum of indegrees = 2n
+      [ok] R6 degree identity 2*n0+n1 = sum_(k>=3)(k-2)n_k
+      [ok] R6 simplex: i0+i1+tau in [0,1]
+      [ok] R3[strict(w=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[strict(w=3 parents)] TwoCC empty (|resolvents|=0)
+      [ok] R3[strict(w=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R3[loose(w<=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[loose(w<=3 parents)] TwoCC empty (|resolvents|=11820)
+      [ok] R3[loose(w<=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R5 girth (own BFS) = 20 matches transcript 20
+      [ok] R5 no 2-cycles
+      [ok] R5 grandparent-overlap-free (own definition)
+      [ok] R5 Delta(Adj) = 5 <= 5
+      [info] max clique size = 2, girth = 20 (closed-set route needs maxclique < girth for pairs: HOLDS)
+      [ok] R4b closed-set characterization == direct clause evaluation (4000 random + all |S|<=3)
+      [ok] R4c NO closed clique among all 240 cliques of Adj => no second solution (complete for pairs variant)
+      [ok] R4a own DPLL enumerator: model count = 1; unique model is all-ones (nodes=28)
+      time 0.3s
+
+=== instance n=100 m1=6 pairs-explicit ===
+      [ok] R1 clause count m=4850 matches transcript 4850
+      [ok] R1 no repeated variable inside any clause
+      [ok] R1 aux clauses all-positive
+      [ok] R1 all critical clauses width exactly 3
+      [ok] R2 no indegree-0 vertex
+      [ok] R2 |J_1| = 6 equals m1 = 6
+      [ok] R2 profile support in {1,2,3}: {1: 6, 2: 88, 3: 6}
+      [ok] R2 sum of indegrees = 2n
+      [ok] R6 degree identity 2*n0+n1 = sum_(k>=3)(k-2)n_k
+      [ok] R6 simplex: i0+i1+tau in [0,1]
+      [ok] R3[strict(w=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[strict(w=3 parents)] TwoCC empty (|resolvents|=0)
+      [ok] R3[strict(w=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R3[loose(w<=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[loose(w<=3 parents)] TwoCC empty (|resolvents|=18694)
+      [ok] R3[loose(w<=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R5 girth (own BFS) = 30 matches transcript 30
+      [ok] R5 no 2-cycles
+      [ok] R5 grandparent-overlap-free (own definition)
+      [ok] R5 Delta(Adj) = 5 <= 5
+      [info] max clique size = 2, girth = 30 (closed-set route needs maxclique < girth for pairs: HOLDS)
+      [ok] R4b closed-set characterization == direct clause evaluation (4000 random + all |S|<=3)
+      [ok] R4c NO closed clique among all 300 cliques of Adj => no second solution (complete for pairs variant)
+      [ok] R4a own DPLL enumerator: model count = 1; unique model is all-ones (nodes=37)
+      time 0.6s
+
+=== instance n=120 m1=7 pairs-explicit ===
+      [ok] R1 clause count m=7020 matches transcript 7020
+      [ok] R1 no repeated variable inside any clause
+      [ok] R1 aux clauses all-positive
+      [ok] R1 all critical clauses width exactly 3
+      [ok] R2 no indegree-0 vertex
+      [ok] R2 |J_1| = 7 equals m1 = 7
+      [ok] R2 profile support in {1,2,3}: {1: 7, 2: 106, 3: 7}
+      [ok] R2 sum of indegrees = 2n
+      [ok] R6 degree identity 2*n0+n1 = sum_(k>=3)(k-2)n_k
+      [ok] R6 simplex: i0+i1+tau in [0,1]
+      [ok] R3[strict(w=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[strict(w=3 parents)] TwoCC empty (|resolvents|=0)
+      [ok] R3[strict(w=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R3[loose(w<=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[loose(w<=3 parents)] TwoCC empty (|resolvents|=27233)
+      [ok] R3[loose(w<=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R5 girth (own BFS) = 26 matches transcript 26
+      [ok] R5 no 2-cycles
+      [ok] R5 grandparent-overlap-free (own definition)
+      [ok] R5 Delta(Adj) = 5 <= 5
+      [info] max clique size = 2, girth = 26 (closed-set route needs maxclique < girth for pairs: HOLDS)
+      [ok] R4b closed-set characterization == direct clause evaluation (4000 random + all |S|<=3)
+      [ok] R4c NO closed clique among all 360 cliques of Adj => no second solution (complete for pairs variant)
+      [ok] R4a own DPLL enumerator: model count = 1; unique model is all-ones (nodes=42)
+      time 1.1s
+
+=== instance n=80 m1=5 triples-explicit ===
+      [ok] R1 clause count m=70245 matches transcript 70245
+      [ok] R1 no repeated variable inside any clause
+      [ok] R1 aux clauses all-positive
+      [ok] R1 all critical clauses width exactly 3
+      [ok] R2 no indegree-0 vertex
+      [ok] R2 |J_1| = 5 equals m1 = 5
+      [ok] R2 profile support in {1,2,3}: {1: 5, 2: 70, 3: 5}
+      [ok] R2 sum of indegrees = 2n
+      [ok] R6 degree identity 2*n0+n1 = sum_(k>=3)(k-2)n_k
+      [ok] R6 simplex: i0+i1+tau in [0,1]
+      [ok] R3[strict(w=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[strict(w=3 parents)] TwoCC empty (|resolvents|=0)
+      [ok] R3[strict(w=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R3[loose(w<=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[loose(w<=3 parents)] TwoCC empty (|resolvents|=0)
+      [ok] R3[loose(w<=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [info] ITERATED closure: 70245 clauses (TRUNCATED); |TwoCC_iter| = 0 (tau_iter = 0.000) — one-round reading is load-bearing for pairs iff this is nonzero
+      [ok] R5 girth (own BFS) = 20 matches transcript 20
+      [ok] R5 no 2-cycles
+      [ok] R5 grandparent-overlap-free (own definition)
+      [ok] R5 Delta(Adj) = 5 <= 5
+      [info] max clique size = 2, girth = 20 (closed-set route needs maxclique < girth for pairs: HOLDS)
+      [ok] R4b closed-set characterization == direct clause evaluation (4000 random + all |S|<=3)
+      [ok] R4d no cycle <= 12 and girth 20 >= 2(Delta+1)+1 = 13 => any closed S contains an independent triple => killed (structural uniqueness proof complete for triples)
+      [ok] R4a own DPLL enumerator: model count = 1; unique model is all-ones (nodes=405)
+      time 7.1s
+
+=== instance n=100 m1=6 triples-explicit ===
+      [ok] R1 clause count m=142806 matches transcript 142806
+      [ok] R1 no repeated variable inside any clause
+      [ok] R1 aux clauses all-positive
+      [ok] R1 all critical clauses width exactly 3
+      [ok] R2 no indegree-0 vertex
+      [ok] R2 |J_1| = 6 equals m1 = 6
+      [ok] R2 profile support in {1,2,3}: {1: 6, 2: 88, 3: 6}
+      [ok] R2 sum of indegrees = 2n
+      [ok] R6 degree identity 2*n0+n1 = sum_(k>=3)(k-2)n_k
+      [ok] R6 simplex: i0+i1+tau in [0,1]
+      [ok] R3[strict(w=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[strict(w=3 parents)] TwoCC empty (|resolvents|=0)
+      [ok] R3[strict(w=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R3[loose(w<=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[loose(w<=3 parents)] TwoCC empty (|resolvents|=0)
+      [ok] R3[loose(w<=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [info] ITERATED closure: 142806 clauses (TRUNCATED); |TwoCC_iter| = 0 (tau_iter = 0.000) — one-round reading is load-bearing for pairs iff this is nonzero
+      [ok] R5 girth (own BFS) = 30 matches transcript 30
+      [ok] R5 no 2-cycles
+      [ok] R5 grandparent-overlap-free (own definition)
+      [ok] R5 Delta(Adj) = 5 <= 5
+      [info] max clique size = 2, girth = 30 (closed-set route needs maxclique < girth for pairs: HOLDS)
+      [ok] R4b closed-set characterization == direct clause evaluation (4000 random + all |S|<=3)
+      [ok] R4d no cycle <= 12 and girth 30 >= 2(Delta+1)+1 = 13 => any closed S contains an independent triple => killed (structural uniqueness proof complete for triples)
+      [ok] R4a own DPLL enumerator: model count = 1; unique model is all-ones (nodes=697)
+      time 22.7s
+
+=== instance n=50 m1=0 pairs ===
+      [ok] R1 clause count m=1175 matches transcript 1175
+      [ok] R1 no repeated variable inside any clause
+      [ok] R1 aux clauses all-positive
+      [ok] R1 all critical clauses width exactly 3
+      [ok] R2 no indegree-0 vertex
+      [ok] R2 |J_1| = 0 equals m1 = 0
+      [ok] R2 profile support in {1,2,3}: {2: 50}
+      [ok] R2 sum of indegrees = 2n
+      [ok] R6 degree identity 2*n0+n1 = sum_(k>=3)(k-2)n_k
+      [ok] R6 simplex: i0+i1+tau in [0,1]
+      [ok] R3[strict(w=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[strict(w=3 parents)] TwoCC empty (|resolvents|=0)
+      [ok] R3[strict(w=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R3[loose(w<=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[loose(w<=3 parents)] TwoCC empty (|resolvents|=4400)
+      [ok] R3[loose(w<=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R5 girth (own BFS) = 18 matches transcript 18
+      [ok] R5 no 2-cycles
+      [ok] R5 grandparent-overlap-free (own definition)
+      [ok] R5 Delta(Adj) = 4 <= 5
+      [info] max clique size = 2, girth = 18 (closed-set route needs maxclique < girth for pairs: HOLDS)
+      [ok] R4b closed-set characterization == direct clause evaluation (4000 random + all |S|<=3)
+      [ok] R4c NO closed clique among all 150 cliques of Adj => no second solution (complete for pairs variant)
+      [ok] R4a own DPLL enumerator: model count = 1; unique model is all-ones (nodes=18)
+      time 0.1s
+
+=== instance n=50 m1=2 pairs ===
+      [ok] R1 clause count m=1175 matches transcript 1175
+      [ok] R1 no repeated variable inside any clause
+      [ok] R1 aux clauses all-positive
+      [ok] R1 all critical clauses width exactly 3
+      [ok] R2 no indegree-0 vertex
+      [ok] R2 |J_1| = 2 equals m1 = 2
+      [ok] R2 profile support in {1,2,3}: {1: 2, 2: 46, 3: 2}
+      [ok] R2 sum of indegrees = 2n
+      [ok] R6 degree identity 2*n0+n1 = sum_(k>=3)(k-2)n_k
+      [ok] R6 simplex: i0+i1+tau in [0,1]
+      [ok] R3[strict(w=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[strict(w=3 parents)] TwoCC empty (|resolvents|=0)
+      [ok] R3[strict(w=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R3[loose(w<=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[loose(w<=3 parents)] TwoCC empty (|resolvents|=4344)
+      [ok] R3[loose(w<=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R5 girth (own BFS) = 6 matches transcript 6
+      [ok] R5 no 2-cycles
+      [ok] R5 grandparent-overlap-free (own definition)
+      [ok] R5 Delta(Adj) = 5 <= 5
+      [info] max clique size = 2, girth = 6 (closed-set route needs maxclique < girth for pairs: HOLDS)
+      [ok] R4b closed-set characterization == direct clause evaluation (4000 random + all |S|<=3)
+      [ok] R4c NO closed clique among all 150 cliques of Adj => no second solution (complete for pairs variant)
+      [ok] R4a own DPLL enumerator: model count = 1; unique model is all-ones (nodes=24)
+      time 0.1s
+
+=== instance n=50 m1=6 pairs ===
+      [ok] R1 clause count m=1175 matches transcript 1175
+      [ok] R1 no repeated variable inside any clause
+      [ok] R1 aux clauses all-positive
+      [ok] R1 all critical clauses width exactly 3
+      [ok] R2 no indegree-0 vertex
+      [ok] R2 |J_1| = 6 equals m1 = 6
+      [ok] R2 profile support in {1,2,3}: {1: 6, 2: 38, 3: 6}
+      [ok] R2 sum of indegrees = 2n
+      [ok] R6 degree identity 2*n0+n1 = sum_(k>=3)(k-2)n_k
+      [ok] R6 simplex: i0+i1+tau in [0,1]
+      [ok] R3[strict(w=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[strict(w=3 parents)] TwoCC empty (|resolvents|=0)
+      [ok] R3[strict(w=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R3[loose(w<=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[loose(w<=3 parents)] TwoCC empty (|resolvents|=4341)
+      [ok] R3[loose(w<=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R5 girth (own BFS) = 6 matches transcript 6
+      [ok] R5 no 2-cycles
+      [ok] R5 grandparent-overlap-free (own definition)
+      [ok] R5 Delta(Adj) = 5 <= 5
+      [info] max clique size = 2, girth = 6 (closed-set route needs maxclique < girth for pairs: HOLDS)
+      [ok] R4b closed-set characterization == direct clause evaluation (4000 random + all |S|<=3)
+      [ok] R4c NO closed clique among all 150 cliques of Adj => no second solution (complete for pairs variant)
+      [ok] R4a own DPLL enumerator: model count = 1; unique model is all-ones (nodes=22)
+      time 0.1s
+
+=== instance n=50 m1=12 pairs ===
+      [ok] R1 clause count m=1175 matches transcript 1175
+      [ok] R1 no repeated variable inside any clause
+      [ok] R1 aux clauses all-positive
+      [ok] R1 all critical clauses width exactly 3
+      [ok] R2 no indegree-0 vertex
+      [ok] R2 |J_1| = 12 equals m1 = 12
+      [ok] R2 profile support in {1,2,3}: {1: 12, 2: 26, 3: 12}
+      [ok] R2 sum of indegrees = 2n
+      [ok] R6 degree identity 2*n0+n1 = sum_(k>=3)(k-2)n_k
+      [ok] R6 simplex: i0+i1+tau in [0,1]
+      [ok] R3[strict(w=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[strict(w=3 parents)] TwoCC empty (|resolvents|=0)
+      [ok] R3[strict(w=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R3[loose(w<=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[loose(w<=3 parents)] TwoCC empty (|resolvents|=4338)
+      [ok] R3[loose(w<=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R5 girth (own BFS) = 7 matches transcript 7
+      [ok] R5 no 2-cycles
+      [ok] R5 grandparent-overlap-free (own definition)
+      [ok] R5 Delta(Adj) = 5 <= 5
+      [info] max clique size = 2, girth = 7 (closed-set route needs maxclique < girth for pairs: HOLDS)
+      [ok] R4b closed-set characterization == direct clause evaluation (4000 random + all |S|<=3)
+      [ok] R4c NO closed clique among all 150 cliques of Adj => no second solution (complete for pairs variant)
+      [ok] R4a own DPLL enumerator: model count = 1; unique model is all-ones (nodes=24)
+      time 0.1s
+
+=== instance n=50 m1=16 pairs ===
+      [ok] R1 clause count m=1175 matches transcript 1175
+      [ok] R1 no repeated variable inside any clause
+      [ok] R1 aux clauses all-positive
+      [ok] R1 all critical clauses width exactly 3
+      [ok] R2 no indegree-0 vertex
+      [ok] R2 |J_1| = 16 equals m1 = 16
+      [ok] R2 profile support in {1,2,3}: {1: 16, 2: 18, 3: 16}
+      [ok] R2 sum of indegrees = 2n
+      [ok] R6 degree identity 2*n0+n1 = sum_(k>=3)(k-2)n_k
+      [ok] R6 simplex: i0+i1+tau in [0,1]
+      [ok] R3[strict(w=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[strict(w=3 parents)] TwoCC empty (|resolvents|=0)
+      [ok] R3[strict(w=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R3[loose(w<=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[loose(w<=3 parents)] TwoCC empty (|resolvents|=4331)
+      [ok] R3[loose(w<=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R5 girth (own BFS) = 8 matches transcript 8
+      [ok] R5 no 2-cycles
+      [ok] R5 grandparent-overlap-free (own definition)
+      [ok] R5 Delta(Adj) = 5 <= 5
+      [info] max clique size = 2, girth = 8 (closed-set route needs maxclique < girth for pairs: HOLDS)
+      [ok] R4b closed-set characterization == direct clause evaluation (4000 random + all |S|<=3)
+      [ok] R4c NO closed clique among all 150 cliques of Adj => no second solution (complete for pairs variant)
+      [ok] R4a own DPLL enumerator: model count = 1; unique model is all-ones (nodes=21)
+      time 0.1s
+
+=== SUMMARY ===
+all independent checks passed
+EXIT=0

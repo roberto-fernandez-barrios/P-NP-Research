@@ -1,26 +1,86 @@
 # Research State
 
-**BRANCH NOTE (cycle06-fable only).**  Everything in the Cycle-6 section
-below is **PROVISIONAL**: it was produced while the Cycle-5 theorems
-await independent cross-model validation, it depends on none of them,
-and it must not be merged or treated as canonical until reviewed
-together with that validation.
+**BRANCH NOTE (cycle07-o18-fable).**  The Cycle-6 section below remains
+**PROVISIONAL** (produced while the Cycle-5 theorems await independent
+cross-model validation; depends on none of them).  Cycle 7 was
+explicitly authorized on 2026-08-25, executed on this branch from base
+`3918bd6`, and depends on no Cycle-5 result either.
 
 ## Current phase
 
-RESEARCH CYCLE 6 (PROVISIONAL) COMPLETE — frontier reassessment after
-the RR route; five candidates compared; next target selected: **O18
-(certified PPSZ improvement)**.  Cycle 6 was explicitly authorized on
-2026-08-25 as a provisional reassessment cycle on a new branch; it is a
-reassessment, not a proof cycle.  Cycle 5 remains complete and its
-theorems remain quarantined pending independent cross-model validation.
+RESEARCH CYCLE 7 COMPLETE — O18 attack executed under the two-gated
+mandate.  **Stage V verdict: JC-SOUND-WITH-REPAIRS** (hostile
+validation of Jiang–Cai arXiv:2607.10697v1; repaired frontier UNCHANGED
+at randomized general 3-SAT `O(1.307031578^n)`, Unique-3-SAT
+`O(1.306969598^n)`).  **Stage I outcome: stop rule S7-C** — the
+recombination LP corner `(i_0, i_1, tau) = (0, 0.060043…, 0)` is
+REALIZABLE by explicit uniquely satisfiable families (Theorem CR,
+adversarially reviewed, repairs applied; machine-verified by two
+independent implementations on 21 instances), so no valid constraint on
+these three statistics can improve the certified value: the narrow
+missing-inequality route is closed by construction, and the [JC26]
+recombination is exactly optimal over its statistic system.  Certified
+errata for the source chain (ECCC TR21-069 rev 1) were produced along
+the way.  Cycle 5 remains quarantined pending independent cross-model
+validation.
 
 ## Current objective
 
-Preserve the Cycle-6 provisional reassessment.  Do not begin the O18
-attack cycle (Research Cycle 7) without explicit authorization.  Do not
-promote any Cycle-6 statement beyond PROVISIONAL until independently
-reviewed.
+Preserve Cycle 7.  Do not begin Research Cycle 8 without explicit
+authorization.  The recorded next-cycle candidate for the O18 line is
+the "fourth estimate" route: verbatim import and coordinate expression
+of Hertli-2014's 1C-Unique gain (arXiv:1311.2513), whose class contains
+the corner family — plus the open sparse-instance (`m = O(n)`)
+realizability question.  Independent cross-model validation of Cycle 5
+remains outstanding.
+
+## Cycle-7 result (2026-08-25 → 2026-08-26)
+
+Full report: `results/research_cycle_07.md`.  Verdict document:
+`audits/cycle07_jc_validation.md`.  Key facts:
+
+* Stage V: sources frozen with SHA-256 (arXiv v1 + GitHub artifacts at
+  commit `3e732e0`); authors' checker reproduces its transcript; an
+  arms-length independent exact-rational checker replicates 89/90
+  claims and finds F1 (Scheder's printed endgame constant `1/15218` is
+  exactly false — true minimax `31273/475913718`; his rounded Theorem-6
+  base survives); verbatim import ledgers: SS lifting layer CLEAN,
+  Scheder layer transcription-exact with hypothesis-layer mismatches
+  repaired and certified in exact rationals (R1 `ε_R` beyond the
+  printed `ε ≤ 0.1` — all four Prop-C.12 claims certified at the exact
+  operating point; R2 hidden `Thr ≤ 1/1150`; R3 source's `256/600`
+  corrected to `64/600`; R4 TwoCC is Definition 31's closure set; R5
+  fixed-strength packaging downgraded to the source-verbatim
+  `w(n)` form with all `O(·)` claims surviving).  Frontier claim
+  independently supported (HKZZ 1.306995 and Qin–Watanabe 1.306984 are
+  Unique-only; no prior explicit general decimal below Hertli's
+  1.30704).  All numeric layers above the change-of-measure identity
+  exist only in the unrefereed ECCC revision (the refereed TheoretiCS
+  version dropped k = 3) — now underwritten by this cycle's
+  certifications.
+* Stage I: Theorem CR — for `n ≥ n_0`, `m_1 ≤ n/10`, explicit uniquely
+  satisfiable 3-CNFs (width-≤3 "pairs" and width-exactly-3 "triples"
+  variants; the triples variant is the primary carrier, its closure
+  being trivially `F̃ = F`) with statistics exactly `(0, m_1/n, 0)`,
+  closure-TwoCC empty under both Definition-31 readings, forced
+  canonical selection.  Realizability map: grid points
+  `(0, t, 0)` for `t` up to `0.32` at the verified sizes; `(0, 0.06, 0)`
+  exactly at `n ∈ {50, 100}`.  Corollary: the recombination LP value
+  `γ* = 0.000068779380458836…` is exactly optimal over
+  `(i_0, i_1, tau)`; improvements require new estimates or new
+  statistics.  Hostile review verdict SOUND WITH REPAIRS; repairs
+  R-A–R-E applied (δ-condition, δ-existence counting, girth bound
+  replaced by the reviewer's certified `girth > 17` for
+  `n > 96 + 51δ`, triangle-free pairs-uniqueness argument,
+  reading-sensitivity caveat).
+* Statuses: finite claims `MACHINE-VERIFIED BY TWO INDEPENDENT
+  IMPLEMENTATIONS`; asymptotic arguments and CR-2 `ADVERSARIALLY
+  REVIEWED — SOUND WITH REPAIRS (applied)`; everything `UNFORMALIZED`
+  (no Lean layer this cycle); no novelty claims beyond audited search
+  outcomes.
+* Failure knowledge: RC7-O18-01 (missing-inequality route falsified by
+  realizability), RC7-JC-01 (printed-constant trust; certified source
+  errata), RC7-ENG-01 (construction/verification traps).
 
 ## Cycle-6 reassessment result (PROVISIONAL, 2026-08-25)
 
@@ -285,25 +345,41 @@ Cycle-1 barrier/dependency/counterexample records remain retained.
 
 ## Next action
 
-Stop.  Do not begin Research Cycle 7 automatically.  The Cycle-6
-recommendation, contingent on fresh authorization, is the O18 attack
-(Stage V validation first, then Stage I improvement) under stop rules
-S-A–S-D in `audits/cycle06_target_selection.md`.  Independent
-cross-model validation of Cycle 5 remains outstanding and should be
-completed before any O01-adjacent work resumes.  The Cycle-5 do-not-retry
-list remains in force: do not retry inverse-polynomial single-copy RR
-acceptance (rigorously false); do not retry affine multi-RR hybridity,
-common-reference-dense lists, or two-copy/low-switch-depth asymptotics
-(Cycle-5 obstructions, pending validation).  The isolated statements
-whose resolution would change the RR picture: Lemma SEG (either way) and
-Lemma M.  If O01 work resumes, begin with the width-2 quasi-polynomial
-router question (`results/research_cycle_06_reassessment.md`
-Section 2.10).
+Stop.  Do not begin Research Cycle 8 automatically.  Recorded
+candidates for a future cycle, in no committed order: (a) the O18
+"fourth estimate" route — verbatim import of Hertli-2014's 1C-Unique
+gain (arXiv:1311.2513) expressed in the recombination coordinates
+(the corner family lies in that class; Scheder's TheoretiCS §1.4
+explicitly flags combining approaches as open); (b) the sparse-instance
+(`m = O(n)`) corner-realizability question; (c) the width-2
+quasi-polynomial router question if O01 work resumes
+(`results/research_cycle_06_reassessment.md` §2.10) — only after the
+Cycle-5 cross-model validation resolves.  Do-not-retry list additions:
+do not retry the O18 missing-inequality route on `(i_0, i_1, tau)`
+(closed by Theorem CR); the Cycle-5 do-not-retry list remains in force
+(no inverse-polynomial single-copy RR acceptance; no affine multi-RR
+hybridity, common-reference-dense lists, or two-copy/low-switch-depth
+asymptotics pending validation).  Isolated statements whose resolution
+would change pictures: Lemma SEG and Lemma M (RR route); the D1
+width-<3 critical-clause convention pin (O18 line, minor).
 
 ## Critical rule
 
 Do not directly attempt P versus NP.  No Boolean or algebraic complexity
 separation follows from any cycle so far.
+
+## Canonical Cycle-7 artifacts
+
+* `results/research_cycle_07.md`
+* `audits/cycle07_jc_validation.md`
+* `audits/cycle07_corner_theorem_review.md`
+* `audits/cycle07_final_adversarial.md`
+* `research_cycle_07/` (stageV_log, lp_reconstruction, import ledgers,
+  novelty audit, stage1_semantics, corner_realizability, checkers/,
+  frozen_sources/ with SHA-256 manifests)
+* `experiments/cycle07_corner_family.py`
+* `certificates/cycle07_corner/instances.json`
+* `failure_knowledge.jsonl` entries RC7-O18-01, RC7-JC-01, RC7-ENG-01
 
 ## Canonical Cycle-6 artifacts (PROVISIONAL, this branch)
 

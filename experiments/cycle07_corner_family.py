@@ -14,8 +14,8 @@ This script CONSTRUCTS the instances and VERIFIES every claimed property
 by direct computation (no step of the construction proof is trusted):
   V1  syntactic: each variable has exactly one critical clause in F, of
       width exactly 3 with distinct negated variables; aux clauses are
-      all-positive (width 2 in the 'pairs' variant, width 3 in the
-      'triples' variant) on CCG-non-adjacent vertex sets.
+      all-positive (their non-adjacency is by construction; the
+      load-bearing consequences are verified directly by V3/V4).
   V2  alpha = 1^n satisfies F.
   V3  unique satisfiability: for every variable x, F with x=0 is UNSAT
       (complete DPLL with unit propagation; independent of the closed-set
@@ -29,7 +29,7 @@ by direct computation (no step of the construction proof is trusted):
       report full profile and the statistics (i_0, i_1, tau).
   V6  structural side conditions used by the paper proof (reported, not
       load-bearing given V3/V4): no 2-cycles, overlap-freeness, directed
-      girth, max clique size vs girth.
+      girth.
 
 Exit 0 iff all verifications pass for all tested (n, m1, variant).
 """
@@ -369,6 +369,8 @@ def verify(n, m1, variant, quick=False):
         errors.append("V5: indegree-0 vertex exists")
     if prof.get(1, 0) != m1:
         errors.append(f"V5: |J_1| = {prof.get(1,0)} != m1 = {m1}")
+    if not set(prof).issubset({1, 2, 3}):
+        errors.append(f"V5: indegrees outside {{1,2,3}}: {sorted(set(prof)-{1,2,3})}")
     # V6 structure (reported)
     twocycles = sum(1 for x in range(n) for u in arcs[x] if x in arcs[u])
     overlap_bad = 0

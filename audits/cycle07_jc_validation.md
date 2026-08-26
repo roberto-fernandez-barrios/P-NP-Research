@@ -1,6 +1,6 @@
 # Cycle 7 — Stage V hostile independent validation of Jiang–Cai [JC26]
 
-**Date:** 2026-08-25.  **Branch:** `cycle07-o18-fable` (base `3918bd6`).
+**Date:** 2026-08-25 → 2026-08-26.  **Branch:** `cycle07-o18-fable` (base `3918bd6`).
 **Object validated:** [JC26] = Tao Jiang, Shaowei Cai, *A Better Analysis
 For PPSZ For 3-SAT*, arXiv:2607.10697 **v1** (2026-07-12), claiming
 randomized Unique-3-SAT in `O*(1.306969598^n)` and general 3-SAT in
@@ -40,7 +40,7 @@ exclude it?) is well-posed against the frontier `1.307031578`.
 | Recombination LP | from-scratch re-derivation + first-principles corner proof | `research_cycle_07/lp_reconstruction.md` | sound; corner = unique optimum, zero duality gap |
 | Scheder imports (regular/irregular/structural/endgame) | verbatim import ledger against ECCC TR21-069 rev 1 (SHA-frozen) with rendered-page verification | `research_cycle_07/scheder_import_ledger.md`, `frozen_sources/scheder_extracts.md` | transcription exact; hypothesis-layer mismatches → repairs R1–R4 |
 | SS lifting imports + baselines | verbatim ledger against the open-access journal version + Hertli + HKZZ | `research_cycle_07/ss_lifting_import_ledger.md` | CLEAN; deviations attribution-level only |
-| Repair certifications | exact-rational certification engine (this cycle) | `research_cycle_07/checkers/repair_certifications.py` + output | ALL PASS (exit 0); adversarial review in `checkers/repair_certifications_review.md` |
+| Repair certifications | exact-rational certification engine (this cycle) | `research_cycle_07/checkers/repair_certifications.py` + output | ALL PASS (exit 0); adversarial review complete: **SOUND WITH CAVEATS** (`checkers/repair_certifications_review.md`) — the t-substitution algebra and claim reductions re-derived by the reviewer; key integrals verified independently (four re-derived by hand, nine reproduced by quadrature); enclosures fuzz-tested; the certifier mutation-tested (correctly refutes at ε = 0.111 past the true cliff √7/24 ≈ 0.11024).  Caveats C1 (sign-precondition assert), C2 (upper side |φ_TwoCC| ≤ 5), and C4 (Ψ-ordering) hardened into the script afterwards, re-passing exit 0; caveat C3 (the three §8.3 2CC constants certified only relative to their PRINTED closed forms — B(r) not re-derived) cannot be hardened and is carried as an explicit dependency here |
 | Novelty/frontier | live literature sweep, 19 searches + 22 fetches | `research_cycle_07/novelty_frontier_audit.md` | frontier claim SUPPORTED; no follow-ups; no better bound |
 
 Three independent implementations touched the arithmetic: the authors'
@@ -60,9 +60,12 @@ computations (the F1 fraction, float sanity, and the repair engine).
    restriction, prefix realization — re-proved independently), the
    root/branch analysis of §4, and the quantifier bookkeeping of the
    proofs.  (`lp_reconstruction.md` §§3–6.)
-2. **Every displayed number.**  All coefficients, margins, enclosures,
-   root brackets, and outward-rounded bases replicate in exact rationals
-   with certified strict margins; the tightest is `4.15·10⁻¹⁴` (safe
+2. **Every displayed number of the NEW analysis** (with exactly one
+   exception, F1 §4 — a background display inherited verbatim from
+   Scheder and not covered by the authors' checker).  All coefficients,
+   margins, enclosures, root brackets, and outward-rounded bases
+   replicate in exact rationals with certified strict margins (89/90
+   independent checks); the tightest is `4.15·10⁻¹⁴` (safe
    branch margins over the claimed `2.69/2.70·10⁻¹¹`).  The corner
    satisfies `L_reg = L_irr = γ*` to width `< 10⁻⁷⁷`.  All 9 JSON
    reported intervals contain the independent enclosures.
@@ -131,7 +134,7 @@ but the operating point `ε_I = 0.0731 < 64/600` **complies with the
 corrected constraint** (certified), and Lemma A.1's own nonnegativity
 calculus (`|φ_ID| ≤ 5/2`, `|φ_pID| ≤ 61/54`, `φ_TwoCC ≥ −5` — the last
 via the exact factorization `φ_TwoCC + 5 = (1/2−r)(160r²+20r+10)`) is
-certified exactly.  Repaired claim: `ε_I = 0.0731…` is admissible; the
+certified exactly.  Repaired claim: `ε_I = 0.0730723…` is admissible; the
 range statement is restricted to `[0, 64/600]`.  **No number changes.**
 
 **R4 [MEDIUM-LOW → relabel].  TwoCC definition.**  [JC26] §2.1 defines
@@ -205,8 +208,11 @@ status of an unrefereed technical report at every numeric layer above
 the change of measure — now mitigated by this cycle's independent
 certifications of the load-bearing hairline constants (R1–R3 above,
 Lemma 55's `0.001687` with margin `3.6·10⁻⁷`, `BFS − DFB ≥ 0.030966`
-with margin `5.2·10⁻⁷`, the full §8 closed-form family re-integrated
-symbolically, and the falsity of the printed `JUNK₂ ≤ 0.000184`
+with margin `5.2·10⁻⁷`, the Definition-68 family and the (36)/(37)
+`m₂`-constants re-integrated symbolically from their defining
+integrals — while the three §8.3 2CC constants are certified only
+relative to their printed closed forms, `B(r)` not re-derived (review
+caveat C3) — and the falsity of the printed `JUNK₂ ≤ 0.000184`
 certified harmless downstream).
 
 **Residual unverified mass (stated honestly).**  The probabilistic core

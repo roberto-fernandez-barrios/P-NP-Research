@@ -1,0 +1,78 @@
+loaded 21 instances from C:\Users\masteria.DOMINE\rf\P-NP-Research\certificates\cycle07_corner\instances.json
+
+=== R7 explicit-construction fidelity (doc sec 2 formulas vs stored g) ===
+  n=30 m1=2: doc-literal condition: constructible
+      [ok] R7 n=30,m1=2: my re-derivation (engine-style, delta=2) reproduces stored g exactly
+      [ok] R7 n=30,m1=2: doc-literal construction matches stored g
+  n=50 m1=3: doc-literal condition: NO VALID delta (doc condition vacuous)  [P-cap-S nonempty: [16, 33]]
+      [ok] R7 n=50,m1=3: my re-derivation (engine-style, delta=2) reproduces stored g exactly
+  n=80 m1=5: doc-literal condition: constructible
+      [ok] R7 n=80,m1=5: my re-derivation (engine-style, delta=2) reproduces stored g exactly
+      [ok] R7 n=80,m1=5: doc-literal construction matches stored g
+  n=100 m1=6: doc-literal condition: NO VALID delta (doc condition vacuous)  [P-cap-S nonempty: [16, 66]]
+      [ok] R7 n=100,m1=6: my re-derivation (engine-style, delta=2) reproduces stored g exactly
+  n=120 m1=7: doc-literal condition: constructible
+      [ok] R7 n=120,m1=7: my re-derivation (engine-style, delta=2) reproduces stored g exactly
+      [ok] R7 n=120,m1=7: doc-literal construction matches stored g
+  n=80 m1=5: doc-literal condition: constructible
+      [ok] R7 n=80,m1=5: my re-derivation (engine-style, delta=2) reproduces stored g exactly
+      [ok] R7 n=80,m1=5: doc-literal construction matches stored g
+  n=100 m1=6: doc-literal condition: NO VALID delta (doc condition vacuous)  [P-cap-S nonempty: [16, 66]]
+      [ok] R7 n=100,m1=6: my re-derivation (engine-style, delta=2) reproduces stored g exactly
+
+=== instance n=60 m1=4 triples ===
+      [ok] R1 clause count m=27684 matches transcript 27684
+      [ok] R1 no repeated variable inside any clause
+      [ok] R1 aux clauses all-positive
+      [ok] R1 all critical clauses width exactly 3
+      [ok] R2 no indegree-0 vertex
+      [ok] R2 |J_1| = 4 equals m1 = 4
+      [ok] R2 profile support in {1,2,3}: {1: 4, 2: 52, 3: 4}
+      [ok] R2 sum of indegrees = 2n
+      [ok] R6 degree identity 2*n0+n1 = sum_(k>=3)(k-2)n_k
+      [ok] R6 simplex: i0+i1+tau in [0,1]
+      [ok] R3[strict(w=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[strict(w=3 parents)] TwoCC empty (|resolvents|=0)
+      [ok] R3[strict(w=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R3[loose(w<=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[loose(w<=3 parents)] TwoCC empty (|resolvents|=0)
+      [ok] R3[loose(w<=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R5 girth (own BFS) = 9 matches transcript 9
+      [ok] R5 no 2-cycles
+      [ok] R5 grandparent-overlap-free (own definition)
+      [ok] R5 Delta(Adj) = 5 <= 5
+      [info] max clique size = 2, girth = 9 (closed-set route needs maxclique < girth for pairs: HOLDS)
+      [ok] R4b closed-set characterization == direct clause evaluation (4000 random + all |S|<=3)
+      [warn] R4d girth 9 < 13 (or short cycles exist): the closed-set/girth uniqueness argument does NOT cover this instance; uniqueness rests on R4a/engine-V3 search
+      [ok] R4a own DPLL enumerator: model count = 1; unique model is all-ones (nodes=281)
+      time 2.0s
+
+=== instance n=80 m1=5 triples ===
+      [ok] R1 clause count m=70245 matches transcript 70245
+      [ok] R1 no repeated variable inside any clause
+      [ok] R1 aux clauses all-positive
+      [ok] R1 all critical clauses width exactly 3
+      [ok] R2 no indegree-0 vertex
+      [ok] R2 |J_1| = 5 equals m1 = 5
+      [ok] R2 profile support in {1,2,3}: {1: 5, 2: 70, 3: 5}
+      [ok] R2 sum of indegrees = 2n
+      [ok] R6 degree identity 2*n0+n1 = sum_(k>=3)(k-2)n_k
+      [ok] R6 simplex: i0+i1+tau in [0,1]
+      [ok] R3[strict(w=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[strict(w=3 parents)] TwoCC empty (|resolvents|=0)
+      [ok] R3[strict(w=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R3[loose(w<=3 parents)] every variable owns >= 1 critical clause in F~
+      [ok] R3[loose(w<=3 parents)] TwoCC empty (|resolvents|=0)
+      [ok] R3[loose(w<=3 parents)] EXACTLY one critical clause per variable in F~ (forced selection)
+      [ok] R5 girth (own BFS) = 8 matches transcript 8
+      [ok] R5 no 2-cycles
+      [ok] R5 grandparent-overlap-free (own definition)
+      [ok] R5 Delta(Adj) = 5 <= 5
+      [info] max clique size = 2, girth = 8 (closed-set route needs maxclique < girth for pairs: HOLDS)
+      [ok] R4b closed-set characterization == direct clause evaluation (4000 random + all |S|<=3)
+      [warn] R4d girth 8 < 13 (or short cycles exist): the closed-set/girth uniqueness argument does NOT cover this instance; uniqueness rests on R4a/engine-V3 search
+      [ok] R4a own DPLL enumerator: model count = 1; unique model is all-ones (nodes=367)
+      time 7.3s
+
+=== SUMMARY ===
+all independent checks passed

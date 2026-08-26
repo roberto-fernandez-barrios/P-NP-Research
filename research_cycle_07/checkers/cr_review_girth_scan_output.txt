@@ -1,0 +1,213 @@
+A. delta-existence scan n in [26,1200], all m1 <= n/10 (72673 pairs):
+   engine-condition failures: 1
+      FAIL (27, 2, 'no delta in range')
+   doc-literal-condition failures ({p} cap {s} nonempty or no delta): 15601
+      e.g. (27, 2, 'no delta in range')
+      e.g. (31, 3, 'P-cap-S=[20]')
+      e.g. (32, 3, 'P-cap-S=[10, 21]')
+      e.g. (34, 3, 'P-cap-S=[22]')
+      e.g. (35, 3, 'P-cap-S=[11, 23]')
+      e.g. (37, 3, 'P-cap-S=[24]')
+      e.g. (38, 3, 'P-cap-S=[12, 25]')
+      e.g. (40, 3, 'P-cap-S=[26]')
+      e.g. (41, 3, 'P-cap-S=[13, 27]')
+      e.g. (43, 3, 'P-cap-S=[28]')
+      e.g. (44, 3, 'P-cap-S=[14, 29]')
+      e.g. (46, 3, 'P-cap-S=[30]')
+
+B. girth of the explicit construction vs doc bound n/3 - 3*delta - 3:
+   n    m1  delta  girth   docbound  ok?   (m1 = round(i1* n) unless noted)
+     26   2     2      6     -0.33  ok
+     28   2     2      6      0.33  ok
+     30   2     2      6      1.00  ok
+     32   2     2      8      1.67  ok
+     34   2     2      8      2.33  ok
+     36   2     2      8      3.00  ok
+     38   2     2     10      3.67  ok
+     40   2     2     10      4.33  ok
+     42   3     2     12      5.00  ok
+     44   3     2     14      5.67  ok
+     46   3     2     14      6.33  ok
+     48   3     2     14      7.00  ok
+     50   3     2     16      7.67  ok
+     52   3     2     16      8.33  ok
+     54   3     2     16      9.00  ok
+     56   3     2     18      9.67  ok
+     58   3     2     18     10.33  ok
+     60   4     2     12     11.00  ok
+     62   4     2     18     11.67  ok
+     64   4     2     16     12.33  ok
+     66   4     2     14     13.00  ok
+     68   4     2     20     13.67  ok
+     70   4     2     18     14.33  ok
+     72   4     2     16     15.00  ok
+     74   4     2     22     15.67  ok
+     76   5     2     17     16.33  ok
+     78   5     2     16     17.00  **VIOLATED**
+     80   5     2     20     17.67  ok
+     82   5     2     19     18.33  ok
+     84   5     2     18     19.00  **VIOLATED**
+     86   5     2     22     19.67  ok
+     88   5     2     21     20.33  ok
+     90   5     2     20     21.00  **VIOLATED**
+     92   6     2     28     21.67  ok
+     94   6     2     28     22.33  ok
+     96   6     2     28     23.00  ok
+     98   6     2     30     23.67  ok
+    100   6     2     30     24.33  ok
+    102   6     2     30     25.00  ok
+    104   6     2     32     25.67  ok
+    106   6     2     32     26.33  ok
+    108   6     2     32     27.00  ok
+    110   7     2     32     27.67  ok
+    112   7     2     28     28.33  **VIOLATED**
+    114   7     2     24     29.00  **VIOLATED**
+    116   7     2     34     29.67  ok
+    118   7     2     30     30.33  **VIOLATED**
+    120   7     2     26     31.00  **VIOLATED**
+    122   7     2     36     31.67  ok
+    124   7     2     32     32.33  **VIOLATED**
+    126   8     2     26     33.00  **VIOLATED**
+    128   8     2     32     33.67  **VIOLATED**
+    130   8     2     30     34.33  **VIOLATED**
+    132   8     2     28     35.00  **VIOLATED**
+    134   8     2     34     35.67  **VIOLATED**
+    136   8     2     32     36.33  **VIOLATED**
+    138   8     2     30     37.00  **VIOLATED**
+    140   8     2     36     37.67  **VIOLATED**
+    160  10     2     40     44.33  **VIOLATED**
+    162  10     2     34     45.00  **VIOLATED**
+    166  10     2     42     46.33  **VIOLATED**
+    168  10     2     36     47.00  **VIOLATED**
+    172  10     2     44     48.33  **VIOLATED**
+    174  10     2     38     49.00  **VIOLATED**
+    176  11     2     44     49.67  **VIOLATED**
+    178  11     2     41     50.33  **VIOLATED**
+    180  11     2     38     51.00  **VIOLATED**
+    182  11     2     46     51.67  **VIOLATED**
+    184  11     2     43     52.33  **VIOLATED**
+    186  11     2     40     53.00  **VIOLATED**
+    188  11     2     48     53.67  **VIOLATED**
+    190  11     2     45     54.33  **VIOLATED**
+    200  12     2     62     57.67  ok
+    210  13     2     44     61.00  **VIOLATED**
+    214  13     2     54     62.33  **VIOLATED**
+    216  13     2     46     63.00  **VIOLATED**
+    220  13     2     56     64.33  **VIOLATED**
+    222  13     2     48     65.00  **VIOLATED**
+    226  14     2     52     66.33  **VIOLATED**
+    228  14     2     48     67.00  **VIOLATED**
+    230  14     2     58     67.67  **VIOLATED**
+    232  14     2     54     68.33  **VIOLATED**
+    234  14     2     50     69.00  **VIOLATED**
+    236  14     2     60     69.67  **VIOLATED**
+    238  14     2     56     70.33  **VIOLATED**
+    240  14     2     52     71.00  **VIOLATED**
+    246  15     2     72     73.00  **VIOLATED**
+    252  15     2     74     75.00  **VIOLATED**
+    258  15     2     76     77.00  **VIOLATED**
+    260  16     2     76     77.67  **VIOLATED**
+    262  16     2     66     78.33  **VIOLATED**
+    264  16     2     56     79.00  **VIOLATED**
+    266  16     2     78     79.67  **VIOLATED**
+    268  16     2     68     80.33  **VIOLATED**
+    270  16     2     58     81.00  **VIOLATED**
+    272  16     2     80     81.67  **VIOLATED**
+    274  16     2     70     82.33  **VIOLATED**
+    276  17     2     58     83.00  **VIOLATED**
+    278  17     2     70     83.67  **VIOLATED**
+    280  17     2     65     84.33  **VIOLATED**
+    282  17     2     60     85.00  **VIOLATED**
+    284  17     2     72     85.67  **VIOLATED**
+    286  17     2     67     86.33  **VIOLATED**
+    288  17     2     62     87.00  **VIOLATED**
+    290  17     2     74     87.67  **VIOLATED**
+    292  18     2     88     88.33  **VIOLATED**
+    294  18     2     86     89.00  **VIOLATED**
+    298  18     2     90     90.33  **VIOLATED**
+    300  18     2     88     91.00  **VIOLATED**
+    304  18     2     92     92.33  **VIOLATED**
+    306  18     2     90     93.00  **VIOLATED**
+    310  19     2     78     94.33  **VIOLATED**
+    312  19     2     66     95.00  **VIOLATED**
+    314  19     2     92     95.67  **VIOLATED**
+    316  19     2     80     96.33  **VIOLATED**
+    318  19     2     68     97.00  **VIOLATED**
+    320  19     2     94     97.67  **VIOLATED**
+    322  19     2     82     98.33  **VIOLATED**
+    324  19     2     70     99.00  **VIOLATED**
+    326  20     2     82     99.67  **VIOLATED**
+    328  20     2     76    100.33  **VIOLATED**
+    330  20     2     70    101.00  **VIOLATED**
+    332  20     2     84    101.67  **VIOLATED**
+    334  20     2     78    102.33  **VIOLATED**
+    336  20     2     72    103.00  **VIOLATED**
+    338  20     2     86    103.67  **VIOLATED**
+    340  20     2     80    104.33  **VIOLATED**
+    342  21     2    100    105.00  **VIOLATED**
+    346  21     2    104    106.33  **VIOLATED**
+    348  21     2    102    107.00  **VIOLATED**
+    352  21     2    106    108.33  **VIOLATED**
+    354  21     2    104    109.00  **VIOLATED**
+    358  21     2    108    110.33  **VIOLATED**
+    360  22     2     76    111.00  **VIOLATED**
+    362  22     2    106    111.67  **VIOLATED**
+    364  22     2     92    112.33  **VIOLATED**
+    366  22     2     78    113.00  **VIOLATED**
+    368  22     2    108    113.67  **VIOLATED**
+    370  22     2     94    114.33  **VIOLATED**
+    372  22     2     80    115.00  **VIOLATED**
+    374  22     2    110    115.67  **VIOLATED**
+    376  23     2     87    116.33  **VIOLATED**
+    378  23     2     80    117.00  **VIOLATED**
+    380  23     2     96    117.67  **VIOLATED**
+    382  23     2     89    118.33  **VIOLATED**
+    384  23     2     82    119.00  **VIOLATED**
+    386  23     2     98    119.67  **VIOLATED**
+    388  23     2     91    120.33  **VIOLATED**
+    390  23     2     84    121.00  **VIOLATED**
+    392  24     2    120    121.67  **VIOLATED**
+    394  24     2    118    122.33  **VIOLATED**
+    396  24     2    116    123.00  **VIOLATED**
+    398  24     2    122    123.67  **VIOLATED**
+    400  24     2    120    124.33  **VIOLATED**
+    450  27     2    132    141.00  **VIOLATED**
+    500  30     2    154    157.67  **VIOLATED**
+    600  36     2    176    191.00  **VIOLATED**
+    700  42     2    210    224.33  **VIOLATED**
+    800  48     2    246    257.67  **VIOLATED**
+
+   doc girth-bound violations: 116
+      n=78 m1=5 delta=2 girth=16 < bound 17.00
+      n=84 m1=5 delta=2 girth=18 < bound 19.00
+      n=90 m1=5 delta=2 girth=20 < bound 21.00
+      n=112 m1=7 delta=2 girth=28 < bound 28.33
+      n=114 m1=7 delta=2 girth=24 < bound 29.00
+      n=118 m1=7 delta=2 girth=30 < bound 30.33
+      n=120 m1=7 delta=2 girth=26 < bound 31.00
+      n=124 m1=7 delta=2 girth=32 < bound 32.33
+      n=126 m1=8 delta=2 girth=26 < bound 33.00
+      n=128 m1=8 delta=2 girth=32 < bound 33.67
+      n=130 m1=8 delta=2 girth=30 < bound 34.33
+      n=132 m1=8 delta=2 girth=28 < bound 35.00
+      n=134 m1=8 delta=2 girth=34 < bound 35.67
+      n=136 m1=8 delta=2 girth=32 < bound 36.33
+      n=138 m1=8 delta=2 girth=30 < bound 37.00
+      n=140 m1=8 delta=2 girth=36 < bound 37.67
+      n=160 m1=10 delta=2 girth=40 < bound 44.33
+      n=162 m1=10 delta=2 girth=34 < bound 45.00
+      n=166 m1=10 delta=2 girth=42 < bound 46.33
+      n=168 m1=10 delta=2 girth=36 < bound 47.00
+   first n with girth >= 18 (m1=round(i1*n)): 56
+
+   worst-case girth over all m1 <= n/10:
+   n=  60: min girth 10 at m1=5 (delta=5)
+   n= 100: min girth 12 at m1=8 (delta=6)
+   n= 150: min girth 15 at m1=14 (delta=5)
+   n= 200: min girth 30 at m1=17 (delta=6)
+   n= 260: min girth 36 at m1=23 (delta=6)
+   n= 320: min girth 42 at m1=29 (delta=6)
+   n= 400: min girth 43 at m1=35 (delta=6)
+
+C. targeted: n=200 m1=11 (predicted special-chain cycle of length 52):
+   delta=2 girth=52 docbound=57.67 ** doc bound VIOLATED **
