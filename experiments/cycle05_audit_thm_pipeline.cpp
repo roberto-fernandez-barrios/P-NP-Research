@@ -7,9 +7,10 @@
 //             the proposer's engine; runs the Theorem-E minimax check
 //             (min over plus roots of the minimax over maximal rooted
 //             cyclic-interval chains of max |f|) on every rescued word.
-//   --conj  : falsification search for Theorem A AS LITERALLY STATED:
+//   --conj  : falsification search for the original, now-discarded
+//             postcomposition formulation of Theorem A:
 //             samples pairs P = (pi, psi o pi) with psi affine (x -> a x),
-//             which satisfy the stated hypothesis pi_2 o pi_1^{-1} = psi
+//             which satisfy the discarded hypothesis pi_2 o pi_1^{-1} = psi
 //             affine, and looks for hybrid-only colorings (G(P) > 0).
 //   --selftest : internal consistency + minimax reference check.
 //
@@ -426,7 +427,7 @@ static void run_conj(int n, long long a, unsigned long long seed, long long iter
             if (!accept(FU, cw)) continue;
             // FOUND: hybrid-only coloring for the pair (id, tau).
             finds++;
-            printf("\n=== THEOREM A LITERAL-HYPOTHESIS COUNTEREXAMPLE (find %d) ===\n", finds);
+            printf("\n=== DISCARDED POSTCOMPOSITION THEOREM-A COUNTEREXAMPLE (find %d) ===\n", finds);
             printf("n = %d, q = %d, psi(x) = %lld x mod %d\n", n, q, a, q);
             printf("pi (copy 1 finite perm) = [");
             for (int i = 0; i < q; i++) printf("%d%s", pi[i], i + 1 < q ? "," : "");
@@ -442,7 +443,8 @@ static void run_conj(int n, long long a, unsigned long long seed, long long iter
             bool hyp = true;
             for (int y = 0; y < q; y++)
                 if (p2[piinv[y]] != (int)((a * y) % q)) hyp = false;
-            printf("hypothesis pi_2 o pi_1^{-1} = psi affine: %s\n", hyp ? "HOLDS" : "BROKEN");
+            printf("discarded postcomposition hypothesis pi_2 o pi_1^{-1} = psi affine: %s\n",
+                   hyp ? "HOLDS" : "BROKEN");
             u64 fword = push_word(cw, pi, q);  // f = w o pi^{-1}
             Family G1 = build_family(n, {p1});
             Family G2 = build_family(n, {p2});

@@ -1,5 +1,13 @@
 # Adversarial audit: Lemma SEG (segment version of the FLSY interval theorem)
 
+**Supersession notice (2026-08-27):** This first skeptic report is retained
+as audit history.  Its endorsed repair is superseded by
+`cycle05_seg_deep_independent_validation.md`,
+`cycle05_seg_arms_length_referee.md`, and the exact Sol R1--R5 corrections
+in `cycle05_sol_final_cross_model_validation.md`.  The finalized status is
+`ADVERSARIALLY REVIEWED PROOF CANDIDATE; UNFORMALIZED`, with the repaired
+proof applied; SEG is not a theorem published verbatim by FLSY.
+
 **Role:** SKEPTIC (adversarial mathematical review).
 **Date:** 2026-08-21.
 **Target:** the reconstruction-based "Lemma SEG" of

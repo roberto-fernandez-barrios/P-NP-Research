@@ -1,9 +1,16 @@
-# Barrier audit: Cycle-5 hybrid-routing obstructions (Theorems A, E; conditional C, F)
+# Barrier audit: Cycle-5 hybrid-routing obstructions (Theorems A, E, C, F)
 
 **Date:** 2026-08-21
 **Results audited:** Theorem A (affine hybrid-vanishing), Theorem E
-(dense-circle obstruction), and the SEG-conditional Theorems C and F, all in
-`research_cycle_05/`.
+(dense-circle obstruction), and Theorems C and F with their explicit SEG
+dependency, all in `research_cycle_05/`.
+
+**Finalization update (2026-08-27):** The original conditional-language
+assessment is superseded by the deep, arms-length, and Sol cross-model SEG
+validations.  SEG, C, and F are now `ADVERSARIALLY REVIEWED PROOF
+CANDIDATE; UNFORMALIZED`, with all identified proof repairs applied.  SEG
+is a repository proof derived from FLSY machinery, not a theorem published
+verbatim by FLSY.  This status update changes no barrier conclusion below.
 
 The mandated questions, answered for this scope:
 
@@ -38,13 +45,13 @@ The mandated questions, answered for this scope:
    A/E/C/F are stated to that standard.
 
 7. **Is a hidden assumption equivalent to, or stronger than, the desired
-   conclusion?**  CHECKED, NO — with one explicit conditional import:
-   Theorems C and F assume Lemma SEG, which is strictly weaker than any
-   O01-side statement (it is an upper bound on segment acceptance for the
-   *single-order* interval family, a strengthening of the already published
-   Theorem 4.4 in scope, not in kind).  Circularity with O01 would require
-   SEG to imply something about *all* polynomial families; it does not.
-   Theorems A and E import only the published FLSY theorem.
+   conclusion?**  CHECKED, NO.  Theorems C and F depend on the separately
+   proved and cross-model-reviewed Lemma SEG, which is strictly weaker than
+   any O01-side statement: it is an upper bound on segment acceptance for
+   the *single-order* interval family, extending the scope (not the kind) of
+   the published Theorem 4.4.  Circularity with O01 would require SEG to
+   imply something about *all* polynomial families; it does not.  Theorems
+   A and E import only the published FLSY theorem.
 
 8. **Is the result merely hardness for a restricted model?**  YES, BY
    DESIGN, and the scope is stated in each theorem: restricted classes of

@@ -164,11 +164,13 @@ def check_A2():
                                 boundary_witnesses.append(("O'->O", q, a, j))
     report("A.2 statement: all cross pairs have |A| <= 2 or |A| >= q-3 (q in 7,11,21,25, all a)",
            all_ok)
-    # the write-up's claim 'matching ... forces q <= 5' would mean NO interior-y
-    # cross pair O'->O exists at any size for q >= 7; exhibit |A| = q-3 witnesses
+    # The historical draft's claim 'matching ... forces q <= 5' would mean NO
+    # interior-y cross pair O'->O exists at any size for q >= 7.  The canonical
+    # repaired proof retains the |A| = q-3 boundary witnesses exhibited here.
     n_wit = len([w for w in boundary_witnesses if w[0] == "O'->O"])
-    report("A.2 write-up check: |A| = q-3 cross pairs O'->O EXIST for q >= 7 "
-           "(so the proof text's 'forces q <= 5' is wrong as written; statement unaffected)",
+    report("A.2 repaired-proof check: |A| = q-3 cross pairs O'->O EXIST for q >= 7 "
+           "(the historical draft's 'forces q <= 5' was wrong; the corrected proof "
+           "retains this boundary, and the statement is unaffected)",
            n_wit > 0, f"{n_wit} witnesses at sizes q-3")
     # explicit q=7 example from hand derivation: A = {0,1,4,5} = AP diff 4, B = A u {6}
     q = 7
@@ -300,8 +302,9 @@ def check_composition_bug_common_interval():
     fam2_3 = set(frozenset(psi_pi[(st + k) % q] for k in range(3)) for st in range(q))
     common3 = fam1_3 & fam2_3
     report("composition bug: pair (pi, psi.pi), psi = x->2x mod 21 "
-           "(satisfies stated hypothesis pi_2 o pi_1^{-1} affine) has a "
-           "COMMON size-3 interval -- contradicts the proof's use of Lemma A.1",
+           "(satisfies discarded postcomposition hypothesis "
+           "pi_2 o pi_1^{-1} affine) has a "
+           "COMMON size-3 interval -- contradicts applying Lemma A.1 under that discarded hypothesis",
            frozenset(S) in common3, f"common size-3 sets: {[sorted(c) for c in common3]}")
 
 

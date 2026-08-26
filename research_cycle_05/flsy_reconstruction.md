@@ -68,7 +68,16 @@ Also relevant, the intro's worst-case fact (ECCC pp. 4, published p. 22:5): the 
 
 ### 1.5 Discrepancy flags
 
-**No substantive discrepancy found between the repository's imported statements and the paper.** Minor notes only: (i) the ECCC intro version of the interval theorem (Theorem 1.7) uses an unnamed exponent c, with the 1/5 appearing only in Theorem 4.4 / published Theorems 8 and 23 — the repository's identification "Theorem 4.4 (= Theorem 1.7 …)" is exactly how the paper itself labels it; (ii) the theorem is an "is not an (ε,k)-system" statement, i.e., it gives ℙ_f[cbal_𝓘(f) ≤ k] < ε for every ε > 2^{−cn^{1/5}}, equivalently ℙ_f[cbal_𝓘(f) ≤ k] ≤ 2^{−cn^{1/5}} — the repository's reading is correct; (iii) Lemma 2.3's published/ECCC technical form uses letters (p,l) instead of (ε,k) — same content; (iv) both versions' definitions require n even wherever balanced partitions are used, consistent with the repository's parity conventions.
+**No substantive discrepancy found between the repository's imported theorem
+statements and the paper.**  Minor notes only: (i) the ECCC intro version of
+the interval theorem (Theorem 1.7) uses an unnamed exponent c, with the 1/5
+appearing in Theorem 4.4 / published Theorems 8 and 23; (ii) the theorem is
+an "is not an (ε,k)-system" statement, equivalently
+ℙ_f[cbal_𝓘(f) ≤ k] ≤ 2^{−cn^{1/5}}; (iii) Lemma 2.3 uses letters (p,l)
+instead of (ε,k); (iv) balanced partitions require even n; and (v) the
+Theorem 4.4 proof display has the strict-threshold boundary slip recorded
+and repaired in §2 below.  Item (v) concerns the printed derivation, not the
+published theorem statement.
 
 ---
 
@@ -79,6 +88,16 @@ Also relevant, the intro's worst-case fact (ECCC pp. 4, published p. 22:5): the 
 The proof has two independent components, Lemma 4.2 (reduction to Fréchet distance) and Lemma 4.3 (Fréchet anti-concentration), combined in a four-line proof of Theorem 4.4 (ECCC p. 19, verified):
 
 > "Suppose 𝓘 := 𝓘_{n,1} is an (ε,k)-balanced-chain set system for any ε > 2^{−cn^{1/5}} and k < n^{1/5} with c := c_1/2. By Lemma 4.2, we have that ℙ_f[cbal_𝓘(f) ≤ n^{1/5}] ≤ O(n^{5/2}) max_{r∈[n]} ℙ_W[d_F(X_r, Y_{n−r}) ≤ n^{1/5}], and, by Lemma 4.3, max_{r∈[n]} ℙ_W[d_F(X_r, Y_{n−r}) ≤ n^{1/5}] ≤ exp(−c_1 n^{1/5}). Hence, ℙ_f[cbal_𝓘(f) ≤ k] ≤ ℙ_f[cbal_𝓘(f) ≤ n^{1/5}] ≤ O(n^{5/2}) exp(−c_1n^{1/5}) ≤ exp(−c_1n^{1/5}/2) = exp(−cn^{1/5}), a contradiction."
+
+**Strict-threshold correction.**  The quoted source display has a harmless
+boundary slip: at a perfect fifth power it enlarges the event from the
+theorem's actual integer `k<n^{1/5}` to the non-strict event
+`cbal≤n^{1/5}`.  The corrected derivation keeps the actual
+integer `k<n^{1/5}` throughout, applies Lemma 4.2 at threshold
+`k`, and applies the Lemma 4.3 argument at `k` (or at
+any real `d` with `k<d<n^{1/5}`).  This restores the
+strict boundary without changing Theorem 4.4's statement, exponent, or any
+Cycle-5 use of the theorem.
 
 ### Step A. The chain-to-two-walks dictionary (Lemma 4.2 and its proof, ECCC §4.2, pp. 18–21) [verified in full]
 
@@ -100,8 +119,8 @@ Supporting lemmas, all proved in §4.3 [each verified]:
 
 **Proof skeleton of Lemma 4.3 (§4.4, informal outline quoted from p. 24, then formal):** W.l.o.g. X is the longer walk (length ≥ n/2). Set d := n^{1/4−ε} (the target Fréchet distance), Δ := 3d, L := n/(2c_3Δ³).
 1. By Lemma 4.7, except with probability exp(−Ω(Δ)) = exp(−Ω(d)), X contains a milestone sequence z_1, …, z_L of values with consecutive gaps |z_i − z_{i−1}| ≥ Δ. ("We … identify a pattern in it that h can not possibly follow" — ECCC p. 9.)
-2. Condition on such an X. If d_F(X,Y) < d then, extracting from the staircase coupling the times when X sits at its milestones, Y must come within distance d of z_1, …, z_L *in order*, within its r ≤ n steps. The waiting time to go from (within d of) z_{i−1} to (within d of) z_i stochastically dominates a fresh first-passage variable F_{Δ−2d} = F_d (translation invariance of the walk; the needed net displacement is ≥ Δ − 2d = d). So the total time dominates a sum of L independent copies of F_d.
-3. By Lemma 4.6 with k := L = Θ(n/d³) and δ := d (hypotheses: kδ² = Θ(n/d) ≤ c_4n ✓, kδ = Θ(n/d²) = Θ(n^{1/2+2ε}) = ω(√n) ✓), ℙ[Σ F_d^{(i)} ≤ n] ≤ exp(−Ω((kδ)²/n)) = exp(−Ω(n/d⁴)) = exp(−Ω(n^{4ε})).
+2. Condition on such an X. If d_F(X,Y) < d then, extracting from the staircase coupling the times when X sits at its milestones, Y must come within distance d of z_1, …, z_L *in order*, within its r ≤ n steps. At the paper's nominal/asymptotic level, the waiting time to go from (within d of) z_{i−1} to (within d of) z_i is written as dominating a fresh first-passage variable F_{Δ−2d} = F_d (translation invariance of the walk; the needed net displacement is ≥ Δ − 2d = d). So the paper writes the total-time domination as a sum of L copies of F_d.
+3. In the same paper-level shorthand, Lemma 4.6 is invoked with k := L = Θ(n/d³) and δ := d (hypotheses: kδ² = Θ(n/d) ≤ c_4n ✓, kδ = Θ(n/d²) = Θ(n^{1/2+2ε}) = ω(√n) ✓), giving exp(−Ω((kδ)²/n)) = exp(−Ω(n/d⁴)) = exp(−Ω(n^{4ε})).  This `F_d` notation is **not** an exact integer-parameter proof when real `d=n^{1/4−ε}` is nonintegral and is not retained as an alternative SEG derivation.  The operative repository proof uses the analytic real-threshold estimate and the integer level `δ=⌈d⌉` described in §3(b) and proved in `audits/cycle05_seg_deep_independent_validation.md` §D.
 4. Total: ℙ[d_F < d] ≤ exp(−Ω(d)) + exp(−Ω(n/d⁴)) ≤ exp(−c_1 min{n^{1/4−ε}, n^{4ε}}). ∎
 
 **Source of the 1/5 exponent [verified + inference]:** balance the two failure terms d and n/d⁴: d = n/d⁴ ⟺ d = n^{1/5}, i.e., ε = 1/20 in Lemma 4.3 (min{n^{1/4−ε}, n^{4ε}} maximized at 1/4 − ε = 4ε). Structurally, the 4 in n/d⁴ decomposes as: milestones must be spaced ~Δ³ = Θ(d³) time steps apart (Δ² is the *typical* first-passage time; the extra factor Δ ensures each milestone appears except with probability 2^{−Δ}, which is what caps the first term at exp(−Ω(d))), giving L = n/Θ(d³) milestones each forcing displacement Θ(d), so (Lδ)²/n = n/Θ(d⁴). The polynomial factor O(n^{5/2}) from Lemma 4.2 (n² for the (s,e) union bound, n^{1/2} for un-conditioning balancedness) is absorbed into the exponential. If milestones could be taken at typical spacing d², the same computation would give exponent 1/3 rather than 1/5; the paper does not claim optimality of 1/5 (and nothing in the paper claims the true answer for cbal of intervals under random f is n^{1/5±o(1)}; the published intro says only "chain-balance at least n^{Ω(1)}" for most partitions).
@@ -114,25 +133,81 @@ Supporting lemmas, all proved in §4.3 [each verified]:
 
 **Question:** does/could the proof bound ℙ[random balanced coloring admits a k-balanced interval-growth path from a FIXED interval A to a FIXED (or arbitrary) B ⊇ A, |B∖A| = L] ≤ 2^{−cL^{1/5}} for k < L^{1/5}?
 
-**Answer: Yes — the mechanism localizes, with only routine modifications; nothing in the exponential-decay engine uses the anchoring at ∅. This is an inference (the paper nowhere states a segment version), but every ingredient was checked against the actual proof text.** Details:
+**Answer: yes, but this is NEW REPOSITORY MATHEMATICS, not a theorem
+published verbatim and not a zero-change/cosmetic restatement.**  FLSY's
+probability engine localizes, while the fixed-segment grid, offset base case,
+integer rounding, and full cyclic endpoint reduction require separate
+proofs.  Those proofs are in
+`audits/cycle05_seg_deep_independent_validation.md` §D, checked in
+`audits/cycle05_seg_arms_length_referee.md`, and corrected finally
+in `audits/cycle05_sol_final_cross_model_validation.md` §§5.4--5.8.
+Details:
 
 **(a) What the chain-from-∅ is actually used for.** In the entire proof, the anchoring appears in exactly three places, all in Lemma 4.2's reduction, none in Lemma 4.3:
 1. C_1 = {s} identifies a *single anchor point* s from which the interval grows two-sidedly; the union bound over (s,e) ∈ [n]² costs O(n²). — In the segment version A is fixed, so the two growth directions are anchored at the two ends of A; *no union bound over s is needed at all*. A maximal chain from A to B = [a′,b′] ⊇ A = [a,b] inside 𝓘 automatically consists of intervals A ⊆ C ⊆ B, and decomposes canonically into a left-extension walk U(i) := f([a−i, a−1]), i ≤ L_left = a − a′, and a right-extension walk V(j) := f([b+1, b+j]), j ≤ L_right = b′ − b, with L_left + L_right = L.
-2. Both walks start at value 0 and the chain-balance values f(C_j) are anchored at f(∅) = 0. — In the segment version f(C_j) = f(A) + U(i) + V(j); setting X(i) := f(A) + U(i), Y(j) := −V(j), the k-balanced growth condition is *verbatim* the event d_F(X,Y) ≤ k for the staircase coupling of Definition 4.1, now with an initial offset X(0) − Y(0) = f(A). Since A itself is in the chain, |f(A)| ≤ k is part of the event, so the offset is at most k ≤ d.
+2. Both published walks start at value 0 and the chain-balance values f(C_j) are anchored at f(∅) = 0. — In the segment version f(C_j) = f(A) + U(i) + V(j); setting X(i) := f(A) + U(i), Y(j) := −V(j), the exact grid dictionary identifies the k-balanced growth condition with d_F(X,Y) ≤ k, now with initial offset X(0) − Y(0) = f(A). Since A itself is in the chain, |f(A)| ≤ k is part of the event.
 3. The balancedness of f is removed at cost O(√n). — Identical trick in the segment version: for f a random balanced coloring of the ambient [N], pass to uniform g at cost O(√N) (ℙ[g balanced] = Θ(N^{−1/2})); under uniform g, U, V, and f(A) live on disjoint coordinate sets and are mutually independent — exactly the independence Lemma 4.2 needs.
 
-**(b) The engine (Lemma 4.3) is agnostic.** I verified line-by-line (ECCC pp. 24–25) that the proof of Lemma 4.3 uses only: (i) increments of the milestone walk (the (g,Δ)-sequence condition |g(x_i) − g(x_{i−1})| ≥ Δ is shift-invariant); (ii) translation invariance of Y's first-passage steps: the displayed identity T_{z_1,…,z_L}(Y) = Σ_{i=1}^L F_{|Y(T_{z_0,…,z_{i−1}}(Y)) − z_i| − d} and the domination F_{Δ−2d} ≤ F_{|z_i − Y(…)|−d} using only |z_i − z_{i−1}| ≥ Δ and the previous tracking position being within d. A common additive offset of all z_i relative to Y changes nothing; for the very first step, an initial offset |X(0) − Y(0)| ≤ k ≤ d still gives domination by F_{Δ−d−k} ≥ F_{Δ−2d}. So Lemma 4.3 holds verbatim with n := L (total length of the two extension walks) and an initial offset up to d, for any fixed split l + r = L (Lemma 4.3 is already stated for every split l = l(n) ∈ [n], max over splits taken in Lemma 4.2).
+**(b) What localizes and what must be proved.**  The published milestone and
+first-passage mechanism uses only fresh increments, translation, reflection,
+and strong Markov; it has no dependence on absolute position, earlier/future
+chain history, or the final value.  The offset extension nevertheless has a
+real base-case obligation.  With `d=L^{1/5}`,
+`Δ=3d`, integer milestone gap `⌈3d⌉`, and
+`|σ'|≤d`,
 
-**(c) Resulting segment statement (reconstructed, not in the paper).** There are universal c, L_0 such that for all L ≥ L_0, any fixed interval A ⊆ [N] and fixed interval B ⊇ A with |B∖A| = L, and k < L^{1/5}: for uniform g on [N], ℙ_g[∃ chain A = D_0 ⊂ D_1 ⊂ … ⊂ D_L = B of intervals with |f(D_i)| ≤ k for all i] ≤ exp(−cL^{1/5}); for a uniformly random *balanced* f on [N], the same up to O(√N); for *arbitrary* B ⊇ A with |B∖A| = L, union over the ≤ L+1 splits (or O(N²) pairs of endpoints) costs another polynomial factor. All polynomial factors are absorbed by exp(−cL^{1/5}) exactly as in the paper's own proof of Theorem 4.4, **provided L^{1/5} ≥ C log N**.
+```text
+|z_1-h_0| ≥ ⌈3d⌉-|σ'| ≥ 2d>d,
+```
+
+so the first chaser time is positive.  Later legs use the same maintained
+invariant.  To make every parameter legal, the repository proof uses
+tracking radius `⌊d⌋` and integer first-passage level
+`δ=⌈d⌉`, justified by
+`⌈3d⌉−2⌊d⌋≥⌈d⌉`.  It proves W1 directly for real Chernoff
+thresholds, and proves the real-`Δ` milestone estimate with
+`⌊Δ⌋` blocks and target `⌈2Δ⌉`.  These are proof
+changes, not citation substitutions.
+
+**(c) Resulting SEG statement (reconstructed, not in the paper).**  Valid
+explicit constants are
+
+```text
+c=min{1/2,(1/6)^2/(8·27648^2)},
+C=6,
+L_0=⌈13824^(5/2)⌉=22,469,029,418.
+```
+
+For `L≥L_0`, fixed linear
+`∅≠A⊆B⊆[N]`, and integer `1≤k<L^{1/5}`, a random
+coloring conditioned on admissible total `σ`,
+`|σ|≤1` and `σ≡N (mod 2)`,
+has a k-balanced interval segment from A to B with probability at most
+`C√N exp(−cL^{1/5})`.  The unconditioned form omits
+`√N`; varying B at fixed added length costs `L+1`.
+A proper cyclic B is cut outside B.  When `B=Z_N`, for each
+terminal split `u+v=L−1` the last point is appended to one
+extension sequence, giving disjoint walk lengths `(u+1)+v=L`;
+apply the length-L estimate and then the L-way union (cost at most
+`L+1`).  This avoids the false
+length-`L−1` argument at `L=j^5+1`.
 
 **(d) What genuinely breaks / limits.**
 1. **Small L regime:** the bound is vacuous when L ≤ (C log N)^5, because the O(√N) unconditioning factor (and any union bound over segment positions in a larger argument) swamps 2^{−cL^{1/5}}. Any DAG/composition argument over many segments must budget for one poly(N) factor per union-bounded choice.
 2. **Hypotheses of Lemma 4.3 in terms of L:** needs L^{1/4−ε} ≥ (2/3) ln L and L sufficiently large; with ε = 1/20 this is L^{1/5} ≳ ln L — harmless for large L.
 3. **Balanced ambient coloring vs. balanced segment:** for f balanced on [N] with L ≪ N, the restriction of f to B∖A is *not* balanced and is slightly negatively correlated across coordinates; the paper's own O(√N)-unconditioning step handles this cleanly (pass to uniform g first), so no new argument is needed — but the price is √N, not √L. If one instead wants the probability under a *conditioned* segment sum (e.g., f(B∖A) = σ fixed), a fresh (routine but not written) local-CLT argument replacing the Θ(N^{−1/2}) estimate would be needed.
 4. **One-sided degenerate case:** if B extends A on one side only (L_right = 0 say), the Fréchet machinery degenerates: the event is a single walk of length L confined to a width-2k tube around −f(A), with probability ≤ exp(−Ω(L/k²)) by classical confinement — stronger than exp(−cL^{1/5}) for k < L^{2/5}. The Fréchet bound is needed *only* because two-sided growth may interleave adaptively (with knowledge of the whole coloring). So a segment version is if anything easier at extreme splits; Lemma 4.3 as stated already covers all splits uniformly.
-5. **What must actually be re-proven:** only a segment analogue of Lemma 4.2 (a strictly simpler injection — no (s,e) enumeration, no cyclic-interval bookkeeping, offset carried through), and the offset-tolerant restatement of Lemma 4.3 (its proof needs zero changes, as argued in (b)). I found no step whose correctness depends on C_0 = ∅ or on the discrepancy being anchored at 0: the anchor enters only as the offset f(A), which the event itself bounds by k.
+5. **What is independently proved in the repository:** the segment grid
+normal form, the offset-tolerant anti-concentration lemma including its first
+leg, every integer/real threshold convention, the exact tail arithmetic,
+and the cyclic-full length-L encoding.  None is stated verbatim in FLSY.
 
-**Bottom line:** the FLSY mechanism yields, with only cosmetic re-derivation, decay 2^{−cL^{1/5}} in the *added length* L for k-balanced interval-growth between fixed (or union-bounded) endpoints, k < L^{1/5}, at an unavoidable poly(N) overhead for ambient balancedness/positioning; and it cannot give anything nontrivial for L ≤ polylog(N) with that overhead.
+**Bottom line:** SEG is **NEW BUT PROVED IN THIS REPOSITORY** from FLSY's
+published probability machinery.  It gives stretched-exponential decay in
+the added length L with the displayed ambient-conditioning and endpoint
+factors.  When a later application wants those polynomial factors absorbed,
+it must impose the corresponding `L^{1/5}≫log N` regime; that is
+an application-level condition, not an extra hypothesis in SEG itself.
 
 ---
 
@@ -162,11 +237,13 @@ Supporting lemmas, all proved in §4.3 [each verified]:
 
 I.e., **𝓘_{n, 2⌈lg n⌉} is a 1-balanced-chain set system**, of size n^{O(log n)} — this is the "easy" upper bound, proved by an explicit deterministic induction (ECCC pp. 11–12, read in full): grow symmetrically from both ends of the current window when no zero of the restricted coloring is available, find the nearest point t_1 with f([l_1,t_1]) = 0, recurse on the half-length window; each recursion level adds 2 intervals, depth lg n. (The published version omits this proof, deferring to the full version — published p. 22:12: "We omit this proof but it can be found in the full version of this paper.") **Notable gap the paper leaves open (relevant to the repository): nothing is proved about 𝓘_{n,m} for 1 < m < 2⌈lg n⌉ — in particular no (ε,k) negative result for w = 2 or any constant w. Theorem 4.4's negative result is stated and proved only for m = 1.** Whether the Fréchet argument extends to constant w (each chain now = 2w interleaved growth walks, Fréchet-type alignment of a walk against a *set* of milestone sequences) is not discussed anywhere in the paper. [Verified absence: I read every section; §4 mentions only 𝓘_{n,1}; §6 does not raise the m-interval question explicitly beyond the general gap question.]
 
-**Unions over several orders/permutations — treated only at the ABP level, never as a set-system question.** Section 5.5 (ECCC pp. 35–37 = published §5.4) defines 𝓘_{X,π} (intervals w.r.t. a bijection π, quoted in §1.2 above), π-interval mABPs (layered mABPs whose layer-i vertices are labeled with size-i sets from 𝓘_{X,π}), and the model **Σ_π mABP := sums of interval mABPs "(possibly with respect to different orderings π)"** (footnote 7: notation from CKSS24 with subscript π added). The result:
+**Unions over several orders/permutations — the Σ_π argument does not analyze hybrid chains; Lemma 2.3 separately constructs a literal union.** Section 5.5 (ECCC pp. 35–37 = published §5.4) defines 𝓘_{X,π} (intervals w.r.t. a bijection π, quoted in §1.2 above), π-interval mABPs (layered mABPs whose layer-i vertices are labeled with size-i sets from 𝓘_{X,π}), and the model **Σ_π mABP := sums of interval mABPs "(possibly with respect to different orderings π)"** (footnote 7: notation from CKSS24 with subscript π added). The result:
 
 > **ECCC Theorem 5.14 (Corollary 1.8) = published Corollary 9 [verified]:** "Let n ∈ ℕ be sufficiently large even number, and X be a set of n variables, and 𝔽 be any field. Let P be a full rank polynomial in 𝔽[X]. If 𝒜 is a Σ_π mABP of size s computing P, then s ≥ 2^{Ω(n^{1/5})}."
 
-**Proof mechanism (ECCC pp. 36–37, verified — important for the repository's multi-order question):** the multiple orders are handled by *rank subadditivity plus averaging*, NOT by analyzing the union set system ∪_i 𝓘_{X,π_i}. Verbatim skeleton: 𝒜 = 𝒜_1 + … + 𝒜_t, each 𝒜_i a π_i-interval mABP computing P_i; 2^{n/2} = rank(M_f(P)) ≤ Σ_i rank(M_f(P_i)) for every balanced f, "hence by averaging, there is an i such that P_i is (1/t, 1/t)-almost full-rank. Since 𝒜_i is layered with valid labelling comming from the set-system 𝓘_{X,π_i}, Lemma 5.11 implies that 𝓘_{X,π_i} is a (1/t, lg(st))-balanced-chain set-system. Note that t ≤ s and hence 𝓘_{X,π_i} is a (1/s, 2 lg(s))-balanced-chain set-system. On the other hand, it follows from Theorem 4.4 that 𝓘_{X,π_i} is *not* an (ε,k)-balanced-chain set-system, for k < n^{1/5} and some ε = exp(−Ω(n^{1/5})). This implies that s ≥ exp(Ω(n^{1/5}))." So the single-order interval theorem is applied **"almost as a black box"** (the paper's own phrase in the published Further-questions section) to one summand at a time. **The paper never defines or bounds the chain-balance / (ε,k)-property of a union ∪_{i≤t} 𝓘_{X,π_i} as a combinatorial object** — the repository is correct that a union of t single-interval orders is a different object from 𝓘(N,w), and FLSY's w-interval result (Theorem 2.2) concerns w disjoint intervals in ONE order, yet a third object. (Caution for import: chains in ∪_i 𝓘_{X,π_i} may hop between orders; neither FLSY result controls those.)
+**Proof mechanism (ECCC pp. 36–37, verified — important for the repository's multi-order question):** the multiple orders in §5.5 are handled by *rank subadditivity plus averaging*, NOT by analyzing hybrid chains in the union set system ∪_i 𝓘_{X,π_i}. Verbatim skeleton: 𝒜 = 𝒜_1 + … + 𝒜_t, each 𝒜_i a π_i-interval mABP computing P_i; 2^{n/2} = rank(M_f(P)) ≤ Σ_i rank(M_f(P_i)) for every balanced f, "hence by averaging, there is an i such that P_i is (1/t, 1/t)-almost full-rank. Since 𝒜_i is layered with valid labelling comming from the set-system 𝓘_{X,π_i}, Lemma 5.11 implies that 𝓘_{X,π_i} is a (1/t, lg(st))-balanced-chain set-system. Note that t ≤ s and hence 𝓘_{X,π_i} is a (1/s, 2 lg(s))-balanced-chain set-system. On the other hand, it follows from Theorem 4.4 that 𝓘_{X,π_i} is *not* an (ε,k)-balanced-chain set-system, for k < n^{1/5} and some ε = exp(−Ω(n^{1/5})). This implies that s ≥ exp(Ω(n^{1/5}))." So the single-order interval theorem is applied **"almost as a black box"** (the paper's own phrase in the published Further-questions section) to one summand at a time.
+
+That is not the paper's only encounter with literal unions.  Lemma 2.3 separately defines `𝒴=𝒳∪⋃_i σ_i𝒳`, exactly a literal union of relabeled copies, and proves an upper bound on its chain-balance by ensuring that every coloring has a **pure witness chain inside one copy**.  It does not classify provenance, compare pure and hybrid acceptance, or rule out additional chains that hop among copies.  Thus §5.5/Σ_π supplies no hybrid-chain analysis, while Lemma 2.3 supplies a one-sided union construction and chain-balance bound without such an analysis.  A union of t single-interval orders remains different from 𝓘(N,w), and FLSY's w-interval result (Theorem 2.2) concerns w disjoint intervals in ONE order, yet a third object.
 
 **The set-multilinear variant (ECCC §5.6, p. 37):** both directions of Theorem 1.3 carry over with base-N logarithms; "In the interesting case that N = n^{Θ(1)} … For any c, there is a set-multilinear ABP of size n^{O(c)} computing a full-rank polynomial if and only if there is an O(c)-balanced-chain set-system of size n^{O(c)}" — a perfect characterization in the set-multilinear setting. [Verified.]
 
@@ -199,4 +276,16 @@ Related prior work referenced for context (from the paper's own comparisons, ver
 
 ## Summary of Tasks 3 and 4
 
-**Task 3 (segment version):** the exponential engine of FLSY's interval theorem — Lemma 4.3's anti-concentration of the discrete Fréchet distance of two independent walks, proved via Δ-spaced milestones (Lemma 4.7) and lower-tail bounds on sums of first-passage times (Lemmas 4.5–4.6) — is completely translation-invariant and never uses the chain's anchoring at ∅: the anchor enters only through Lemma 4.2's bookkeeping (choice of first element s, both walks starting at value 0, and the O(n^{5/2}) union/unconditioning factor). Consequently a segment version does hold by the same proof with only cosmetic re-derivation: for a fixed interval A and fixed (or union-bounded) interval B ⊇ A with |B∖A| = L, the k-balanced interval-growth event from A to B is verbatim a Fréchet-distance-≤-k event for two independent extension walks of total length L with initial offset f(A) (bounded by k by the event itself), giving ℙ ≤ exp(−cL^{1/5}) for k < L^{1/5} under a uniform coloring, times O(√N) for a balanced ambient coloring and poly factors for endpoint enumeration — so the bound is real but only useful when L^{1/5} ≫ log N, and degenerate one-sided growth is even easier (tube confinement, exp(−Ω(L/k²))). **Task 4 (upper bound):** N(n) ≤ n^{O(log n/log log n)} is FLSY's own Theorem 1.6/3.3, proved by a log n/log log n-depth recursion in which level i takes the family {prefix [1,i] ∪ shifted copy of the level-(i+1) system}, uses the Csáki–Erdős–Révész longest-excursion bound to show a random balanced coloring has all zero-gaps ≤ n/ln n with probability ≥ 1/poly(n) (making this family a (1/poly(n),1)-system), and then symmetrizes with O(poly(n)) random permutations via Lemma 2.3; the result is hierarchical and randomized, explicitly *not* a union of interval families over multiple orders (their own Remark: the permutations destroy intervalness at every level; derandomization is open), while the Ω(n²) lower bound (for O(1)-balance; Ω(n²/k) in general, k ≤ n/5) is a level-slicing rephrasing of the Alon–Kumar–Volk balancing-set bound.
+**Task 3 (segment version):** FLSY publishes the translation-invariant
+milestone/first-passage engine, but not SEG.  SEG is a new repository
+derivation with proved grid, offset-first-leg, rounding, tail, and
+cyclic-full obligations; its exact provenance and constants are recorded in
+§3 above and the three cited audits.  **Task 4 (upper bound):**
+N(n) ≤ n^{O(log n/log log n)} is FLSY's own Theorem 1.6/3.3, proved by a
+log n/log log n-depth recursion in which level i takes the family {prefix
+[1,i] ∪ shifted copy of the level-(i+1) system}, uses the
+Csáki–Erdős–Révész longest-excursion bound to obtain inverse-polynomial
+average-case success, and symmetrizes with random permutations via Lemma
+2.3.  It is hierarchical and randomized, explicitly not a one-level union
+of interval families; the Ω(n²) lower bound for O(1)-balance is the
+level-slicing consequence of the Alon–Kumar–Volk balancing-set bound.

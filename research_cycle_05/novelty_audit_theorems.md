@@ -1,22 +1,36 @@
 # Cycle 5 novelty audit: switch-structure and dense-circle theorems
 
-**Date:** 2026-08-21 (search cutoff = same day).
+**Date:** 2026-08-21; final cross-model amendment 2026-08-26.
 **Scope:** priority/novelty ONLY, per Phase 8 of `INITIAL_RESEARCH_MISSION.md`.
-No correctness assessment is made or implied.  Targets N1–N5 as tasked.
+No correctness assessment of N1–N5 is made or implied.  The SEG addendum
+quotes the final proof-audit status solely to distinguish proof provenance
+from novelty.  Targets N1–N5 as tasked.
 Builds on (does not redo) `research_cycle_05/common_interval_literature.md`
 ("the Cycle-5 survey") and the Cycle-4 `literature_novelty_audit.md`.
+
+**Final-amendment note.**  The independent Sol cross-model validation
+expanded the terminology and equivalent-object search beyond the original
+balanced-chain vocabulary.  It located material primary prior art in arc
+permutations, regular set systems, greedoids/antimatroids, and literal unions
+of relabelled set systems.  The N1, N4, N5, and SEG classifications below are
+the corrected canonical classifications; inconsistent conclusions from the
+2026-08-21 pass are superseded.
 
 **Verdict scale:** KNOWN > LIKELY KNOWN > UNCLEAR > POTENTIALLY NOVEL >
 NOVELTY STRONGLY SUPPORTED.  Verdicts are about located public prior art,
 never about mathematical truth, and are deliberately not upgraded beyond
-what the searches performed here support.
+what the searches performed here support.  No Cycle-5 item receives the
+final category after the cross-model amendment.
 
-**Method note.**  Web search + direct reads of the two primary 2026 sources
-(both PDFs downloaded and read page-by-page this session):
+**Method note.**  The original pass used web search plus direct reads of the
+two 2026 sources using the exact `balanced-chain` terminology (both PDFs
+downloaded and read page-by-page that session):
 
 - **[FLSY26]** T. Borém Fabris, N. Limaye, S. Srinivasan, A. Yehudayoff,
   *Multilinear Algebraic Branching Programs and the Min-Partition Rank
-  Method*, ECCC TR26-001 (posted 2026-01-01), also CCC 2026.
+  Method*, [ECCC TR26-001](https://eccc.weizmann.ac.il/report/2026/001/)
+  (posted 2026-01-01), also CCC 2026, LIPIcs 383, Article 22,
+  [DOI 10.4230/LIPIcs.CCC.2026.22](https://doi.org/10.4230/LIPIcs.CCC.2026.22).
   Read this session: title/abstract, contents, §1 (Definition 1.2,
   Theorem 1.3, Definition 1.4, Lemma 1.5, Theorems 1.6–1.7,
   Corollary 1.8), §5.5 (interval-mABPs, Theorem 5.14), §5.6, §6
@@ -40,8 +54,11 @@ A full scan of the ECCC 2026 listing for reports touching multilinear
 ABPs / balanced chains / interval set systems returned: TR26-001,
 TR26-043, and three unrelated multilinear reports (TR26-002 IPS
 separations; TR26-035 read-once determinants; TR26-090 multilinear
-formula lower bounds for sparse determinants).  **The balanced-chain
-literature as of today is exactly two papers, one of them withdrawn.**
+formula lower bounds for sparse determinants).  This establishes only that
+the exact `balanced-chain` phrase had a two-paper public footprint in that
+catalogue.  It is not an enumeration of the broader feasible-word, regular-
+set-system, greedoid/antimatroid, learning-space, common-interval, or
+permutation literature.
 
 ---
 
@@ -106,12 +123,12 @@ J. Number Theory 2005), §§1–3.1.
   (Bockting-Conrad–Kashina–Petersen–Tenner 2020; Clément 2025) explicitly
   do not treat interval images.
 
-**Verdict: POTENTIALLY NOVEL** — as an explicitly stated lemma.  Caveat
-recorded: it is an elementary corollary of classical three-distance-type
-adjacency counting, so folklore risk (an exercise in lecture notes or a
-problem collection) is real; it should be presented as "elementary; we
-could not locate a statement in the literature", with the three-distance
-theorem cited as the classical neighbor — never as a headline novelty.
+**Verdict: UNCLEAR.**  No exact source was located, but this is an elementary
+special case adjacent to mature simple/common-interval and arithmetic-
+permutation theory.  The proof is short adjacency counting and the folklore
+risk (an exercise in lecture notes or a problem collection) is high.  It
+should be presented only as "elementary; we could not locate this exact
+statement", with the classical three-distance machinery cited as a neighbor.
 
 ---
 
@@ -141,20 +158,30 @@ k-C1P NP-completeness; Meidanis–Porto–Telles PQR-trees):
   ones" was found anywhere.
 - The "AND"-chain notion (nested *common* intervals: Blin–Faye–Stoye
   2010; de Montgolfier–Raffinot–Rusu 2014; Rusu 2014) is the studied
-  neighbor; the "OR"-chain (switching) notion was already NOT FOUND by
-  the Cycle-5 survey (§6.3), and the additional searches here found
-  nothing new.
+  interval-specific neighbor.  The final expanded search did locate the
+  broad OR/extra-chain phenomenon outside interval terminology: Algaba,
+  van den Brink, and Dietz, *Power Measures and Solutions for Games under
+  Precedence Constraints*, TI Discussion Paper 15-007/II (2015),
+  [Example 4.7, p. 23](https://papers.tinbergen.nl/15007.pdf), exhibits a
+  full chain in a union of prefix-state chains that is not one of the
+  listed input chains.  Regular-set-system and antimatroid/basic-word
+  machinery are therefore material neighbors, although they do not imply
+  Theorem A.
+- Pure cyclic-interval growth words already have a standard name: arc
+  permutations.  See S. Elizalde and Y. Roichman, *Arc permutations*,
+  J. Algebraic Combin. 39 (2014),
+  [DOI 10.1007/s10801-013-0449-6](https://doi.org/10.1007/s10801-013-0449-6).
 - Component-wise, the affine case rests on Lemma A.1 (see N1), whose
   folklore risk is the only realistic route by which a disguised
   precedent could exist; the *chain* conclusion (middle purity + boundary
   conversion) has no located analogue.
 
-**Verdict: POTENTIALLY NOVEL** — the statement shape has no located
-precedent, and the framework it lives in (hybrid/switching chains) was
-independently established as unstudied by the Cycle-5 survey.  Not
-upgraded further because the affine core decomposes into an
-elementary-lemma component (N1) plus bookkeeping, leaving some residual
-risk of an equivalent statement in disguise.
+**Verdict: POTENTIALLY NOVEL, narrowly scoped.**  No source located states
+the repaired affine, balance-sensitive literal-union rigidity theorem.
+This classification applies to that exact theorem shape, not to the broad
+hybrid/switching-chain framework, whose feasible-word and extra-chain
+antecedents are acknowledged above.  Residual risk remains because the
+affine core decomposes into the elementary N1 component plus bookkeeping.
 
 ---
 
@@ -196,6 +223,14 @@ risk of an equivalent statement in disguise.
   "almost interval" transfer principle located (searches 3–5; hits were
   unrelated: directional discrepancy, Brunn–Minkowski stability,
   discrepancy rounding).
+- Approximate/gapped common intervals are established neighboring objects,
+  including Corteel–Louchard–Pemantle, *Common Intervals in Permutations*,
+  DMTCS (2006),
+  [DOI 10.46298/dmtcs.362](https://doi.org/10.46298/dmtcs.362), and
+  Amir–Gąsieniec–Shalom, *Improved approximate common interval*, IPL
+  (2007),
+  [DOI 10.1016/j.ipl.2007.03.006](https://doi.org/10.1016/j.ipl.2007.03.006).
+  They do not supply the Cycle-5 hull/refinement/FLSY transfer.
 - No other 2026 follow-up to FLSY exists on ECCC, and no arXiv cs.CC
   "balanced-chain" paper besides arXiv:2604.00746 was found.
 
@@ -203,14 +238,13 @@ risk of an equivalent statement in disguise.
 exact intervals only, one order) and [Kush26] (withdrawn; different
 regime, no mechanism overlap).
 
-**Verdict: POTENTIALLY NOVEL** — the transfer mechanism (unique-hull +
+**Verdict: POTENTIALLY NOVEL, narrowly scoped** — the exact transfer
+mechanism (unique-hull +
 nested-hull lemmas, stepwise refinement, defect-budgeted completion,
-rooted complement reduction to the published interval theorem) appears in
-neither of the only two papers of this literature nor in general
-discrepancy sources located.  Priority risk is *time-based*, not
-prior-art-based: this is an active two-paper literature with an open
-referee process; a repaired or new upper-bound paper could appear at any
-time.
+rooted complement reduction to the published interval theorem) was not
+located in FLSY, the withdrawn follow-up, general discrepancy sources, or
+the approximate-common-interval neighbors.  The classification does not
+claim that hull defect or approximate intervals themselves are new.
 
 ---
 
@@ -228,57 +262,80 @@ time.
    one two-block grid family; neither defines anything like `D_mid`, pure
    runs, or a run-length ↔ defect trade-off.
 
-**Findings:** the alternation hits belong to unrelated fields (quantifier
-alternation on words, alternating Turing machines, ordered Ramsey
-theory).  Nothing resembling "nested chains alternating between two
-interval systems, with bounded alternation forcing hull density (run
-sandwich)" was found.  The Cycle-5 survey's NOT-FOUND for the qualitative
-switching notion (§6.3) therefore extends to these quantitative forms:
-no prior definition of a switch-depth parameter for chains in unions of
-interval systems, and no analogue of the run-sandwich
-(`defect ≤ run-length + 2` for `t = 2`) argument was located.
+**Findings:** no exact interval-system definition of `D_mid`, nor the exact
+run-sandwich inequality `defect ≤ run-length + 2` for `t = 2`, was located.
+But the qualitative framework cannot be called unstudied.  Algaba–van den
+Brink–Dietz Example 4.7 gives an explicit extra maximal chain created by a
+union of input prefix chains; greedoid/antimatroid basic words and
+Eppstein's learning-space/chain-antimatroid alternative paths provide
+general feasible-route machinery; and arc permutations name the one-order
+cyclic words.  These do not contain Cycle 5's quantitative inequality, but
+they invalidate an aggregate no-prior-framework conclusion.
 
-**Closest prior art:** none beyond the qualitative neighbors already in
-the survey (nested common intervals = the AND-chain; simultaneous
-PQ-ordering = order coupling without chains).
+**Closest prior art:** regular set systems and feasible orders (Algaba et
+al. 2015); greedoid/antimatroid basic words (Björner–Ziegler,
+[DOI 10.1017/CBO9780511662041.009](https://doi.org/10.1017/CBO9780511662041.009);
+Korte–Lovász–Schrader,
+[DOI 10.1007/978-3-642-58191-5](https://doi.org/10.1007/978-3-642-58191-5));
+and Eppstein, *Upright-Quad Drawing of st-Planar Learning Spaces* (2008),
+[DOI 10.7155/jgaa.00159](https://doi.org/10.7155/jgaa.00159).
 
-**Verdict: POTENTIALLY NOVEL** — the survey's NOT-FOUND assessment is
-confirmed to extend to the quantitative parameter (`D_mid`) and to the
-run-sandwich mechanism.  Same folklore caveat as all newly-coined
-parameters: absence of the *name* was expected; the searches targeted the
-*content* and also found nothing.
+**Verdict: UNCLEAR for the aggregate switching framework.**  The narrow
+quantitative `D_mid` parameter and run-sandwich inequality may be
+`POTENTIALLY NOVEL`, but absence from this bounded search cannot promote
+the broader framework to that status.
 
 ---
 
-## N5. No prior source (outside FLSY and this repository) studies unions of relabelled RR-type/interval families as balanced-chain systems
+## N5. Literal unions of relabelled RR-type/interval families as balanced-chain systems
 
-**Searches run:** the N3 sweep (balanced-chain literature enumeration:
-ECCC 2026 listing, arXiv, CCC'26), plus direct reads of the only two
-balanced-chain papers, plus the survey's §6 corpus.  Boundary-object
+**Searches run:** the N3 sweep (exact-term balanced-chain catalogue search:
+ECCC 2026 listing, arXiv, CCC'26), plus direct reads of the two located
+papers using that terminology, plus the survey's §6 corpus.  Boundary-object
 checks: FLSY26 Lemma 1.5/§2 (worst-to-average unions), FLSY26 §5.5
 (Σ_π mABP), Kush26 Theorem 2.4 (quoting FLSY's Lemma 2.3 mechanism:
 "take O(n/ε) random permutations, apply each to every set, take the
 union"), and the CKSS24 / DMPY12 / NNN12 neighbors.
 
-**Findings — the complete known boundary:**
+**Findings:**
 
-- *Inside FLSY (excluded by the target, listed for the record):*
-  (a) Lemma 1.5/2.3 creates literal unions of randomly relabelled copies
-  of a set system, but purely as an amplification device: the reduction
-  only ever needs, for each coloring, a chain inside ONE copy; whether
-  the union gains *hybrid* chains is never asked.  (b) §5.5 + Corollary
+- **FLSY already publishes the literal-union construction and semantics.**
+  Full-version Definition 1.2 takes all full Boolean chains contained in a
+  set system.  Full-version Lemma 2.3 (conference Lemma 1.5), for even `n`,
+  `|X|=n`, `ell ∈ [n]`, `p ∈ (0,1]`, and a `(p,ell)`-balanced-chain set
+  system `𝓧` of size `s`, constructs an `ell`-balanced-chain set system of
+  size `O(sn/p)`.  Its proof takes `r = ceil(n/(p lg e))` and literally sets
+  `𝓨 = 𝓧 ∪ ⋃_{i=1}^r σ_i(𝓧)`, where
+  `σ_i(𝓧) = {σ_i(S) : S ∈ 𝓧}`.  The proof witnesses
+  balance using a pure chain inside one copy, but Definition 1.2 still
+  includes every hybrid full chain contained in `𝓨`.  Instantiating `𝓧`
+  with an RR/interval family gives the Cycle-5 host object.
+- FLSY §5.5 + Corollary
   1.8 treat sums of interval-mABPs over different orderings π_i — the
   multi-order object in ABP form — but by rank subadditivity each
   analysis collapses to a single order; a chain never mixes orders.
-  (c) §6 poses no union/switching question.
-- *Outside FLSY:*
+- **An abstract extra-chain example predates FLSY.**  E. Algaba, R. van den
+  Brink, and C. Dietz, *Power Measures and Solutions for Games under
+  Precedence Constraints*, Tinbergen Institute Discussion Paper 15-007/II
+  (2015), [stable record](https://hdl.handle.net/10419/107876),
+  [open PDF](https://papers.tinbergen.nl/15007.pdf), Example 4.7, printed
+  p. 23, starts from
+  `Π={(1,2,3),(2,3,1),(3,1,2)}` and observes that
+  `(∅,{3},{2,3},{1,2,3})` is also a chain in the union, although its
+  order `(3,2,1)` was not listed.  This is not interval- or balance-
+  specific, but it is direct prior art for "a literal union creates an
+  extra/hybrid full chain."  The peer-reviewed article with the same title
+  omits this example, so the working paper and page are the supporting
+  source.
+- Other neighboring objects remain relevant without subsuming the RR-
+  specific structural results:
   - **CKSS24** (P. Chatterjee, D. Kush, S. Saraf, A. Shpilka, *Lower
     bounds for set-multilinear branching programs*, CCC 2024, LIPIcs 300,
     20:1–20:20): the predecessor multi-order model (sums of *ordered*
     smABPs, each summand with its own variable order).  Per-summand
     again; the underlying combinatorial object is the single maximal
     prefix chain per order (FLSY's `I_0` remark), not a union set system
-    with switching.  Closest genuine outside prior art; does not subsume.
+    with switching.  This is an ABP-specific neighbor; it does not subsume.
   - **DMPY12** (Dvir–Malod–Perifel–Yehudayoff, STOC 2012): arc-partition
     families on the round-robin wheel — prior art for the *single*
     RR-type cyclic family, no unions, no balanced-chain formalism (which
@@ -286,25 +343,34 @@ union"), and the CKSS24 / DMPY12 / NNN12 neighbors.
   - **NNN12** (Newman–Neiman–Nikolov, FOCS 2012, Beck's three-permutations
     counterexample; cited by FLSY themselves): coloring discrepancy of
     the union of the prefix families of 3 permutations — the classical
-    object nearest in *shape* (union of relabelled interval families),
+    interval-union neighbor in *shape* (union of relabelled interval families),
     but with the opposite quantifier structure (max over sets of one
     coloring's discrepancy; no chains, no balance-along-a-chain), so it
     does not subsume.
   - **Kush26**: not a union of relabelled interval families (two-block
     prefix pairs in one order), and withdrawn besides.
-- The balanced-chain formalism is eight months old; its public literature
-  was enumerated above (two papers).  No other source treats unions of
-  relabelled interval/RR-type families *as balanced-chain systems*, and
-  none anywhere treats their hybrid/switching chains.
 
-**Verdict: NOVELTY STRONGLY SUPPORTED** — supported here (unusually for
-this scale) because the host literature is young and small enough to be
-enumerated completely, and it was: outside FLSY and this repository, no
-source studies these unions as balanced-chain systems.  Recorded
-limitations: private/in-progress work (the TR26-043 referee process, the
-FLSY authors, repair attempts) cannot be seen by searches; and the
-adjacent no-switching multi-order models (CKSS24; FLSY §5.5) must always
-be cited as the honest nearest neighbors.
+**Verdict: KNOWN for the literal-union balanced-chain object.**  FLSY
+Definition 1.2 and Lemma 2.3 are decisive.  This does not subsume Cycle 5's
+RR-specific minimality, certificates, affine rigidity, or quantitative
+switch-depth analysis; those narrower results retain their separate
+classifications, at most `POTENTIALLY NOVEL` where stated above.
+
+---
+
+## SEG provenance and novelty addendum
+
+The exact segment-localized statement SEG does not appear verbatim in
+FLSY.  FLSY publishes the underlying random-walk/Fréchet machinery; the
+offset, rounding, first-leg, tail-arithmetic, and cyclic-full adaptations
+are proved in this repository and were checked by the deep, arms-length,
+and final Sol audits.  Its mathematical status is **ADVERSARIALLY REVIEWED
+PROOF CANDIDATE; UNFORMALIZED**, with verdict **SOUND WITH REPAIRS**.  Its
+provenance is **NEW BUT PROVED IN THIS REPOSITORY**, not "published
+verbatim".  Its novelty classification is **UNCLEAR**: the exact
+localization was not located, but the probabilistic engine is published
+FLSY machinery and no novelty certification has been completed for the
+adaptation.
 
 ---
 
@@ -314,6 +380,9 @@ The O01-status line in `literature/novelty_log.md` was re-verified today:
 FLSY's CCC 2026 version leaves `N(n)` open; TR26-043 = arXiv:2604.00746
 remains withdrawn (v2, 2026-05-11, Lemma 4.1 filtration gap acknowledged
 by the author); no public repair or successor exists as of 2026-08-21.
-The Cycle-5 negative theorems therefore retain their program value, and
-the audit found no evidence that any of their statements, parameters, or
-mechanisms exist in public prior art.
+The Cycle-5 negative theorems therefore retain their program value.  The
+bounded searches did not locate the exact N2/N3 statements or the narrow
+`D_mid`/run-sandwich quantitative forms; they did locate prior art for the
+literal-union object, pure cyclic words, feasible/basic words, and broad
+extra-chain/alternative-route mechanisms.  No absence-from-search statement
+here is a claim of novelty.

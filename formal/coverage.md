@@ -1,9 +1,9 @@
 # Formal verification coverage
 
-**Updated:** 2026-08-21 during Research Cycle 5 (multi-copy layer added; see
-the table row below).  Previous update: 2026-08-21 during Research Cycle 4.  The reusable finite
-balanced-chain core and the deterministic relabeling/literal-union layer are
-checked by Lean 4.32.1 with mathlib 4.32.1.  The project is pinned by
+**Updated:** 2026-08-27 during Cycle-5 finalization.  The multi-copy layer
+was added on 2026-08-21.  The reusable finite balanced-chain core and the
+deterministic relabeling/literal-union layer are checked by Lean 4.32.1 with
+mathlib 4.32.1.  The project is pinned by
 `lean-toolchain`, `lakefile.toml`, and `lake-manifest.json`; `.lake/` is
 generated and ignored.
 
@@ -45,9 +45,15 @@ The checker rejects a source-level `axiom`, `sorry`, or `admit`, prints the
 tool versions, and runs `lake build`.  As of the update above it ends with:
 
 ```text
-Build completed successfully (8656 jobs).
+Build completed successfully (8663 jobs).
 PASS: BalancedChain.lean contains no sorry/axiom/admit and lake build succeeded.
 ```
+
+The Sol final cross-model audit also compiled
+`audits/independent_validation/sol_cycle05/FormalAxiomAudit.lean`, which
+prints the kernel dependencies of all eleven credited theorem families.
+Their union is exactly the standard axioms `propext`, `Classical.choice`,
+and `Quot.sound`; no repository-specific axiom is used.
 
 This is machine checking of the named combinatorial and deterministic
 relabeling core only.  It does not verify the Phase-4A probability estimate,

@@ -1,5 +1,12 @@
 # Disposition of the Cycle-5 final integration audit findings
 
+**Supersession notice (2026-08-27):** This file preserves the disposition of
+the earlier integration audit at that time.  It does not contain the later
+deep/arms-length/Sol SEG repairs, the corrected `n=24` distinct-record
+accounting, or the final conservative novelty classifications.  Those later
+findings are authoritative in `cycle05_sol_final_cross_model_validation.md`
+and are applied and verified in `cycle05_final_correction_integration.md`.
+
 **Audit:** `cycle05_final_integration_adversarial.md` (verdict at audit
 time: NOT READY — one BLOCKER).  Every finding and the action taken:
 

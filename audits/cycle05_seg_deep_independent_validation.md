@@ -4,36 +4,30 @@
 Cycle 6 and continues no O01 research.  SEG was treated as FALSE until proved.
 **Date:** 2026-08-22.
 **Target:** the true mathematical status of Lemma SEG (segment interval
-anti-concentration), currently an unpublished reconstruction (repository
-status `PROOF CANDIDATE`), on which Theorems C and F of
-`research_cycle_05/switch_structure_theory.md` are conditional.
-**Branch audited:** `cycle05-fable` at `bd12e5c`, working tree carrying only
-untracked prior-audit tooling.  Nothing tracked was modified by this
-investigation; all new files are untracked
-(`audits/independent_validation/seg_deep/`, this file).
+anti-concentration), an unpublished repository reconstruction on which
+Theorems C and F of `research_cycle_05/switch_structure_theory.md` depend.
+**Original branch audited:** `cycle05-fable` at `bd12e5c`.
+**Correction note (2026-08-27):** the later independent Sol cross-model
+validation found that the original R3 discussion was incomplete and that the
+arms-length R4 argument was false.  The exact conclusion-preserving repairs
+from `audits/cycle05_sol_final_cross_model_validation.md` §§5.4--5.8 are now
+incorporated below.  This report therefore records the corrected proof, not
+the superseded derivations.
 
 ## Verdict
 
 ```text
-SEG-PROVABLE-AS-STATED
+SEG-SOUND-WITH-REPAIRS
 ```
 
-**"As stated" = the endorsed form** of `audits/cycle05_seg_lemma_adversarial.md`
-§7, which the repository designates as the operative statement of SEG
-(`switch_structure_theory.md` §5 defers to it explicitly).  Answer to the
-mandated core question: **SEG follows rigorously from the published FLSY
-machinery; the localization does NOT require a genuinely new unproved
-statement.**  The only statement not literally present in the paper — an
-offset-tolerant restatement of FLSY Lemma 4.3 — has a proof that is the
-published proof verbatim: the published induction maintains the invariant
-"the chasing walk is within `d` of the current milestone", and the perturbed
-base case `|Y(0) − z₀| = |f(A)| ≤ k < d` is an instance of that invariant.
-Localization changes **only a polynomial factor** (`O(n^{5/2}) → 3√N`, or
-`3√N·(L+1)` for the union-over-`B` form) and re-parameterizes the decay from
-`n^{1/5}` to `L^{1/5}`; the exponent `1/5`, the walk lemmas, and the
-first-passage engine are untouched.  A complete standalone proof with all
-dependencies explicit is given in §D below — the write-up whose absence was
-the recorded reason for the conditional labels.
+**The frozen statement is unchanged**, but its proof needs R1--R5.  SEG is
+not published verbatim by FLSY: the paper supplies the random-walk machinery,
+while the fixed-segment grid, nonzero-offset lemma, exact rounding, and full
+cyclic endpoint reduction are new repository derivations.  Section D now
+proves those obligations with explicit constants.  After the deep audit,
+arms-length referee, and final independent cross-model correction, the
+appropriate status is **ADVERSARIALLY REVIEWED PROOF CANDIDATE;
+UNFORMALIZED**.
 
 Consequences for Theorems C and F are stated in §H, within the limits the
 mandate imposes.
@@ -104,8 +98,11 @@ Proof architecture (all re-derived; page references to the ECCC version):
   `Pr[d_F < d] ≤ exp(−c₁ min{n^{1/4−ε}, n^{4ε}})`.  Proof: milestones with
   gaps `Δ = 3d` on the longer walk (Lemma 4.7: `≥ n/(2c₃Δ³)` of them, else
   probability `exp(−Ω(Δ))`); if `d_F < d` the shorter walk must visit the
-  `d`-neighborhoods of all milestones in order, each leg stochastically
-  dominating a fresh first passage `F_{Δ−2d} = F_d`; the sum's lower tail
+  `d`-neighborhoods of all milestones in order.  At the nominal
+  paper level the leg distance is written `Δ−2d=d`.  This does
+  **not** define a real-indexed `F_d` in the corrected SEG proof:
+  §D rounds the milestone/tracking gap and dominates the integer variable
+  `F_δ` with `δ=⌈d⌉`.  The sum's lower tail
   (Lemma 4.6, powered by the first-passage law, Lemma 4.5) is
   `exp(−Ω(n/d⁴))`.  Balancing `d = n/d⁴` yields `ε = 1/20`, exponent
   `n^{1/5}`.
@@ -158,7 +155,8 @@ verified line by line):
 ## C. The SEG statement under investigation (endorsed form, quoted)
 
 There exist universal `c > 0, C > 0, L₀` such that for every `N` and every
-`σ ∈ ℤ` with `|σ| ≤ 1`, for `f` uniform on `{g: [N] → {±1}, g([N]) = σ}`,
+`σ ∈ ℤ` with `|σ| ≤ 1` and `σ≡N (mod 2)`, for `f` uniform on
+`{g: [N] → {±1}, g([N]) = σ}`,
 fixed intervals `∅ ≠ A ⊆ B ⊆ [N]` with `L := |B∖A| ≥ L₀`, and integer
 `1 ≤ k < L^{1/5}`:
 
@@ -171,6 +169,11 @@ with the variants: (i) uniform `g` on `{±1}^{[N]}`: no `√N` factor;
 (ii) "some `B ⊇ A` with `|B∖A| = L`": extra factor `(L+1)`; (iii) cyclic
 order `Z_N`, `B ≠ Z_N`: verbatim; `B = Z_N`: extra factor `(L+1)`;
 (iv) relative form `|f(D_i) − f(A)| ≤ k`: offset 0.
+
+The corrected proof permits the explicit witnesses
+`c=min{1/2,(1/6)²/(8·27648²)}`, `C=6`, and
+`L₀=⌈13824^{5/2}⌉=22,469,029,418`.  There is no separate
+large-`N` hypothesis.
 
 ## D. Theorem S: complete statement and proof
 
@@ -187,141 +190,207 @@ what matters is that every constant is absolute — no hidden dependence on
 Definition 4.1 never requires `X(0) = Y(0)`; it is well-posed for offset
 walks.
 
-### D.0 Lemma W1 (first-passage law; explicit Lemma 4.5)
+### D.0 Lemma W1 (first-passage law at a real threshold)
 
-For integers `δ ≥ 1`, `y ≥ 1`: `Pr[F_δ = y] = (δ/y)·2^{−y}·binom(y,(y+δ)/2)`
-when `y ≡ δ (mod 2)`, else 0 (hitting-time theorem).  Consequently, by the
-reflection identity `Pr[F_δ ≥ z] = Pr[−δ < g(z−1) < δ] + Pr[g(z−1) = −δ]`
-and the point-mass bounds `binom(u,⌈u/2⌉)2^{−u} ≤ 0.8/√u` and
-`Pr[g(u) = x] ≥ 0.35/√u` for `|x| ≤ √u/2` (Stirling with explicit error, or
-finitely many small cases absorbed): there are absolute `c_lo ≥ 1/6`,
-`c_hi ≤ 4` with
+For integers `a ≥ 1`, `y ≥ 1`,
+`Pr[F_a = y] = (a/y)·2^{−y}·binom(y,(y+a)/2)` when
+`y ≡ a (mod 2)`, and the probability is zero otherwise.  More
+importantly for the rounding used below, for every **real** `t ≥ 4a²`,
 
 ```text
-c_lo·δ/√z  ≤  Pr[F_δ ≥ z]  ≤  c_hi·δ/√z        for all integers z ≥ 4δ².
+a/(6√t) ≤ Pr[F_a ≥ t] ≤ 1.85a/√t.                         (W1)
 ```
 
-*Machine check (exact DP, `seg_engine.exe fp`):* the DP law equals the
-formula exactly at `δ ∈ {1,2,3,5}`, `y` up to 1001; the ratio
-`Pr[F_δ ≥ z]·√z/δ` lies in `[0.75, 0.7979]` on `z ≥ 4δ²`
-(→ `√(2/π) ≈ 0.798`), comfortably inside `[1/6, 4]`.
-
-### D.1 Lemma W2 (milestones; explicit Lemma 4.7)
-
-Let `g` be a fresh walk of length `ℓ`, `Δ ≥ max(2, 2 ln ℓ)`, `c₃ := 256`,
-`K := ⌊ℓ/(c₃Δ³)⌋`.  Call `x_1 < … < x_j` a `(g,Δ)`-sequence if
-`|g(x_i) − g(x_{i−1})| ≥ Δ` for all `i` (with `x₀ := 0`), and `L_Δ` the
-maximum length.  Then `Pr[L_Δ < K] ≤ e^{−Δ/6}`.
-
-*Proof.*  Let `D_Δ := inf{t > 0 : |g(t) − g(0)| = Δ}` (two-sided).
-(1) `Pr[D_Δ > c₃Δ³] ≤ 2^{−Δ}`: split the first `c₃Δ³` steps into `Δ`
-blocks of `c₃Δ²` steps.  On `{D_Δ > c₃Δ³}` the walk stays in
-`(g(0)−Δ, g(0)+Δ)`, so each block's increment walk stays in `(−2Δ, 2Δ)`,
-hence does not hit `+2Δ`, an event of probability
-`≤ Pr[F_{2Δ} ≥ c₃Δ²] ≤ c_hi·2Δ/(√c₃·Δ) = 8/16 = 1/2` by W1
-(`c₃Δ² ≥ 4(2Δ)²` since `c₃ = 256 ≥ 16`).  Blocks have disjoint increments,
-hence are independent: probability `≤ 2^{−Δ}`.
-(2) Let `D^{(1)}, D^{(2)}, …` be the successive two-sided passage times
-(strong Markov: i.i.d. copies of `D_Δ`); if `Σ_{i≤K} D^{(i)} ≤ ℓ` the
-points `x_i = D^{(1)} + … + D^{(i)}` form a `(g,Δ)`-sequence of length `K`
-(increments exactly `±Δ`).  So
-`Pr[L_Δ < K] ≤ Pr[∃ i ≤ K: D^{(i)} > ℓ/K] ≤ K·2^{−Δ} ≤ ℓ·2^{−Δ}
-= e^{ln ℓ − Δ ln 2} ≤ e^{−Δ(ln 2 − 1/2)} ≤ e^{−Δ/6}`,
-using `ℓ/K ≥ c₃Δ³` and `Δ ≥ 2 ln ℓ`.  ∎
-
-### D.2 Lemma W3 (sum lower tail; explicit Lemma 4.6)
-
-Let `F^{(1)}, …, F^{(K)}` be i.i.d. copies of `F_δ` (`δ ≥ 1`) and `T ≥ 1`
-with `Kδ² ≤ T`.  Then
+*Proof of the real-threshold form.*  Put `u = ⌈t⌉−1`.  Since
+`F_a` is integer-valued, reflection gives
 
 ```text
-Pr[ Σ_{i≤K} F^{(i)} ≤ T ]  ≤  exp( − c_lo²·(Kδ)²/(16T) ).
+Pr[F_a ≥ t] = Pr[F_a > u]
+            = Σ_{x∈[-a,a), x≡u (mod 2)} Pr[W_u=x].
 ```
 
-*Proof.*  Set `t* := (2T/(c_lo·K·δ))²`.  From `Kδ² ≤ T` and `c_lo < 1`:
-`t* ≥ 4δ²`, so W1 gives `p := Pr[F_δ ≥ t*] ≥ c_lo·δ/√t* = c_lo²Kδ²/(2T) =: p_lo`
-(and `p_lo ≤ 1` since `c_lo² < 2`).  On `{Σ F^{(i)} ≤ T}` at most `T/t*`
-of the `F^{(i)}` are `≥ t*`; and `T/t* = c_lo²(Kδ)²/(4T) = K·p_lo/2`.
-By monotone coupling and the Chernoff lower tail
-`Pr[Bin(K, p_lo) ≤ Kp_lo/2] ≤ e^{−Kp_lo/8}`:
-`Pr[Σ F ≤ T] ≤ e^{−Kp_lo/8} = exp(−c_lo²(Kδ)²/(16T))`.  ∎
+The sum contains exactly `a` parity-compatible masses.  The central
+binomial mode is at least `1/(2√u)`.  For a relevant mass write
+`j=(|x|−ε)/2`, where `ε∈{0,1}` is the central parity.
+Its ratio to a central mode is a product of adjacent ratios.  If
+`u=2m`, the factors are
+`(m−s+1)/(m+s)=1−(2s−1)/(m+s)`; if
+`u=2m+1`, they are
+`(m−s+1)/(m+s+1)=1−2s/(m+s+1)`.  Here
+`u≥4a²−1` and `|x|≤a`, so the sum of the factor losses
+is at most `1/8` in either parity.  The inequality
+`∏(1−v_s)≥1−Σv_s` therefore gives ratio at least
+`7/8`.  Hence the sum is at least
+`7a/(16√u) ≥ a/(6√t)`.  Conversely every summand is at most the
+mode, the standard mode bound is at most `1/√u`, and
+`u ≥ 3t/4` because `t ≥ 4`; this is already less than
+`1.85a/√t`.  These analytic inequalities, not the finite
+measurements below, fix the constants.
 
-### D.3 Lemma S3 (offset Fréchet anti-concentration; the one formally new statement)
+*Independent check only:* exact DP (`seg_engine.exe fp`) agrees with the
+hitting-time formula and gives much larger empirical slack; no measured
+margin is used in (W1).
 
-There are absolute `c₁ > 0` and `L₀' ∈ ℕ` such that for all `L ≥ L₀'`, every
-split `m + p = L` (`m, p ≥ 0`), every integer offset `σ'` with
-`|σ'| ≤ d := L^{1/5}`, and `X` a fresh walk of length `m` with
-`X(0) = σ'`, `Y` an independent fresh walk of length `p` with `Y(0) = 0`:
+### D.1 Lemma W2 (rounded milestones)
+
+Let `g` be a fresh walk of integer length `ℓ`, let real
+`Δ ≥ max(3,2 ln ℓ)`, set `c₃=256`, and
+`K=⌊ℓ/(c₃Δ³)⌋`.  A milestone exit is taken at the integer level
+`a_Δ=⌈Δ⌉`.  Then, except with probability
+`e^{−Δ/6}`, there are `K` successive milestone times
+whose consecutive value gaps are at least `a_Δ≥Δ`.
+
+*Proof.*  Put `b=⌊256Δ²⌋`.  Inside the first
+`⌊256Δ³⌋` steps take `⌊Δ⌋` disjoint blocks of
+length `b`; they fit because
+`⌊Δ⌋b≤256Δ³`.  If the walk never exits
+distance `a_Δ` from the starting value, every block increment
+walk misses the level `⌈2Δ⌉`.  By (W1),
 
 ```text
-Pr[ d_F(X, Y) < d ]  ≤  2·exp(−c₁·L^{1/5}).
+Pr[F_{⌈2Δ⌉} > b] ≤ Pr[F_{⌈2Δ⌉} ≥ b]
+                 ≤ 1.85⌈2Δ⌉/√b < 0.30                 (Δ≥2);
 ```
 
-(The general-`ε` form, mirroring Lemma 4.3 with `min{L^{1/4−ε}, L^{4ε}}`,
-holds by the same proof; SEG needs only `ε = 1/20`.)
+indeed, `⌈2Δ⌉≤(5/2)Δ` and
+`b≥(256−1/4)Δ²` for `Δ≥2`.  These inequalities imply
+both `b≥4⌈2Δ⌉²` and
+`1.85⌈2Δ⌉/√b<0.30`.  Blocks have disjoint increments.
+Moreover `⌊Δ⌋/Δ≥3/4` for `Δ≥3`, and
+`(3/4)ln(10/3)>ln 2`, proving
+`0.30^{⌊Δ⌋}≤2^{−Δ}`.  Thus a two-sided
+milestone passage takes more than `256Δ³` steps with probability
+at most `2^{−Δ}`.
 
-*Proof.*  Set `Δ := 3d`.  By symmetry of `d_F` (Definition 4.1 is symmetric
-under swapping `(X,l,α) ↔ (Y,r,β)`) assume the walk of length
-`ℓ := max(m,p) ≥ L/2` is the *milestone walk* `M`, the other (`length
-r' = min(m,p) ≤ L/2`) the *chaser* `H`.  Exactly one of `M, H` carries the
-offset; write `z₀ := M(0)`, `h₀ := H(0)`, so `|z₀ − h₀| = |σ'| ≤ d` in both
-cases.
+Successive passage durations are i.i.d. by strong Markov.  If each of the
+first `K` durations is at most `ℓ/K`, their sum is at
+most `ℓ`; and `ℓ/K≥256Δ³`.  Therefore
 
-**Milestones.**  Apply W2 to the increment walk `M − z₀` (fresh, length
-`ℓ`), with this `Δ`: except with probability `e^{−Δ/6} ≤ e^{−d/2}`, there
-are times `x_1 < … < x_K ≤ ℓ`, `K := ⌊ℓ/(c₃Δ³)⌋`, with milestone values
-`z_i := M(x_i)` satisfying `|z_i − z_{i−1}| ≥ Δ` for all `i ∈ [K]` —
-including `i = 1`, whose gap is measured from `z₀ = M(0)` (W2's `x₀ = 0`).
-W2's hypotheses hold for `L ≥ L₀'`: `Δ = 3L^{1/5} ≥ 2 ln L ≥ 2 ln ℓ`
-(true once `L^{1/5} ≥ (2/3)ln L`) and `K ≥ 1` (true once
-`L/2 ≥ c₃·27·L^{3/5}`, i.e. `L^{2/5} ≥ 13824`).
+```text
+Pr[fewer than K milestones]
+ ≤ K2^{−Δ} ≤ ℓ2^{−Δ}
+ ≤ exp(−Δ(ln 2−1/2)) ≤ exp(−Δ/6),
+```
 
-**Extraction.**  Condition on such an `M`.  Suppose `d_F(M, H) < d` (the
-event is symmetric).  Fix a witnessing staircase `(α, β)`.  Since `α` is
-nondecreasing onto `{0,…,ℓ}` with unit steps, each `x_i` has a minimal time
-`t_i` with `α(t_i) = x_i`; `x_i` strictly increasing forces `t_i` strictly
-increasing, and `t_i ≥ 1` (as `x_i ≥ x_1 > 0 = α(0)`).  Setting
-`b_i := β(t_i)`: `|z_i − H(b_i)| < d` for all `i ∈ [K]`, `b_i`
-nondecreasing; and `b_i = b_{i−1}` is impossible since it would give
-`|z_i − z_{i−1}| < 2d < Δ`.  So `b_1 < … < b_K ≤ r'`, i.e. `H` visits the
-`d`-neighborhoods of `z_1, …, z_K` in order within its lifetime.
-(This is the corrected form of the p. 25 extraction: it needs only the
-milestone gaps `> 2d`, which are offset-invariant.)
+using `Δ≥2 ln ℓ`.  This is the real-`Δ` version needed
+by S3.
 
-**Domination.**  Define stopping times `τ₀ := 0`,
-`τ_i := inf{t > τ_{i−1} : |H(t) − z_i| ≤ d}` (on the infinite extension of
-`H`; on the event above, `τ_i ≤ b_i ≤ r'` for all `i ≤ K`).  Maintain the
-invariant `|H(τ_{i−1}) − z_{i−1}| ≤ d`: for `i ≥ 2` it holds by definition
-of `τ_{i−1}`; for `i = 1` it is the hypothesis `|h₀ − z₀| = |σ'| ≤ d` —
-**this is the entire role of the offset, and it is an instance of the
-invariant the published induction already maintains.**  Then
-`|z_i − H(τ_{i−1})| ≥ |z_i − z_{i−1}| − d ≥ Δ − d`, so to enter the
-`d`-ball of `z_i` the walk must first traverse to the near boundary, a net
-displacement `≥ Δ − 2d = d` on the side of `z_i`; by the intermediate-value
-property of `±1` walks, `τ_i − τ_{i−1} ≥ F̃^{(i)}`, where `F̃^{(i)}` is the
-first passage of the post-`τ_{i−1}` increment walk to displacement `d`
-toward `z_i`.  Conditional on `𝓕_{τ_{i−1}}`, `F̃^{(i)}` has exactly the law
-of `F_d` (strong Markov; the target side is `𝓕_{τ_{i−1}}`-measurable and
-the law is symmetric), a fixed law — hence `(F̃^{(1)}, …, F̃^{(K)})` are
-i.i.d. copies of `F_d` by induction.  Therefore
-`Pr[d_F < d | M] ≤ Pr[Σ_{i≤K} F̃^{(i)} ≤ r'] ≤ Pr[Σ_{i≤K} F^{(i)}_d ≤ L/2]`.
+### D.2 Lemma W3 (sum lower tail at a real threshold)
 
-**Tail.**  Apply W3 with `δ := d`, `T := L/2`:  hypothesis
-`Kd² ≤ (L/(2c₃·27d³))·d² = L/(13824·d) ≤ L/2 = T` holds; and
-`Kd ≥ (L/2 − c₃Δ³)/(c₃Δ³)·d ≥ L·d/(4c₃Δ³) = L/(27648·d²)` for `L ≥ L₀'`
-(absorbing the floor), so
-`(Kd)²/(16T) ≥ 2L²/(27648²·d⁴·16L) = L^{1/5}/(8·27648²)`.
-Hence `Pr[Σ ≤ L/2] ≤ exp(−c_lo²·L^{1/5}/(8·27648²))`.
+Let `F^{(1)},…,F^{(K)}` be i.i.d. copies of `F_a` for
+an integer `a≥1`, and let real `T≥1` satisfy
+`Ka²≤T`.  With `c_lo=1/6`,
 
-**Total.**  `Pr[d_F < d] ≤ e^{−d/2} + exp(−(c_lo²/(8·27648²))·L^{1/5})
-≤ 2 exp(−c₁ L^{1/5})` with
-`c₁ := min{1/2, c_lo²/(8·27648²)} ≥ 4.5·10^{−12}` absolute.  Degenerate
-split `r' = 0`: the domination step gives `τ_1 ≥ 0`, `τ_2 ≥ 1 > 0 = r'`,
-and `Pr[Σ_{i≤K} F̃ ≤ 0] = 0` for `K ≥ 1`, so the bound holds a fortiori
-(this is the tube case; classically `≤ exp(−Ω(L/d²))`).  `L₀'` is the
-absolute threshold making `L^{1/5} ≥ (2/3)ln L` and `L^{2/5} ≥ 13824`
-(crudely `L₀' ≤ 3·10^{10}`; with FLSY's unoptimized-`Ω` style the same
-statement holds "for sufficiently large `L`").  ∎
+```text
+Pr[Σ_{i≤K}F^{(i)}≤T]
+ ≤ exp(−c_lo²(Ka)²/(16T)).                              (W3)
+```
+
+*Proof.*  Set the real threshold
+`t*=(2T/(c_lo K a))²`.  The hypothesis gives
+`t*≥4a²`, so the real form of (W1) gives
+`p=Pr[F_a≥t*]≥c_lo a/√t*=:p₀=c_lo²Ka²/(2T)`;
+also `p₀≤c_lo²/2≤1`.
+If the sum is at most `T`, at most
+`T/t*=Kp₀/2` variables can be at least `t*`.
+Monotone coupling with `Bin(K,p₀)` and the Chernoff lower tail
+give
+`Pr[ΣF^{(i)}≤T]≤exp(−Kp₀/8)`, which is (W3).  No ceiling loss or
+empirical constant enters.
+
+### D.3 Lemma S3 (offset Fréchet anti-concentration)
+
+Let
+
+```text
+c₁ = min{1/2,(1/6)²/(8·27648²)}
+   = 4.542344518777...·10^{−12},
+L₀' = ⌈13824^{5/2}⌉ = 22,469,029,418.
+```
+
+For `L≥L₀'`, every split `m+p=L`, and every integer
+offset `σ'` with `|σ'|≤d:=L^{1/5}`, let `X,Y`
+be independent fresh walks of lengths `m,p` starting at
+`σ',0`.  Then
+
+```text
+Pr[d_F(X,Y)<d] ≤ 2exp(−c₁L^{1/5}).                       (S3)
+```
+
+*Proof.*  Put real `Δ=3d`, integer tracking radius
+`r=⌊d⌋`, and integer first-passage level `δ=⌈d⌉`.
+By symmetry let the longer walk `M`, of length
+`ℓ≥L/2`, supply milestones, and let `H`, of length
+`r'≤L/2`, chase them.  Write `z₀=M(0)` and
+`h₀=H(0)`, so `|z₀−h₀|=|σ'|≤d`.
+
+Apply W2 to `M−z₀`.  At `L₀'`,
+`d²=L^{2/5}≥13824`, `3d≥2 ln L≥2 ln ℓ`, and
+`K=⌊ℓ/(256Δ³)⌋≥1`; the logarithmic inequality holds at
+`L₀'` and remains monotone thereafter.  Except with probability
+`e^{−Δ/6}≤e^{−d/2}`, obtain `K` milestones
+`z_i=M(x_i)` with integer gaps at least `⌈3d⌉`.
+
+Suppose `d_F(M,H)<d` and fix a witnessing staircase.  All walk
+values are integral, so its pointwise discrepancies are at most
+`r=⌊d⌋`.  At the first milestone,
+
+```text
+|z₁−h₀| ≥ ⌈3d⌉−|σ'| ≥ 2d>d.                              (R1)
+```
+
+Thus the first extracted chaser time `b₁` is at least one.  The
+minimal staircase preimages of successive milestone times give
+`b₁<⋯<b_K≤r'`; equality of two consecutive `b_i` would
+put two milestones within `2r<⌈3d⌉`.  Define `τ₀=0` and
+let `τ_i` be the first time after `τ_{i−1}` that
+`H` enters the radius-`r` ball around `z_i`.
+R1 gives `τ₁≤b₁`, and every later leg has the same invariant by
+the definition of `τ_{i−1}`.  Moreover
+
+```text
+⌈3d⌉−2⌊d⌋ ≥ ⌈d⌉=δ.                                      (R3)
+```
+
+Hence each leg dominates first passage through the integer distance
+`δ`.  The target direction is measurable at the preceding
+stopping time; reflection and strong Markov make the resulting variables
+i.i.d. copies of `F_δ`.  Consequently
+
+```text
+Pr[d_F<d | M] ≤ Pr[Σ_{i≤K}F_δ^{(i)}≤L/2].
+```
+
+(If `r'=0`, R1 contradicts `b₁≤0`, so the event is
+empty whenever the milestone event holds.)
+
+It remains to check W3 exactly.  The upper estimate
+`K≤L/(6912d³)` and `δ≤2d` give
+
+```text
+Kδ²≤L/(1728d)≤L/2.
+```
+
+For the lower estimate put `x=d²/13824`.  Since
+`K≥⌊x⌋`, there are exactly two cases:
+
+* if `13824≤d²<27648`, then `K≥1` and
+  `Kd≥d≥d³/27648`;
+* if `d²≥27648`, then `x≥2` and
+  `K≥⌊x⌋≥x/2`, again giving `Kd≥d³/27648`.
+
+Thus no interval is omitted, `Kδ≥Kd`, and
+
+```text
+(Kδ)²/(16(L/2)) ≥ (Kd)²/(8L)
+                 ≥ L^{1/5}/(8·27648²).                  (R2)
+```
+
+W3 now gives the second failure probability
+`exp(−(1/6)²d/(8·27648²))`.  Adding the milestone failure yields
+(S3) with the displayed exact `c₁`.  This proves all rounding and
+the noninteger Chernoff threshold analytically; simulation is not part of
+the constant argument.  ∎
 
 ### D.4 Lemma S1 (grid normal form)
 
@@ -339,12 +408,18 @@ Cyclic case, `B ≠ Z_N`: pick any `c ∈ Z_N ∖ B`.  Every cyclic interval `D`
 with `A ⊆ D ⊆ B` is an arc inside the arc `B`, hence avoids `c`, hence is a
 linear interval of the cut order starting at `c+1`; the cut is a
 measure-preserving relabeling (the measure `f([N]) = σ` is exchangeable),
-and the linear normal form applies verbatim.  Cyclic case `B = Z_N`,
-`A ≠ ∅`: every PROPER cyclic interval containing `A` is `[a₁−u, a₂+v]`
-with `u + v ≤ L − 1` (`L := N − |A|`), the two extension arcs stay disjoint
-through step `L − 1`, and the final step adds the last remaining point; the
-terminal split `(u, v)`, `u + v = L − 1`, is not determined, so union over
-its `L` values (factor `≤ L + 1`).
+and the linear normal form applies verbatim.  For the cyclic case
+`B=Z_N`, `A≠∅`, fix a terminal split
+`u+v=L−1`, where `L=N−|A|`.  The proper states use
+`u` points from the left extension arc and `v` from the
+right; one point is added only in the terminal step.  Append that last point
+to the end of the left extension sequence.  The two coordinate sequences
+remain disjoint and now have total length `(u+1)+v=L`.  The actual
+cyclic chain is a staircase on this length-`L` grid which postpones
+the appended left step to its endpoint.  There are `L` terminal
+splits, so a union bound costs at most `L+1`.  This length-`L`
+encoding is essential: the formerly proposed length-`L−1` reduction
+is false when `L=j⁵+1` and `k=j`.
 
 *Machine validation (this audit's own):* literal DFS enumeration of nested
 interval chains (never told about the grid or any cut) vs. an independent
@@ -370,7 +445,8 @@ defect; the applications have matching parity.)
 
 ### D.6 Theorem S (= endorsed SEG) and proof
 
-**Theorem S.**  With `c := c₁` from S3, `C := 3`, `L₀ := L₀'` from S3: for
+**Theorem S.**  With `c:=c₁` from S3, `C:=6`, and
+`L₀:=L₀'=22,469,029,418`: for
 every `N`, every `σ` with `|σ| ≤ 1` (and `σ ≡ N mod 2`), `f` uniform on
 `{g([N]) = σ}`, fixed intervals `∅ ≠ A ⊆ B ⊆ [N]` with `L = |B∖A| ≥ L₀`,
 and `1 ≤ k < L^{1/5}`:
@@ -399,9 +475,11 @@ Pr_g[event] ≤ Σ_{|σ'| ≤ k} Pr[g(A) = σ']·Pr[d_F(X^{σ'}, Y) < d]
 by S3 (`|σ'| ≤ k < d`).  This is variant (i).  The main form follows by
 S2 (`×3√N`).  Variant (ii): `B` with `|B∖A| = L` is determined by its split
 `(p, m)`, `p + m = L` — at most `L+1` choices (fewer if `[N]` truncates);
-union bound.  Variant (iii): S1's cut for `B ≠ Z_N`; for `B = Z_N`, S1's
-terminal-split union over `L` grid events of total length `L−1`, each
-bounded as above (with `L−1 ≥ L₀ − 1`; absorb into constants).  Variant
+union bound.  Variant (iii): S1's cut for `B ≠ Z_N`; for
+`B=Z_N`, S1's terminal-split union is over `L` grid
+events whose two walk lengths sum to `L`.  Apply S3 before this
+`L`-way union; the original strict hypothesis
+`k<L^{1/5}` and all constants are unchanged.  Variant
 (iv): the same grid with `V(j,i) := λ(j) + ρ(i)` and offset 0 — S3 with
 `σ' = 0`, no `|f(A)| ≤ k` conjunct needed.  ∎
 
@@ -409,10 +487,10 @@ bounded as above (with `L−1 ≥ L₀ − 1`; absorb into constants).  Variant
 (classical; machine-verified exactly); reflection identity; Stirling
 point-mass bounds; Chernoff's lower tail for binomials; strong Markov
 property; FLSY's proof pattern of Lemmas 4.6/4.7 and §4.4 (re-derived in
-full above — no step of the paper is used as a black box); the endorsed
-statement's own hypotheses.  **Nothing else.**  In particular: no new
-probabilistic estimate, no new combinatorial lemma, no appeal to any
-unpublished source.
+full above — no step of the paper is used as a black box); and the endorsed
+statement's own hypotheses.  The segment grid, offset lemma, rounded
+thresholds, and cyclic-full encoding are repository lemmas proved here, not
+claims published verbatim by FLSY.  No unpublished external source is used.
 
 ---
 
@@ -432,7 +510,7 @@ unpublished source.
 (1) W1 lower bound → W3 (the chaser's leg-sum lower tail — the exponential
 engine); (2) W1 upper bound → W2 (each `c₃Δ²`-block escapes `[−2Δ,2Δ]`
 with probability ≥ 1/2 — milestone supply); (3) the domination step of S3
-(each chaser leg ⪰ fresh `F_d` via strong Markov).  All three are
+(each chaser leg ⪰ fresh `F_⌈d⌉` via strong Markov).  All three are
 statements about fresh walks of length ≤ `L`; localization does not touch
 them.
 
@@ -442,11 +520,11 @@ them.
 variants) — plus the re-parameterization `n → L` inside an engine whose
 lemmas were already length-generic.  The exponent `1/5` is unchanged
 (`ε = 1/20` balances `min{L^{1/4−ε}, L^{4ε}}` exactly as in the paper).
-Nothing is invalidated.  The one formally new statement is S3's offset
-tolerance, whose proof is the published induction with its own maintained
-invariant covering the perturbed base case; the offset degrades the `i = 1`
-leg's domination from `F_{Δ−d}` at worst to `F_{Δ−d−k} ⪰ F_{Δ−2d}` — the
-SAME bound the published proof uses for every leg.
+The probabilistic mechanism is unchanged, but the localization proof is not
+verbatim: S3 must prove the offset base case R1 and use the integer distance
+`⌈d⌉` with the rounded milestone gap
+`⌈3d⌉−2⌊d⌋≥⌈d⌉`.  These are repository proof obligations, now
+discharged analytically in §D.0--D.3.
 
 ---
 
@@ -521,16 +599,15 @@ REPAIRS; endorsed form §7), and the SEG portions of
 `switch_structure_theory.md`, `results/research_cycle_05.md`,
 `RESEARCH_STATE.md`, and the prior independent validation.
 
-* **Agreement.**  My independent anchor census (§B, 3 bookkeeping uses + 1
-  milestone base case) coincides with the reconstruction's §3(a)–(b) and
-  the skeptic audit's §0.  My offset analysis (`F_{Δ−d−k} ⪰ F_{Δ−2d}` iff
-  `k ≤ d`; alternatively an invariant-instance with no degradation at all)
-  matches their §2.  My `√N`-placement reasoning matches their §3; my
-  cyclic-cut and `B = Z_N` terminal-split treatment matches their §4; the
-  five paper-level slops I found independently are their §5 items 1–5,
-  one-for-one.  My Theorem S is exactly their §7 endorsed form, clause by
-  clause, including variants (i)–(iv).  I find their audit's reasoning
-  correct at every point I re-derived; no discrepancy of any kind emerged.
+* **Agreement and later correction.**  The independent anchor census,
+  `√N` unconditioning, proper cyclic cut, and theorem statement
+  agree with the earlier reconstruction.  The original claim that no
+  discrepancy emerged is **superseded**.  The arms-length report identified
+  R1, R2, and R5.  The later Sol validation then showed that its R3 remained
+  incomplete and its R4 was false: the missed equality is
+  `L=j⁵+1`, not `L=j⁵`.  Section D now contains the
+  analytic real-threshold/rounded proof and the length-`L`
+  terminal-split encoding required by the final audit.
 * **What this audit adds beyond the repository's state.**  (1) The complete
   standalone written proof (§D) with explicit absolute constants and the
   careful i.i.d. domination construction — the artifact whose absence was
@@ -544,65 +621,52 @@ REPAIRS; endorsed form §7), and the SEG portions of
   otherwise) — cosmetic, no repair needed for truth; (6) independent
   confirmation that no revision of TR26-001 exists and the published
   version adds no segment statement.
-* **Residual nits (cosmetic, non-blocking).**  (a) The endorsed form would
-  ideally record `σ ≡ N (mod 2)` (or the vacuity convention);
-  (b) `switch_structure_theory.md` §5's abbreviated display could cite the
-  `B = Z_N` factor as `(L+1)` explicitly rather than only by exclusion;
-  (c) prior-audit finding F5 (Lemma RS wording, Theorem F's sizes-from-2
-  coverage) is unaffected by this audit and stands.
+* **Integrated boundary points.**  The statement records
+  `σ≡N (mod 2)`; the cyclic-full variant records the
+  `(L+1)` factor; and Theorem F's Lemma RS must cover every finite
+  state, including the size-2 and size-`q−2` boundary cases.
 
 ---
 
 ## H. Consequences for Theorems C and F
 
-**Logical consequence of the verdict.**  Theorem S proves the exact
-statement Theorems C and F import: Theorem C uses the absolute event,
-`k = 2 < (L*)^{1/5}` (its regime `L* ≥ C(log q)⁵` gives `(L*)^{1/5} > 2`),
-cyclic order with `|A| ≥ 3` and `|B| ≤ q − 3 < q` (cut point exists),
-ambient `|f(Z_q)| = σ = 1` with matching parity (`q` odd), relabeled orders
-covered by exchangeability of the measure under `π`, and a
-`t·q³`-to-`t·q⁴` union-bound slack that absorbs `3√q·(L+1)` for
-`L* ≥ C(log q)⁵`.  Theorem F's long-run branch uses the same import at
-`k = 2`, `L = ⌊n^{1/5}/7⌋` — inside Theorem S's hypotheses for large `n`.
-**Therefore: if the proof in §D is correct, Theorems C and F hold as
-stated** (their own derivations were audited separately:
-`cycle05_theorems_adversarial.md`, the prior independent validation §C, and
-spot-rechecked here), with C's and F's constants inheriting `c₁`'s
-absolute-but-unoptimized value.
+**Theorem C.**  There are `q−5` middle states.  If
+`h=D_mid(P)+1`, one common-label block has at least
+`⌈(q−5)/h⌉` states and therefore at least
 
-**Status discipline (what the verdict does and does not support).**  SEG
-remains UNPUBLISHED and UNREFEREED; no segment statement exists in either
-version of FLSY (re-verified at source).  The repository's stated gate for
-lifting the conditional labels (skeptic audit §9) is: "(a) SEG is written
-out in full and independently verified as a standalone proof, or (b) an
-equivalent statement appears in the literature."  This audit supplies the
-full write-up of (a) and constitutes one independent derivation of the
-endorsed statement (formed before comparison); but the write-up and its
-verification are the work of a single investigation, so the arms-length
-verification step of gate (a) remains open.  Accordingly:
+```text
+M=⌊(q−7)/h⌋
+```
 
-* Supported NOW: re-scoping the condition on Theorems C and F from
-  "conditional on an unproved reconstruction-level statement (proof
-  candidate, outline only)" to "conditional on the correctness of the
-  complete written proof of Theorem S
-  (`audits/cycle05_seg_deep_independent_validation.md` §D), which derives
-  SEG from the published FLSY machinery with no new probabilistic
-  estimates".  SEG's own label may move from `PROOF CANDIDATE
-  (reconstruction/outline)` to `PROOF CANDIDATE — COMPLETE STANDALONE
-  WRITE-UP AVAILABLE (this audit §D); awaiting arms-length verification`.
-* NOT supported: upgrading Theorems C or F to unconditional/`PROVED`, or
-  removing "refuting SEG" from the reopen-conditions of
-  `RESEARCH_STATE.md`, until §D survives an independent check by a
-  reviewer who did not produce it (or SEG appears refereed in the
-  literature).  This audit performs no such upgrade and modifies no
-  repository status text.
+additions.  The earlier assertion of at least the real number
+`L*=(q−7)/h` additions was false when `L*` is
+nonintegral.  Since `M≥L*/2` for `L*≥2`, applying SEG
+with ambient `N=q`, total `σ=+1`, `k=2`, a
+proper cyclic endpoint, and segment length `M` preserves the
+displayed theorem after replacing the decay constant by
+`c₁/2^{1/5}`.  The polynomial order/endpoint budget has slack.
 
-**If §D is verified, the downstream picture** (stated for the record, not
-enacted): C and F become theorems resting solely on published, refereed
-inputs plus repository-internal proofs, closing the two-copy and
-low-switch-depth obstruction tracks unconditionally; the open boundary of
-Cycle 5 would then be exactly Lemma M (`t ≥ 3` stitching) and ∞-moving
-relabelings, as `RESEARCH_STATE.md` already isolates.
+**Theorem F.**  Its long-run branch applies SEG to a proper cyclic segment
+with `k=2` and added length at least
+`⌊n^{1/5}/7⌋`.  Its short-run branch is separate: the run-sandwich
+argument gives `O_1`-defect at most `L+2` for **every**
+finite state (prepend size 2 to the first later-copy middle run when needed,
+use the universal co-singleton for size `q−2`, and note that sizes
+1 and `q−1` are common).  The chain form of Theorem E then invokes
+the published FLSY Theorem 4.4 on `n−2` points with
+
+```text
+k=5+3(L+2)=11+3⌊n^{1/5}/7⌋,
+```
+
+not SEG's `k=2`.  Both applications lie strictly inside their
+respective ranges for sufficiently large `n`.
+
+The subsequent arms-length and Sol audits now supply the independent checks
+that were still pending when this report was first written.  SEG, C, and F
+are therefore recorded as **ADVERSARIALLY REVIEWED PROOF CANDIDATES;
+UNFORMALIZED**, with C and F retaining an explicit dependency on SEG.  SEG
+remains unpublished: neither version of FLSY contains the segment theorem.
 
 ---
 
@@ -622,7 +686,6 @@ relabelings, as `RESEARCH_STATE.md` already isolates.
 * Primary source: ECCC TR26-001 PDF (scratchpad copy, fetched 2026-08-22);
   full-text scan `flsy_fulltext.txt` (scratchpad).
 
-Per the mandate: no branches merged, no Cycle 6 started, no repository
-status files modified.  Verdict: **SEG-PROVABLE-AS-STATED**, with the
-complete proof in §D and the consequences for Theorems C and F exactly as
-bounded in §H.  Stop.
+No branch was merged and no later research cycle was started.  Corrected
+verdict: **SEG-SOUND-WITH-REPAIRS**, with R1--R5 integrated in §D and the
+dependency/status consequences for Theorems C and F recorded in §H.

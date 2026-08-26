@@ -7,6 +7,18 @@ audit, performed BEFORE the Cycle-5 commit
 **Verdict:** **NOT READY — one BLOCKER (D1, certificate byte-stability /
 SHA manifest platform fragility); everything else MINOR or COSMETIC**
 
+**Supersession notice (2026-08-26).**  This remains the historical
+repository-level audit at its stated base commit.  Its C1 conclusions about
+SEG's proof status and the N1–N5 novelty ledger are superseded by the deep
+SEG reconstruction, arms-length referee, and final Sol cross-model audit
+(`audits/cycle05_sol_final_cross_model_validation.md`).
+Current status: SEG is a `SOUND WITH REPAIRS`, **ADVERSARIALLY REVIEWED
+PROOF CANDIDATE; UNFORMALIZED** repository proof, not a theorem published
+verbatim by FLSY; its novelty status is `UNCLEAR`.  N1 is `UNCLEAR`, N2/N3
+are narrowly `POTENTIALLY NOVEL`, aggregate N4 is `UNCLEAR`, and the N5
+literal-union object is `KNOWN` from FLSY Definition 1.2/Lemma 2.3.  The
+historical reproduction and defect findings below are otherwise preserved.
+
 This audit treated every Cycle-5 claim as hostile until reproduced.  It read
 the summary report, the state file, all six `research_cycle_05/` documents,
 all three prior Cycle-5 audits, the barrier audit, the five RC5 failure
@@ -39,49 +51,59 @@ the supporting audit file.
   falsification as its own failure entry with the exact counterexample
   `π`, `ψ = ×2`, coloring `0xae2b3` — identical to audit §T1.e).  No
   residual statement presents the postcomposition version as true.
-* **Theorem E.**  PASS.  Stated everywhere as `ADVERSARIALLY REVIEWED —
-  SOUND AFTER REPAIRS`; the summary's parenthetical details (single cosmetic
-  Step-5 indexing repair; hull lemma verified exactly tight; pipeline check
-  zero violations, min-k `= 2` vs bound `10` on every rescued coloring at
-  `n = 24, 26`) match audit §§T2.a–T2.f verbatim.  The repair is applied in
-  `dense_circle_obstruction.md` (Step 5 uses `G_1^c`, not `G_0^c`).
-* **Theorems C and F.**  PASS.  Marked CONDITIONAL on SEG at every load-
-  bearing occurrence (results §1, §8, §11 ledger; STATE bullet with
-  "Granting SEG:"; theory file §5/§5b; barrier audit item 7; RC5-HY-03
-  "CONDITIONALLY OBSTRUCTED").  Theorem F's split label ("t = 2
-  unconditional in its density branch, conditional through SEG in its
-  long-run branch") matches §5b exactly.
-* **Lemma SEG.**  PASS.  Everywhere `PROOF CANDIDATE` (reconstruction) with
-  skeptic verdict quoted as **SOUND WITH REPAIRS, all repairs
-  statement-level** — the exact §8 verdict of
-  `audits/cycle05_seg_lemma_adversarial.md` — plus the mandatory §9 reminder
-  reproduced in both summary documents ("SEG is not a published theorem; the
-  conditional labels stand").  No unconditional use of SEG exists anywhere
-  (grep evidence; the only "Theorem C/F" lines without a same-line
-  conditional marker are two reference sentences in results §6, covered by
-  the document's own §1/§8/§11 labels — COSMETIC, D9).
-* **Novelty verdicts.**  PASS.  Results §3 and STATE quote exactly:
-  Lemma A.1, Theorem A's shape, Theorem E's hull-transfer mechanism, and the
-  switch-depth/run-sandwich parameters `POTENTIALLY NOVEL` (with the
-  explicit folklore-risk caveat for A.1), and the multi-RR-union object of
-  study `NOVELTY STRONGLY SUPPORTED` — matching
-  `research_cycle_05/novelty_audit_theorems.md` N1–N5 and the updated
-  `literature/novelty_log.md` rows verbatim, and both summaries add
-  "recorded as search outcomes, not claims".
-* **FLSY/literature citations.**  PASS.  Results §8's claims (verbatim
+* **Theorem E — HISTORICAL PASS, REPAIR INVENTORY SUPERSEDED.**  This audit
+  checked the Step-5 indexing repair, the tight hull lemma, and the finite
+  pipeline (zero violations, min-k `= 2` vs bound `10` at `n = 24, 26`).
+  The final Sol audit found three further conclusion-preserving text repairs:
+  use integer `D` in every chain index, normalize only the common reference
+  rather than assuming it is a listed circle, and retain the growing strict
+  FLSY parameter `k=3D+5<(n-2)^(1/5)`.  Current status is `SOUND WITH APPLIED,
+  CONCLUSION-PRESERVING REPAIRS`; the conclusion and t-independence are
+  unchanged.
+* **Theorems C and F — HISTORICAL PASS, STATUS PORTION SUPERSEDED.**  At the
+  audited base commit they were consistently marked conditional on SEG
+  (results §1, §8, §11 ledger; STATE; theory §5/§5b; barrier audit; and
+  RC5-HY-03).  After the later complete SEG proof and repairs, C/F retain
+  their dependency arrow and are **ADVERSARIALLY REVIEWED PROOF CANDIDATES;
+  UNFORMALIZED**, rather than claims conditional on an unproved lemma.
+* **Lemma SEG — HISTORICAL PASS, CURRENT PORTION SUPERSEDED.**  This audit
+  checked that the then-operative files consistently said `PROOF CANDIDATE`
+  and conditionalized C/F on the first skeptic report.  The later deep,
+  arms-length, and final cross-model audits supplied and checked the R1–R5
+  proof repairs.  The current mathematical status is `SOUND WITH REPAIRS`,
+  **ADVERSARIALLY REVIEWED PROOF CANDIDATE; UNFORMALIZED**.  Provenance is
+  **NEW BUT PROVED IN THIS REPOSITORY**: SEG is not published verbatim in
+  FLSY, although its probabilistic engine is FLSY machinery.  The C/F
+  dependency arrow remains, but it is no longer a dependency on an unproved
+  lemma.  SEG's separate novelty classification is `UNCLEAR`.
+* **Novelty verdicts — HISTORICAL PASS, SUPERSEDED.**  This audit correctly
+  checked consistency with the ledger then present, but its literature
+  conclusion is not current.  The expanded equivalent-object search gives:
+  N1 `UNCLEAR`; N2 and N3 narrowly `POTENTIALLY NOVEL`; aggregate N4
+  `UNCLEAR` (only the exact `D_mid`/run-sandwich forms may be potentially
+  novel); and N5's literal-union balanced-chain object `KNOWN` from FLSY
+  Definition 1.2 and Lemma 2.3.  FLSY uses a literal union of relabelled set
+  systems under full-chain semantics, while Algaba–van den Brink–Dietz,
+  TI 15-007/II (2015), Example 4.7, p. 23, gives an explicit extra full chain
+  produced by a union of input prefix chains.  No Cycle-5 contribution has
+  the strongest novelty status.
+* **FLSY/literature citations — HISTORICAL PASS WITH THE ABOVE
+  SUPERSESSION.**  Results §8's claims (verbatim
   verification of all four imports incl. published numbering 23/8 and 14/6;
   Fréchet anti-concentration engine, milestones + first-passage lower
   tails; `1/5` balancing `exp(-Ω(d))` vs `exp(-Ω(n/d⁴))`; upper bound a
   `log n/log log n`-depth randomized hierarchy explicitly not a union of
-  interval orders; `Σ_π` handled by rank subadditivity, literal unions never
-  analyzed; `𝓘_{n,m}` untouched for `1 < m < 2⌈lg n⌉`; TR26-043 withdrawn;
+  interval orders; `Σ_π` handled by rank subadditivity, hybrid provenance
+  not analyzed; `𝓘_{n,m}` untouched for `1 < m < 2⌈lg n⌉`; TR26-043 withdrawn;
   range `Ω(n²) ≤ N(n) ≤ n^{O(log n/log log n)}` standing) all appear, with
   sources, in `flsy_reconstruction.md` §§1–7.  Results §3's literature
   attributions (Uno–Yagiura 2000; BCMR 2008; Albert–Atkinson–Klazar 2003
   `e^{-2}`; Corteel–Louchard–Pemantle 2006 Poisson(2); Heber–Mayr–Stoye
   2011 Lemma 8 complement-closure; Blin–Faye–Stoye 2010 nested common
-  intervals; simultaneous-PQ NP-completeness; multiplication maps and
-  switching chains NOT FOUND) each match `common_interval_literature.md`.
+  intervals; simultaneous-PQ NP-completeness) each matched the survey then
+  present.  The broad switching-chain non-detection is superseded by the
+  arc-permutation, regular-system/antimatroid, FLSY literal-union, and
+  Algaba extra-chain prior art recorded in the final cross-model audit.
 
 **Findings:**
 
@@ -105,21 +127,26 @@ the supporting audit file.
   correctly scoped: equality only for `q ≤ 21`, general `≥ (q-7)/2` by the
   verified construction.)
 
-## C2. Number integrity — PASS (findings D4, D5, D8)
+## C2. Number integrity — PASS with final count-presentation clarification (findings D4, D5, D8)
 
 Numbers were verified against primary artifacts, not other prose.  All
 checks below were run by this audit (commands abbreviated; every stored-row
 comparison used all six counters `total/rej1/rej2/commonrej/rescued/
 unionrej`, not just the two quoted).
 
+The final Sol recount adds the distinction recorded in row 2: 14,864 is the
+stored-record count, while the distinct `(permutation, word)` count is 8,258;
+6,606 records duplicate swap/xswap routes.  This changes no validity,
+coverage, or minimum-switch conclusion.
+
 | # | Claim (results doc) | Primary source | Result |
 |---|---|---|---|
 | 1 | 122 verified `n=22` certificates, min switches all 1 | `hybrid_only_n22_candidates.json` + verifier | PASS (122; histogram `{1: 122}`) |
-| 2 | 14,864 at `n=24`, min switches all 1 | `hybrid_only_n24_candidates.json` + verifier | PASS (14,864; `{1: 14864}`) |
+| 2 | `n=24`: 14,864 stored records, comprising 8,258 distinct `(permutation, word)` examples and 6,606 duplicate swap/xswap records; min switches all 1 | `hybrid_only_n24_candidates.json` + verifier/recount | PASS (14,864 records; 8,258 distinct examples; 6,606 route-label duplicates; record histogram `{1: 14864}`) |
 | 3 | canonical example `π=(1 13)`, coloring `0x1fe0e` | n22 JSON `canonical: true` entry | PASS (label `we0ff:swap[1,13,1]`, word `1fe0e`, `perm_finite` = transposition 1↔13) |
 | 4 | 43 distinct relative permutations, 66 from single transpositions (`n=22`) | n22 JSON recount | PASS (43 / 66) |
 | 5 | 440 distinct permutations; all 414 failure words rescued (`n=24`) | n24 JSON recount | PASS (440 distinct perms; 414 distinct rescued words = the full failure set) |
-| 6 | 349 moves tested (`n=22`); 2,647 (`n=24`) | search reruns (see C3) | PASS (349/122 and 2647/14864 reproduced) |
+| 6 | 349 moves tested (`n=22`); 2,647 (`n=24`) | search reruns (see C3) | PASS (349/122 and 2647/14864 stored records reproduced; the latter reduce to 8,258 distinct examples) |
 | 7 | ∞-moving probe: 550 candidates, 32 hybrid-only | `infmoving_probe_n22.json` + probe rerun | PASS (550/32 stored and reproduced identically; 550 = 10 minus points × C(11,2) checks structurally) |
 | 8 | trans:30:14 = 16892/154891 | `scan_results.jsonl` | PASS |
 | 9 | pairswap:28 = 4138/4709; pairswap:34 = 2065656/2413835; pairswap-sample:62 = 103716/148726 | `scan_results.jsonl` | PASS (all counters) |
@@ -202,6 +229,12 @@ minimum-switch histogram: {1: 14864}
 ALL CYCLE-5 HYBRID-ONLY CERTIFICATES PASS
 ```
 
+The verifier's legacy word `examples` in that captured output means stored
+JSON records.  The 14,864 `n=24` records comprise 8,258 distinct
+`(permutation, word)` examples and 6,606 duplicate records produced by the
+swap/xswap route labels; all records are valid and have minimum switch count
+1.
+
 **(c) Scanner rebuild + two exact row reproductions — PASS.**
 
 ```text
@@ -255,7 +288,9 @@ scan_results.jsonl: OK
 * `cycle05_hybrid_only_search.py --n 24 --failures
   certificates/cycle04_rr_acceptance/cycle04_rr_failures_n24.txt
   --cross-orbit` → `tested=2647, found=14864`; **identical** to the stored
-  certificate.  (Note: `--n 24` without `--failures` asserts out; the
+  artifact of 14,864 records = 8,258 distinct `(permutation, word)` examples
+  plus 6,606 swap/xswap route-label duplicates.  (Note: `--n 24` without
+  `--failures` asserts out; the
   README quick-reference shows only the n=22 form.)
 * `cycle05_infmoving_probe.py` (run in a scratch CWD to avoid touching the
   certificate) → `tested 550; hybrid-only 32`; output JSON **identical** to

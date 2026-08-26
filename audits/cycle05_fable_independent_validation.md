@@ -18,6 +18,14 @@ untracked for the integrator's disposal; nothing in the repository was
 modified (every generator rerun was diffed against git and restored;
 `git status` clean at audit end).
 
+**Supersession notice (2026-08-26).**  This file remains the historical
+Fable audit at commit `bd12e5c`.  Its mathematical reconstructions and
+reproductions are preserved, but its Theorem-E repair inventory, SEG
+disposition, and §F novelty conclusion are superseded by the deep SEG proof,
+arms-length referee, and final Sol cross-model validation
+(`audits/cycle05_sol_final_cross_model_validation.md`).  The corrected current statuses are
+recorded at the affected passages below.
+
 **Method summary.**  I re-derived the interval-walk semantics from the
 `RR_n` definition *before* reading Lemma 5A.1 (they matched), wrote both a
 literal-DAG reference and a walk engine, cross-validated them against each
@@ -36,18 +44,19 @@ FLSY statement was accepted from repository transcription alone.
 |---|---|---|
 | A | Theorem A (repaired precomposition statement) | **SOUND AS STATED** |
 | A′ | Original postcomposition statement | FALSE (both stored counterexamples independently confirmed) |
-| B | Theorem E | SOUND AS STATED (t-independence genuine; no hidden regime condition beyond the stated "sufficiently large even n") |
-| C | Lemma SEG / Theorems C, F | SEG: credible PROOF CANDIDATE, **not published — CONDITIONAL labels on C/F are correct and must stand**; the repo maintains them everywhere |
+| B | Theorem E | **HISTORICAL VERDICT SUPERSEDED:** SOUND WITH APPLIED, CONCLUSION-PRESERVING REPAIRS (integer `D`, common-reference normalization, and growing strict FLSY parameter); t-independence and the conclusion remain valid |
+| C | Lemma SEG / Theorems C, F | **HISTORICAL VERDICT SUPERSEDED:** SEG is `SOUND WITH REPAIRS`, an **ADVERSARIALLY REVIEWED PROOF CANDIDATE; UNFORMALIZED** repository proof, not published verbatim by FLSY; C/F retain the dependency but no longer depend on an unproved lemma |
 | D | Finite certificates | ALL VERIFIED (one count-presentation finding, F1 below) |
 | E | Formal scope | CLEAN (8,656 jobs from clean state; kernel-level axiom check passed; coverage ledger exactly matches reality) |
-| F | Novelty audit | Classifications independently corroborated; appropriately conservative |
+| F | Novelty audit | **HISTORICAL VERDICT SUPERSEDED:** final statuses are N1 `UNCLEAR`, N2/N3 narrowly `POTENTIALLY NOVEL`, aggregate N4 `UNCLEAR`, N5 object `KNOWN`, SEG localization `UNCLEAR` |
 | G | Post-audit fixes | Blocker D1 verified fixed at committed-blob level; 6 of 7 dispositions fully verified; residuals listed (F6–F8) |
 | — | **Final decision** | **MERGE-SAFE-WITH-MINOR-CORRECTIONS** |
 
 No mathematical defect was found.  Every one of the >120 published numbers I
 recomputed reproduced exactly.  The corrections listed at the end are
 count-presentation, range-wording, and provenance items; none touches a
-theorem, a verdict label, or a certificate.
+theorem conclusion or a certificate.  Later audits did correct the SEG and
+novelty/provenance labels as noted above.
 
 ---
 
@@ -165,7 +174,13 @@ pair-swap 2-density derivation (§2) was re-checked (per-end substitution
 structure; `def ≤ 2`).  The scan evidence the theorem "kills" was itself
 reproduced exactly (see D).
 
-**Verdict: SOUND AS STATED.**
+**Historical verdict: SOUND AS STATED.  Final corrected status: SOUND WITH
+APPLIED, CONCLUSION-PRESERVING REPAIRS.**  The later Sol audit additionally
+requires integer `D` in all indices, normalizes only the common reference
+(without assuming it is listed), retains the growing parameter
+`k=3D+5<N^(1/5)`, and does not use the source proof display's non-strict
+perfect-fifth enlargement.  None changes the conclusion or uniformity in
+the number of copies.
 
 ## C. Lemma SEG, treated as hostile
 
@@ -203,15 +218,18 @@ monotone decay at `k = 1, 2` and an offset effect that is a constant factor
 audit's 0.68.  Nothing inconsistent with `exp(−cL^{1/5})` decay (observed
 decay is much faster).
 
-**Judgment.**  The FLSY proof yields SEG by routine, offset-tolerant
-re-derivation; I found **no step requiring genuinely new mathematics**.
-But SEG appears nowhere in either version of the paper (I verified the
-absence in the fetched full version), has never been refereed, and a full
-standalone write-up does not exist.  **The conditional status of Theorems
-C and F is therefore mandatory, and the repository maintains it at every
-load-bearing occurrence** (verified by grep and reading; the SEG audit §9
-reminder is reproduced in both summary documents).  C/F must NOT be
-upgraded to unconditional, and this audit does not upgrade them.
+**Historical judgment, superseded as a current disposition.**  This audit
+correctly observed that SEG does not appear in either version of FLSY, but
+it treated the localization as routine and retained C/F as conditional on
+an unproved lemma before a complete standalone proof was available.  The
+later deep reconstruction, arms-length referee, and final Sol audit supplied
+and checked the offset, integrality, first-leg, tail-arithmetic, cyclic-full,
+and final-constant repairs R1–R5.  Current status: SEG is `SOUND WITH
+REPAIRS`, **ADVERSARIALLY REVIEWED PROOF CANDIDATE; UNFORMALIZED**.  Its
+provenance is **NEW BUT PROVED IN THIS REPOSITORY**, not a theorem published
+verbatim in FLSY; its novelty status is `UNCLEAR`.  Theorems C/F retain the
+dependency on SEG and inherit its reviewed-proof status, rather than being
+unconditional consequences quoted from FLSY.
 
 Statement-level checks of C and F themselves: the run-splitting arithmetic
 (`≥ (q−7)/(D+1)` middle run), the union-bound accounting (`t·q³`-to-`q⁴`
@@ -239,14 +257,15 @@ conditional-track; no effect on labels.
   exactly one canonical flag: `(1 13)`, word `0x1fe0e` — the transposition
   joins the `1^3` and `1^8` runs as described.  `common_rejects_of_pair`
   fields match my own counts for all 43 permutations.
-* **n = 24 certificates.**  All 14,864 entries verified the same way; exact
+* **n = 24 stored records.**  All 14,864 records verified the same way; exact
   minimum switches = 1 in every entry (computed, since the file lacks the
   field); the 414 distinct words are exactly the full single-copy failure
   set — "every failure word is rescued by some pair" CONFIRMED.  **Finding
   F1: the file contains 8,258 distinct `(perm, word)` examples; 6,606
   appear twice** (identical but for `swap[...]`/`xswap[...]` labels — two
-  search routes recording the same find).  "14,864 verified examples"
-  counts records, not distinct examples.  Neither Cycle-5 audit noticed.
+  search routes recording the same find).  The exact formulation is
+  **14,864 verified stored records = 8,258 distinct examples + 6,606
+  swap/xswap duplicate records**.  Neither earlier Cycle-5 audit noticed.
 * **Scan rows.**  Independently reproduced, all six counters each:
   `trans:22:1..10` (including the 2 and 4 rescued words at δ = 9, 10, by
   value), `trans:24:11` (54/220), `trans:30:14` (16,892/154,891),
@@ -308,29 +327,38 @@ conditional-track; no effect on labels.
 
 ## F. Novelty audit from scratch
 
-My own searches (not reusing the Cycle-5 queries): common intervals of two
-circular permutations (found: Uno–Yagiura-line, strong interval trees,
-Heber–Mayr–Stoye circular algorithms — the AND-composition world, exactly
-as the survey describes); chains alternating/switching between interval
-families (nothing); "switch depth"/"alternation depth" for chains between
-two orders (nothing — hits are unrelated fields); AP-mod-q never-an-interval
-dichotomy (nothing stating it; three-distance-theorem machinery adjacent);
-"balanced-chain set system" (public footprint = the FLSY paper + the
-withdrawn TR26-043, whose withdrawal note I fetched verbatim from arXiv —
-gap in Lemma 4.1, conditional-on-filtration, no v3, matching the repo's
-record).  Key citations spot-checked as real (FLSY at ECCC/CCC'26;
-CKSS24 at LIPIcs 300; NNN12; DMPY12; AKV20; Uno–Yagiura; BCMR; Heber–
-Mayr–Stoye; Albert–Atkinson–Klazar; Cooper).
+The searches performed for this historical audit (not reusing the original
+Cycle-5 queries) covered common intervals of two circular permutations
+(Uno–Yagiura-line, strong interval trees, Heber–Mayr–Stoye circular
+algorithms); the exact phrases for alternating/switching chains and
+"switch depth"/"alternation depth"; the AP-mod-q never-an-interval
+dichotomy; and "balanced-chain set system".  The exact-term footprint for
+the last phrase was FLSY plus withdrawn TR26-043.  Key citations were
+spot-checked as real (FLSY at ECCC/CCC'26; CKSS24 at LIPIcs 300; NNN12;
+DMPY12; AKV20; Uno–Yagiura; BCMR; Heber–Mayr–Stoye;
+Albert–Atkinson–Klazar; Cooper).
 
-**Assessment:** the classifications — Lemma A.1, Theorem A's shape,
-Theorem E's hull-transfer, switch-depth/run-sandwich all `POTENTIALLY
-NOVEL` (A.1 with an explicit folklore caveat, which I endorse: it is
-exercise-level given three-distance-type counting), the multi-RR-union
-object `NOVELTY STRONGLY SUPPORTED` on the strength of a complete
-enumeration of a two-paper literature — are corroborated by my independent
-searches and are appropriately conservative.  The repository correctly
-records them as search outcomes, not claims, and correctly notes that
-absence from search is not proof of novelty.
+**Assessment — SUPERSEDED.**  The original corroboration was too narrow
+because exact-term searches missed equivalent-object vocabularies.  The
+final Sol audit located arc permutations for pure cyclic growth words;
+greedoid/antimatroid and learning-space feasible-path machinery; FLSY
+Definition 1.2/Lemma 2.3's literal unions of relabelled set systems; and the
+explicit extra full chain in Algaba–van den Brink–Dietz, TI 15-007/II
+(2015), Example 4.7, printed p. 23.  The corrected classifications are:
+
+- N1: `UNCLEAR` because the exact statement was not located but folklore
+  risk is high.
+- N2: narrowly `POTENTIALLY NOVEL` for the repaired affine rigidity theorem.
+- N3: narrowly `POTENTIALLY NOVEL` for the exact hull/refinement/rooted-FLSY
+  transfer, not for approximate intervals generally.
+- N4: `UNCLEAR` as an aggregate framework; only the exact `D_mid` and
+  run-sandwich quantitative forms may be potentially novel.
+- N5: `KNOWN` as a literal-union balanced-chain object from FLSY; the
+  RR-specific structural results remain separately classified.
+- SEG localization: `UNCLEAR`; it is a repository proof using published
+  FLSY machinery, not a novelty-certified or published-verbatim theorem.
+
+No strong novelty status is justified by the bounded searches.
 
 ## G. Post-audit fix verification (against artifacts, not dispositions)
 
@@ -359,7 +387,7 @@ None of the residue affects correctness.
 
 | ID | Severity | Finding |
 |---|---|---|
-| F1 | MINOR (count presentation) | "14,864 verified n=24 examples" (results §1/§4, STATE, README) counts file records; distinct `(perm, word)` examples number **8,258** — 6,606 finds are recorded twice under `swap`/`xswap` labels.  All records individually valid; the 414-word coverage, min-switch-1, and 440-perm claims are unaffected.  Recommend restating as "8,258 distinct examples (14,864 verified records incl. route duplicates)" |
+| F1 | MINOR (count presentation) | The `n=24` artifact has **14,864 stored records**, not that many distinct examples: distinct `(perm, word)` examples number **8,258**, and 6,606 records duplicate finds under `swap`/`xswap` labels.  All records individually validate; the 414-word coverage, min-switch-1, and 440-permutation claims are unaffected. |
 | F2 | COSMETIC (range wording) | results §1/STATE: "rescued 85.7–87.9% … n = 24..34" — the n=34 rate is 85.6% (2,065,656/2,413,835), just below the stated floor.  `switch_structure_theory.md` §4: "87.4–87.9% … at n = 24, 26, 28, 30" — the n=24 rate is 85.7% (12/14).  Same 0.1–1.7pp class as the D4 finding the cycle already fixed once |
 | F3 | COSMETIC | results §4 "only far transpositions (δ ≥ 8 at n=22) … rescue": true as a necessary bound, but δ = 8 rescues nothing (observed rescuing δ ∈ {9, 10}); the sharp threshold is 9 |
 | F4 | COSMETIC | `dense_circle_obstruction.md` header "FLSY Theorem 4.4 … with k = O(1) < N^{1/5}" understates the theorem's own use (k = 3d+5 with d allowed to grow); the import is valid for the full k < N^{1/5} range (primary source verified), so no mathematical effect |
@@ -373,8 +401,10 @@ None of the residue affects correctness.
 21/414/4,700/40,392/292,407 rejects (n = 22..30, exhaustive, own engine);
 the n=22 orbit as a rotation set; 0 rejects for n ≤ 20 (nine exhaustive
 enumerations); 1,554 affine maps attacked with 6,992 non-vacuous shared
-rejects and 0 rescues; 2 postcomposition counterexamples confirmed; 122 +
-14,864 certificates fully re-verified incl. exact min-switch; 20+ scan rows
+rejects and 0 rescues; 2 postcomposition counterexamples confirmed; 122
+`n=22` certificates plus 14,864 `n=24` stored records fully re-verified,
+including exact min-switch (the latter are 8,258 distinct examples plus
+6,606 swap/xswap duplicates); 20+ scan rows
 (all six counters); the full D_mid table; the triple probe (both rows); 5
 ∞-probe finds; 328 rooted min-max-k values (all = 2 ≤ 10); 3 seeded
 generators content-identical on rerun; 5 manifest entries vs committed
@@ -388,17 +418,18 @@ TR26-043 withdrawal verified at source.
 
 The mathematics of Cycle 5 survived a hostile, from-zero, independently
 tooled validation: Theorem A (repaired) is sound as stated and its original
-form is genuinely falsified; Theorem E is sound with its t-independence and
-regime conditions exactly as claimed; SEG is a well-founded but unpublished
-reconstruction and the conditional labels on C/F are correctly maintained
-everywhere; every certificate and every checked number reproduces; the
-formal ledger matches reality; the novelty verdicts are conservative and
-corroborated; and the pre-commit blocker fix is verified at the
-committed-byte level.  The corrections that should accompany or promptly
-follow a merge are F1 (restate the n=24 count as 8,258 distinct examples),
-F2/F3 (range/threshold wording), and the provenance items F6/F7 (+ the
-leftover cosmetics F4/F8); none changes any theorem, label, count of
-record, or certificate.
+form is genuinely falsified; Theorem E is sound with the later
+conclusion-preserving integer-parameter, common-reference, and growing-`k`
+repairs applied, while its `t`-independence and conclusion are unchanged.
+As corrected by later audits, SEG is a `SOUND WITH REPAIRS`, adversarially
+reviewed, unformalized repository proof and C/F retain that dependency;
+every certificate and every checked number reproduces; the formal ledger
+matches reality.  The original novelty endorsement in this audit is
+superseded by the corrected N1–N5/SEG statuses in §F; the pre-commit blocker
+fix is verified at the committed-byte level.  Findings F1–F8 are historical
+correction requirements; their Cycle-5 final resolutions are mapped in
+`audits/cycle05_final_correction_integration.md`.  None changes a theorem
+conclusion or certificate validity.
 
 Per the mandate: this audit does not merge, does not authorize a merge by
 itself, and does not begin Research Cycle 6.

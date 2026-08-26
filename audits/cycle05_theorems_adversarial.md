@@ -1,5 +1,14 @@
 # Cycle 5 adversarial audit: Theorem A (affine hybrid-vanishing) and Theorem E (dense-circle obstruction)
 
+**Supersession notice (2026-08-27):** This audit is retained as historical
+evidence.  The final cross-model audit independently validated the repaired
+precomposition Theorem A as sound as stated and identified three additional
+conclusion-preserving quantifier/normalization corrections for Theorem E
+(integer `D`, normalization of the common reference only, and the actual
+growing FLSY parameter).  The finalized canonical proofs apply those
+corrections; consult `cycle05_sol_final_cross_model_validation.md` and
+`cycle05_final_correction_integration.md` for the authoritative status.
+
 **Role:** SKEPTIC (independent adversarial review).
 **Date:** 2026-08-21.  **Base commit:** `745f2bd`.
 **Objects audited:** `research_cycle_05/switch_structure_theory.md` §2 (Theorem A, Lemmas A.1–A.3),

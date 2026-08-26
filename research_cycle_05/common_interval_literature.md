@@ -552,22 +552,48 @@ is well-understood machinery in the both-orders regime. **[Interpretation of §1
 
 ### 6.3 The switching-chain notion itself
 
-**[NOT FOUND.]** Multiple searches ("each prefix is an interval in one of two permutations",
-"chains of sets interval in at least one order", "simultaneous consecutive ones two orders",
-"growing set one element at a time interval", plus the §6.2 corpus) produced **no** publication
-studying:
+**[FINAL CROSS-MODEL CORRECTION.]** The original searches ("each prefix is an interval in one of
+two permutations", "chains of sets interval in at least one order", "simultaneous consecutive
+ones two orders", "growing set one element at a time interval", plus the §6.2 corpus) found no
+publication under the exact interval-system phrasing studying:
 1. chains of nested sets, each a member of the **union** of two (or t) interval systems
    ("interval in C1 **or** C2 at each level"),
 2. cross pairs (A, A∪{y}) with A an interval of C1 and A∪{y} an interval of C2, or the reachability
    /connectivity structure they generate,
 3. one-element-growth processes alternating between the interval systems of several orders.
-Closest matches, for the record: nested **common** intervals (§6.1 — the "AND" version of the
-chain), simultaneous PQ-ordering (§6.2 — coupling of interval systems, but through order
-extension, not through set chains), and k-block C1P (§6.2 — union of intervals within a single
-order). The union of two closed families (§1.3) is generally **not** closed — the BCMR generator
-calculus (min/max composition, Prop. 1) handles intersections of interval systems elegantly but
-has no counterpart for unions — which is consistent with the switching notion being structurally
-new. **[The last sentence is our structural observation, not a citation.]**
+That non-detection is limited to the **exact interval-specific and quantitative specialization**.
+The broader feasible-word and extra-chain phenomenon has direct prior art:
+
+- S. Elizalde and Y. Roichman, "Arc permutations", *J. Algebraic Combin.* 39 (2014), 301–334,
+  DOI [10.1007/s10801-013-0449-6](https://doi.org/10.1007/s10801-013-0449-6): the defining
+  condition that every prefix is a cyclic interval gives the standard name for a pure one-circle
+  growth word.
+- T. Borém Fabris, N. Limaye, S. Srinivasan, A. Yehudayoff, "Multilinear Algebraic Branching
+  Programs and the Min-Partition Rank Method", ECCC TR26-001 / CCC 2026,
+  [DOI 10.4230/LIPIcs.CCC.2026.22](https://doi.org/10.4230/LIPIcs.CCC.2026.22): Definition 1.2
+  evaluates all full Boolean chains contained in a set system, and full-version Lemma 2.3
+  constructs the literal union `𝓨 = 𝓧 ∪ ⋃_i σ_i(𝓧)` of relabelled copies. The proof uses pure
+  witness chains, but the literal union semantically contains any hybrid chains too.
+- E. Algaba, R. van den Brink, C. Dietz, "Power Measures and Solutions for Games under Precedence
+  Constraints", Tinbergen Institute Discussion Paper 15-007/II (2015),
+  [stable record](https://hdl.handle.net/10419/107876), [open PDF](https://papers.tinbergen.nl/15007.pdf),
+  Example 4.7, printed p. 23: the union of prefix-state chains for
+  `Π={(1,2,3),(2,3,1),(3,1,2)}` also contains the full chain for `(3,2,1)`, which was not an
+  input order. This is an explicit abstract extra/hybrid chain. The later journal article omits
+  this example, so the working paper is the supporting primary source.
+- Feasible/basic words and alternative maximal paths are standard neighborhoods in
+  greedoids/antimatroids and learning spaces: A. Björner and G. Ziegler, "Introduction to
+  Greedoids" (1992), [DOI 10.1017/CBO9780511662041.009](https://doi.org/10.1017/CBO9780511662041.009);
+  B. Korte, L. Lovász, R. Schrader, *Greedoids* (1991),
+  [DOI 10.1007/978-3-642-58191-5](https://doi.org/10.1007/978-3-642-58191-5); and D. Eppstein,
+  "Upright-Quad Drawing of st-Planar Learning Spaces" (2008),
+  [DOI 10.7155/jgaa.00159](https://doi.org/10.7155/jgaa.00159). A rooted connected-set family of a
+  graph is a standard node-search-antimatroid neighbor of the rooted cyclic family.
+
+Nested **common** intervals (§6.1), simultaneous PQ-ordering (§6.2), and k-block C1P (§6.2) remain
+the closest interval-order-specific neighbors. The exact cross-pair characterization, affine
+no-hybrid theorem, `D_mid` parameter, and run-sandwich inequality were not located. Their absence
+from this bounded search does not make the aggregate switching framework new.
 
 ---
 
@@ -576,7 +602,8 @@ new. **[The last sentence is our structural observation, not a citation.]**
 **Is "common cyclic intervals of two cyclic orders + cross pairs (A, A∪{y})" standard, partially
 standard, or unstudied?**
 
-**Partially standard, with the decisive components apparently unstudied.** In detail:
+**Partially standard; the broad switching phenomenon has prior art, while the exact
+interval-specific quantitative theory was not located.** In detail:
 
 1. **Common intervals of two linear orders: fully standard.** Definition, optimal O(n+K)
    enumeration (Uno–Yagiura 2000), the closed-family/weakly-partitive axiomatics, generators, and
@@ -592,20 +619,24 @@ standard, or unstudied?**
    linearization; a native cyclic structure theorem (an unrooted, complement-invariant
    "PC-tree of strong cyclic intervals" analogous to BCMR's theorem) appears never to have been
    written down, even though the PC-tree technology for it exists.
-3. **Common intervals of the multiplication permutation x ↦ ax mod q: apparently unstudied.**
+3. **Common intervals of the multiplication permutation x ↦ ax mod q: exact source not located.**
    The exact question "which cyclic intervals have interval images under multiplication" was not
    found anywhere; the obviously relevant toolkit (three-distance theorem, Ostrowski numeration,
    continued fractions, and — for disorder statistics — Dedekind sums/Zolotarev) is classical and
-   ready, but the translation to common-interval structure is unwritten.
-4. **Switching/hybrid chains and cross pairs: apparently unstudied.** The "AND" version of the
-   chain (nested common intervals) and the machinery for coupling interval systems (PQ/PC-trees,
-   simultaneous PQ-ordering, k-block C1P — the latter two NP-complete in general) exist, but
-   chains whose members need only be an interval in **one of** several orders, and the cross-pair
-   relation (A, A∪{y}) across two orders, match nothing in the searched literature. The absence is
-   structurally plausible: intersections of interval systems stay tree-representable, unions do
-   not, so the classical tree machinery gives no purchase on the switching notion.
+   ready, but no statement of the translation to common-interval structure was located in this
+   search.
+4. **Switching/hybrid chains and cross pairs: aggregate status UNCLEAR.** Literal unions of
+   relabelled set systems under full-chain semantics are published in FLSY Lemma 2.3, and Algaba
+   et al. Example 4.7 explicitly shows a union creating an additional full chain. Arc
+   permutations, regular set systems, and greedoid/antimatroid basic words supply further standard
+   vocabulary. The exact interval-OR cross-pair theory, affine rigidity, switch-depth parameter,
+   and run-sandwich inequality were not located; those narrower forms are not subsumed by the
+   broad antecedents.
 
-Net: the program can cite a mature foundation for items 1–2, must state item 3's translation as
-new (with three-distance/Ostrowski as imported classical tools), and should treat the switching
-chains and cross pairs of item 4 as a new combinatorial object, with nested common intervals and
-simultaneous PQ-ordering as the honest "closest prior art".
+Net: the program can cite a mature foundation for items 1–2; it should describe item 3 only as an
+exact formulation not located, with three-distance/Ostrowski and arithmetic-permutation theory as
+classical neighbors. It must not call the broad item-4 object new. The defensible bounded-search
+claim is only that the exact interval-specific cross-pair and quantitative switching results were
+not located, with FLSY literal unions, Algaba's extra chain, arc permutations, regular systems,
+antimatroids, nested common intervals, and simultaneous PQ-ordering all cited as material prior
+art.

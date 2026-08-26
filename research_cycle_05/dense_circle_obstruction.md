@@ -2,25 +2,30 @@
 
 **Base commit:** `745f2bdf8b6d1e472279da913245aa048b36112c`
 **Date:** 2026-08-21
-**Status:** `ADVERSARIALLY REVIEWED — SOUND AFTER REPAIRS`
-(`audits/cycle05_theorems_adversarial.md`: the single repair, a Step-5
-chain-indexing slip, is applied below; the hull uniqueness/nestedness
-lemma was verified exactly tight by exhaustive subset checks at
+**Status:** `ADVERSARIALLY REVIEWED — SOUND WITH APPLIED,
+CONCLUSION-PRESERVING REPAIRS; UNFORMALIZED`.  The Step-5 chain-indexing
+repair from `audits/cycle05_theorems_adversarial.md` and the final Sol
+repairs from `audits/cycle05_sol_final_cross_model_validation.md` are all
+applied below: `d` is explicitly integer-valued, only the common reference
+is normalized, and the actual growing strict FLSY parameter is retained.
+The hull uniqueness/nestedness lemma was verified exactly tight at
 `q ∈ {11,13}`, `d ∈ {1,2}`; the pipeline conclusion was checked on every
-rescued coloring at `n = 24, 26` — minimum `k = 2` against the claimed
-bound `3d+4 = 10` — and all per-word flags re-verified independently).
+rescued coloring at `n = 24, 26` (minimum `k = 2` against the bound
+`3d+4 = 10`) and all per-word flags were independently reverified.
 Uses
 only (i) the Cycle-4 verified interval-walk semantics (Lemma 5A.1),
 (ii) elementary hull combinatorics, and (iii) the published FLSY
 Theorem 4.4 (= Theorem 1.7; published Theorem 23 (8)) in its stated
-`(ε, k)` form with `k = O(1) < N^{1/5}` — the same import class Cycle 4
-used with `k = 1`, re-verified verbatim against both primary versions in
-`flsy_reconstruction.md` §1.3.
+`(ε,k)` form with the actual integer
+`k=3d+5<N^{1/5}`.  Here `d` may grow with `N`;
+the import uses FLSY's full uniform range `k<N^{1/5}`, re-verified
+against both primary versions in `flsy_reconstruction.md` §1.3.
 
 ## 1. Statement
 
 Fix even `n = 2m`, `q = n-1`, and a reference cyclic order `O*` on `Z_q`
-(after relabeling the whole union we take `O* = O_1 = id`).  For a cyclic
+(after relabeling the whole union we take `O*=id`; the reference
+need not be one of the listed circles).  For a cyclic
 order `O` on `Z_q` and `S ∈ Int(O)`, let `hull(S)` denote a minimal
 `O*`-interval containing `S` (any minimizer), and
 
@@ -28,11 +33,13 @@ order `O` on `Z_q` and `S ∈ Int(O)`, let `hull(S)` denote a minimal
 def(S) = |hull(S) ∖ S|
 ```
 
-its `O*`-defect.  Call `O` **`d`-dense** (w.r.t. `O*`) if every
+its `O*`-defect.  For a nonnegative integer `d`, call
+`O` **`d`-dense** (w.r.t. `O*`) if every
 `S ∈ Int(O)` has `def(S) ≤ d`.
 
 **Theorem E.**  There is a universal `c > 0` (the FLSY constant) such that
-for all sufficiently large even `n`, every `t ≥ 1`, and every list
+for all sufficiently large even `n`, every finite integer
+`t ≥ 1`, every nonnegative integer `d`, and every list
 `P = (π_1, …, π_t)` of ∞-fixing relabelings whose circles `O_1, …, O_t` are
 all `d`-dense w.r.t. one common reference circle `O*` with
 
@@ -46,7 +53,7 @@ the literal union satisfies
 H(P) ≤ (n/2) · 2^{-c (n-2)^{1/5}}.
 ```
 
-The bound is uniform in `t`: the list may be arbitrarily long.
+The bound is uniform in `t`: the finite list may be arbitrarily large.
 
 **Corollaries.**
 1. The adjacent-pair-swap circle is `2`-dense (machine-checked for
@@ -62,14 +69,15 @@ The bound is uniform in `t`: the list may be arbitrarily long.
 **Scope.**  The theorem needs one common reference circle for the whole
 list.  It does not cover lists mixing circles that are far from every
 common reference (e.g. a transposition circle has unbounded defect:
-`(I∖{u})∪{v}` with `v` far from `I`).  Those lists are addressed,
-conditionally, by the switch-depth Theorem C, and the affine case exactly
-by Theorem A.  No claim is made about arbitrary 1-balanced-chain families
+`(I∖{u})∪{v}` with `v` far from `I`).  Those lists are addressed
+by the adversarially reviewed proof candidate Theorem C (which depends on
+SEG), and the affine case exactly by Theorem A.  No claim is made about
+arbitrary 1-balanced-chain families
 or about `N(n)`.
 
 ## 2. The defect of the pair-swap circle
 
-Let `q` be odd and `O₂` the circle `(1, 0, 3, 2, …, q-3, q-2, q-1)` (pairs
+Let `q` be odd and `O₂` the circle `(1, 0, 3, 2, …, q-2, q-3, q-1)` (pairs
 `(2k, 2k+1)` swapped, `q-1` fixed).  A position-interval `[i, j]` of `O₂`
 holds the points `π([i,j])` where `π` is the pair-swap involution.  All
 interior aligned pairs contribute both their points; at the left position
@@ -187,5 +195,6 @@ H(P) ≤ Σ_r Pr[f(r) = +1] · 2^{-cN^{1/5}} = q·(m/q)·2^{-cN^{1/5}}
    including every "local shuffle" derandomization candidate.  Any
    surviving multi-RR route must use circles at defect `≥ n^{1/5}` from
    every common reference — i.e. genuinely global relabelings — while, by
-   Theorem C (conditional) and the empirical record, all tested global
+   Theorem C (adversarially reviewed proof candidate, dependent on SEG) and
+   the empirical record, all tested global
    families have low switch depth or no mid-range structure at all.

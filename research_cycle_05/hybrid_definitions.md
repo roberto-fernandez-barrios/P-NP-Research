@@ -51,22 +51,29 @@ which is determined by the literal set `S` alone.  For an accepted chain
   chain.
 * `C` is **hybrid** iff it is not copy-pure.
 
-**Switch count.**  For a chain `C`, let `s(C)+1` be the minimum number of
-blocks in a partition of `{0,…,n}` into consecutive runs such that each run
-`R` has `⋂_{k∈R} L(C_k) ≠ ∅`.  `s(C)` is the number of **copy switches** of
-`C`.  `C` is copy-pure iff `s(C) = 0`.  Equivalently (proved by the greedy
-maximal-run argument), `s(C)` is the minimum, over functions
-`ℓ : {0,…,n} → {1,…,t}` with `ℓ(k) ∈ L(C_k)`, of the number of indices with
-`ℓ(k+1) ≠ ℓ(k)`; this is the 0/1-cost shortest-path computed by
+**Switch count.**  A labeling of `C` is a function
+`ℓ : {0,…,n} → {1,…,t}` with `ℓ(k) ∈ L(C_k)`.  Define `s(C)` to be the
+minimum, over all such labelings, of the number of indices `k` for which
+`ℓ(k+1) ≠ ℓ(k)`.  This is the number of **copy switches** of `C`, and is
+the 0/1-cost shortest path computed by
 `experiments/cycle05_verify_hybrid_certificates.py::min_switches`.
 
-**Switch data.**  Minimal block partitions need not be unique; the greedy
-partition (extend each run maximally from the left) is the canonical one.
-If consecutive blocks with labels `j, j'` overlap in one chain element `S`,
-the switch happens **at the common state** `S` (`{j,j'} ⊆ L(S)`).  If they
-are disjoint and meet across the chain step `C_k ⊂ C_{k+1}`, the switch
-happens **across the cross step** `(C_k, C_{k+1})` with `j ∈ L(C_k)`,
-`j' ∈ L(C_{k+1})`.  Both switch types exist and neither implies the other.
+Equivalently, `s(C)+1` is the minimum number of blocks in a partition of
+`{0,…,n}` into consecutive runs such that every run `R` has
+`⋂_{k∈R} L(C_k) ≠ ∅`.  The equivalence and optimality of the greedy
+maximal-run partition follow by extending each feasible run as far right as
+possible.  In particular, `C` is copy-pure iff `s(C) = 0`.
+
+**Switch data.**  Minimal labelings and block partitions need not be unique;
+the greedy partition (extend each run maximally from the left) fixes canonical
+block endpoints.  For geometric bookkeeping, adjacent pure blocks may be
+extended to share a boundary state `S` when `{j,j'} ⊆ L(S)`; the switch is
+then said to happen **at the common state** `S`.  If no such shared endpoint
+is available, the label change is **across the cross step**
+`(C_k, C_{k+1})`, with `j ∈ L(C_k)` and `j' ∈ L(C_{k+1})`.  Thus the
+minimum-block partition itself remains disjoint; only the endpoint-sharing
+segment representation used to name a common-state switch overlaps.  Both
+switch types exist and neither implies the other.
 
 ## 3. Acceptance quantities
 
@@ -158,8 +165,10 @@ satisfying 5A.1(2) at all later sizes).  Then `f` has an accepting chain with
                 or  ∃x: A∪{x} ∈ Bwd_2(j+1)  (switch across a cross pair).
 ```
 
-All 122 verified `n=22` hybrid-only certificates have minimum switch count
-exactly 1, i.e. they satisfy this normal form.
+All 122 verified `n=22` hybrid-only certificates have independently checked
+minimum switch count exactly 1, i.e. they satisfy this normal form.  Their
+stored `min_switches` and `canonical` annotations were added by manual
+postprocessing not reproduced by the committed search generator.
 
 ## 7. Distinct-subset accounting
 

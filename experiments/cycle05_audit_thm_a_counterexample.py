@@ -1,11 +1,11 @@
-"""Cycle 5 audit: standalone verification of the Theorem A literal-hypothesis
-counterexample found by cycle05_audit_thm_pipeline.exe --conj.
+"""Cycle 5 audit: standalone verification of the discarded postcomposition
+Theorem-A counterexample found by cycle05_audit_thm_pipeline.exe --conj.
 
 P = (pi_1, pi_2) with pi_1 = pi, pi_2 = psi o pi, psi(x) = 2x mod 23.
 Then pi_2 o pi_1^{-1} = psi is affine with multiplier 2 (not +-1), both copies
-fix infinity, t = 2 -- ALL hypotheses of Theorem A as stated hold.  Yet the
-normalized balanced coloring f below is rejected by both copies and accepted
-by the literal union: G(P) > 0.
+fix infinity, t = 2 -- all hypotheses of the original, now-discarded
+postcomposition formulation hold.  Yet the normalized balanced coloring f
+below is rejected by both copies and accepted by the literal union: G(P) > 0.
 
 This script re-verifies the claim with the PROPOSER's own literal reference
 (brute_accepts over the induced-subset DAG), i.e. the second side of a
@@ -37,13 +37,15 @@ Q = N - 1
 pi1 = PI + [Q]                       # infinity-fixing
 pi2 = [(A * x) % Q for x in PI] + [Q]
 
-# hypothesis check: pi_2 o pi_1^{-1} affine (multiplier A, offset 0)
+# discarded postcomposition-hypothesis check: pi_2 o pi_1^{-1} affine
+# (multiplier A, offset 0)
 inv1 = [0] * N
 for i, v in enumerate(pi1):
     inv1[v] = i
 rel = [pi2[inv1[y]] for y in range(Q)]
 assert rel == [(A * y) % Q for y in range(Q)], "hypothesis broken"
-print(f"hypothesis: pi_2 o pi_1^(-1) = x -> {A}x mod {Q} (affine, a not +-1): HOLDS")
+print(f"discarded postcomposition hypothesis: pi_2 o pi_1^(-1) = x -> {A}x "
+      f"mod {Q} (affine, a not +-1): HOLDS")
 print("both copies infinity-fixing: HOLDS")
 
 fam1 = union_family_masks(N, [pi1])

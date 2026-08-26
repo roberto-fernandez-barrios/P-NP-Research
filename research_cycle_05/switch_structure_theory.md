@@ -9,9 +9,10 @@ Notation: `q = n-1` odd, orders `O_1 = id, O_2, …, O_t` on `Z_q`,
 plus word `w` (m ones), middle sizes `[3, q-3]`.
 
 Epistemic labels follow the repository state machine.  Theorem A is
-self-contained and unconditional.  Theorem C imports Lemma SEG, whose status
-is `PROOF CANDIDATE (reconstruction of FLSY's own technique)`, so Theorem C
-is `CONDITIONAL`.
+self-contained and adversarially reviewed.  Lemma SEG and Theorems C/F are
+`ADVERSARIALLY REVIEWED PROOF CANDIDATES; UNFORMALIZED`.  C and F
+retain explicit dependency on SEG.  SEG is a repository localization of
+FLSY machinery, not a theorem published verbatim by FLSY.
 
 ---
 
@@ -23,15 +24,26 @@ cross pair** `(A, A∪{y})`, `A ∈ Int(O_i)`, `A∪{y} ∈ Int(O_j)`.  Sizes
 `0, 1, q-1, q` are common for every pair of circles, so switching at the
 extreme sizes is always free.  The middle sizes are where structure decides.
 
-**Definition (middle switch depth).**  `D_mid(P)` is the maximum, over all
-coloring-free nested sequences `I_1 ⊂ … ⊂ I_{q-1}` (`|I_j| = j`, each an
-interval of ≥ 1 order of `P`), of the number of switches counted among sizes
-in `[3, q-3]` (for `t = 2`: the number of adjacent unequal pairs in the
-subsequence of single-label chain elements of middle size; computed exactly
-by `experiments/cycle05_switch_depth.py`).
+For a chain `C=(I_1,…,I_{q-1})`, let
+`L(I_j)={i:I_j∈Int(O_i)}`.
 
-Every accepted chain of every coloring switches at most `D_mid(P)` times in
-the middle, by definition.
+**Definition (middle switch depth, arbitrary `t`).**  Let
+`r_mid(C)` be the minimum number of consecutive blocks partitioning
+the middle index interval `[3,q−3]` such that, in each block, all
+states share at least one label (equivalently, the intersection of their
+label sets is nonempty).  Define
+
+```text
+D_mid(P)=max_C (r_mid(C)−1),
+```
+
+where the maximum is over all coloring-free nested sequences
+`I_1⊂⋯⊂I_{q−1}`, `|I_j|=j`, whose states have nonempty
+label sets.  For `t=2` this equals the alternation count in the
+subsequence of singly-labelled middle states, which is what
+`experiments/cycle05_switch_depth.py` computes.  Every accepted
+chain has a partition into at most `D_mid(P)+1` pure middle blocks
+by definition.
 
 **Exact computed values** (`cycle05_switch_depth.py`, q = 13, 17, 21):
 
@@ -63,9 +75,11 @@ G(P) = 0:
 the literal union `F(P)` accepts a balanced coloring iff some individual
 copy accepts it.  In particular `H(P) = I(P) ≤ t·A_n = t·exp(-Ω(n^{1/5}))`.
 
-Status: `ADVERSARIALLY REVIEWED — SOUND AFTER REPAIRS`
-(`audits/cycle05_theorems_adversarial.md`).  **Warning recorded by the
-audit:** the cycle's original statement hypothesized the *postcomposition*
+Status: `ADVERSARIALLY REVIEWED — SOUND AS STATED` for the repaired
+precomposition formulation
+(`audits/cycle05_theorems_adversarial.md`;
+`audits/cycle05_sol_final_cross_model_validation.md` §3).
+**Historical false formulation:** the cycle's original statement hypothesized the *postcomposition*
 map `π_j ∘ π_i^{-1}` affine; that version is **FALSE** — the two
 compositions differ by conjugation, and the audit exhibits verified
 counterexamples `P = (π, ψ∘π)`, `ψ = ×2`, with hybrid-only colorings at
@@ -246,19 +260,32 @@ hybrid rescue rates that decay monotonically in `n`
 
 ## 4. Pair-swap circles: `D_mid = Θ(q)`
 
-Let `O₂` be the adjacent-pair-swap circle `(1, 0, 3, 2, 5, 4, …, q-2)` on
-odd `q` (last point fixed).
+Let `O₂` be the adjacent-pair-swap circle
+`(1,0,3,2,5,4,…,q-2,q-3,q-1)` on odd `q` (last point fixed).
 
-**Theorem D (deep alternation).**  `D_mid ≥ (q-7)/2`, witnessed by the
-nested chain that from `{0,1,2,3}` repeatedly adjoins
-`4k` (an `O₁`-only prefix `{0..4k}`), then `4k+1` (common), then `4k+3`
-(an `O₂`-only set `{0..4k+1} ∪ {4k+3}`), then `4k+2` (common).
-Status: `PROVED (explicit construction, machine-verified)`;
-the exact DP gives equality `D_mid = (q-7)/2` for `q = 13, 17, 21`
-(3, 5, 7), so the construction is optimal at least there.
+**Theorem D (deep alternation).**  `D_mid≥(q−7)/2` for every
+eligible odd `q`.  The witness begins
+
+```text
+I_3={0,1,3}       (O₂-only),
+I_4={0,1,2,3}     (common).
+```
+
+For `k≥1`, starting at `I_{4k}`, it then repeatedly
+adjoins `4k` (the `O₁`-only prefix
+`{0,…,4k}`), `4k+1` (common), `4k+3` (the
+`O₂`-only set `{0,…,4k+1}∪{4k+3}`), and
+`4k+2` (common), while these indices remain in range.  The
+initial `I_3,I_4` pair supplies the first alternation omitted in
+the earlier display.
+
+Status: the all-`q` lower bound is `PROVED` by this
+explicit construction.  Exact DP gives equality
+`D_mid=(q−7)/2` only for the certified finite values
+`q=13,17,21` (3,5,7); no all-`q` equality is claimed.
 
 This is the family outside every low-depth obstruction, and empirically it
-is the one whose rescue rate decays slowest: 87.4–87.9% of common rejects
+is the one whose rescue rate decays slowest: 85.7–87.9% of common rejects
 rescued at `n = 24, 26, 28, 30` (`pairswap:*` rows), then a slow decline
 83.3% → 69.7% over `n = 38 … 62` in the sampled regime
 (`pairswap-sample:*`).  Despite its linear switch depth, this family is
@@ -270,60 +297,92 @@ slow decay is the finite-`n` shadow of a stretched-exponential collapse.
 
 ---
 
-## 5. Lemma SEG and the conditional low-depth obstruction
+## 5. Lemma SEG and the low-depth obstruction
 
-**Lemma SEG (segment interval obstruction; status: PROOF CANDIDATE —
-reconstruction of FLSY's technique; independently adversarially reviewed
-with verdict SOUND WITH REPAIRS, all repairs statement-level; see
-`audits/cycle05_seg_lemma_adversarial.md` §7 for the endorsed form with
-full quantifiers.  NOT a published theorem: the conditional label on the
-theorems below stands regardless.)**  Endorsed form, abbreviated: there
-are universal `c, C > 0, L₀` such that for every `N`, every `σ` with
-`|σ| ≤ 1`, `f` uniform on colorings of `[N]` with `f([N]) = σ`, fixed
-intervals `∅ ≠ A ⊆ B ⊆ [N]` with `L = |B∖A| ≥ L₀`, and `1 ≤ k < L^{1/5}`:
+**Lemma SEG (segment interval obstruction).**  There are universal
+constants `c>0`, `C>0`, and `L₀` such that
+for every `N`; every integer `σ` with
+`|σ|≤1` and `σ≡N (mod 2)`; a uniformly random sign
+function `f:[N]→{±1}` conditioned on `f([N])=σ`;
+fixed linear intervals `∅≠A⊆B⊆[N]` with
+`L=|B∖A|≥L₀`; and every integer `1≤k<L^{1/5}`:
 
 ```text
 Pr[ ∃ interval chain A = D_0 ⊂ D_1 ⊂ … ⊂ D_L = B, all |f(D_i)| ≤ k ]
-    ≤ C·√N·exp(-c L^{1/5}),
+    ≤ C·√N·exp(-c L^{1/5}).
 ```
 
-with an extra factor `(L+1)` for "some `B ⊇ A` of the given length", and
-verbatim on the cyclic order `Z_N` provided `B ≠ Z_N` (cut at any point of
-the complement).  The FLSY engine (anti-concentration of the discrete
-Fréchet distance of the two independent extension walks, milestones +
-first-passage lower tails) is translation invariant; the anchor enters
-only through bookkeeping, and the initial offset `f(A)` is bounded by `k`
-on the event itself.  The audit's Monte Carlo (N = 2000, exact DP,
-92k balanced colorings) shows clean monotone decay with no anomaly.
+The unconditioned form omits `√N`.  Allowing any
+`B⊇A` of added length `L` costs at most `L+1`.
+For cyclic intervals a proper `B` is handled by cutting outside
+it; when `B=Z_N` and `A≠∅`, another `L+1`
+factor suffices.  The relative form
+`|f(D_i)−f(A)|≤k` has offset zero.
 
-**Theorem C (conditional).**  Assume Lemma SEG.  There are universal
-`c', C > 0` such that for every ∞-fixing list `P` with `t` orders and
-`D = D_mid(P)`, and `L* = (q-7)/(D+1) ≥ C (log q)^5`:
+One valid explicit choice is
+
+```text
+c=min{1/2,(1/6)^2/(8·27648^2)}
+  =4.542344518777...e-12,
+C=6,
+L₀=⌈13824^(5/2)⌉=22,469,029,418.
+```
+
+**Status/provenance:** **ADVERSARIALLY REVIEWED PROOF CANDIDATE;
+UNFORMALIZED.**  SEG is not published verbatim by FLSY.  FLSY supplies
+the Fréchet/milestone/first-passage engine; the fixed grid, offset lemma,
+rounding, and cyclic-full reduction are repository proofs.  The operative
+proof is `audits/cycle05_seg_deep_independent_validation.md` §D,
+reviewed by `audits/cycle05_seg_arms_length_referee.md` and
+corrected by `audits/cycle05_sol_final_cross_model_validation.md`
+§§5.4--5.8.  In particular: R1 proves the first chaser time is positive; R2
+uses the two cases `L^{2/5}∈[13824,27648)` and
+`L^{2/5}≥27648`; R3 uses real-threshold W1, rounded milestones,
+and `δ=⌈L^{1/5}⌉`; R4 replaces the false
+length-`L−1` cyclic argument at `L=j⁵+1` by a
+length-`L` terminal-split encoding; and R5 gives `C=6`.
+
+**Theorem C (status: ADVERSARIALLY REVIEWED PROOF CANDIDATE;
+UNFORMALIZED; depends on SEG).**  There are universal
+`c',C>0` such that for every ∞-fixing list `P` with
+`t` orders, `D=D_mid(P)`, and
+`L*=(q−7)/(D+1)≥C(log q)^5`:
 
 ```text
 H(P) ≤ t·A_n + G(P),
 G(P) ≤ t · q^4 · O(√q) · exp(-c' (L*)^{1/5}).
 ```
 
-*Proof sketch.*  A hybrid-only accepted chain switches at most `D` times in
-the middle, so it contains a pure run of `≥ L*` consecutive middle sizes in
-one order `o`: a compatible pure-`o` interval growth from some `A` to some
-`B ⊇ A`, `|B∖A| ≥ L*`, with all running sums in `{0,1,2}` (2-balanced with
-offset ≤ 2).  Union-bound over the order (`t`), the pair `(A, B)`
-(≤ `q²·q` choices: `A` by size and start, `B ⊇ A` by extension split), and
-apply Lemma SEG with `k = 2 < (L*)^{1/5}` on the cyclic order `o` (cutting
-the circle at an endpoint of the complement of `B`, which the growth never
-enters).  The `O(√q)` unconditioning and polynomial union factors are
-absorbed for `L* ≥ C (log q)^5`.  ∎
+*Proof sketch.*  There are `q−5` middle states and at most
+`D+1=:h` common-label blocks.  One block has at least
+`⌈(q−5)/h⌉` states and hence at least
 
-**Corollaries (conditional on SEG).**
-1. Transposition and block-swap pairs (`D ≤ 1`):
-   `H(P) ≤ exp(-Ω(q^{1/5}))` — hybrid routing cannot make such pairs (or
-   any `poly(n)`-size list of them: `D_mid` of a list is bounded by pairwise
-   contributions only if switching stays pairwise… state carefully: for a
-   list, `D = D_mid(P)` of the whole list is the parameter; a list of many
-   transpositions can have larger joint depth and is NOT covered pairwise)
-   — scope: the stated bound applies to the list's own `D_mid`.
+```text
+M=⌊(q−7)/h⌋
+```
+
+additions in one order `o`.  This is the required integer
+correction: the old claim of at least the real number `L*`
+additions is false when `L*` is nonintegral.  For
+`L*≥2`, `M≥L*/2`.
+
+Take the first `M` additions of that block, from an interval
+`A` to a proper cyclic interval `B`.  All running sums
+lie in `{0,1,2}`.  Union-bound over the order and endpoints, and
+apply SEG with ambient `N=q`, total `σ=+1`,
+`k=2`, and segment length `M`.  Its proper cyclic cut is
+valid because all block sizes lie in `[3,q−3]`.  The hypothesis
+on `L*` eventually gives `M≥L₀` and
+`2<M^{1/5}`.  Since `M≥L*/2`, absorb
+`2^{1/5}` into `c'`; the displayed
+`tq⁴O(√q)` endpoint/order budget has slack.  ∎
+
+**Corollaries (with the same SEG dependency and proof-candidate status).**
+1. Any pair whose actual `D_mid≤1` has been proved or certified (including
+   the finite-DP transposition/block-swap instances) satisfies
+   `H(P) ≤ exp(-Ω(q^{1/5}))`.  For a larger list the theorem applies to the
+   list's own `D_mid(P)`; pairwise low-depth bounds alone do not bound that
+   joint parameter.
 2. Any family with `D_mid = O(q^{1-δ})`: `H(P) ≤ exp(-Ω(q^{δ/5}))`, still
    stretched-exponentially far from the `1/poly` needed (via FLSY
    Lemma 2.3) to imply O01.
@@ -341,48 +400,69 @@ swaps are far but have depth ≤ 1; pair-swap has linear depth but is
 
 ---
 
-## 5b. Theorem F: unified two-copy obstruction (conditional on SEG)
+## 5b. Theorem F: unified two-copy obstruction
 
 The proof of Theorem E never uses the family-wide density hypothesis, only
 the density of the accepting chain's own states.  Record this as:
 
 **Lemma E\* (chain version of Theorem E).**  If `f` is accepted by an
 ∞-fixing union via a chain all of whose finite parts have `O*`-defect
-`≤ d` for one circle `O*`, and `6d + 8 < (n-2)^{1/5}`, then `f` admits a
+`≤d` for one circle `O*`, where `d≥0` is an
+integer, and `6d+8<(n−2)^{1/5}`, then `f` admits a
 `(5+3d)`-balanced maximal linear-interval chain on the `n-2` points of the
 cut order at its (plus) root.  (Proof: Steps 1–5 of Theorem E verbatim.)
 
 **Lemma RS (run sandwich, t = 2).**  Let `P = (id, π)` be a two-copy
-∞-fixing union and let a chain have all pure runs of length `≤ L` in the
-middle.  Then every middle state has `O_1`-defect `≤ L + 2`.
+∞-fixing union and let a chain have all pure middle blocks of length
+`≤L`.  Then **every finite chain state** has
+`O_1`-defect `≤L+2`.
 
-*Proof.*  A state `S` in an `O_1`-run has defect 0.  A state `S` in an
-`O_2`-run: with `t = 2` the next run (or the first common state after the
-run, or the co-singleton at size `q-1`) lies in `Int(O_1)`; let `B` be that
-first later chain state in `Int(O_1)`.  Then `S ⊆ B`, `B` is an
-`O_1`-interval, so the minimal `O_1`-hull of `S` is contained in `B` and
-`def(S) ≤ |B| - |S| ≤ L + 2`.  ∎
+*Proof.*  Every state carrying label `O_1` has defect 0; in
+particular sizes 1 and `q−1` are common to both circles.  For an
+`O_2`-only middle state `S`, take the first later
+`O_1`/common state; if the run reaches the top boundary, use the
+universal co-singleton at size `q−1`.  To include all boundary
+states required by Lemma E*: an `O_2`-only size-2 state either
+has an `O_1`-labelled size-3 successor or is prepended to the
+first `O_2` middle block; a size-`q−2` state uses the
+co-singleton.  Sizes 1 and `q−1` are already common.  Thus the
+chosen later
+`O_1`-interval `B` is at most `L+2` additions
+away in every case.  Since `S⊆B`, the minimal
+`O_1`-hull of `S` lies in `B`, and
+`def(S)≤|B|−|S|≤L+2`.  ∎
 
-**Theorem F (conditional on Lemma SEG).**  There is `c'' > 0` such that
+**Theorem F (status: ADVERSARIALLY REVIEWED PROOF CANDIDATE;
+UNFORMALIZED; depends on SEG).**  There is `c''>0` such that
 for all sufficiently large even `n` and EVERY ∞-fixing permutation `π`,
 
 ```text
 H(id, π) ≤ poly(n) · exp(-c'' n^{1/25}).
 ```
 
-*Proof sketch.*  Set `L = ⌊n^{1/5}/7⌋`.  Every accepting chain either has
-a pure middle run of length `> L` — an event bounded, by the union bound
-over (order, endpoints) and Lemma SEG with `k = 2`, by
+*Proof sketch.*  Set `L=⌊n^{1/5}/7⌋`.  Every accepting chain
+either has a pure middle block with more than `L` states, which
+supplies a proper cyclic segment of at least `L` additions.  A
+union bound over order/endpoints and SEG with `k=2` gives
 `poly(n)·exp(-c L^{1/5}) = poly(n)·exp(-c' n^{1/25})` — or has all runs
-`≤ L`, hence by Lemma RS is `(L+2)`-dense w.r.t. `O_1`, and Lemma E\* with
-`d = L + 2` (`6d + 8 < (n-2)^{1/5}` holds by the choice of `L`) plus FLSY
-Theorem 4.4 with `k = 5 + 3d < (n-2)^{1/5}` bounds that event by
+`≤L`, hence by Lemma RS **every finite state** is
+`(L+2)`-dense w.r.t. `O_1`.  Lemma E* with
+`d=L+2` (`6d+8<(n−2)^{1/5}` for sufficiently large
+`n`) reduces this branch to the **published** FLSY Theorem 4.4
+with the distinct parameter
+
+```text
+k=5+3d=11+3⌊n^{1/5}/7⌋ < (n−2)^{1/5},
+```
+
+which bounds the event by
 `(n/2)·2^{-c(n-2)^{1/5}}`.  ∎
 
 This removes every structural hypothesis in the two-copy case: **no single
 relabeled partner can give the RR family more than stretched-exponentially
-small union acceptance** (conditional on SEG; the density branch is
-unconditional).  It retro-explains all `t = 2` scan data: every measured
+small union acceptance**.  The theorem remains an unformalized proof
+candidate depending on SEG; its density branch uses published FLSY
+directly.  It retro-explains all `t=2` scan data: every measured
 family's rescue rate decays.
 
 **The `t ≥ 3` stitching gap.**  For `t ≥ 3` the sandwich argument gives
@@ -417,6 +497,9 @@ This sharpens the Cycle-5 mission: the battle is whether
 `sup_{|P| ≤ poly} H(P)` is inverse-polynomial or stretched-exponential.
 Theorem A (unconditional) settles it for relabelled-affine lists, Theorem
 E (unconditional) for common-reference-dense lists — pair-swap included —
-and Theorems C/F (conditional on SEG) for low-depth lists and for every
+and the adversarially reviewed proof candidates C/F (dependent on SEG) for
+low-depth lists and for every
 two-copy union.  What remains open is exactly the `t ≥ 3`
-far-and-deep-switching class of §5b and ∞-moving relabelings.
+far-and-deep-switching class of §5b and different-anchor/general
+∞-moving relabelings.  A list whose copies move ∞ to one common anchor
+globally relabels back to the ∞-fixing setting.
