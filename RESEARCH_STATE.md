@@ -2,293 +2,289 @@
 
 ## Current phase
 
-RESEARCH CYCLE 4 COMPLETE — RR relabeling route stopped under S4-D
+RESEARCH CYCLE 5 FINALIZED — hybrid multi-order RR routing resolved under
+S5-D (with an S5-F proof candidate); RR retired as the primary O01 route
 
 ## Current objective
 
-Preserve the completed Cycle-4 disposition.  Do not begin Research Cycle 5
+Preserve the completed Cycle-5 disposition.  Do not begin Research Cycle 6
 without explicit authorization.
 
 ## Primary target and status
 
 **O01 — Polynomial-size 1-balanced-chain set systems.**  For every positive
 even `n`, determine whether an absolute constant `C` satisfies
-
 `N(n) <= n^C`.
 
 O01 remains **OPEN**.  The audited public range is
+`Omega(n^2) <= N(n) <= n^{O(log n/log log n)}` (both bounds FLSY; the
+withdrawn TR26-043 polynomial claim remains withdrawn as of 2026-08-21).
+No Cycle-5 result changes that status: every Cycle-5 theorem is an
+obstruction to restricted multi-RR construction routes, not a bound on
+`N(n)`.
 
-`Omega(n^2) <= N(n) <= n^{O(log n/log log n)}`.
+## Cycle-5 stopping result
 
-No Cycle-3 result proves a polynomial construction, an unrestricted lower
-bound, an mABP separation, an algebraic or Boolean complexity separation, or
-P versus NP.
+The primary question — can literal unions of relabelled `RR_n` copies
+accept dramatically more than their constituents through hybrid paths that
+switch copies mid-chain — was answered exactly in both directions.
 
-No Cycle-4 result changes that status.  In particular, the asymptotic result
-below is an obstruction to one restricted construction route, not a lower
-bound on `N(n)`.
+**Hybridity exists (5C diagnostic, positive).**  Smallest possible case
+`n = 22` (provably minimal); a single transposition of two finite points
+suffices; minimum switch count is exactly 1 in every verified example.
+122 distinct certificates at `n = 22`; at `n = 24`, 14,864 verified stored
+records represent 8,258 distinct `(permutation, word)` examples, with 6,606
+duplicate records arising exactly from `swap`/`xswap` route labels.  Every
+one of the 414 single-copy failure words is rescued by some pair.  A probe
+also shows the phenomenon for relabelings that move the infinity point.
+Everything is double-verified (fast engine with checked witness chains;
+independent reference-only checker), and every stored witness has minimum
+switch count exactly 1.
+
+**Hybridity does not scale (obstructions).**  With `q = n-1` and the
+interval-walk semantics (Lemma 5A.1, machine-cross-checked):
+
+* **Theorem A (unconditional).**  Lists that are global relabelings of
+  affine families — every precomposition relative map `π_i^{-1}∘π_j`
+  affine with multiplier `∉ {±1}` — have hybrid gain exactly zero:
+  `G(P) = 0`.  Structurally explains Cycle 4's zero hybrid-only accepts.
+  The adversarial audit FALSIFIED the original postcomposition phrasing
+  (`π_j∘π_i^{-1}` affine) with verified counterexamples at `n = 22, 24`
+  (a conjugation subtlety); the repaired hypothesis is the one the proof
+  uses.  Verdicts: original UNSOUND AS STATED; repaired statement
+  independently reconstructed and cross-model validated SOUND AS STATED
+  (`audits/cycle05_sol_final_cross_model_validation.md`).
+* **Theorem E (unconditional, t-independent).**  If every copy's circle is
+  `D`-dense for an integer `D >= 0` (each interval within `D` hull-holes of
+  one common reference circle) and `6D + 8 < (n-2)^{1/5}`, then
+  `H(P) ≤ (n/2)·2^{-c(n-2)^{1/5}}` for ANY number of copies.  Proof: hull
+  chains + stepwise refinement + Cycle-4 rooted complement reduction +
+  published FLSY Theorem 4.4 at the integer parameter `k = 5+3D <
+  (n-2)^{1/5}`.  The common reference need not itself be a listed circle.
+  This kills the strongest measured family (2-dense pair-swap circles:
+  85.6–87.9% hybrid rescue on the
+  exhaustive range `n = 24..34`, 69.7% at `n = 62` sampled, and a `t = 3`
+  list rejecting only 3 of 20M colorings at `n = 28`,
+  `certificates/cycle05_hybrid/triple_probe.json`) — all provably
+  transient finite-`n` phenomena.
+* **Lemma SEG and Theorems C/F (adversarially reviewed proof candidates;
+  unformalized).**  SEG is a repository-derived segment version of the
+  FLSY interval theorem (decay `2^{-cL^{1/5}}` in added length), not a
+  theorem published verbatim by FLSY.  Its complete proof now incorporates
+  the deep audit, arms-length R1--R5 repairs, and the final cross-model Sol
+  corrections: integer first-passage rounding, the first-leg argument, the
+  two-case tail arithmetic, the length-`L` full-cycle endpoint reduction,
+  and `C=6`.  The cross-model verdict is SOUND WITH REPAIRS APPLIED.
+  Theorems C and F retain an explicit dependency on SEG but are no longer
+  labelled conditional on an unproved lemma.  Unions with middle switch
+  depth `D` satisfy
+  `H ≤ t·poly(q)·exp(-c'((q-7)/(D+1))^{1/5})` (Theorem C), and EVERY
+  two-copy ∞-fixing union satisfies `H ≤ poly(n)·exp(-c''n^{1/25})`
+  (Theorem F, via the run-sandwich lemma: short pure runs force chain
+  density, long pure runs die by SEG).
+* **Structure theory.**  `D_mid` values are machine-exact for `q ≤ 21`:
+  multipliers 0 and transpositions/single block swaps at most 1.  The
+  all-`q` transposition bound remains a proof candidate, used
+  qualitatively.  For pair-swap, the all-`q` lower bound
+  `D_mid >= (q-7)/2` is proved; equality is asserted only for the finite
+  exact-DP range.  Common-interval descriptions are proved; the anchored
+  transposition cross/switch-depth case analysis remains a proof candidate.
+* **Measurements.**  Exhaustive `n ≤ 34` and sampled `n ≤ 62` scans: the
+  hybrid rescue rate of every tested family decays (best transposition
+  36.4% → 0.9%; pair-swap 87.9% → 69.7%; random and multiplier pairs
+  exactly 0 everywhere).  By the verified FLSY Lemma 2.3 the positive
+  target is only `H ≥ 1/poly` at `poly` copies; the theorems rule this
+  out for every affine, every common-reference-dense, and, through the
+  validated SEG dependency, every two-copy and every low-switch-depth
+  family covered by C/F.
+
+**Open boundary, stated exactly.**  (i) `t ≥ 3` ∞-fixing lists whose
+circles are simultaneously at hull-defect `≥ n^{1/5}` from every common
+reference AND of switch depth `≥ q/polylog(q)` — no such family is known;
+the isolated Lemma M (run-sandwich stitching for `t ≥ 3`) would close
+this.  (ii) Different-anchor/general infinity-moving lists (hybrid examples
+exist; a common moved anchor globally reduces to the infinity-fixing case).
+SEG is a complete, cross-model-adversarially reviewed repository proof
+candidate and remains unformalized; it is not a published FLSY theorem.
+
+Novelty status is conservative and records bounded-search outcomes, not
+claims.  N1 (the affine AP/cyclic-interval lemma) is UNCLEAR; exact
+Theorems A and E are narrowly POTENTIALLY NOVEL and require targeted
+prior-art review; the aggregate switching framework N4 is UNCLEAR, with at
+most its narrow quantitative `D_mid`/run-sandwich components potentially
+novel.  N5, the literal union of relabelled set systems under full-chain
+semantics, is KNOWN from FLSY Lemma 2.3.  Algaba--van den Brink--Dietz,
+Example 4.7 (working paper), is prior art for the broad extra-chain-under-a-
+union phenomenon.  Neither source subsumes the RR-specific theorems,
+minimal threshold, certificates, or quantitative obstruction results.  No
+Cycle-5 item has strong novelty support.
+
+Status labels: Theorem A (repaired) `ADVERSARIALLY REVIEWED — SOUND AS
+STATED`; Theorem E `ADVERSARIALLY REVIEWED — SOUND WITH APPLIED
+CONCLUSION-PRESERVING REPAIRS`; SEG/C/F `ADVERSARIALLY REVIEWED PROOF
+CANDIDATE; UNFORMALIZED` with explicit dependency arrows; hybrid minimality
+`INDEPENDENTLY CONFIRMED AT n=22`; certificates
+`INDEPENDENTLY VALIDATED WITH CORRECTED DISTINCT-COUNT WORDING`; and all
+finite computations `EXHAUSTIVE/SAMPLED; INDEPENDENTLY CHECKED`.
+
+**Stop-rule disposition.**  Cycle 5 ends under S5-D (broad restricted
+obstruction classes) with the S5-F structure-theory candidate.  As
+mandated: RR-family unions are retired as the primary O01 route.  A later
+cycle should reassess the all-defect-router obligation from Cycle 3, O03,
+O02, O18, and O05.  What would reopen the RR route: an externally validated
+counterexample to SEG, or an explicit `t ≥ 3`/different-anchor family
+escaping both density and switch-depth obstructions.
 
 ## Cycle-4 stopping result
 
-The proposed symmetrization implication is valid.  For a fixed family
-`F`, balanced coloring `f`, and uniform permutation `pi`,
+(Verified again at the start of Cycle 5: both verifier suites PASS, both
+SHA-256 manifests check, and the single-copy rejection counts at
+`n ∈ {22,24}` were reproduced by a from-scratch reimplementation.)
 
-`Pr[pi(F) accepts f]`
+The symmetrization implication is valid but its premise is false: for the
+corrected `RR_n`, fixing a positive rank-one root and
+complementing/reversing the nested cyclic intervals is an exact bijection
+with 1-balanced maximal chains of the ordinary interval family on `n-2`
+points, so `A_n <= (n/2) p_{n-2}` and FLSY Theorem 4.4 gives
+`A_n <= (n/2) 2^{-c(n-2)^{1/5}} = exp(-Omega(n^{1/5}))`.  Individual-copy
+acceptance and random-cover routes need `exp(Omega(n^{1/5}))` copies.
+Status: `RIGOROUS COROLLARY; INDEPENDENTLY RECONSTRUCTED AND
+FINITE-CHECKED; ADVERSARIALLY REVIEWED`.  Cycle 5 verified all four FLSY
+imports verbatim against both primary versions.
 
-equals the acceptance fraction of `F`.  For `t` independent copies, the
-fixed-color rejection probability is `(1-A)^t`.  If
-`M=binom(n,n/2)` and `0<A<1`, the exact least integer certified by the
-all-color union bound is
-
-`floor(ln(M)/(-ln(1-A)))+1`.
-
-For the corrected `RR_n`, the literal union of `t` relabelings has at most
-
-`2+t(n-1)^2`
-
-distinct subsets.  Hence `A_n>=n^(-O(1))` would indeed imply O01.  This is a
-direct specialization of the published FLSY worst-case-to-average-case
-lemma, not a new theorem.
-
-The premise is false.  Normalize infinity negative and fix a positive finite
-rank-one root `r`.  Complementing and reversing the nested cyclic intervals
-of an RR witness is an exact bijection with a 1-balanced maximal chain in the
-ordinary one-interval family on the other `n-2` points.  If `p_N` is that
-family's success probability, then
-
-`A_n <= (n/2)p_(n-2)`.
-
-FLSY Theorem 4.4 (Theorem 1.7) gives an absolute `c>0` with
-
-`p_N <= 2^(-c N^(1/5))`
-
-for all sufficiently large even `N`.  Therefore
-
-`A_n <= (n/2)2^(-c(n-2)^(1/5)) = exp(-Omega(n^(1/5)))`.
-
-Status: `RIGOROUS COROLLARY; INDEPENDENTLY RECONSTRUCTED AND FINITE-CHECKED;
-ADVERSARIALLY REVIEWED`.  Formal coverage is recorded separately.  This
-reaches S4-D for individual-copy acceptance and random symmetrization.  It
-does not rule out hybrid chains in literal unions of multiple copies.
-
-Exact finite necklace computation, independently recounted through `n=30`
-and certificate-checked through `n=34`, gives normalized rejection counts
-
-`21, 414, 4700, 40392, 292407, 1885203, 11191257`
-
-for `n=22,24,...,34`.  These data have no asserted asymptotic implication.
-
-Separately, full literal-union certificates prove
-
-`t_RR(n)=2` for `n=22,24,26,28,30`.
-
-The second copies fix infinity and use finite modular multipliers
-`2,2,2,4,5`.  Their individual rejection sets are disjoint.  The resulting
-distinct-subset counts are `821,991,1177,1379,1597`.  This is exact finite
-evidence only; no all-`n` two-copy claim is made.
+Exact finite necklace counts (normalized rejections) for
+`n = 22,24,...,34`: `21, 414, 4700, 40392, 292407, 1885203, 11191257`.
+Full literal-union certificates prove `t_RR(n) = 2` for `n = 22..30` with
+multiplier second copies and disjoint individual rejection sets — now
+known (Theorem A) to be the only mechanism available to affine pairs.
 
 ## Cycle-3 stopping result
 
-The mandated anti-anchoring target was decisive:
-
-`N(10)=35`.
-
-This is an exact finite computational determination under the FLSY convention
-that counts the empty and full sets.  It falsifies the observed identity
-`N(2m)=m(m+1)` at `n=10`, where that expression gives 30.  It has no
-asymptotic implication.
-
-The exact level-cover vector is
-
-`tau(10,k) = 1,1,5,3,5,3,5,3,5,1,1`,
-
-with sum 33.  A symmetry-normalized exhaustive prefix search checks all
-4,060 live triple choices and 1,686,060 rank-four branches and proves that
-the exact-minimum lower profile `1,1,5,3,5` cannot reach all 252 signed
-balanced colorings.  Complementation supplies the upper obstruction.  The
-two disjoint defects exclude size 34; a stored 35-subset family passes all
-252 colorings under direct induced-DAG checking.
-
-Status: `EXHAUSTIVELY COMPUTATIONALLY VERIFIED; INDEPENDENTLY ADVERSARIALLY
-REVIEWED; UNFORMALIZED`.  Prior art for the exact value was not found in the
-recorded search, but novelty remains `UNCLEAR`.
-
-The exact finite table now retained is:
-
-| `n` | `N(n)` | `L(n)=sum_k tau(n,k)` | `sigma(n)` |
-|---:|---:|---:|---:|
-| 2 | 3 | 3 | 0 |
-| 4 | 6 | 6 | 0 |
-| 6 | 12 | 12 | 0 |
-| 8 | 20 | 19 | 1 |
-| 10 | 35 | 33 | 2 |
-
-These values are finite evidence only.  `sigma` is aggregate level excess;
-it is not automatically a number of removable bridge subsets over embedded
-minimum covers.
+`N(10) = 35` (exact, exhaustively verified, independently adversarially
+reviewed; falsifies `N(2m) = m(m+1)` at `n = 10`).  Level-cover vector
+`tau(10,k) = 1,1,5,3,5,3,5,3,5,1,1` (sum 33); the exact-minimum lower
+profile cannot reach all 252 signed balanced colorings; complementation
+supplies the dual obstruction; a stored 35-subset family passes all 252.
+Exact table: `N(2)=3, N(4)=6, N(6)=12, N(8)=20, N(10)=35` with
+`L(n) = 3,6,12,19,33` and `sigma(n) = 0,0,0,1,2`.  Finite evidence only.
 
 ## Hardened foundation
 
-Cycle 2 was treated as a set of claims, not as authority.  Cycle 3
-independently rechecked:
-
-* the consecutive-pair characterization;
-* the exact contracted subset path functionality;
-* the distinction between raw even-state count and `N(n)`, with an explicit
-  polynomial odd-intermediary conversion;
-* Lemmas S1 and S2;
-* the definitions and dependencies of `tau`, `L`, and `sigma`; and
-* the non-transfer boundary around CF-LOGGAP.
-
-A fixed maximal chain covers `2^(n/2)` signed balanced colorings.  Two stale
-Cycle-1 passages saying two were corrected.  CF-LOGGAP still concerns only
-the frozen greedy, bounded-block, single-consumption cached-frontier process
-and its posted logarithmic-gap tail contract.  It was not generalized to any
-Cycle-3 deterministic subset DAG.
+Cycle 3 independently rechecked the consecutive-pair characterization, the
+contracted-path functionality, the raw-count vs `N(n)` distinction, Lemmas
+S1/S2, the `tau/L/sigma` definitions, and the CF-LOGGAP non-transfer
+boundary.  A fixed maximal chain covers `2^{n/2}` signed balanced
+colorings.  Cycle 5 additionally hardened the failure-list formats: the
+`cycle04_rr_acceptance` failure files are binary-encoded, the
+`cycle04_multi_rr` necklace files are hex; Cycle-5 parsers validate length
+and weight (an early mis-parse was caught and the affected search rerun).
 
 ## Structural-class dispositions
 
-All counts below are counts of distinct literal subsets, not paths,
-descriptions, abstract control nodes, or hardware switches.
+All counts are distinct literal subsets.  Retained from Cycle 3 (details
+in `results/research_cycle_03.md` and `failure_knowledge.jsonl`):
 
-### CP-S and recursion
-
-* The literal two-rail diamond spine has at most `6m-4` states and has no
-  valid member for `n=2m>=10`.
-* The wider CP-SQ profile has exactly `m(m+1)` states for `n>=4` but also has
-  no valid member for `n>=10`.
-* An adversarially reviewed, unformalized terminal-fanout proof candidate says
-  that a valid family with a unique singleton has at least `ceil(m/2)`
-  selected triples.
-* The conditional lift
-  `R(X,D)=X union ({a}+D) union {U+{b},U+{a,b}}` has exact size
-  `|X|+|D|+2` when `D` is a one-sided `+/-2` defect router.  No polynomial
-  router construction or preserved recursion is proved.  Reusing `X` loses
-  the defect property at `n=6` and balanced coverage after the next lift at
-  `n=8`.
-
-### CP-P
-
-For the exact recursively laminar hierarchy,
-
-`h(T)=2h(A)+2h(B)-4`.
-
-Complete balanced trees have `(2n^2+4)/3` states but fail at `n=4`.  A
-28-state `n=6` hierarchy covers every coloring at every level yet has no
-full path for plus set `{0,1,2}`.  All unlabelled shapes were exhausted
-through `n=12`; those are construction-class data only.  Full two-point
-insertion preserves coverage but costs `4|X|`; the sparse additive splice
-does not preserve its terminal routing invariant.
-
-### CP-G
-
-Exact-minimum layer gluing first fails at `n=8`; aggregate surcharge one and
-middle-only repair first fail at `n=10`.  Layer coverage plus a compatible
-edge across every adjacent interface is already insufficient at `n=4`, with
-the seven-mask family `[0,1,3,5,10,11,15]`.  The unformalized prefix-defect
-lemma forces surplus in a failed rank band and, by complementation, in its
-dual band.
-
-### CP-M
-
-For live, fixed-length, syntactically read-once pair programs, the
-canonical-support proof candidate gives a unique literal used support at
-each vertex.  If `Q(n)` is the optimum canonical even-support count, then
-
-`Q(n) <= N(n) <= Q(n)+min(Q(n)^2,Q(n)*binom(n,2))`.
-
-The exact literal-prefix-union reduction identifies the required compression
-but does not construct it.  In particular, a union of listed paths can have
-additional hybrid paths; a factor-only `n=10` counterargument was caught and
-retracted because the literal family contains the hybrid order
-`3,9,4,2,5,6,7,1,8,0`.
-
-The corrected cyclic interval family `RR_n` has exactly `(n-1)^2+2` literal
-subsets.  Exhaustive induced-DAG/deque checking proves it valid for every
-even `n<=20`.  It first fails at `n=22`, on exactly the 21 rotations of
-`1^8 0^5 1^3 0^5`.  An adversarially reviewed, unformalized recurrence proof
-candidate gives a countercolor for the same family at every even `n>=22`.
-This is a restricted quadratic construction theorem and obstruction, not
-O01.
-
-Full submatching closure, stage-only support abstraction, and
-compatibility-signature quotienting fail for separately recorded accounting
-or read-once reasons.  Their retry conditions are in
-`failure_knowledge.jsonl`.
+* CP-S/CP-SQ: no valid member for `n >= 10`; terminal-fanout candidate;
+  conditional lift `R(X,D)` with exact size accounting; no polynomial
+  router.
+* CP-P: `h(T) = 2h(A)+2h(B)-4`; complete balanced trees fail at `n = 4`;
+  full two-point insertion costs `4|X|`; sparse splice loses its invariant.
+* CP-G: exact-minimum gluing fails first at `n = 8`; adjacent-interface
+  local rule fails at `n = 4`; prefix-defect lemma forces dual surplus.
+* CP-M: canonical-support bounds `Q(n) <= N(n) <= Q(n) + min(...)`;
+  hybrid-path warning (RC3-CPM-01) — realized at scale by Cycle 5's
+  hybrid-only certificates.
+* `RR_n`: `(n-1)^2+2` subsets, valid for even `n <= 20`, fails from
+  `n = 22` on; single-copy asymptotics dead (Cycle 4); multi-copy hybrid
+  routing obstructed for the affine/dense/low-depth/two-copy classes by the
+  cross-model-validated Cycle-5 proof candidates.
 
 ## Formal verification
 
-Lean 4.32.1 with pinned mathlib 4.32.1 accepts, without `sorry`, `axiom`, or
-`admit`:
+Lean 4.32.1 with pinned mathlib accepts, without `sorry`/`axiom`/`admit`
+(8,663 jobs in the clean Sol validation): balanced colorings and
+1-balanced-chain definitions;
+insertion-order chains and prefix lemmas; the consecutive-pair
+characterization (both directions); the contracted-path reformulation;
+Lemmas S1 and S2; the Cycle-4 relabeling/equivariance and literal-union
+layer; and the new Cycle-5 multi-copy layer (`labelSet`, `ChainPure`,
+`AcceptsPure`, `HybridOnly`, `SwitchBound`,
+`switchBound_zero_iff_chainPure`, `acceptsUnion_pure_or_hybridOnly`,
+monotonicity and trivial-bound lemmas).  The literal `RR_n`, the
+interval-walk reformulation, Theorems A/C/E/F, SEG, and all probability
+statements remain UNFORMALIZED; the boundary is in `formal/coverage.md`.
 
-* balanced coloring and 1-balanced-chain definitions;
-* insertion-order maximal chains and prefix lemmas;
-* both directions of the consecutive-pair characterization;
-* both directions of the contracted path reformulation for path
-  functionality on even ground cardinality; and
-* Lemmas S1 and S2.
+## Literature status through 2026-08-26
 
-These named declarations are `FORMALLY VERIFIED` within the encoded
-representations.  A separate graph object and its state accounting, the
-order-theoretic extensional maximal-chain equivalence, `tau`/`sigma`, exact
-`N` values, CF-LOGGAP, all Cycle-3 structural claims, and O01 remain
-unformalized.  An independent trust-level-zero elaboration and axiom audit
-found no `sorryAx`.
-
-Cycle 4 additionally formalizes the reusable relabeling/equivariance layer.
-`acceptsColoring_relabel_iff` checks exact full-family acceptance
-equivariance; `isOneBalancedChain_relabel_iff` checks worst-case invariance;
-and `iUnion_isOneBalancedChain_of_pointwise_accepts` together with
-`union_relabelings_isOneBalancedChain` checks the deterministic literal-union
-step.  Phase 4A is therefore `PARTIALLY FORMALIZED`: uniform permutation
-fibers, independence, the union bound, exact `t`, and subset cardinality are
-not formalized.  The literal RR/deque/rooted equivalence, imported FLSY
-interval theorem, exhaustive finite counts, and O01 also remain outside the
-Lean development.  The exact boundary is in
-`research_cycle_04/lean_formalization.md` and `formal/coverage.md`.
-
-## Literature status through 2026-08-21
-
-Fabris--Limaye--Srinivasan--Yehudayoff is published at CCC 2026, LIPIcs 383,
-Article 22, DOI `10.4230/LIPIcs.CCC.2026.22`; ECCC TR26-001 is the full
-version.  Its pair-open read-once program is the closest exact known model.
-Cycle 4 uses its worst-case-to-average-case Lemma 2.3 (Lemma 1.5) and its
-ordinary one-interval Theorem 4.4 (Theorem 1.7).  The exact attribution and
-conference numbering are audited in
-`research_cycle_04/literature_novelty_audit.md`.
-
-The polynomial claim in arXiv:2604.00746 / ECCC TR26-043 remains withdrawn;
-the revision notice says the conditional-filtration gap affects all results.
-No primary source was found for exact `N(6)`, `N(8)`, `N(10)`, the falsified
-quadratic formula, or the normalized finite canonical-support computations.
-All such search outcomes remain `PRIOR-ART-NOT-FOUND`, never novelty claims.
+FLSY is published at CCC 2026, LIPIcs 383, Article 22 (ECCC TR26-001 full
+version).  Cycle 5 verified verbatim: Definition 1.2/1.4 (chain-balance,
+`(eps,k)` systems), Definition 2.1 (`I_{n,m}`), Theorem 4.4 = 1.7
+(= published 23/8, exponent `n^{1/5}`, `k < n^{1/5}`, even `n`), Lemma 2.3
+= 1.5 (= published 14/6, size `O(sn/p)`).  Their upper bound
+`n^{O(log n/log log n)}` is a randomized hierarchy, explicitly not a union
+of interval orders (derandomization open — their stated open problem).
+Their Lemma 2.3 nevertheless constructs the literal union of relabelled
+copies of an arbitrary set system, so that object is known even though its
+hybrid-chain structure is not analyzed there.  Algaba--van den
+Brink--Dietz, working-paper Example 4.7, gives an earlier abstract example
+in which a union of selected prefix chains contains an additional full
+chain.  Their `Sigma_pi` lower bound never analyzes hybrid literal unions;
+`I_{n,m}` for `1 < m < 2 ceil(lg n)` is untouched.  TR26-043 remains
+withdrawn (no v3, no successor).  Common-interval literature: survey in
+`research_cycle_05/common_interval_literature.md`.  The exact RR-specific
+switch-depth and obstruction statements were not located, which supports
+only the conservative statuses recorded above.
 
 ## Cycle-2 findings retained
 
-CF-LOGGAP remains `ADVERSARIALLY REVIEWED; UNFORMALIZED; NOVELTY UNCLEAR` for
-its frozen construction family only.  The true-filtration failures of the
-withdrawn TR26-043 proof, the finite exact values through `n=8`, the repair
-audit, and all precise retry conditions remain canonical in
-`results/research_cycle_02.md` and `research_cycle_02/`.
-
-Cycle-1 barrier, dependency, target-selection, and Alekseev--Gaevoy
-counterexample records remain retained.  No Cycle-1 or Cycle-2 claim is
-promoted by Cycle 3.
+CF-LOGGAP remains `ADVERSARIALLY REVIEWED; UNFORMALIZED; NOVELTY UNCLEAR`
+for its frozen construction family only.  The TR26-043 true-filtration
+failures, exact values through `n = 8`, and retry conditions remain
+canonical in `results/research_cycle_02.md` and `research_cycle_02/`.
+Cycle-1 barrier/dependency/counterexample records remain retained.
 
 ## Next action
 
-Stop.  Do not begin Research Cycle 5 automatically.  A later cycle requires
-fresh authorization.  It must not retry the inverse-polynomial single-copy
-`RR_n` acceptance premise, which is now rigorously false, nor the unchanged
-greedy single-consumption cached-frontier construction.  The multi-RR hybrid
-route remains open: finite two-copy successes do not supply an all-`n`
-theorem, while the S4-D obstruction does not apply to chains that splice
-states from different copies.
+Stop.  Do not begin Research Cycle 6 automatically.  A later cycle
+requires fresh authorization and should NOT: retry inverse-polynomial
+single-copy RR acceptance (rigorously false); retry affine multi-RR
+hybridity (`G = 0`, Theorem A); retry common-reference-dense multi-RR
+lists of any size (Theorem E); or re-measure two-copy or low-switch-depth
+families expecting different asymptotics (Theorem F/C, with validated SEG
+dependency).  The recommended reassessment order for a next cycle is the
+all-defect-router
+obligation from Cycle 3; O03; O02; O18; O05.  The isolated open statement
+whose resolution would change the remaining infinity-fixing RR boundary is
+Lemma M; an externally validated counterexample to SEG would also reopen
+the two-copy/low-depth conclusions.
 
 ## Critical rule
 
 Do not directly attempt P versus NP.  No Boolean or algebraic complexity
-separation follows from this cycle.
+separation follows from any cycle so far.
+
+## Canonical Cycle-5 artifacts
+
+* `results/research_cycle_05.md`
+* `research_cycle_05/README.md`
+* `research_cycle_05/hybrid_definitions.md`
+* `research_cycle_05/switch_structure_theory.md`
+* `research_cycle_05/dense_circle_obstruction.md`
+* `research_cycle_05/flsy_reconstruction.md`
+* `research_cycle_05/common_interval_literature.md`
+* `research_cycle_05/novelty_audit_theorems.md`
+* `audits/cycle05_theorems_adversarial.md`
+* `audits/cycle05_seg_lemma_adversarial.md`
+* `audits/cycle05_seg_deep_independent_validation.md`
+* `audits/cycle05_seg_arms_length_referee.md`
+* `audits/cycle05_sol_final_cross_model_validation.md`
+* `audits/cycle05_final_correction_integration.md`
+* `audits/barriers/cycle05_hybrid_obstructions.md`
+* `audits/cycle05_final_integration_adversarial.md`
+* `certificates/cycle05_hybrid/`
+* `experiments/cycle05_*.py`, `experiments/cycle05_union_scan.cpp`
+* `formal/BalancedChain.lean`, `formal/coverage.md`
+* `failure_knowledge.jsonl`
 
 ## Canonical Cycle-4 artifacts
 
@@ -306,9 +302,6 @@ separation follows from this cycle.
 * `audits/cycle04_final_integration_adversarial.md`
 * `certificates/cycle04_rr_acceptance/`
 * `certificates/cycle04_multi_rr/`
-* `formal/BalancedChain.lean`
-* `formal/coverage.md`
-* `failure_knowledge.jsonl`
 
 ## Canonical Cycle-3 artifacts
 
@@ -326,9 +319,6 @@ separation follows from this cycle.
 * `certificates/balanced_chain_n10/`
 * `audits/cycle03_n10_structural_adversarial.md`
 * `audits/cycle03_final_integration_adversarial.md`
-* `formal/BalancedChain.lean`
-* `formal/coverage.md`
-* `failure_knowledge.jsonl`
 
 ## Canonical earlier-cycle artifacts
 

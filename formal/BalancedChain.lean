@@ -831,4 +831,119 @@ theorem unique_cosingleton_dual_half_star
   rw [hidx0, hidx1, hlast] at hcross
   simp [hwP, hprevP] at hcross
 
+/-!
+## Cycle 5: multi-copy label sets, copy-pure and hybrid acceptance
+
+The definitions below fix, over an arbitrary indexed list of literal subset
+families, the provenance-invariant notions used by the hybrid-routing
+analysis: the label set of a subset, copy-pure chains, pure acceptance,
+hybrid-only colorings, and labelings with a bounded number of copy
+switches.  Everything is stated for the full induced-subset semantics
+(membership of every chain prefix), never for generating paths.
+-/
+
+section MultiCopy
+
+variable {ι : Type*} [DecidableEq ι]
+
+/-- The label set of a literal subset: the copies containing it.  This
+depends only on the subset, never on how it was produced. -/
+def labelSet (F : ι → Set (Finset α)) (S : Finset α) : Set ι :=
+  {j | S ∈ F j}
+
+/-- A chain is copy-pure for the list `F` when a single copy contains every
+prefix. -/
+def ChainPure (F : ι → Set (Finset α)) (C : MaximalChain α) : Prop :=
+  ∃ j, ChainContained (F j) C
+
+/-- Some individual copy accepts the coloring. -/
+def AcceptsPure (F : ι → Set (Finset α)) (P : Coloring α) : Prop :=
+  ∃ j, AcceptsColoring (F j) P
+
+/-- The literal union accepts, but no individual copy does. -/
+def HybridOnly (F : ι → Set (Finset α)) (P : Coloring α) : Prop :=
+  AcceptsColoring (⋃ j, F j) P ∧ ¬ AcceptsPure F P
+
+theorem chainContained_mono {X Y : Set (Finset α)} (hXY : X ⊆ Y)
+    {C : MaximalChain α} (h : ChainContained X C) : ChainContained Y C :=
+  fun k hk => hXY (h k hk)
+
+/-- Pure acceptance transfers to the literal union. -/
+theorem acceptsPure_acceptsUnion {F : ι → Set (Finset α)} {P : Coloring α}
+    (h : AcceptsPure F P) : AcceptsColoring (⋃ j, F j) P := by
+  obtain ⟨j, C, hC, hG⟩ := h
+  exact ⟨C, chainContained_mono (Set.subset_iUnion F j) hC, hG⟩
+
+/-- Union acceptance splits into pure acceptance or hybrid-only status. -/
+theorem acceptsUnion_pure_or_hybridOnly {F : ι → Set (Finset α)}
+    {P : Coloring α} (h : AcceptsColoring (⋃ j, F j) P) :
+    AcceptsPure F P ∨ HybridOnly F P := by
+  by_cases hp : AcceptsPure F P
+  · exact Or.inl hp
+  · exact Or.inr ⟨h, hp⟩
+
+/-- A labeling of a chain: one copy per prefix, witnessing membership.  The
+number of switches of the labeling is the number of indices at which the
+label changes. -/
+def IsLabeling (F : ι → Set (Finset α)) (C : MaximalChain α)
+    (l : ℕ → ι) : Prop :=
+  ∀ k ≤ Fintype.card α, C.prefix k ∈ F (l k)
+
+/-- The chain admits a labeling with at most `s` copy switches. -/
+def SwitchBound (F : ι → Set (Finset α)) (C : MaximalChain α)
+    (s : ℕ) : Prop :=
+  ∃ l : ℕ → ι, IsLabeling F C l ∧
+    ((Finset.range (Fintype.card α)).filter fun k => l (k + 1) ≠ l k).card ≤ s
+
+/-- Zero switches is exactly copy-purity. -/
+theorem switchBound_zero_iff_chainPure {F : ι → Set (Finset α)}
+    {C : MaximalChain α} :
+    SwitchBound F C 0 ↔ ChainPure F C := by
+  constructor
+  · rintro ⟨l, hl, hcard⟩
+    refine ⟨l 0, fun k hk => ?_⟩
+    have hconst : ∀ k ≤ Fintype.card α, l k = l 0 := by
+      intro k
+      induction k with
+      | zero => intro _; rfl
+      | succ k ih =>
+        intro hk1
+        have hk0 : k ≤ Fintype.card α := Nat.le_of_succ_le hk1
+        have hkmem : k ∈ Finset.range (Fintype.card α) :=
+          Finset.mem_range.2 (Nat.lt_of_succ_le hk1)
+        have : l (k + 1) = l k := by
+          by_contra hne
+          have : k ∈ (Finset.range (Fintype.card α)).filter
+              fun k => l (k + 1) ≠ l k := Finset.mem_filter.2 ⟨hkmem, hne⟩
+          have := Finset.card_pos.2 ⟨k, this⟩
+          omega
+        rw [this]
+        exact ih hk0
+    rw [← hconst k hk]
+    exact hl k hk
+  · rintro ⟨j, hj⟩
+    exact ⟨fun _ => j, fun k hk => hj k hk, by simp⟩
+
+/-- Every chain contained in the union admits some labeling (with the
+trivial switch bound given by the ground-set size). -/
+theorem chainContained_union_switchBound {F : ι → Set (Finset α)}
+    {C : MaximalChain α} (h : ChainContained (⋃ j, F j) C) :
+    SwitchBound F C (Fintype.card α) := by
+  classical
+  have hchoice : ∀ k, ∃ j, k ≤ Fintype.card α → C.prefix k ∈ F j := by
+    intro k
+    by_cases hk : k ≤ Fintype.card α
+    · obtain ⟨s, ⟨j, rfl⟩, hmem⟩ := h k hk
+      exact ⟨j, fun _ => hmem⟩
+    · obtain ⟨s, ⟨j, rfl⟩, hmem⟩ := h 0 (Nat.zero_le _)
+      exact ⟨j, fun hk' => absurd hk' hk⟩
+  choose l hl using hchoice
+  refine ⟨l, fun k hk => hl k hk, ?_⟩
+  calc ((Finset.range (Fintype.card α)).filter
+        fun k => l (k + 1) ≠ l k).card
+      ≤ (Finset.range (Fintype.card α)).card := Finset.card_filter_le _ _
+    _ = Fintype.card α := Finset.card_range _
+
+end MultiCopy
+
 end BalancedChain

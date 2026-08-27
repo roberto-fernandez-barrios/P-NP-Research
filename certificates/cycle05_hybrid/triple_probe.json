@@ -1,0 +1,32 @@
+{
+ "copies": "id, pairswap (0,1)(2,3)..., shifted pairswap (1,2)(3,4)...",
+ "semantics": "exact 3-order union interval DP (cross-checked engine, cycle05_hybrid_core)",
+ "cases": [
+  {
+   "n": 28,
+   "mode": "exhaustive",
+   "sample": 0,
+   "seed": null,
+   "total_words": 20058300,
+   "pair_common": 4709,
+   "pair_rescued": 4138,
+   "triple_common": 308,
+   "pair_rescued_on_triple_common": 300,
+   "triple_rescued": 305,
+   "triple_union_rejects_on_triple_common": 3
+  },
+  {
+   "n": 42,
+   "mode": "sample",
+   "sample": 2000000,
+   "seed": 20260821,
+   "total_words": 2000000,
+   "pair_common": 19971,
+   "pair_rescued": 16185,
+   "triple_common": 6342,
+   "pair_rescued_on_triple_common": 5232,
+   "triple_rescued": 6026,
+   "triple_union_rejects_on_triple_common": 316
+  }
+ ]
+}

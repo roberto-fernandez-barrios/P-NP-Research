@@ -1,8 +1,9 @@
 # Formal verification coverage
 
-**Updated:** 2026-08-21 during Research Cycle 4.  The reusable finite
-balanced-chain core and the deterministic relabeling/literal-union layer are
-checked by Lean 4.32.1 with mathlib 4.32.1.  The project is pinned by
+**Updated:** 2026-08-27 during Cycle-5 finalization.  The multi-copy layer
+was added on 2026-08-21.  The reusable finite balanced-chain core and the
+deterministic relabeling/literal-union layer are checked by Lean 4.32.1 with
+mathlib 4.32.1.  The project is pinned by
 `lean-toolchain`, `lakefile.toml`, and `lake-manifest.json`; `.lake/` is
 generated and ignored.
 
@@ -27,6 +28,8 @@ novelty and do not promote any finite computation to an asymptotic theorem.
 | Variable-threshold reserve and geometric-log accounting lemmas | UNFORMALIZED | Existing written proofs are not imported into this Lean project. |
 | Polynomial fixed-order recursive-cover obstruction | UNFORMALIZED | Depends on the unformalized FLSY theorem. |
 | Corrected `RR_n`, deque equivalence, and rooted ordinary-interval reduction | UNFORMALIZED | The literal cyclic-interval definition, the rooted complement/reversal equivalence, the probability inequality `A_n <= (n/2) p_(n-2)`, and the imported FLSY stretched-exponential estimate remain in independently checked mathematical and computational artifacts, not this Lean development. |
+| Cycle-5 multi-copy label/purity/switch layer | FULLY FORMALIZED | `labelSet`, `ChainPure`, `AcceptsPure`, `HybridOnly`, `chainContained_mono`, `acceptsPure_acceptsUnion`, `acceptsUnion_pure_or_hybridOnly`, `IsLabeling`, `SwitchBound`, `switchBound_zero_iff_chainPure`, `chainContained_union_switchBound` in `formal/BalancedChain.lean` (section `MultiCopy`).  These fix the provenance-invariant definitions of copy-pure versus hybrid acceptance over an arbitrary indexed list of literal families and the equivalence "zero switches = copy-pure". |
+| Cycle-5 literal `RR_n`, interval-walk reformulation (Lemma 5A.1), Theorems A/C/E/F, Lemmas SEG/RS/M | UNFORMALIZED | The cyclic-interval family, the hull/defect machinery, and all probability statements remain in independently checked mathematical and computational artifacts (`research_cycle_05/`), not in Lean.  Deliberately deferred: the cyclic-interval layer is a larger project than the cycle's remaining budget allowed. |
 | Polynomial 1-balanced-chain target O01 | UNFORMALIZED | OPEN; it is a target, not a theorem. |
 | Counterexample to Alekseev--Gaevoy Conjecture 1.4/4.2 | UNFORMALIZED | Existing parametric and finite computational evidence is unchanged. |
 
@@ -42,9 +45,15 @@ The checker rejects a source-level `axiom`, `sorry`, or `admit`, prints the
 tool versions, and runs `lake build`.  As of the update above it ends with:
 
 ```text
-Build completed successfully (8656 jobs).
+Build completed successfully (8663 jobs).
 PASS: BalancedChain.lean contains no sorry/axiom/admit and lake build succeeded.
 ```
+
+The Sol final cross-model audit also compiled
+`audits/independent_validation/sol_cycle05/FormalAxiomAudit.lean`, which
+prints the kernel dependencies of all eleven credited theorem families.
+Their union is exactly the standard axioms `propext`, `Classical.choice`,
+and `Quot.sound`; no repository-specific axiom is used.
 
 This is machine checking of the named combinatorial and deterministic
 relabeling core only.  It does not verify the Phase-4A probability estimate,
