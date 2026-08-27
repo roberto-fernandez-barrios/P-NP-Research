@@ -1,0 +1,2191 @@
+{
+  "closure_cases": [
+    {
+      "P": [],
+      "Q": [],
+      "S": [],
+      "base": 10,
+      "closure": {
+        "pairs": {
+          "initial_clause_count": 350,
+          "one_round_at_most_three": {
+            "critical_count_histogram": {
+              "1": 28
+            },
+            "new_clause_count": 1204,
+            "new_width_histogram": {
+              "3": 1204
+            },
+            "rounds": [
+              1204
+            ],
+            "two_cc": []
+          },
+          "one_round_exact_three": {
+            "critical_count_histogram": {
+              "1": 28
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          }
+        },
+        "triples": {
+          "fixpoint_at_most_three": {
+            "critical_count_histogram": {
+              "1": 28
+            },
+            "new_clause_count": 0,
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "fixpoint_exact_three": {
+            "critical_count_histogram": {
+              "1": 28
+            },
+            "new_clause_count": 0,
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "initial_clause_count": 2016,
+          "one_round_at_most_three": {
+            "critical_count_histogram": {
+              "1": 28
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "one_round_exact_three": {
+            "critical_count_histogram": {
+              "1": 28
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          }
+        }
+      },
+      "degree_histogram": {
+        "2": 28
+      },
+      "delta": null,
+      "directed_girth": 10,
+      "directed_two_cycles": [],
+      "jmax": 12,
+      "loops": [],
+      "m": 0,
+      "max_undirected_degree": 4,
+      "n": 28,
+      "outdegree_two_distinct": true,
+      "pairs_uniqueness": {
+        "cycle_search_bound": 5,
+        "dangerous_cycle_count": 0,
+        "smallest_dangerous_cycle": null,
+        "unique": true
+      },
+      "triples_uniqueness": {
+        "cycle_search_bound": 10,
+        "dangerous_cycle_count": 0,
+        "smallest_dangerous_cycle": null,
+        "unique": true
+      },
+      "undirected_triangle_count": 0
+    },
+    {
+      "P": [
+        0
+      ],
+      "Q": [
+        2
+      ],
+      "S": [
+        18
+      ],
+      "base": 10,
+      "closure": {
+        "pairs": {
+          "initial_clause_count": 350,
+          "one_round_at_most_three": {
+            "critical_count_histogram": {
+              "1": 28
+            },
+            "new_clause_count": 1203,
+            "new_width_histogram": {
+              "3": 1203
+            },
+            "rounds": [
+              1203
+            ],
+            "two_cc": []
+          },
+          "one_round_exact_three": {
+            "critical_count_histogram": {
+              "1": 28
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          }
+        },
+        "triples": {
+          "fixpoint_at_most_three": {
+            "critical_count_histogram": {
+              "1": 28
+            },
+            "new_clause_count": 0,
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "fixpoint_exact_three": {
+            "critical_count_histogram": {
+              "1": 28
+            },
+            "new_clause_count": 0,
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "initial_clause_count": 2017,
+          "one_round_at_most_three": {
+            "critical_count_histogram": {
+              "1": 28
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "one_round_exact_three": {
+            "critical_count_histogram": {
+              "1": 28
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          }
+        }
+      },
+      "degree_histogram": {
+        "1": 1,
+        "2": 26,
+        "3": 1
+      },
+      "delta": 2,
+      "directed_girth": 8,
+      "directed_two_cycles": [],
+      "jmax": 12,
+      "loops": [],
+      "m": 1,
+      "max_undirected_degree": 5,
+      "n": 28,
+      "outdegree_two_distinct": true,
+      "pairs_uniqueness": {
+        "cycle_search_bound": 6,
+        "dangerous_cycle_count": 0,
+        "smallest_dangerous_cycle": null,
+        "unique": true
+      },
+      "triples_uniqueness": {
+        "cycle_search_bound": 12,
+        "dangerous_cycle_count": 0,
+        "smallest_dangerous_cycle": null,
+        "unique": true
+      },
+      "undirected_triangle_count": 0
+    },
+    {
+      "P": [
+        0,
+        10,
+        20
+      ],
+      "Q": [
+        2,
+        12,
+        22
+      ],
+      "S": [
+        19,
+        29,
+        9
+      ],
+      "base": 11,
+      "closure": {
+        "pairs": {
+          "initial_clause_count": 405,
+          "one_round_at_most_three": {
+            "critical_count_histogram": {
+              "1": 30
+            },
+            "new_clause_count": 1407,
+            "new_width_histogram": {
+              "3": 1407
+            },
+            "rounds": [
+              1407
+            ],
+            "two_cc": []
+          },
+          "one_round_exact_three": {
+            "critical_count_histogram": {
+              "1": 30
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          }
+        },
+        "triples": {
+          "fixpoint_at_most_three": {
+            "critical_count_histogram": {
+              "1": 30
+            },
+            "new_clause_count": 0,
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "fixpoint_exact_three": {
+            "critical_count_histogram": {
+              "1": 30
+            },
+            "new_clause_count": 0,
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "initial_clause_count": 2593,
+          "one_round_at_most_three": {
+            "critical_count_histogram": {
+              "1": 30
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "one_round_exact_three": {
+            "critical_count_histogram": {
+              "1": 30
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          }
+        }
+      },
+      "degree_histogram": {
+        "1": 3,
+        "2": 24,
+        "3": 3
+      },
+      "delta": 2,
+      "directed_girth": 8,
+      "directed_two_cycles": [],
+      "jmax": 13,
+      "loops": [],
+      "m": 3,
+      "max_undirected_degree": 5,
+      "n": 30,
+      "outdegree_two_distinct": true,
+      "pairs_uniqueness": {
+        "cycle_search_bound": 6,
+        "dangerous_cycle_count": 0,
+        "smallest_dangerous_cycle": null,
+        "unique": true
+      },
+      "triples_uniqueness": {
+        "cycle_search_bound": 12,
+        "dangerous_cycle_count": 0,
+        "smallest_dangerous_cycle": null,
+        "unique": true
+      },
+      "undirected_triangle_count": 0
+    },
+    {
+      "P": [
+        0
+      ],
+      "Q": [
+        2
+      ],
+      "S": [
+        26
+      ],
+      "base": 14,
+      "closure": {
+        "pairs": {
+          "initial_clause_count": 740,
+          "one_round_at_most_three": {
+            "critical_count_histogram": {
+              "1": 40
+            },
+            "new_clause_count": 2679,
+            "new_width_histogram": {
+              "3": 2679
+            },
+            "rounds": [
+              2679
+            ],
+            "two_cc": []
+          },
+          "one_round_exact_three": {
+            "critical_count_histogram": {
+              "1": 40
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          }
+        },
+        "triples": {
+          "fixpoint_at_most_three": {
+            "critical_count_histogram": {
+              "1": 40
+            },
+            "new_clause_count": 0,
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "fixpoint_exact_three": {
+            "critical_count_histogram": {
+              "1": 40
+            },
+            "new_clause_count": 0,
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "initial_clause_count": 7121,
+          "one_round_at_most_three": {
+            "critical_count_histogram": {
+              "1": 40
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "one_round_exact_three": {
+            "critical_count_histogram": {
+              "1": 40
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          }
+        }
+      },
+      "degree_histogram": {
+        "1": 1,
+        "2": 38,
+        "3": 1
+      },
+      "delta": 2,
+      "directed_girth": 12,
+      "directed_two_cycles": [],
+      "jmax": 18,
+      "loops": [],
+      "m": 1,
+      "max_undirected_degree": 5,
+      "n": 40,
+      "outdegree_two_distinct": true,
+      "pairs_uniqueness": {
+        "cycle_search_bound": 6,
+        "dangerous_cycle_count": 0,
+        "smallest_dangerous_cycle": null,
+        "unique": true
+      },
+      "triples_uniqueness": {
+        "cycle_search_bound": 12,
+        "dangerous_cycle_count": 0,
+        "smallest_dangerous_cycle": null,
+        "unique": true
+      },
+      "undirected_triangle_count": 0
+    },
+    {
+      "P": [
+        0,
+        10,
+        20,
+        30
+      ],
+      "Q": [
+        2,
+        12,
+        22,
+        32
+      ],
+      "S": [
+        26,
+        36,
+        6,
+        16
+      ],
+      "base": 14,
+      "closure": {
+        "pairs": {
+          "initial_clause_count": 740,
+          "one_round_at_most_three": {
+            "critical_count_histogram": {
+              "1": 40
+            },
+            "new_clause_count": 2676,
+            "new_width_histogram": {
+              "3": 2676
+            },
+            "rounds": [
+              2676
+            ],
+            "two_cc": []
+          },
+          "one_round_exact_three": {
+            "critical_count_histogram": {
+              "1": 40
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          }
+        },
+        "triples": {
+          "fixpoint_at_most_three": {
+            "critical_count_histogram": {
+              "1": 40
+            },
+            "new_clause_count": 0,
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "fixpoint_exact_three": {
+            "critical_count_histogram": {
+              "1": 40
+            },
+            "new_clause_count": 0,
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "initial_clause_count": 7124,
+          "one_round_at_most_three": {
+            "critical_count_histogram": {
+              "1": 40
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "one_round_exact_three": {
+            "critical_count_histogram": {
+              "1": 40
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          }
+        }
+      },
+      "degree_histogram": {
+        "1": 4,
+        "2": 32,
+        "3": 4
+      },
+      "delta": 2,
+      "directed_girth": 8,
+      "directed_two_cycles": [],
+      "jmax": 18,
+      "loops": [],
+      "m": 4,
+      "max_undirected_degree": 5,
+      "n": 40,
+      "outdegree_two_distinct": true,
+      "pairs_uniqueness": {
+        "cycle_search_bound": 6,
+        "dangerous_cycle_count": 0,
+        "smallest_dangerous_cycle": null,
+        "unique": true
+      },
+      "triples_uniqueness": {
+        "cycle_search_bound": 12,
+        "dangerous_cycle_count": 0,
+        "smallest_dangerous_cycle": null,
+        "unique": true
+      },
+      "undirected_triangle_count": 0
+    },
+    {
+      "P": [
+        0,
+        16,
+        33
+      ],
+      "Q": [
+        2,
+        18,
+        35
+      ],
+      "S": [
+        33,
+        49,
+        16
+      ],
+      "base": 17,
+      "closure": {
+        "pairs": {
+          "initial_clause_count": 1175,
+          "one_round_at_most_three": {
+            "critical_count_histogram": {
+              "1": 50
+            },
+            "new_clause_count": 4392,
+            "new_width_histogram": {
+              "3": 4392
+            },
+            "rounds": [
+              4392
+            ],
+            "two_cc": []
+          },
+          "one_round_exact_three": {
+            "critical_count_histogram": {
+              "1": 50
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          }
+        },
+        "triples": {
+          "fixpoint_at_most_three": {
+            "critical_count_histogram": {
+              "1": 50
+            },
+            "new_clause_count": 0,
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "fixpoint_exact_three": {
+            "critical_count_histogram": {
+              "1": 50
+            },
+            "new_clause_count": 0,
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "initial_clause_count": 15153,
+          "one_round_at_most_three": {
+            "critical_count_histogram": {
+              "1": 50
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "one_round_exact_three": {
+            "critical_count_histogram": {
+              "1": 50
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          }
+        }
+      },
+      "degree_histogram": {
+        "1": 3,
+        "2": 44,
+        "3": 3
+      },
+      "delta": 2,
+      "directed_girth": 16,
+      "directed_two_cycles": [],
+      "jmax": 23,
+      "loops": [],
+      "m": 3,
+      "max_undirected_degree": 5,
+      "n": 50,
+      "outdegree_two_distinct": true,
+      "pairs_uniqueness": {
+        "cycle_search_bound": 6,
+        "dangerous_cycle_count": 0,
+        "smallest_dangerous_cycle": null,
+        "unique": true
+      },
+      "triples_uniqueness": {
+        "cycle_search_bound": 12,
+        "dangerous_cycle_count": 0,
+        "smallest_dangerous_cycle": null,
+        "unique": true
+      },
+      "undirected_triangle_count": 0
+    },
+    {
+      "P": [
+        0,
+        10,
+        20,
+        30,
+        40
+      ],
+      "Q": [
+        5,
+        15,
+        25,
+        35,
+        45
+      ],
+      "S": [
+        33,
+        43,
+        3,
+        13,
+        23
+      ],
+      "base": 17,
+      "closure": {
+        "pairs": {
+          "initial_clause_count": 1175,
+          "one_round_at_most_three": {
+            "critical_count_histogram": {
+              "1": 50
+            },
+            "new_clause_count": 4370,
+            "new_width_histogram": {
+              "3": 4370
+            },
+            "rounds": [
+              4370
+            ],
+            "two_cc": []
+          },
+          "one_round_exact_three": {
+            "critical_count_histogram": {
+              "1": 50
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          }
+        },
+        "triples": {
+          "fixpoint_at_most_three": {
+            "critical_count_histogram": {
+              "1": 50
+            },
+            "new_clause_count": 0,
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "fixpoint_exact_three": {
+            "critical_count_histogram": {
+              "1": 50
+            },
+            "new_clause_count": 0,
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "initial_clause_count": 15155,
+          "one_round_at_most_three": {
+            "critical_count_histogram": {
+              "1": 50
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "one_round_exact_three": {
+            "critical_count_histogram": {
+              "1": 50
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          }
+        }
+      },
+      "degree_histogram": {
+        "1": 5,
+        "2": 40,
+        "3": 5
+      },
+      "delta": 5,
+      "directed_girth": 10,
+      "directed_two_cycles": [],
+      "jmax": 23,
+      "loops": [],
+      "m": 5,
+      "max_undirected_degree": 5,
+      "n": 50,
+      "outdegree_two_distinct": true,
+      "pairs_uniqueness": {
+        "cycle_search_bound": 6,
+        "dangerous_cycle_count": 0,
+        "smallest_dangerous_cycle": null,
+        "unique": true
+      },
+      "triples_uniqueness": {
+        "cycle_search_bound": 12,
+        "dangerous_cycle_count": 0,
+        "smallest_dangerous_cycle": null,
+        "unique": true
+      },
+      "undirected_triangle_count": 0
+    },
+    {
+      "P": [
+        0
+      ],
+      "Q": [
+        2
+      ],
+      "S": [
+        40
+      ],
+      "base": 21,
+      "closure": {
+        "pairs": {
+          "initial_clause_count": 1769,
+          "one_round_at_most_three": {
+            "critical_count_histogram": {
+              "1": 61
+            },
+            "new_clause_count": 6648,
+            "new_width_histogram": {
+              "3": 6648
+            },
+            "rounds": [
+              6648
+            ],
+            "two_cc": []
+          },
+          "one_round_exact_three": {
+            "critical_count_histogram": {
+              "1": 61
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          }
+        },
+        "triples": {
+          "fixpoint_at_most_three": {
+            "critical_count_histogram": {
+              "1": 61
+            },
+            "new_clause_count": 0,
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "fixpoint_exact_three": {
+            "critical_count_histogram": {
+              "1": 61
+            },
+            "new_clause_count": 0,
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "initial_clause_count": 29220,
+          "one_round_at_most_three": {
+            "critical_count_histogram": {
+              "1": 61
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "one_round_exact_three": {
+            "critical_count_histogram": {
+              "1": 61
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          }
+        }
+      },
+      "degree_histogram": {
+        "1": 1,
+        "2": 59,
+        "3": 1
+      },
+      "delta": 2,
+      "directed_girth": 19,
+      "directed_two_cycles": [],
+      "jmax": 29,
+      "loops": [],
+      "m": 1,
+      "max_undirected_degree": 5,
+      "n": 61,
+      "outdegree_two_distinct": true,
+      "pairs_uniqueness": {
+        "cycle_search_bound": 6,
+        "dangerous_cycle_count": 0,
+        "smallest_dangerous_cycle": null,
+        "unique": true
+      },
+      "triples_uniqueness": {
+        "cycle_search_bound": 12,
+        "dangerous_cycle_count": 0,
+        "smallest_dangerous_cycle": null,
+        "unique": true
+      },
+      "undirected_triangle_count": 0
+    },
+    {
+      "P": [
+        0,
+        10,
+        20,
+        30,
+        40,
+        50
+      ],
+      "Q": [
+        2,
+        12,
+        22,
+        32,
+        42,
+        52
+      ],
+      "S": [
+        40,
+        50,
+        60,
+        9,
+        19,
+        29
+      ],
+      "base": 21,
+      "closure": {
+        "pairs": {
+          "initial_clause_count": 1769,
+          "one_round_at_most_three": {
+            "critical_count_histogram": {
+              "1": 61
+            },
+            "new_clause_count": 6643,
+            "new_width_histogram": {
+              "3": 6643
+            },
+            "rounds": [
+              6643
+            ],
+            "two_cc": []
+          },
+          "one_round_exact_three": {
+            "critical_count_histogram": {
+              "1": 61
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          }
+        },
+        "triples": {
+          "fixpoint_at_most_three": {
+            "critical_count_histogram": {
+              "1": 61
+            },
+            "new_clause_count": 0,
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "fixpoint_exact_three": {
+            "critical_count_histogram": {
+              "1": 61
+            },
+            "new_clause_count": 0,
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "initial_clause_count": 29225,
+          "one_round_at_most_three": {
+            "critical_count_histogram": {
+              "1": 61
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "one_round_exact_three": {
+            "critical_count_histogram": {
+              "1": 61
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          }
+        }
+      },
+      "degree_histogram": {
+        "1": 6,
+        "2": 49,
+        "3": 6
+      },
+      "delta": 2,
+      "directed_girth": 17,
+      "directed_two_cycles": [],
+      "jmax": 29,
+      "loops": [],
+      "m": 6,
+      "max_undirected_degree": 5,
+      "n": 61,
+      "outdegree_two_distinct": true,
+      "pairs_uniqueness": {
+        "cycle_search_bound": 6,
+        "dangerous_cycle_count": 0,
+        "smallest_dangerous_cycle": null,
+        "unique": true
+      },
+      "triples_uniqueness": {
+        "cycle_search_bound": 12,
+        "dangerous_cycle_count": 0,
+        "smallest_dangerous_cycle": null,
+        "unique": true
+      },
+      "undirected_triangle_count": 0
+    },
+    {
+      "P": [
+        0,
+        18,
+        37,
+        56
+      ],
+      "Q": [
+        2,
+        20,
+        39,
+        58
+      ],
+      "S": [
+        49,
+        67,
+        11,
+        30
+      ],
+      "base": 26,
+      "closure": {
+        "pairs": {
+          "initial_clause_count": 2700,
+          "one_round_at_most_three": {
+            "critical_count_histogram": {
+              "1": 75
+            },
+            "new_clause_count": 10271,
+            "new_width_histogram": {
+              "3": 10271
+            },
+            "rounds": [
+              10271
+            ],
+            "two_cc": []
+          },
+          "one_round_exact_three": {
+            "critical_count_histogram": {
+              "1": 75
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          }
+        },
+        "triples": {
+          "fixpoint_at_most_three": {
+            "critical_count_histogram": {
+              "1": 75
+            },
+            "new_clause_count": 0,
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "fixpoint_exact_three": {
+            "critical_count_histogram": {
+              "1": 75
+            },
+            "new_clause_count": 0,
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "initial_clause_count": 57104,
+          "one_round_at_most_three": {
+            "critical_count_histogram": {
+              "1": 75
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "one_round_exact_three": {
+            "critical_count_histogram": {
+              "1": 75
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          }
+        }
+      },
+      "degree_histogram": {
+        "1": 4,
+        "2": 67,
+        "3": 4
+      },
+      "delta": 2,
+      "directed_girth": 17,
+      "directed_two_cycles": [],
+      "jmax": 36,
+      "loops": [],
+      "m": 4,
+      "max_undirected_degree": 5,
+      "n": 75,
+      "outdegree_two_distinct": true,
+      "pairs_uniqueness": {
+        "cycle_search_bound": 6,
+        "dangerous_cycle_count": 0,
+        "smallest_dangerous_cycle": null,
+        "unique": true
+      },
+      "triples_uniqueness": {
+        "cycle_search_bound": 12,
+        "dangerous_cycle_count": 0,
+        "smallest_dangerous_cycle": null,
+        "unique": true
+      },
+      "undirected_triangle_count": 0
+    },
+    {
+      "P": [
+        0,
+        10,
+        21,
+        32,
+        42,
+        53,
+        64
+      ],
+      "Q": [
+        2,
+        12,
+        23,
+        34,
+        44,
+        55,
+        66
+      ],
+      "S": [
+        49,
+        59,
+        70,
+        6,
+        16,
+        27,
+        38
+      ],
+      "base": 26,
+      "closure": {
+        "pairs": {
+          "initial_clause_count": 2700,
+          "one_round_at_most_three": {
+            "critical_count_histogram": {
+              "1": 75
+            },
+            "new_clause_count": 10268,
+            "new_width_histogram": {
+              "3": 10268
+            },
+            "rounds": [
+              10268
+            ],
+            "two_cc": []
+          },
+          "one_round_exact_three": {
+            "critical_count_histogram": {
+              "1": 75
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          }
+        },
+        "triples": {
+          "fixpoint_at_most_three": {
+            "critical_count_histogram": {
+              "1": 75
+            },
+            "new_clause_count": 0,
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "fixpoint_exact_three": {
+            "critical_count_histogram": {
+              "1": 75
+            },
+            "new_clause_count": 0,
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "initial_clause_count": 57107,
+          "one_round_at_most_three": {
+            "critical_count_histogram": {
+              "1": 75
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "one_round_exact_three": {
+            "critical_count_histogram": {
+              "1": 75
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          }
+        }
+      },
+      "degree_histogram": {
+        "1": 7,
+        "2": 61,
+        "3": 7
+      },
+      "delta": 2,
+      "directed_girth": 17,
+      "directed_two_cycles": [],
+      "jmax": 36,
+      "loops": [],
+      "m": 7,
+      "max_undirected_degree": 5,
+      "n": 75,
+      "outdegree_two_distinct": true,
+      "pairs_uniqueness": {
+        "cycle_search_bound": 6,
+        "dangerous_cycle_count": 0,
+        "smallest_dangerous_cycle": null,
+        "unique": true
+      },
+      "triples_uniqueness": {
+        "cycle_search_bound": 12,
+        "dangerous_cycle_count": 0,
+        "smallest_dangerous_cycle": null,
+        "unique": true
+      },
+      "undirected_triangle_count": 0
+    },
+    {
+      "P": [
+        0,
+        16,
+        33,
+        50,
+        66,
+        83
+      ],
+      "Q": [
+        2,
+        18,
+        35,
+        52,
+        68,
+        85
+      ],
+      "S": [
+        66,
+        82,
+        99,
+        16,
+        32,
+        49
+      ],
+      "base": 34,
+      "closure": {
+        "pairs": {
+          "initial_clause_count": 4850,
+          "one_round_at_most_three": {
+            "critical_count_histogram": {
+              "1": 100
+            },
+            "new_clause_count": 18694,
+            "new_width_histogram": {
+              "3": 18694
+            },
+            "rounds": [
+              18694
+            ],
+            "two_cc": []
+          },
+          "one_round_exact_three": {
+            "critical_count_histogram": {
+              "1": 100
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          }
+        },
+        "triples": {
+          "fixpoint_at_most_three": {
+            "critical_count_histogram": {
+              "1": 100
+            },
+            "new_clause_count": 0,
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "fixpoint_exact_three": {
+            "critical_count_histogram": {
+              "1": 100
+            },
+            "new_clause_count": 0,
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "initial_clause_count": 142806,
+          "one_round_at_most_three": {
+            "critical_count_histogram": {
+              "1": 100
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "one_round_exact_three": {
+            "critical_count_histogram": {
+              "1": 100
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          }
+        }
+      },
+      "degree_histogram": {
+        "1": 6,
+        "2": 88,
+        "3": 6
+      },
+      "delta": 2,
+      "directed_girth": 30,
+      "directed_two_cycles": [],
+      "jmax": 48,
+      "loops": [],
+      "m": 6,
+      "max_undirected_degree": 5,
+      "n": 100,
+      "outdegree_two_distinct": true,
+      "pairs_uniqueness": {
+        "cycle_search_bound": 6,
+        "dangerous_cycle_count": 0,
+        "smallest_dangerous_cycle": null,
+        "unique": true
+      },
+      "triples_uniqueness": {
+        "cycle_search_bound": 12,
+        "dangerous_cycle_count": 0,
+        "smallest_dangerous_cycle": null,
+        "unique": true
+      },
+      "undirected_triangle_count": 0
+    },
+    {
+      "P": [
+        0,
+        10,
+        20,
+        30,
+        40,
+        50,
+        60,
+        70,
+        80,
+        90
+      ],
+      "Q": [
+        2,
+        12,
+        22,
+        32,
+        42,
+        52,
+        62,
+        72,
+        82,
+        92
+      ],
+      "S": [
+        66,
+        76,
+        86,
+        96,
+        6,
+        16,
+        26,
+        36,
+        46,
+        56
+      ],
+      "base": 34,
+      "closure": {
+        "pairs": {
+          "initial_clause_count": 4850,
+          "one_round_at_most_three": {
+            "critical_count_histogram": {
+              "1": 100
+            },
+            "new_clause_count": 18690,
+            "new_width_histogram": {
+              "3": 18690
+            },
+            "rounds": [
+              18690
+            ],
+            "two_cc": []
+          },
+          "one_round_exact_three": {
+            "critical_count_histogram": {
+              "1": 100
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          }
+        },
+        "triples": {
+          "fixpoint_at_most_three": {
+            "critical_count_histogram": {
+              "1": 100
+            },
+            "new_clause_count": 0,
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "fixpoint_exact_three": {
+            "critical_count_histogram": {
+              "1": 100
+            },
+            "new_clause_count": 0,
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "initial_clause_count": 142810,
+          "one_round_at_most_three": {
+            "critical_count_histogram": {
+              "1": 100
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "one_round_exact_three": {
+            "critical_count_histogram": {
+              "1": 100
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          }
+        }
+      },
+      "degree_histogram": {
+        "1": 10,
+        "2": 80,
+        "3": 10
+      },
+      "delta": 2,
+      "directed_girth": 20,
+      "directed_two_cycles": [],
+      "jmax": 48,
+      "loops": [],
+      "m": 10,
+      "max_undirected_degree": 5,
+      "n": 100,
+      "outdegree_two_distinct": true,
+      "pairs_uniqueness": {
+        "cycle_search_bound": 6,
+        "dangerous_cycle_count": 0,
+        "smallest_dangerous_cycle": null,
+        "unique": true
+      },
+      "triples_uniqueness": {
+        "cycle_search_bound": 12,
+        "dangerous_cycle_count": 0,
+        "smallest_dangerous_cycle": null,
+        "unique": true
+      },
+      "undirected_triangle_count": 0
+    },
+    {
+      "P": [
+        0
+      ],
+      "Q": [
+        2
+      ],
+      "S": [
+        84
+      ],
+      "base": 43,
+      "closure": {
+        "pairs": {
+          "initial_clause_count": 7874,
+          "one_round_at_most_three": {
+            "critical_count_histogram": {
+              "1": 127
+            },
+            "new_clause_count": 30606,
+            "new_width_histogram": {
+              "3": 30606
+            },
+            "rounds": [
+              30606
+            ],
+            "two_cc": []
+          },
+          "one_round_exact_three": {
+            "critical_count_histogram": {
+              "1": 127
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          }
+        },
+        "triples": {
+          "fixpoint_at_most_three": {
+            "critical_count_histogram": {
+              "1": 127
+            },
+            "new_clause_count": 0,
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "fixpoint_exact_three": {
+            "critical_count_histogram": {
+              "1": 127
+            },
+            "new_clause_count": 0,
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "initial_clause_count": 302515,
+          "one_round_at_most_three": {
+            "critical_count_histogram": {
+              "1": 127
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "one_round_exact_three": {
+            "critical_count_histogram": {
+              "1": 127
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          }
+        }
+      },
+      "degree_histogram": {
+        "1": 1,
+        "2": 125,
+        "3": 1
+      },
+      "delta": 2,
+      "directed_girth": 41,
+      "directed_two_cycles": [],
+      "jmax": 62,
+      "loops": [],
+      "m": 1,
+      "max_undirected_degree": 5,
+      "n": 127,
+      "outdegree_two_distinct": true,
+      "pairs_uniqueness": {
+        "cycle_search_bound": 6,
+        "dangerous_cycle_count": 0,
+        "smallest_dangerous_cycle": null,
+        "unique": true
+      },
+      "triples_uniqueness": {
+        "cycle_search_bound": 12,
+        "dangerous_cycle_count": 0,
+        "smallest_dangerous_cycle": null,
+        "unique": true
+      },
+      "undirected_triangle_count": 0
+    },
+    {
+      "P": [
+        0,
+        10,
+        21,
+        31,
+        42,
+        52,
+        63,
+        74,
+        84,
+        95,
+        105,
+        116
+      ],
+      "Q": [
+        2,
+        12,
+        23,
+        33,
+        44,
+        54,
+        65,
+        76,
+        86,
+        97,
+        107,
+        118
+      ],
+      "S": [
+        84,
+        94,
+        105,
+        115,
+        126,
+        9,
+        20,
+        31,
+        41,
+        52,
+        62,
+        73
+      ],
+      "base": 43,
+      "closure": {
+        "pairs": {
+          "initial_clause_count": 7874,
+          "one_round_at_most_three": {
+            "critical_count_histogram": {
+              "1": 127
+            },
+            "new_clause_count": 30595,
+            "new_width_histogram": {
+              "3": 30595
+            },
+            "rounds": [
+              30595
+            ],
+            "two_cc": []
+          },
+          "one_round_exact_three": {
+            "critical_count_histogram": {
+              "1": 127
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          }
+        },
+        "triples": {
+          "fixpoint_at_most_three": {
+            "critical_count_histogram": {
+              "1": 127
+            },
+            "new_clause_count": 0,
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "fixpoint_exact_three": {
+            "critical_count_histogram": {
+              "1": 127
+            },
+            "new_clause_count": 0,
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "initial_clause_count": 302526,
+          "one_round_at_most_three": {
+            "critical_count_histogram": {
+              "1": 127
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          },
+          "one_round_exact_three": {
+            "critical_count_histogram": {
+              "1": 127
+            },
+            "new_clause_count": 0,
+            "new_width_histogram": {},
+            "rounds": [
+              0
+            ],
+            "two_cc": []
+          }
+        }
+      },
+      "degree_histogram": {
+        "1": 12,
+        "2": 103,
+        "3": 12
+      },
+      "delta": 2,
+      "directed_girth": 36,
+      "directed_two_cycles": [],
+      "jmax": 62,
+      "loops": [],
+      "m": 12,
+      "max_undirected_degree": 5,
+      "n": 127,
+      "outdegree_two_distinct": true,
+      "pairs_uniqueness": {
+        "cycle_search_bound": 6,
+        "dangerous_cycle_count": 0,
+        "smallest_dangerous_cycle": null,
+        "unique": true
+      },
+      "triples_uniqueness": {
+        "cycle_search_bound": 12,
+        "dangerous_cycle_count": 0,
+        "smallest_dangerous_cycle": null,
+        "unique": true
+      },
+      "undirected_triangle_count": 0
+    }
+  ],
+  "implementation": "cr_cleanroom_validator.py",
+  "implementation_sha256": "65be2c49fe712d5c8030e538eb01a3b17b5626c87283ea670e12e704f776ffcb",
+  "parameter_scan": {
+    "beatty_failure_count_for_n_le_220": 0,
+    "beatty_failures": [],
+    "case_count": 71520,
+    "failure_count": 21,
+    "failures": [
+      {
+        "error": "no admissible delta for n=10, m=1, interval=[2,-1]",
+        "m": 1,
+        "n": 10
+      },
+      {
+        "error": "no admissible delta for n=11, m=1, interval=[2,0]",
+        "m": 1,
+        "n": 11
+      },
+      {
+        "error": "no admissible delta for n=12, m=1, interval=[2,-1]",
+        "m": 1,
+        "n": 12
+      },
+      {
+        "error": "no admissible delta for n=13, m=1, interval=[2,0]",
+        "m": 1,
+        "n": 13
+      },
+      {
+        "error": "no admissible delta for n=14, m=1, interval=[2,0]",
+        "m": 1,
+        "n": 14
+      },
+      {
+        "error": "no admissible delta for n=15, m=1, interval=[2,0]",
+        "m": 1,
+        "n": 15
+      },
+      {
+        "error": "no admissible delta for n=16, m=1, interval=[2,0]",
+        "m": 1,
+        "n": 16
+      },
+      {
+        "error": "no admissible delta for n=17, m=1, interval=[2,1]",
+        "m": 1,
+        "n": 17
+      },
+      {
+        "error": "no admissible delta for n=18, m=1, interval=[2,0]",
+        "m": 1,
+        "n": 18
+      },
+      {
+        "error": "no admissible delta for n=19, m=1, interval=[2,1]",
+        "m": 1,
+        "n": 19
+      },
+      {
+        "error": "no admissible delta for n=20, m=1, interval=[2,1]",
+        "m": 1,
+        "n": 20
+      },
+      {
+        "error": "no admissible delta for n=20, m=2, interval=[2,1]",
+        "m": 2,
+        "n": 20
+      },
+      {
+        "error": "no admissible delta for n=21, m=1, interval=[2,1]",
+        "m": 1,
+        "n": 21
+      },
+      {
+        "error": "no admissible delta for n=21, m=2, interval=[2,1]",
+        "m": 2,
+        "n": 21
+      },
+      {
+        "error": "no admissible delta for n=22, m=1, interval=[2,1]",
+        "m": 1,
+        "n": 22
+      },
+      {
+        "error": "no admissible delta for n=22, m=2, interval=[2,1]",
+        "m": 2,
+        "n": 22
+      },
+      {
+        "error": "no admissible delta for n=23, m=2, interval=[2,2]",
+        "m": 2,
+        "n": 23
+      },
+      {
+        "error": "no admissible delta for n=24, m=1, interval=[2,1]",
+        "m": 1,
+        "n": 24
+      },
+      {
+        "error": "no admissible delta for n=24, m=2, interval=[2,1]",
+        "m": 2,
+        "n": 24
+      },
+      {
+        "error": "no admissible delta for n=25, m=2, interval=[2,2]",
+        "m": 2,
+        "n": 25
+      },
+      {
+        "error": "no admissible delta for n=27, m=2, interval=[2,2]",
+        "m": 2,
+        "n": 27
+      }
+    ],
+    "failures_with_n_at_least_26": [
+      {
+        "error": "no admissible delta for n=27, m=2, interval=[2,2]",
+        "m": 2,
+        "n": 27
+      }
+    ],
+    "failures_with_n_at_least_28": [],
+    "max_delta": 6,
+    "max_delta_at": [
+      53,
+      5
+    ],
+    "range": "all 10<=n<=1200 and 1<=m<=floor(n/10)",
+    "smallest_missing_delta": {
+      "m": 1,
+      "n": 10
+    }
+  },
+  "small_n_diagnostic": {
+    "property_failures": [
+      {
+        "issues": [
+          "pairs non-unique",
+          "triples non-unique"
+        ],
+        "m": 0,
+        "n": 3
+      },
+      {
+        "issues": [
+          "pairs non-unique",
+          "triples non-unique"
+        ],
+        "m": 0,
+        "n": 4
+      },
+      {
+        "issues": [
+          "pairs non-unique",
+          "triples non-unique"
+        ],
+        "m": 0,
+        "n": 5
+      },
+      {
+        "issues": [
+          "pairs non-unique",
+          "triples non-unique"
+        ],
+        "m": 0,
+        "n": 6
+      },
+      {
+        "issues": [
+          "pairs non-unique",
+          "triples non-unique"
+        ],
+        "m": 0,
+        "n": 7
+      },
+      {
+        "issues": [
+          "triples non-unique"
+        ],
+        "m": 0,
+        "n": 8
+      },
+      {
+        "issues": [
+          "pairs non-unique",
+          "triples non-unique"
+        ],
+        "m": 0,
+        "n": 9
+      },
+      {
+        "issues": [
+          "triples non-unique"
+        ],
+        "m": 0,
+        "n": 10
+      },
+      {
+        "issues": [
+          "triples non-unique"
+        ],
+        "m": 0,
+        "n": 11
+      },
+      {
+        "issues": [
+          "triples non-unique"
+        ],
+        "m": 0,
+        "n": 12
+      },
+      {
+        "issues": [
+          "triples non-unique"
+        ],
+        "m": 0,
+        "n": 13
+      },
+      {
+        "issues": [
+          "triples non-unique"
+        ],
+        "m": 0,
+        "n": 15
+      }
+    ],
+    "range": "all 3<=n<=27 and 0<=m<=floor(n/10)",
+    "recipe_failures": [
+      {
+        "error": "no admissible delta for n=10, m=1, interval=[2,-1]",
+        "m": 1,
+        "n": 10
+      },
+      {
+        "error": "no admissible delta for n=11, m=1, interval=[2,0]",
+        "m": 1,
+        "n": 11
+      },
+      {
+        "error": "no admissible delta for n=12, m=1, interval=[2,-1]",
+        "m": 1,
+        "n": 12
+      },
+      {
+        "error": "no admissible delta for n=13, m=1, interval=[2,0]",
+        "m": 1,
+        "n": 13
+      },
+      {
+        "error": "no admissible delta for n=14, m=1, interval=[2,0]",
+        "m": 1,
+        "n": 14
+      },
+      {
+        "error": "no admissible delta for n=15, m=1, interval=[2,0]",
+        "m": 1,
+        "n": 15
+      },
+      {
+        "error": "no admissible delta for n=16, m=1, interval=[2,0]",
+        "m": 1,
+        "n": 16
+      },
+      {
+        "error": "no admissible delta for n=17, m=1, interval=[2,1]",
+        "m": 1,
+        "n": 17
+      },
+      {
+        "error": "no admissible delta for n=18, m=1, interval=[2,0]",
+        "m": 1,
+        "n": 18
+      },
+      {
+        "error": "no admissible delta for n=19, m=1, interval=[2,1]",
+        "m": 1,
+        "n": 19
+      },
+      {
+        "error": "no admissible delta for n=20, m=1, interval=[2,1]",
+        "m": 1,
+        "n": 20
+      },
+      {
+        "error": "no admissible delta for n=20, m=2, interval=[2,1]",
+        "m": 2,
+        "n": 20
+      },
+      {
+        "error": "no admissible delta for n=21, m=1, interval=[2,1]",
+        "m": 1,
+        "n": 21
+      },
+      {
+        "error": "no admissible delta for n=21, m=2, interval=[2,1]",
+        "m": 2,
+        "n": 21
+      },
+      {
+        "error": "no admissible delta for n=22, m=1, interval=[2,1]",
+        "m": 1,
+        "n": 22
+      },
+      {
+        "error": "no admissible delta for n=22, m=2, interval=[2,1]",
+        "m": 2,
+        "n": 22
+      },
+      {
+        "error": "no admissible delta for n=23, m=2, interval=[2,2]",
+        "m": 2,
+        "n": 23
+      },
+      {
+        "error": "no admissible delta for n=24, m=1, interval=[2,1]",
+        "m": 1,
+        "n": 24
+      },
+      {
+        "error": "no admissible delta for n=24, m=2, interval=[2,1]",
+        "m": 2,
+        "n": 24
+      },
+      {
+        "error": "no admissible delta for n=25, m=2, interval=[2,2]",
+        "m": 2,
+        "n": 25
+      },
+      {
+        "error": "no admissible delta for n=27, m=2, interval=[2,2]",
+        "m": 2,
+        "n": 27
+      }
+    ]
+  },
+  "structural_scan": {
+    "case_count": 2936,
+    "case_description": "all constructible m for 26<=n<=220; six density samples every 25 through n=2000",
+    "property_failure_count": 0,
+    "property_failures": [],
+    "recipe_failure_count": 1,
+    "recipe_failures": [
+      {
+        "error": "no admissible delta for n=27, m=2, interval=[2,2]",
+        "kind": "parameters",
+        "m": 2,
+        "n": 27
+      }
+    ]
+  }
+}

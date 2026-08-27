@@ -1,0 +1,652 @@
+{
+  "certificate_path": "certificates\\cycle07_corner\\instances.json",
+  "certificate_sha256": "1af8aff15117d948285bf32e82a87a8574195ea5c3266aeb4c1ccb42acac28cd",
+  "instance_count": 21,
+  "pass_count": 21,
+  "reports": [
+    {
+      "checks": {
+        "exactly_m_indegree_one": true,
+        "g_well_formed": true,
+        "no_indegree_zero": true,
+        "no_loops": true,
+        "one_round_twocc_empty": true,
+        "outdegree_two_distinct": true,
+        "stats_match_metadata": true,
+        "unique": true
+      },
+      "degree_histogram": {
+        "1": 2,
+        "2": 22,
+        "3": 2
+      },
+      "directed_girth": 6,
+      "fixpoint_rounds": [],
+      "index": 0,
+      "m": 2,
+      "matches_final_raw_construction": false,
+      "n": 26,
+      "one_round_new_clause_count": 1012,
+      "one_round_rounds": [
+        1012
+      ],
+      "passed": true,
+      "undirected_triangle_count": 0,
+      "variant": "pairs"
+    },
+    {
+      "checks": {
+        "exactly_m_indegree_one": true,
+        "g_well_formed": true,
+        "no_indegree_zero": true,
+        "no_loops": true,
+        "one_round_twocc_empty": true,
+        "outdegree_two_distinct": true,
+        "stats_match_metadata": true,
+        "unique": true
+      },
+      "degree_histogram": {
+        "1": 2,
+        "2": 26,
+        "3": 2
+      },
+      "directed_girth": 6,
+      "fixpoint_rounds": [],
+      "index": 1,
+      "m": 2,
+      "matches_final_raw_construction": false,
+      "n": 30,
+      "one_round_new_clause_count": 1408,
+      "one_round_rounds": [
+        1408
+      ],
+      "passed": true,
+      "undirected_triangle_count": 0,
+      "variant": "pairs"
+    },
+    {
+      "checks": {
+        "exactly_m_indegree_one": true,
+        "g_well_formed": true,
+        "no_indegree_zero": true,
+        "no_loops": true,
+        "one_round_twocc_empty": true,
+        "outdegree_two_distinct": true,
+        "stats_match_metadata": true,
+        "unique": true
+      },
+      "degree_histogram": {
+        "1": 2,
+        "2": 36,
+        "3": 2
+      },
+      "directed_girth": 6,
+      "fixpoint_rounds": [],
+      "index": 2,
+      "m": 2,
+      "matches_final_raw_construction": false,
+      "n": 40,
+      "one_round_new_clause_count": 2674,
+      "one_round_rounds": [
+        2674
+      ],
+      "passed": true,
+      "undirected_triangle_count": 0,
+      "variant": "pairs"
+    },
+    {
+      "checks": {
+        "exactly_m_indegree_one": true,
+        "g_well_formed": true,
+        "no_indegree_zero": true,
+        "no_loops": true,
+        "one_round_twocc_empty": true,
+        "outdegree_two_distinct": true,
+        "stats_match_metadata": true,
+        "unique": true
+      },
+      "degree_histogram": {
+        "1": 3,
+        "2": 44,
+        "3": 3
+      },
+      "directed_girth": 5,
+      "fixpoint_rounds": [],
+      "index": 3,
+      "m": 3,
+      "matches_final_raw_construction": false,
+      "n": 50,
+      "one_round_new_clause_count": 4346,
+      "one_round_rounds": [
+        4346
+      ],
+      "passed": true,
+      "undirected_triangle_count": 0,
+      "variant": "pairs"
+    },
+    {
+      "checks": {
+        "exactly_m_indegree_one": true,
+        "g_well_formed": true,
+        "no_indegree_zero": true,
+        "no_loops": true,
+        "one_round_twocc_empty": true,
+        "outdegree_two_distinct": true,
+        "stats_match_metadata": true,
+        "unique": true
+      },
+      "degree_histogram": {
+        "1": 4,
+        "2": 52,
+        "3": 4
+      },
+      "directed_girth": 9,
+      "fixpoint_rounds": [],
+      "index": 4,
+      "m": 4,
+      "matches_final_raw_construction": false,
+      "n": 60,
+      "one_round_new_clause_count": 6413,
+      "one_round_rounds": [
+        6413
+      ],
+      "passed": true,
+      "undirected_triangle_count": 0,
+      "variant": "pairs"
+    },
+    {
+      "checks": {
+        "exactly_m_indegree_one": true,
+        "g_well_formed": true,
+        "no_indegree_zero": true,
+        "no_loops": true,
+        "one_round_twocc_empty": true,
+        "outdegree_two_distinct": true,
+        "stats_match_metadata": true,
+        "unique": true
+      },
+      "degree_histogram": {
+        "1": 5,
+        "2": 70,
+        "3": 5
+      },
+      "directed_girth": 8,
+      "fixpoint_rounds": [],
+      "index": 5,
+      "m": 5,
+      "matches_final_raw_construction": false,
+      "n": 80,
+      "one_round_new_clause_count": 11754,
+      "one_round_rounds": [
+        11754
+      ],
+      "passed": true,
+      "undirected_triangle_count": 0,
+      "variant": "pairs"
+    },
+    {
+      "checks": {
+        "exactly_m_indegree_one": true,
+        "g_well_formed": true,
+        "no_indegree_zero": true,
+        "no_loops": true,
+        "one_round_twocc_empty": true,
+        "outdegree_two_distinct": true,
+        "stats_match_metadata": true,
+        "unique": true
+      },
+      "degree_histogram": {
+        "1": 6,
+        "2": 88,
+        "3": 6
+      },
+      "directed_girth": 11,
+      "fixpoint_rounds": [],
+      "index": 6,
+      "m": 6,
+      "matches_final_raw_construction": false,
+      "n": 100,
+      "one_round_new_clause_count": 18691,
+      "one_round_rounds": [
+        18691
+      ],
+      "passed": true,
+      "undirected_triangle_count": 0,
+      "variant": "pairs"
+    },
+    {
+      "checks": {
+        "exactly_m_indegree_one": true,
+        "fixpoint_twocc_empty": true,
+        "g_well_formed": true,
+        "no_indegree_zero": true,
+        "no_loops": true,
+        "one_round_twocc_empty": true,
+        "outdegree_two_distinct": true,
+        "stats_match_metadata": true,
+        "unique": true,
+        "zero_width_le_three_resolvents": true
+      },
+      "degree_histogram": {
+        "1": 4,
+        "2": 52,
+        "3": 4
+      },
+      "directed_girth": 9,
+      "fixpoint_rounds": [
+        0
+      ],
+      "index": 7,
+      "m": 4,
+      "matches_final_raw_construction": false,
+      "n": 60,
+      "one_round_new_clause_count": 0,
+      "one_round_rounds": [
+        0
+      ],
+      "passed": true,
+      "undirected_triangle_count": 0,
+      "variant": "triples"
+    },
+    {
+      "checks": {
+        "exactly_m_indegree_one": true,
+        "fixpoint_twocc_empty": true,
+        "g_well_formed": true,
+        "no_indegree_zero": true,
+        "no_loops": true,
+        "one_round_twocc_empty": true,
+        "outdegree_two_distinct": true,
+        "stats_match_metadata": true,
+        "unique": true,
+        "zero_width_le_three_resolvents": true
+      },
+      "degree_histogram": {
+        "1": 5,
+        "2": 70,
+        "3": 5
+      },
+      "directed_girth": 8,
+      "fixpoint_rounds": [
+        0
+      ],
+      "index": 8,
+      "m": 5,
+      "matches_final_raw_construction": false,
+      "n": 80,
+      "one_round_new_clause_count": 0,
+      "one_round_rounds": [
+        0
+      ],
+      "passed": true,
+      "undirected_triangle_count": 0,
+      "variant": "triples"
+    },
+    {
+      "checks": {
+        "exactly_m_indegree_one": true,
+        "g_well_formed": true,
+        "no_indegree_zero": true,
+        "no_loops": true,
+        "one_round_twocc_empty": true,
+        "outdegree_two_distinct": true,
+        "stats_match_metadata": true,
+        "unique": true
+      },
+      "degree_histogram": {
+        "1": 2,
+        "2": 26,
+        "3": 2
+      },
+      "directed_girth": 6,
+      "fixpoint_rounds": [],
+      "index": 9,
+      "m": 2,
+      "matches_final_raw_construction": true,
+      "n": 30,
+      "one_round_new_clause_count": 1408,
+      "one_round_rounds": [
+        1408
+      ],
+      "passed": true,
+      "undirected_triangle_count": 0,
+      "variant": "pairs-explicit"
+    },
+    {
+      "checks": {
+        "exactly_m_indegree_one": true,
+        "g_well_formed": true,
+        "no_indegree_zero": true,
+        "no_loops": true,
+        "one_round_twocc_empty": true,
+        "outdegree_two_distinct": true,
+        "stats_match_metadata": true,
+        "unique": true
+      },
+      "degree_histogram": {
+        "1": 3,
+        "2": 44,
+        "3": 3
+      },
+      "directed_girth": 16,
+      "fixpoint_rounds": [],
+      "index": 10,
+      "m": 3,
+      "matches_final_raw_construction": true,
+      "n": 50,
+      "one_round_new_clause_count": 4392,
+      "one_round_rounds": [
+        4392
+      ],
+      "passed": true,
+      "undirected_triangle_count": 0,
+      "variant": "pairs-explicit"
+    },
+    {
+      "checks": {
+        "exactly_m_indegree_one": true,
+        "g_well_formed": true,
+        "no_indegree_zero": true,
+        "no_loops": true,
+        "one_round_twocc_empty": true,
+        "outdegree_two_distinct": true,
+        "stats_match_metadata": true,
+        "unique": true
+      },
+      "degree_histogram": {
+        "1": 5,
+        "2": 70,
+        "3": 5
+      },
+      "directed_girth": 20,
+      "fixpoint_rounds": [],
+      "index": 11,
+      "m": 5,
+      "matches_final_raw_construction": true,
+      "n": 80,
+      "one_round_new_clause_count": 11820,
+      "one_round_rounds": [
+        11820
+      ],
+      "passed": true,
+      "undirected_triangle_count": 0,
+      "variant": "pairs-explicit"
+    },
+    {
+      "checks": {
+        "exactly_m_indegree_one": true,
+        "g_well_formed": true,
+        "no_indegree_zero": true,
+        "no_loops": true,
+        "one_round_twocc_empty": true,
+        "outdegree_two_distinct": true,
+        "stats_match_metadata": true,
+        "unique": true
+      },
+      "degree_histogram": {
+        "1": 6,
+        "2": 88,
+        "3": 6
+      },
+      "directed_girth": 30,
+      "fixpoint_rounds": [],
+      "index": 12,
+      "m": 6,
+      "matches_final_raw_construction": true,
+      "n": 100,
+      "one_round_new_clause_count": 18694,
+      "one_round_rounds": [
+        18694
+      ],
+      "passed": true,
+      "undirected_triangle_count": 0,
+      "variant": "pairs-explicit"
+    },
+    {
+      "checks": {
+        "exactly_m_indegree_one": true,
+        "g_well_formed": true,
+        "no_indegree_zero": true,
+        "no_loops": true,
+        "one_round_twocc_empty": true,
+        "outdegree_two_distinct": true,
+        "stats_match_metadata": true,
+        "unique": true
+      },
+      "degree_histogram": {
+        "1": 7,
+        "2": 106,
+        "3": 7
+      },
+      "directed_girth": 26,
+      "fixpoint_rounds": [],
+      "index": 13,
+      "m": 7,
+      "matches_final_raw_construction": true,
+      "n": 120,
+      "one_round_new_clause_count": 27233,
+      "one_round_rounds": [
+        27233
+      ],
+      "passed": true,
+      "undirected_triangle_count": 0,
+      "variant": "pairs-explicit"
+    },
+    {
+      "checks": {
+        "exactly_m_indegree_one": true,
+        "fixpoint_twocc_empty": true,
+        "g_well_formed": true,
+        "no_indegree_zero": true,
+        "no_loops": true,
+        "one_round_twocc_empty": true,
+        "outdegree_two_distinct": true,
+        "stats_match_metadata": true,
+        "unique": true,
+        "zero_width_le_three_resolvents": true
+      },
+      "degree_histogram": {
+        "1": 5,
+        "2": 70,
+        "3": 5
+      },
+      "directed_girth": 20,
+      "fixpoint_rounds": [
+        0
+      ],
+      "index": 14,
+      "m": 5,
+      "matches_final_raw_construction": true,
+      "n": 80,
+      "one_round_new_clause_count": 0,
+      "one_round_rounds": [
+        0
+      ],
+      "passed": true,
+      "undirected_triangle_count": 0,
+      "variant": "triples-explicit"
+    },
+    {
+      "checks": {
+        "exactly_m_indegree_one": true,
+        "fixpoint_twocc_empty": true,
+        "g_well_formed": true,
+        "no_indegree_zero": true,
+        "no_loops": true,
+        "one_round_twocc_empty": true,
+        "outdegree_two_distinct": true,
+        "stats_match_metadata": true,
+        "unique": true,
+        "zero_width_le_three_resolvents": true
+      },
+      "degree_histogram": {
+        "1": 6,
+        "2": 88,
+        "3": 6
+      },
+      "directed_girth": 30,
+      "fixpoint_rounds": [
+        0
+      ],
+      "index": 15,
+      "m": 6,
+      "matches_final_raw_construction": true,
+      "n": 100,
+      "one_round_new_clause_count": 0,
+      "one_round_rounds": [
+        0
+      ],
+      "passed": true,
+      "undirected_triangle_count": 0,
+      "variant": "triples-explicit"
+    },
+    {
+      "checks": {
+        "exactly_m_indegree_one": true,
+        "g_well_formed": true,
+        "no_indegree_zero": true,
+        "no_loops": true,
+        "one_round_twocc_empty": true,
+        "outdegree_two_distinct": true,
+        "stats_match_metadata": true,
+        "unique": true
+      },
+      "degree_histogram": {
+        "2": 50
+      },
+      "directed_girth": 18,
+      "fixpoint_rounds": [],
+      "index": 16,
+      "m": 0,
+      "matches_final_raw_construction": true,
+      "n": 50,
+      "one_round_new_clause_count": 4400,
+      "one_round_rounds": [
+        4400
+      ],
+      "passed": true,
+      "undirected_triangle_count": 0,
+      "variant": "pairs"
+    },
+    {
+      "checks": {
+        "exactly_m_indegree_one": true,
+        "g_well_formed": true,
+        "no_indegree_zero": true,
+        "no_loops": true,
+        "one_round_twocc_empty": true,
+        "outdegree_two_distinct": true,
+        "stats_match_metadata": true,
+        "unique": true
+      },
+      "degree_histogram": {
+        "1": 2,
+        "2": 46,
+        "3": 2
+      },
+      "directed_girth": 6,
+      "fixpoint_rounds": [],
+      "index": 17,
+      "m": 2,
+      "matches_final_raw_construction": false,
+      "n": 50,
+      "one_round_new_clause_count": 4344,
+      "one_round_rounds": [
+        4344
+      ],
+      "passed": true,
+      "undirected_triangle_count": 0,
+      "variant": "pairs"
+    },
+    {
+      "checks": {
+        "exactly_m_indegree_one": true,
+        "g_well_formed": true,
+        "no_indegree_zero": true,
+        "no_loops": true,
+        "one_round_twocc_empty": true,
+        "outdegree_two_distinct": true,
+        "stats_match_metadata": true,
+        "unique": true
+      },
+      "degree_histogram": {
+        "1": 6,
+        "2": 38,
+        "3": 6
+      },
+      "directed_girth": 6,
+      "fixpoint_rounds": [],
+      "index": 18,
+      "m": 6,
+      "matches_final_raw_construction": null,
+      "n": 50,
+      "one_round_new_clause_count": 4341,
+      "one_round_rounds": [
+        4341
+      ],
+      "passed": true,
+      "undirected_triangle_count": 0,
+      "variant": "pairs"
+    },
+    {
+      "checks": {
+        "exactly_m_indegree_one": true,
+        "g_well_formed": true,
+        "no_indegree_zero": true,
+        "no_loops": true,
+        "one_round_twocc_empty": true,
+        "outdegree_two_distinct": true,
+        "stats_match_metadata": true,
+        "unique": true
+      },
+      "degree_histogram": {
+        "1": 12,
+        "2": 26,
+        "3": 12
+      },
+      "directed_girth": 7,
+      "fixpoint_rounds": [],
+      "index": 19,
+      "m": 12,
+      "matches_final_raw_construction": null,
+      "n": 50,
+      "one_round_new_clause_count": 4338,
+      "one_round_rounds": [
+        4338
+      ],
+      "passed": true,
+      "undirected_triangle_count": 0,
+      "variant": "pairs"
+    },
+    {
+      "checks": {
+        "exactly_m_indegree_one": true,
+        "g_well_formed": true,
+        "no_indegree_zero": true,
+        "no_loops": true,
+        "one_round_twocc_empty": true,
+        "outdegree_two_distinct": true,
+        "stats_match_metadata": true,
+        "unique": true
+      },
+      "degree_histogram": {
+        "1": 16,
+        "2": 18,
+        "3": 16
+      },
+      "directed_girth": 8,
+      "fixpoint_rounds": [],
+      "index": 20,
+      "m": 16,
+      "matches_final_raw_construction": null,
+      "n": 50,
+      "one_round_new_clause_count": 4331,
+      "one_round_rounds": [
+        4331
+      ],
+      "passed": true,
+      "undirected_triangle_count": 0,
+      "variant": "pairs"
+    }
+  ]
+}
